@@ -60,6 +60,7 @@ When you launch a bulk search, a `file` is created by Icypeas. This file allows 
 | `next` | boolean | No | Pagination direction: `true` = next page, `false` = previous page. |
 | `sorts` | array | No | Pagination array from previous response. Pass to fetch the next page. |
 
+
 ## Example Request
 
 ```json
