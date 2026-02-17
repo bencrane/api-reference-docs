@@ -1,0 +1,1128 @@
+openapi: 3.0.1
+info:
+  version: '0.4'
+  title: Store Leads
+  description: The Store Leads API provides access to a database of ecommerce stores.
+servers:
+  - url: 'https://storeleads.app'
+paths:
+  /json/api/v1/all/app/{appIdentifier}:
+    get:
+      summary: Retrieve an App
+      tags:
+        - apps
+      parameters:
+        - name: appIdentifier
+          in: path
+          required: true
+          description: >
+            An identifier representing the App to retrieve. App is identified by joining the App platform and token
+            with a period (e.g., "shopify.messenger")
+          schema:
+            type: string
+        - $ref: '#/components/parameters/appFieldParam'
+      responses:
+        '200':
+          description: App details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/App"
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "missing Authorization header"
+        '404':
+          description: App not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "ErrNotFound could not find App with identifier=shopify.doesnotexist"
+        '429':
+          description: >
+            The client has made too many requests in a short period of time. Please back
+            off for the number of seconds specified in the Retry-After header.
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+              description: Number of seconds to wait before trying again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Too many requests, please back off. See Retry-After header."
+        '500':
+          description: >
+            Internal Server Error. An unxpected error has occurred.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Something went wrong."
+      servers:
+        - url: 'https://storeleads.app'
+    servers:
+      - url: 'https://storeleads.app'
+  /json/api/v1/all/app:
+    get:
+      summary: Lists Apps
+      description: >
+        Returns a list of Apps. By default, 50 Apps are returned in a single request.
+        Use the page request option to paginate.
+      tags:
+        - apps
+      parameters:
+        - $ref: '#/components/parameters/appFieldParam'
+        - $ref: '#/components/parameters/appFilterByCatParam'
+        - $ref: '#/components/parameters/appFilterByCatOpParam'
+        - $ref: '#/components/parameters/appFilterByProviderParam'
+        - $ref: '#/components/parameters/appFilterByProviderOpParam'
+        - $ref: '#/components/parameters/appPageParam'
+        - $ref: '#/components/parameters/pageSizeParam'
+        - $ref: '#/components/parameters/appSortParam'
+      responses:
+        '200':
+          description: List of Apps
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Apps"
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "missing Authorization header"
+        '429':
+          description: >
+            The client has made too many requests in a short period of time. Please back
+            off for the number of seconds specified in the Retry-After header.
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+              description: Number of seconds to wait before trying again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Too many requests, please back off. See Retry-After header."
+        '500':
+          description: >
+            Internal Server Error. An unxpected error has occurred.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Something went wrong."
+      servers:
+        - url: 'https://storeleads.app'
+    servers:
+      - url: 'https://storeleads.app'
+  /json/api/v1/all/domain/{domainName}:
+    get:
+      summary: Retrieve a Domain
+      tags:
+        - domains
+      parameters:
+        - name: domainName
+          in: path
+          required: true
+          description: The name of the domain to retrieve.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/domainFieldParam'
+      responses:
+        '200':
+          description: Domain details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Domain"
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "missing Authorization header"
+        '404':
+          description: Domain not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "ErrNotFound could not find Domain with name=doesnotexist"
+        '429':
+          description: >
+            The client has made too many requests in a short period of time. Please back
+            off for the number of seconds specified in the Retry-After header.
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+              description: Number of seconds to wait before trying again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Too many requests, please back off. See Retry-After header."
+        '500':
+          description: >
+            Internal Server Error. An unxpected error has occurred.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Something went wrong."
+      servers:
+        - url: 'https://storeleads.app'
+    servers:
+      - url: 'https://storeleads.app'
+  /json/api/v1/all/domain:
+    get:
+      summary: Lists Domains
+      description: >
+        Returns a list of Domains. The request parameters can be used to constrain the results to Domains matching
+        specific criteria. Without any options, this endpoint will list all Domains.
+
+
+        By default, 50 Domains are returned in a single request. The page request option can be used to paginate
+        through the first few pages or can be set to -1 to retrieve all Domains. See the page option below for more details.
+      tags:
+        - domains
+      parameters:
+        - $ref: '#/components/parameters/domainFieldParam'
+        - $ref: '#/components/parameters/domainFilterByAppParam'
+        - $ref: '#/components/parameters/domainFilterByAppOpParam'
+        - $ref: '#/components/parameters/domainFilterByCatParam'
+        - $ref: '#/components/parameters/domainFilterByCatOpParam'
+        - $ref: '#/components/parameters/domainFilterByCountryCodeParam'
+        - $ref: '#/components/parameters/domainFilterByCountryCodeOpParam'
+        - $ref: '#/components/parameters/domainFilterByCreatedAtYYYYMMParam'
+        - $ref: '#/components/parameters/domainFilterByCreatedAtYYYYMMOpParam'
+        - $ref: '#/components/parameters/domainFilterByCreatedAtYYYYMMDDParam'
+        - $ref: '#/components/parameters/domainFilterByCreatedAtYYYYMMDDOpParam'
+        - $ref: '#/components/parameters/domainFilterByDomainStateParam'
+        - $ref: '#/components/parameters/domainFilterByDomainStateOpParam'
+        - $ref: '#/components/parameters/domainFilterByDomainTypeParam'
+        - $ref: '#/components/parameters/domainFilterByDomainTypeOpParam'
+        - $ref: '#/components/parameters/domainFilterByContactInfoParam'
+        - $ref: '#/components/parameters/domainFilterByContactInfoOpParam'
+        - $ref: '#/components/parameters/domainFilterByMonthlyAppSpendMinParam'
+        - $ref: '#/components/parameters/domainFilterByMonthlyAppSpendMaxParam'
+        - $ref: '#/components/parameters/domainFilterByProviderParam'
+        - $ref: '#/components/parameters/domainFilterByProviderOpParam'
+        - $ref: '#/components/parameters/domainFilterByRankMinParam'
+        - $ref: '#/components/parameters/domainFilterByRankMaxParam'
+        - $ref: '#/components/parameters/domainFilterByRegionParam'
+        - $ref: '#/components/parameters/domainFilterByRegionOpParam'
+        - $ref: '#/components/parameters/domainFilterBySubregionParam'
+        - $ref: '#/components/parameters/domainFilterBySubregionOpParam'
+        - $ref: '#/components/parameters/domainFilterByTechParam'
+        - $ref: '#/components/parameters/domainFilterByTechOpParam'
+        - $ref: '#/components/parameters/domainFilterByTLDParam'
+        - $ref: '#/components/parameters/domainFilterByTLDOpParam'
+        - $ref: '#/components/parameters/domainFilterByThemeNameParam'
+        - $ref: '#/components/parameters/domainFilterByThemeNameOpParam'
+        - $ref: '#/components/parameters/domainFilterByThemeStyleParam'
+        - $ref: '#/components/parameters/domainFilterByThemeStyleOpParam'
+        - $ref: '#/components/parameters/domainFilterByThemeVendorParam'
+        - $ref: '#/components/parameters/domainFilterByThemeVendorOpParam'
+        - $ref: '#/components/parameters/domainPageParam'
+        - $ref: '#/components/parameters/domainQueryParam'
+        - $ref: '#/components/parameters/pageSizeParam'
+      responses:
+        '200':
+          description: List of Domains
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Domains"
+        '202':
+          description: Results are being prepared asynchronously.
+          content:
+            application/json:
+              example:
+                message: "Request accepted, poll the same url once every 5 seconds until HTTP 200 is returned."
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "missing Authorization header"
+        '429':
+          description: >
+            The client has made too many requests in a short period of time. Please back
+            off for the number of seconds specified in the Retry-After header.
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+              description: Number of seconds to wait before trying again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Too many requests, please back off. See Retry-After header."
+        '500':
+          description: >
+            Internal Server Error. An unxpected error has occurred.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                error: "Something went wrong."
+      servers:
+        - url: 'https://storeleads.app'
+    servers:
+      - url: 'https://storeleads.app'
+components:
+  schemas:
+    App:
+      required:
+        - token
+        - name
+      properties:
+        id:
+          type: string
+        token:
+          type: string
+        name:
+          type: string
+        categories:
+          type: array
+          items:
+            type: string
+        app_store_url:
+          type: string
+          format: uri
+        plans:
+          type: array
+          items:
+            $ref: "#/components/schemas/AppPlan"
+        description:
+          type: string
+        installs:
+          type: integer
+          minimum: 0
+        installed_at:
+          type: string
+          format: date-time
+        platform:
+          type: string
+        vendor_name:
+          type: string
+        vendor_url:
+          type: string
+          format: uri
+        vendor_email:
+          type: string
+          format: email
+        review_count:
+          type: integer
+          minimum: 0
+        average_rating:
+          type: string
+        icon_url:
+          type: string
+          format: uri
+        state:
+          type: string
+          enum: [Active, Inactive]
+        created_at:
+          type: string
+          format: date-time
+      example:
+        token: "marsello"
+        name: "Marsello | Marketing Automation"
+        categories:
+          - "marketing"
+        app_store_url: "https://apps.shopify.com/marsello"
+        plans:
+          - name: "Free"
+            monthly_cost: "Free"
+          - name: "Pro"
+            monthly_cost: "$49/month"
+            monthly_cost_cents: 4900
+        description: "Grow sales with email and loyalty marketing automation."
+        platform: "shopify"
+        vendor_name: "Marsello"
+        vendor_url: "https://apps.shopify.com/partners/recovermycart"
+        vendor_email: "help@marsello.com"
+        review_count: 244
+        average_rating: "4.9"
+        icon_url: "https://apps.shopifycdn.com/listing_images/01610b7070e1a444e4229cbef477e025/icon/1091a443aab5e54a203638bc44e0b964.png?height=84&width=84"
+        created_at: "2018-10-30T00:00:00"
+    Apps:
+      properties:
+        apps:
+          type: array
+          items:
+            $ref: "#/components/schemas/App"
+    AppPlan:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        monthly_cost:
+          type: string
+        month_cost_cents:
+          type: integer
+          minimum: 0
+    ContactInfo:
+      required:
+        - type
+      properties:
+        company:
+          type: boolean
+        source:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+        followers:
+          type: integer
+          minimum: 0
+        followers_30d:
+          type: integer
+        followers_90d:
+          type: integer
+    Domain:
+      required:
+        - name
+      properties:
+        administrative_area_level_1:
+          type: string
+          description: "The administrative_area_level_1 of the Domain (if known). This value often represents the state/province of the associated merchant's headquarters."
+        aliases:
+          type: array
+          items:
+            type: string
+          description: "List of alias DNS domain names that refer to this Domain. Aliases are identified as other DNS domain names that point to the Domain through canonical links or redirects."
+        alternates:
+          type: array
+          items:
+            type: string
+          description: "List of alternate DNS domain names for this Domain. Alternate domain names are localized versions of the domain for a specific locale. e.g., ca.merchant.com and uk.merchant.com. The API returns a map (also called a dictionary in some programming languages) of locale name to domain name."
+        apps:
+          type: array
+          items:
+            $ref: "#/components/schemas/App"
+          description: "List of Apps that the Domain has installed."
+        avg_price:
+          type: integer
+          minimum: 0
+          description: "The average price of products sold on the Domain. Values in the minor unit of the Domain's currency (e.g., cents of USD)."
+        categories:
+          type: array
+          items:
+            type: string
+          description: "A list of the Domain's categories. Categories represent the Domain's industry vertical (e.g., /Apparel/ or /Beauty & Fitness/Face & Body Care)"
+        cc_centrality:
+          type: integer
+          description: "The Domain's centrality score from the Common Crawl Project (if known)."
+        cc_rank:
+          type: integer
+          description: "The Domain's page rank score from the Common Crawl Project (if known)."
+        city:
+          type: string
+          description: "The city of the Domain (if known). This value often represents the city of the associated merchant's headquarters.."
+        contact_info:
+          type: array
+          items:
+            $ref: "#/components/schemas/ContactInfo"
+          description: "A list of contact information available for the Domain. This includes email addresses, phone numbers and social media accounts."
+        country_code:
+          type: string
+          description: "The 2-letter ISO country code of the Domain. Note that a small percentage of Domains are not country-specific (they sell to multiple countries) and these Domains do not have a country-code."
+        created_at:
+          type: string
+          format: date-time
+          description: "The date at which the Domain was created. It is hard to know exactly when a store was created so this represents our best guess. For Domains created after July 2018, the creation date is based on when we first discovered the Domain, which tends to be very close to the actual creation date. For Domains created before July 2018, we use a heuristic that includes historic DNS and WHOIS data, which provides a reasonable approximation of domain creation time."
+        currency_code:
+          type: string
+          description: "The 3-letter ISO currency code of the Domain."
+        description:
+          type: string
+          description: "A text description of the Domain (from the home page's meta description tage). Generally used to describe the goods and services provided by the merchant."
+        employee_count:
+          type: integer
+          minimum: 0
+          description: "The number of employees."
+        estimated_sales:
+          type: integer
+          minimum: 0
+          description: "The estimated total monthly sales for the merchant. Values in cents of USD."
+        features:
+          type: array
+          items:
+            type: string
+          description: "A list of miscellaneous features on the domain. e.g., ['Tracking Page', 'Returns Page']"
+        icon:
+          type: string
+          description: "A URL to the favicon for the Domain (if any)."
+        inactive_at:
+          type: string
+          format: date-time
+          description: "The date at which the Domain became Inactive. Only set for Domains in Inactive state."
+        keywords:
+          type: string
+          description: "A list of keywords describing the Domain (from the home page's meta keywords tage). Generally used to describe the goods and services provided by the merchant."
+        language_code:
+          type: string
+          description: "The 2-letter ISO 639-1 code for the language of content on the Domain's website. Value is blank is not known."
+        last_platform:
+          type: string
+          description: "The name of the ecommerce platform that the Domain previously used (if any). Note: Data not available for Domains that changed ecommerce platforms prior to October 2019."
+        last_platform_change_at:
+          type: string
+          format: date-time
+          description: "The date at which the Domain last changed ecommerce platforms (if any). Note: Data not available for Domains that changed ecommerce platforms prior to October 2019."
+        last_plan:
+          type: string
+          description: "The name of the pricing plan that the Domain was previously on (if any). Note: Data not available for Domains that changed plans prior to July 2019."
+        last_plan_change_at:
+          type: string
+          format: date-time
+          description: "The date at which the Domain last changed pricing plans (if any). Note: Data not available for Domains that changed plans prior to July 2019."
+        last_updated_at:
+          type: string
+          format: date-time
+          description: "The date at which data for the Domain was last updated."
+        latitude:
+          type: number
+          format: float
+          description: "The latitude of the Domain (if known). This value often represents the location of the associated merchant's headquarters."
+        location:
+          type: string
+          description: "The geographic location of the Domain (if known). This value is often the city/state of the associated merchant's headquarters."
+        longitude:
+          type: number
+          format: float
+          description: "The longitude of the Domain (if known). This value often represents the location of the associated merchant's headquarters."
+        magento_version:
+          type: string
+          description: "The version of Magento that the Domain uses (if known). Only applies to merchants on the Magento platform."
+        max_price:
+          type: integer
+          minimum: 0
+          description: "The price of the most expensive product sold on the Domain. Only known for Shopify stores."
+        max_product_published_at:
+          type: string
+          format: date-time
+          description: "The date that the most recent product was published by the merchant (if known). Only applies to merchants on the Shopify platform."
+        monthly_app_spend:
+          type: integer
+          minimum: 0
+          description: "The estimated amount the merchant spends on apps every month. Values in cents of USD."
+        merchant_name:
+          type: string
+          description: "The name of the merchant that is selling on the Domain."
+        min_price:
+          type: integer
+          minimum: 0
+          description: "The price of the least expensive product sold on the Domain. Only known for Shopify stores."
+        name:
+          type: string
+          description: "The DNS domain name of the Domain."
+        og_image:
+          type: string
+          description: "The Open Graph Image URL from the Domain's home page (if any)."
+        plan:
+          type: string
+          description: "The name of the ecommerce platform's pricing plan that the merchant is using (if known). e.g., 'Shopify Plus'"
+        platform:
+          type: string
+          description: "The name of the ecommerce platform that powers the domain."
+        platform_rank:
+          type: integer
+          minimum: 1
+          description: "The rank of the Domain against all other Domains on the same ecommerce platforms. We rank ecommerce domains based on the popularity of each Domain (via traffic estimates) and the number and significance of links to each Domain."
+        product_count:
+          type: integer
+          minimum: 0
+          description: "The number of products sold by the Domain.  Product counts are precise for standard Shopify stores. For all other stores, product counts are an estimate."
+        rank:
+          type: integer
+          minimum: 1
+          description: "The world-wide rank of the Domain (across all supported ecommerce platforms). We rank all ecommerce domains based on the popularity of each Domain (via traffic estimates) and the number and significance of links to each Domain."
+        redirects_to:
+          type: array
+          items:
+            type: string
+          description: "A list of domain names to which this Domain redirects. Only set on Domains in the Redirect state. This is an array since some Domains conditionally redirect to different locations (for instance, to redirect to one of many country-specific stores)."
+        sales_carriers:
+          type: array
+          items:
+            type: string
+          description: "A list of alternate sales channels used by the Domain. Can include values like 'Etsy', 'Amazon' and 'Handshake'."
+        shipping_carriers:
+          type: array
+          items:
+            type: string
+          description: "A list of shipping carriers that the Domain uses to ship physical goods (e.g., 'USPS', 'Fedex')"
+        state:
+          type: string
+          enum: [Active, Inactive, Password Protected, Redirect]
+          description: "The state of the Domain."
+        tags:
+          type: array
+          items:
+            type: string
+          description: "A list of tags associated with the Domain. Tags are automatically applied to Domains based on various attributes."
+        technologies:
+          type: array
+          items:
+            $ref: "#/components/schemas/Technology"
+          description: "Lists the third-party technologies installed on the Domain."
+        theme:
+          $ref: "#/components/schemas/Theme"
+          description: "Describes the theme that the Domain is using."
+        title:
+          type: string
+          description: "The value of the HTML title tag on the Domain's home page."
+        vendor_count:
+          type: integer
+          minimum: 0
+          description: "The number of distinct vendors of products sold by the Domain.  Only available for standard Shopify stores."
+      example:
+        aliases:
+          - "vapes.com"
+        apps:
+          - token: "marsello"
+            name: "Marsello | Marketing Automation"
+            categories:
+              - "marketing"
+            app_store_url: "https://apps.shopify.com/marsello"
+            plans:
+              - name: "Free"
+                monthly_cost: "Free"
+              - name: "Pro"
+                monthly_cost: "$49/month"
+                monthly_cost_cents: 4900
+            description: "Grow sales with email and loyalty marketing automation."
+            platform: "shopify"
+            vendor_name: "Marsello"
+            vendor_url: "https://apps.shopify.com/partners/recovermycart"
+            vendor_email: "help@marsello.com"
+            review_count: 244
+            average_rating: "4.9"
+            icon_url: "https://apps.shopifycdn.com/listing_images/01610b7070e1a444e4229cbef477e025/icon/1091a443aab5e54a203638bc44e0b964.png?height=84&width=84"
+            created_at: "2018-10-30T00:00:00"
+        monthly_app_spend: 5899
+        country_code: "US"
+        contact_info:
+          - company: true
+            source: "/"
+            type: "twitter"
+            value: "https://twitter.com/vapescom"
+        description: "Shop online for e-cigarettes, mods, vape pens, atomizers, dry herb vaporizers, oil/wax pens, enails, ehookah, accessories and USA made e-juice/liquid."
+        name: "www.vapes.com"
+        platform: "shopify"
+        rank: 357
+        state: "Active"
+        technologies:
+          - name: "Google Analytics"
+            description: "Google Analytics gives you the tools you need to better understand your customers. You can then use those business insights to take action, such as improving your website, creating tailored audience lists, and more."
+        theme:
+          name: "empire"
+          style: "Graphic"
+          vendor: "Pixel Union"
+          version: "Unknown"
+          cost: 18000
+        title: "VAPES E-Cigs, E-juice, Wax Vape Pens, Herbal Vaporizers"
+        created_at: "2016-12-30T00:00:00"
+        last_updated_at: "2019-05-03T00:00:00"
+    Domains:
+      properties:
+        domains:
+          type: array
+          items:
+            $ref: "#/components/schemas/Domain"
+    Error:
+      required:
+        - error
+      properties:
+        error:
+          description: A text description of the error.
+          type: string
+    Technology:
+      required:
+        - name
+        - description
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        installed_at:
+          type: string
+          format: date-time
+    Theme:
+      properties:
+        name:
+          type: string
+        style:
+          type: string
+        cost:
+          type: integer
+          minimum: 0
+        vendor:
+          type: string
+        version:
+          type: string
+  parameters:
+    appFieldParam:
+      name: fields
+      in: query
+      description: >
+        Comma-separated list of fields to return in the response (all fields returned by default.)
+        Nested fields can be denoted with a period (e.g., plans.name)
+      required: false
+      schema:
+        type: string
+    appFilterByProviderParam:
+      name: f:p
+      in: query
+      description: >
+        Filters results to Apps on the given ecommerce platform. Multiple values must be comma-separated.
+        Field is mutually exclusive so use f:p:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+        enum: [shopify, bigcommerce, square]
+    appFilterByProviderOpParam:
+      name: f:p:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:p.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    appFilterByCatParam:
+      name: f:categories
+      in: query
+      description: Filters results to Apps that have the given category. Multiple values must be comma-separated.
+      required: false
+      schema:
+        type: string
+    appFilterByCatOpParam:
+      name: f:categories:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:categories.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    appPageParam:
+      name: page
+      in: query
+      description: The page of results to return.
+      required: false
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    appSortParam:
+      name: sort
+      in: query
+      description: Changes the sort order.
+      required: false
+      schema:
+        type: string
+        enum: [created_at, -created_at]
+    domainFieldParam:
+      name: fields
+      in: query
+      description: >
+        Comma-separated list of fields to return in the response (all fields returned by default.)
+        Nested fields can be denoted with a period (e.g., contact_info.type)
+      required: false
+      schema:
+        type: string
+    domainFilterByAppParam:
+      name: f:an
+      in: query
+      description: >
+        Filters results to Domains that have the given app installed. App is identified by joining the App platform
+        and token with a period (e.g., "shopify.messenger"). Multiple values must be comma-separated.
+      required: false
+      schema:
+        type: string
+    domainFilterByAppOpParam:
+      name: f:an:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:an.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByCatParam:
+      name: f:cat
+      in: query
+      description: Filters results to Domains that have the given category. Multiple values must be comma-separated.
+      required: false
+      schema:
+        type: string
+    domainFilterByCatOpParam:
+      name: f:cat:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:cat.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByCountryCodeParam:
+      name: f:cc
+      in: query
+      description: >
+        Filters results to Domains in the given country code. Multiple values must be comma-separated.
+        Field is mutually exclusive so use f:cc:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterByCountryCodeOpParam:
+      name: f:cc:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:cc.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByCreatedAtYYYYMMParam:
+      name: f:cratyyyymm
+      in: query
+      description: >
+        Filters results to Domains in the given month (identified by YYYY-MM).
+        Field is mutually exclusive so use f:cratyyyymm:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterByCreatedAtYYYYMMOpParam:
+      name: f:cratyyyymm:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:cratyyyymm.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByCreatedAtYYYYMMDDParam:
+      name: f:cratyyyymmdd
+      in: query
+      description: >
+        Filters results to Domains in the given week (identified by YYYY-MM-DD).
+        Field is mutually exclusive so use f:cratyyyymmdd:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterByCreatedAtYYYYMMDDOpParam:
+      name: f:cratyyyymmdd:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:cratyyyymmdd.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByDomainStateParam:
+      name: f:ds
+      in: query
+      description: >
+        Filters results to Domains in the given domain state.
+        Field is mutually exclusive so use f:ds:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+        enum: [Active, Inactive, Password Protected]
+    domainFilterByDomainStateOpParam:
+      name: f:cratyyyymm:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:ds.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByDomainTypeParam:
+      name: f:ismy
+      in: query
+      description: >
+        Filters results to Domains of the given type. Provider domains (e.g., *.myshopify.com, *.mybigcommerce.com,
+        *.square.site) match "true" and custom domains (e.g., shop.merchant.com) match "false".
+      required: false
+      schema:
+        type: boolean
+    domainFilterByDomainTypeOpParam:
+      name: f:ismy:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:ismy.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByContactInfoParam:
+      name: f:it
+      in: query
+      description: >
+        Filters results to Domains that have contact information of the given type(s).
+        Multiple values must be comma-separated.
+      required: false
+      schema:
+        type: string
+        enum: [email, facebook, instagram, phone, pinterest, snapchat, twitter, youtube]
+    domainFilterByContactInfoOpParam:
+      name: f:it:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:it.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByMonthlyAppSpendMinParam:
+      name: f:masmin
+      in: query
+      description: >
+        Filters results to Domains that have monthly app spend greater than or equal to the provided value.
+        Note that values are in cents of USD so use the value 150 to represent $1.50.
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+    domainFilterByMonthlyAppSpendMaxParam:
+      name: f:masmax
+      in: query
+      description: >
+        Filters results to Domains that have monthly app spend less than or equal to the provided value. Note
+        that values are in cents of USD so use the value 150 to represent $1.50.
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+    domainFilterByProviderParam:
+      name: f:p
+      in: query
+      description: >
+        Filters results to Domains on the given ecommerce platform. Multiple values must be comma-separated.
+        Field is mutually exclusive so use f:p:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+        enum: [shopify, bigcommerce, square]
+    domainFilterByProviderOpParam:
+      name: f:p:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:p.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByRankMinParam:
+      name: f:rankmin
+      in: query
+      description: Filters results to Domains that have rank greater than or equal to the provided value.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    domainFilterByRankMaxParam:
+      name: f:rankmax
+      in: query
+      description: Filters results to Domains that have rank less than or equal to the provided value.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    domainFilterByRegionParam:
+      name: f:reg
+      in: query
+      description: >
+        Filters results to Domains that are in the given geographic region (e.g., "Europe").
+        Multiple values must be comma-separated. Field is mutually exclusive so use f:reg:op=or when
+        providing multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterByRegionOpParam:
+      name: f:reg:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:reg.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterBySubregionParam:
+      name: f:sreg
+      in: query
+      description: >
+        Filters results to Domains that are in the given geographic subregion (e.g., "Northern Europe").
+        Multiple values must be comma-separated. Field is mutually exclusive so use f:sreg:op=or when providing
+        multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterBySubregionOpParam:
+      name: f:sreg:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:sreg.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByTechParam:
+      name: f:tech
+      in: query
+      description: >
+        Filters results to Domains that are running the given technology (e.g., "Facebook Pixel"). Multiple values
+        must be comma-separated.
+      required: false
+      schema:
+        type: string
+    domainFilterByTechOpParam:
+      name: f:tech:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:tech.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByTLDParam:
+      name: f:tld
+      in: query
+      description: >
+        Filters results to Domains in the given top-level domain (e.g., "com" or "net"). Multiple values must be
+        comma-separated. Field is mutually exclusive so use f:tld:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterByTLDOpParam:
+      name: f:tld:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:tld.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByThemeNameParam:
+      name: f:tn
+      in: query
+      description: >
+        Filters results to Domains running the given theme name. Multiple values must be comma-separated.
+        Field is mutually exclusive so use f:tn:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterByThemeNameOpParam:
+      name: f:tn:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:tn.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByThemeStyleParam:
+      name: f:ts
+      in: query
+      description: >
+        Filters results to Domains running the given theme style. Multiple values must be comma-separated.
+        Field is mutually exclusive so use f:ts:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterByThemeStyleOpParam:
+      name: f:ts:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:ts.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainFilterByThemeVendorParam:
+      name: f:tvn
+      in: query
+      description: >
+        Filters results to Domains running a theme from the given theme vendor. Multiple values must be
+        comma-separated. Field is mutually exclusive so use f:tvn:op=or when providing multiple values.
+      required: false
+      schema:
+        type: string
+    domainFilterByThemeVendorOpParam:
+      name: f:tvn:op
+      in: query
+      description: Boolean operator to apply when multiple values are provided in f:tvn.
+      required: false
+      schema:
+        type: string
+        enum: [and, or, not]
+        default: and
+    domainPageParam:
+      name: page
+      in: query
+      description: The page of results to return. Use the Export Domains endpoint to retrieve large results.
+      required: false
+      schema:
+        type: integer
+        default: 0
+        minimum: -1
+        maximum: 10
+    domainQueryParam:
+      name: q
+      in: query
+      description: Filters results to Domains that match the given query text. (e.g., "vape")
+      required: false
+      schema:
+        type: string
+    pageSizeParam:
+      name: page_size
+      in: query
+      description: The number of results to return per page.
+      required: false
+      schema:
+        type: integer
+        default: 50
+        minimum: 0
+        maximum: 50
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
