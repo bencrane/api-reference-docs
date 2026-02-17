@@ -1,4 +1,4 @@
-# Find Person Work Email by Full Name, Company Name, Company Website, and LinkedIn URL
+# Find Work Email by Full Name, Company Name, and Company Domain
 
 ```bash
 curl -X POST https://api.parallel.ai/v1/tasks/runs \
@@ -6,7 +6,7 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
   -H 'Content-Type: application/json' \
   --data-raw '{
   "input": "",
-  "processor": "pro",
+  "processor": "base",
   "task_spec": {
     "input_schema": {
       "json_schema": {
@@ -15,16 +15,12 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
             "description": "The name of the company where the person works.",
             "type": "string"
           },
-          "company_website": {
-            "description": "The website of the company where the person works.",
+          "company_domain": {
+            "description": "The domain of the company where the person works.",
             "type": "string"
           },
-          "person_full_name": {
+          "full_name": {
             "description": "The full name of the person whose work email needs to be found.",
-            "type": "string"
-          },
-          "person_linkedin_url": {
-            "description": "The LinkedIn profile URL of the person.",
             "type": "string"
           }
         },
@@ -37,7 +33,7 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
         "additionalProperties": false,
         "properties": {
           "work_email": {
-            "description": "The professional email address of the person at the specified company. If the work email cannot be found, return null.",
+            "description": "The professional email address of the person at the specified company. If the email address cannot be found or verified, return null.",
             "type": "string"
           }
         },

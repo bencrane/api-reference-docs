@@ -1,4 +1,4 @@
-# Find Person Work Email and LinkedIn URL by Full Name, Company Name, and Company Website
+# Find Person Work Email by Full Name, Company Name, Company Domain, and LinkedIn URL
 
 ```bash
 curl -X POST https://api.parallel.ai/v1/tasks/runs \
@@ -6,21 +6,25 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
   -H 'Content-Type: application/json' \
   --data-raw '{
   "input": "",
-  "processor": "base",
+  "processor": "pro",
   "task_spec": {
     "input_schema": {
       "json_schema": {
         "properties": {
           "company_name": {
-            "description": "The name of the company the person works for.",
+            "description": "The name of the company where the person works.",
             "type": "string"
           },
-          "company_website": {
-            "description": "The website of the company the person works for.",
+          "company_domain": {
+            "description": "The domain of the company where the person works.",
             "type": "string"
           },
-          "full_name": {
-            "description": "The full name of the person to find the work email and LinkedIn URL for.",
+          "person_full_name": {
+            "description": "The full name of the person whose work email needs to be found.",
+            "type": "string"
+          },
+          "person_linkedin_url": {
+            "description": "The LinkedIn profile URL of the person.",
             "type": "string"
           }
         },
@@ -32,18 +36,13 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
       "json_schema": {
         "additionalProperties": false,
         "properties": {
-          "linkedin_url": {
-            "description": "The URL to the person'\''s professional LinkedIn profile. If the LinkedIn URL cannot be found, return null.",
-            "type": "string"
-          },
           "work_email": {
             "description": "The professional email address of the person at the specified company. If the work email cannot be found, return null.",
             "type": "string"
           }
         },
         "required": [
-          "work_email",
-          "linkedin_url"
+          "work_email"
         ],
         "type": "object"
       },

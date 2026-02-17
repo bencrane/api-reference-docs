@@ -1,4 +1,4 @@
-# Find Person LinkedIn URL by Full Name, Company Name, and Company Website
+# Find Person LinkedIn URL by Full Name, Company Name, and Company Domain
 
 ```bash
 curl -X POST https://api.parallel.ai/v1/tasks/runs \
@@ -15,8 +15,8 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
             "description": "The name of the company the person works for.",
             "type": "string"
           },
-          "company_website": {
-            "description": "The website of the company the person works for.",
+          "company_domain": {
+            "description": "The domain of the company the person works for.",
             "type": "string"
           },
           "full_name": {
@@ -33,7 +33,7 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
         "additionalProperties": false,
         "properties": {
           "linkedin_url": {
-            "description": "The direct URL to the LinkedIn profile of the person identified by the provided full name, company name, and company website. If a LinkedIn profile cannot be found, return null.",
+            "description": "The direct URL to the LinkedIn profile of the person identified by the provided full name, company name, and company domain. If a LinkedIn profile cannot be found, return null.",
             "type": "string"
           }
         },

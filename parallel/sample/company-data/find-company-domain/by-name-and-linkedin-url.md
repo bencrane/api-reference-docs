@@ -1,4 +1,4 @@
-# Find Company Website by Name and LinkedIn URL
+# Find Company Domain by Name and LinkedIn URL
 
 ```bash
 curl -X POST https://api.parallel.ai/v1/tasks/runs \
@@ -12,11 +12,11 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
       "json_schema": {
         "properties": {
           "company_linkedin_url": {
-            "description": "The LinkedIn URL of the company to find the website for.",
+            "description": "The LinkedIn URL of the company to find the domain for.",
             "type": "string"
           },
           "company_name": {
-            "description": "The name of the company to find the website for.",
+            "description": "The name of the company to find the domain for.",
             "type": "string"
           }
         },
@@ -28,13 +28,13 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
       "json_schema": {
         "additionalProperties": false,
         "properties": {
-          "company_website": {
-            "description": "The official website URL for the company. If the website cannot be found, return null.",
+          "company_domain": {
+            "description": "The official domain for the company. If the domain cannot be found, return null.",
             "type": "string"
           }
         },
         "required": [
-          "company_website"
+          "company_domain"
         ],
         "type": "object"
       },

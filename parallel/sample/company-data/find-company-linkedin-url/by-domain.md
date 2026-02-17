@@ -11,8 +11,8 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
     "input_schema": {
       "json_schema": {
         "properties": {
-          "company_website": {
-            "description": "The website of the company to find the LinkedIn URL for",
+          "company_domain": {
+            "description": "The domain of the company to find the LinkedIn URL for",
             "type": "string"
           }
         },

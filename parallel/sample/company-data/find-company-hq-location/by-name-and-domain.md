@@ -15,8 +15,8 @@ curl -X POST https://api.parallel.ai/v1/tasks/runs \
             "description": "The name of the company to find the HQ location for.",
             "type": "string"
           },
-          "company_website": {
-            "description": "The website of the company to find the HQ location for.",
+          "company_domain": {
+            "description": "The domain of the company to find the HQ location for.",
             "type": "string"
           }
         },
