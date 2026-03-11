@@ -1,0 +1,2 @@
+# SIP Domain Resource
+

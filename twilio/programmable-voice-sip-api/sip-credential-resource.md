@@ -1,0 +1,2 @@
+# SIP Credential Resource
+

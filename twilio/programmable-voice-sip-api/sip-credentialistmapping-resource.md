@@ -1,0 +1,2 @@
+# SIP CredentialListMapping Resource
+
