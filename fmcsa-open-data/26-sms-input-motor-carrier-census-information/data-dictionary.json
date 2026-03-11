@@ -1,0 +1,274 @@
+{
+    "source": "FMCSA Comprehensive Safety Analysis (CSA)",
+    "description": "Monthly data run containing FMCSA registration data of all active Interstate and Intrastate Hazmat Motor Carriers of property and/or passengers.",
+    "file_format": "CSV (comma delimited)",
+    "record_structure": "One carrier per row",
+    "revision": "Rev03",
+    "revision_date": "2025-04-17",
+    "fields": [
+      {
+        "field_name": "DOT_NUMBER",
+        "description": "Unique USDOT Number of the Motor Carrier",
+        "category": "identification"
+      },
+      {
+        "field_name": "LEGAL_NAME",
+        "description": "Legal name of a carrier",
+        "category": "identification"
+      },
+      {
+        "field_name": "DBA_NAME",
+        "description": "Carrier's Doing-Business-As name",
+        "category": "identification"
+      },
+      {
+        "field_name": "CARRIER_OPERATION",
+        "description": "Codes identifying carriers' type of Operation",
+        "category": "classification",
+        "values": {
+          "A": "Interstate",
+          "B": "Intrastate Hazmat",
+          "C": "Intrastate Non-Hazmat"
+        }
+      },
+      {
+        "field_name": "HM_FLAG",
+        "description": "Carrier is subject to placardable HM threshold",
+        "category": "classification",
+        "values": {
+          "Y": "Yes",
+          "N": "No"
+        }
+      },
+      {
+        "field_name": "PC_FLAG",
+        "description": "Carrier is subject to passenger carrier threshold",
+        "category": "classification",
+        "values": {
+          "Y": "Yes",
+          "N": "No"
+        }
+      },
+      {
+        "field_name": "PHY_STREET",
+        "description": "Physical street address of a carrier",
+        "category": "physical_address"
+      },
+      {
+        "field_name": "PHY_CITY",
+        "description": "Physical city of a carrier",
+        "category": "physical_address"
+      },
+      {
+        "field_name": "PHY_STATE",
+        "description": "Physical state of a carrier",
+        "category": "physical_address"
+      },
+      {
+        "field_name": "PHY_ZIP",
+        "description": "Physical zip code of a carrier",
+        "category": "physical_address"
+      },
+      {
+        "field_name": "PHY_COUNTRY",
+        "description": "Physical country of a carrier",
+        "category": "physical_address"
+      },
+      {
+        "field_name": "MAILING_STREET",
+        "description": "Mail street address of a carrier",
+        "category": "mailing_address"
+      },
+      {
+        "field_name": "MAILING_CITY",
+        "description": "Mail city of a carrier",
+        "category": "mailing_address"
+      },
+      {
+        "field_name": "MAILING_STATE",
+        "description": "Mail state of a carrier",
+        "category": "mailing_address"
+      },
+      {
+        "field_name": "MAILING_ZIP",
+        "description": "Mail zip code of a carrier",
+        "category": "mailing_address"
+      },
+      {
+        "field_name": "MAILING_COUNTRY",
+        "description": "Mail country of a carrier",
+        "category": "mailing_address"
+      },
+      {
+        "field_name": "TELEPHONE",
+        "description": "Contact telephone number",
+        "category": "contact"
+      },
+      {
+        "field_name": "FAX",
+        "description": "Fax Number",
+        "category": "contact"
+      },
+      {
+        "field_name": "EMAIL_ADDRESS",
+        "description": "Contact email address",
+        "category": "contact"
+      },
+      {
+        "field_name": "MCS150_DATE",
+        "description": "Latest date MCS-150 was filed",
+        "category": "mcs150"
+      },
+      {
+        "field_name": "MCS150_MILEAGE",
+        "description": "Vehicle Mileage Traveled (VMT) reported on the carrier's MCS-150 form",
+        "category": "mcs150"
+      },
+      {
+        "field_name": "MCS150_MILEAGE_YEAR",
+        "description": "Year for which VMT was reported",
+        "category": "mcs150"
+      },
+      {
+        "field_name": "ADD_DATE",
+        "description": "Date when carrier information was added to MCMIS Database System",
+        "category": "metadata"
+      },
+      {
+        "field_name": "OIC_STATE",
+        "description": "FMCSA State office with oversight for this carrier",
+        "category": "metadata"
+      },
+      {
+        "field_name": "NBR_POWER_UNIT",
+        "description": "Number of power units reported",
+        "category": "fleet"
+      },
+      {
+        "field_name": "DRIVER_TOTAL",
+        "description": "Number of drivers reported",
+        "category": "fleet"
+      },
+      {
+        "field_name": "RECENT_MILEAGE",
+        "description": "Carrier's recent Vehicle Mileage Traveled (VMT) based on the most recent data",
+        "category": "mileage"
+      },
+      {
+        "field_name": "RECENT_MILEAGE_YEAR",
+        "description": "Year for which Recent VMT was reported",
+        "category": "mileage"
+      },
+      {
+        "field_name": "VMT_SOURCE_ID",
+        "description": "Source of the VMT data",
+        "category": "mileage",
+        "values": {
+          "1": "Census",
+          "2": "Safety Audit",
+          "3": "Investigation"
+        }
+      },
+      {
+        "field_name": "PRIVATE_ONLY",
+        "description": "Carrier's operation classified as private property, private passenger business, and private passenger nonbusiness but not authorized or exempt for hire",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "AUTHORIZED_FOR_HIRE",
+        "description": "Carrier's operation classified as Authorized For Hire",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "EXEMPT_FOR_HIRE",
+        "description": "Carrier's operation classified as Exempt For Hire",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "PRIVATE_PROPERTY",
+        "description": "Carrier's operation classified as Private Property",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "PRIVATE_PASSENGER_BUSINESS",
+        "description": "Carrier's operation classified as Private Passenger Business",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "PRIVATE_PASSENGER_NONBUSINESS",
+        "description": "Carrier's operation classified as Private Passenger Non-Business",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "MIGRANT",
+        "description": "Carrier's operation classified as Migrant",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "US_MAIL",
+        "description": "Carrier's operation classified as U.S. Mail",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "FEDERAL_GOVERNMENT",
+        "description": "Carrier's operation classified as Federal Government",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "STATE_GOVERNMENT",
+        "description": "Carrier's operation classified as State Government",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "LOCAL_GOVERNMENT",
+        "description": "Carrier's operation classified as Local Government",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "INDIAN_TRIBE",
+        "description": "Carrier's operation classified as Indian Tribe",
+        "category": "operation_classification",
+        "values": {
+          "TRUE": "Yes"
+        }
+      },
+      {
+        "field_name": "OP_OTHER",
+        "description": "Carrier's operation classified as other and manually entered by carrier into the FMCSA registration system",
+        "category": "operation_classification"
+      }
+    ]
+  }

@@ -1,131 +1,116 @@
-# SMS Input — Motor Carrier Census Data Definition
+# FMCSA SMS Census Data Definition
 
-**Source File:** `SMS-Input_Census_Readme_Data_Definition_Rev03_2025-04-17`
-**Revision:** Rev03 | **Date:** 2025-04-17
-
----
+**Source:** FMCSA Comprehensive Safety Analysis (CSA) Monthly Data Run
+**Revision:** Rev03 — April 17, 2025
+**File Format:** CSV (comma delimited), one carrier per row
 
 ## Overview
 
-This file contains **FMCSA registration (census) data** for all active **Interstate** and **Intrastate Hazmat** motor carriers of property and/or passengers. It comes from a CSA monthly data run and serves as the carrier profile backbone — company identity, addresses, contact info, fleet size, mileage, and operation classifications.
-
-The file is **comma-delimited (CSV)** with **one carrier per row**.
+This dataset contains FMCSA registration data for all **active Interstate and Intrastate Hazmat Motor Carriers** of property and/or passengers. It is produced as part of the FMCSA's monthly CSA data run and covers carrier identity, physical and mailing addresses, contact information, fleet size, mileage reporting, and detailed operation classification flags.
 
 ---
 
-## Carrier Identity
+## Field Groups
+
+### 1. Carrier Identification
 
 | Field | Description |
 |---|---|
-| **DOT_NUMBER** | Unique USDOT Number. Primary key linking to all other SMS files. |
-| **LEGAL_NAME** | Legal name of the carrier. |
-| **DBA_NAME** | Doing-Business-As name (trade name). |
-| **CARRIER_OPERATION** | Operation type code (see below). |
-| **HM_FLAG** | `Y`/`N` — whether the carrier meets the placardable Hazardous Materials threshold. |
-| **PC_FLAG** | `Y`/`N` — whether the carrier meets the passenger carrier threshold. |
+| `DOT_NUMBER` | Unique USDOT Number — the primary identifier for each motor carrier. |
+| `LEGAL_NAME` | The carrier's registered legal name. |
+| `DBA_NAME` | The carrier's "Doing Business As" name, if different from the legal name. |
 
-### Carrier Operation Codes
+### 2. Carrier Classification
 
-| Code | Meaning |
-|---|---|
-| **A** | Interstate |
-| **B** | Intrastate Hazmat |
-| **C** | Intrastate Non-Hazmat |
+| Field | Description | Values |
+|---|---|---|
+| `CARRIER_OPERATION` | Type of operation the carrier is registered under. | `A` = Interstate, `B` = Intrastate Hazmat, `C` = Intrastate Non-Hazmat |
+| `HM_FLAG` | Whether the carrier meets the placardable Hazardous Materials threshold. | `Y` = Yes, `N` = No |
+| `PC_FLAG` | Whether the carrier meets the passenger carrier threshold. | `Y` = Yes, `N` = No |
 
-This code determines which SMS summary file a carrier appears in — `A` and `B` carriers go into the **AB PassProperty** file, while `C` carriers go into the **C PassProperty** file.
-
----
-
-## Physical Address
+### 3. Physical Address
 
 | Field | Description |
 |---|---|
-| **PHY_STREET** | Physical street address. |
-| **PHY_CITY** | City. |
-| **PHY_STATE** | State. |
-| **PHY_ZIP** | Zip code. |
-| **PHY_COUNTRY** | Country. |
+| `PHY_STREET` | Physical street address |
+| `PHY_CITY` | Physical city |
+| `PHY_STATE` | Physical state |
+| `PHY_ZIP` | Physical zip code |
+| `PHY_COUNTRY` | Physical country |
 
-## Mailing Address
-
-| Field | Description |
-|---|---|
-| **MAILING_STREET** | Mailing street address. |
-| **MAILING_CITY** | City. |
-| **MAILING_STATE** | State. |
-| **MAILING_ZIP** | Zip code. |
-| **MAILING_COUNTRY** | Country. |
-
----
-
-## Contact Information
+### 4. Mailing Address
 
 | Field | Description |
 |---|---|
-| **TELEPHONE** | Contact telephone number. |
-| **FAX** | Fax number. |
-| **EMAIL_ADDRESS** | Contact email address. |
+| `MAILING_STREET` | Mailing street address |
+| `MAILING_CITY` | Mailing city |
+| `MAILING_STATE` | Mailing state |
+| `MAILING_ZIP` | Mailing zip code |
+| `MAILING_COUNTRY` | Mailing country |
 
----
-
-## MCS-150 & Mileage Data
-
-The MCS-150 is the biennial update form every carrier must file with FMCSA. It captures fleet size, mileage, and other operational details.
+### 5. Contact Information
 
 | Field | Description |
 |---|---|
-| **MCS150_DATE** | Latest date the MCS-150 was filed. |
-| **MCS150_MILEAGE** | Vehicle Mileage Traveled (VMT) reported on the MCS-150. |
-| **MCS150_MILEAGE_YEAR** | Year the MCS-150 VMT figure covers. |
-| **RECENT_MILEAGE** | Most recent VMT based on the best available data source. |
-| **RECENT_MILEAGE_YEAR** | Year the recent VMT covers. |
-| **VMT_SOURCE_ID** | Source of the recent VMT data (see below). |
+| `TELEPHONE` | Contact telephone number |
+| `FAX` | Fax number |
+| `EMAIL_ADDRESS` | Contact email address |
 
-### VMT Source Codes
+### 6. MCS-150 Filing Data
 
-| ID | Source |
-|---|---|
-| 1 | Census (MCS-150 filing) |
-| 2 | Safety Audit |
-| 3 | Investigation |
-
----
-
-## Carrier Profile
+The MCS-150 is a biennial update form that carriers must file with the FMCSA. These fields capture the most recent filing data.
 
 | Field | Description |
 |---|---|
-| **ADD_DATE** | Date the carrier was first added to the MCMIS database. |
-| **OIC_STATE** | FMCSA state office with oversight responsibility for this carrier. |
-| **NBR_POWER_UNIT** | Number of power units (trucks, tractors) reported. |
-| **DRIVER_TOTAL** | Number of drivers reported. |
+| `MCS150_DATE` | Date the most recent MCS-150 form was filed. |
+| `MCS150_MILEAGE` | Vehicle Miles Traveled (VMT) as reported on the MCS-150 form. |
+| `MCS150_MILEAGE_YEAR` | The year the reported VMT corresponds to. |
 
-These two fields — power units and drivers — are key inputs for SMS peer grouping. FMCSA groups carriers by size when calculating percentile rankings.
+### 7. Fleet & Oversight Metadata
 
----
+| Field | Description |
+|---|---|
+| `ADD_DATE` | Date the carrier record was first added to the MCMIS database. |
+| `OIC_STATE` | The FMCSA state office responsible for oversight of this carrier. |
+| `NBR_POWER_UNIT` | Number of power units (trucks/tractors) the carrier reports. |
+| `DRIVER_TOTAL` | Total number of drivers the carrier reports. |
 
-## Operation Classification Flags
+### 8. Recent Mileage
 
-A carrier can have **multiple classifications** simultaneously (e.g., both Authorized For Hire and Private Property). Each field is a boolean `TRUE`/blank flag.
+These fields provide the most current VMT data available, which may come from a source other than the MCS-150 form.
+
+| Field | Description |
+|---|---|
+| `RECENT_MILEAGE` | Most recent Vehicle Miles Traveled (VMT). |
+| `RECENT_MILEAGE_YEAR` | Year the recent VMT corresponds to. |
+| `VMT_SOURCE_ID` | Source of the VMT figure: `1` = Census, `2` = Safety Audit, `3` = Investigation. |
+
+### 9. Operation Classification Flags
+
+These are boolean-style fields (value = `TRUE` when applicable) that describe how the carrier's operation is classified. A single carrier may have multiple flags set to `TRUE`.
 
 | Field | Classification |
 |---|---|
-| **PRIVATE_ONLY** | Private property + private passenger (business & nonbusiness) but NOT authorized or exempt for hire. |
-| **AUTHORIZED_FOR_HIRE** | Authorized For Hire — carrier holds operating authority to haul freight for compensation. |
-| **EXEMPT_FOR_HIRE** | Exempt For Hire — carries commodities exempt from operating authority requirements. |
-| **PRIVATE_PROPERTY** | Private Property — transports own goods. |
-| **PRIVATE_PASSENGER_BUSINESS** | Private Passenger Business — transports passengers for business purposes. |
-| **PRIVATE_PASSENGER_NONBUSINESS** | Private Passenger Non-Business — transports passengers for non-business purposes. |
-| **MIGRANT** | Migrant carrier — transports migrant workers. |
-| **US_MAIL** | Carries U.S. Mail. |
-| **FEDERAL_GOVERNMENT** | Federal government carrier. |
-| **STATE_GOVERNMENT** | State government carrier. |
-| **LOCAL_GOVERNMENT** | Local government carrier. |
-| **INDIAN_TRIBE** | Indian Tribe carrier. |
-| **OP_OTHER** | Other classification — free-text field manually entered by the carrier into the FMCSA registration system. |
+| `PRIVATE_ONLY` | Carrier operates as private property, private passenger business, and private passenger nonbusiness — but is **not** authorized or exempt for hire. |
+| `AUTHORIZED_FOR_HIRE` | Carrier is authorized for hire. |
+| `EXEMPT_FOR_HIRE` | Carrier is exempt for hire. |
+| `PRIVATE_PROPERTY` | Private property carrier. |
+| `PRIVATE_PASSENGER_BUSINESS` | Private passenger business carrier. |
+| `PRIVATE_PASSENGER_NONBUSINESS` | Private passenger non-business carrier. |
+| `MIGRANT` | Migrant carrier. |
+| `US_MAIL` | U.S. Mail carrier. |
+| `FEDERAL_GOVERNMENT` | Federal government carrier. |
+| `STATE_GOVERNMENT` | State government carrier. |
+| `LOCAL_GOVERNMENT` | Local government carrier. |
+| `INDIAN_TRIBE` | Indian Tribe carrier. |
+| `OP_OTHER` | Other classification, manually entered by the carrier into the FMCSA registration system. (Free-text, not a boolean flag.) |
 
 ---
 
-## Relationship to Other SMS Files
+## Key Notes
 
-The Census file is the **master carrier profile** that all other SMS files reference via `DOT_NUMBER`. It provides the carrier identity, size (power units/drivers), and operation type needed to determine peer grouping, which SMS summary file (AB vs C) the carrier belongs to, and the baseline registration context for any safety analysis.
+- **`DOT_NUMBER`** is the unique primary key for each row.
+- **`CARRIER_OPERATION`** distinguishes interstate carriers (`A`) from intrastate hazmat (`B`) and intrastate non-hazmat (`C`) carriers.
+- **`PRIVATE_ONLY`** is a derived/composite flag — it is `TRUE` only when the carrier is classified under private property, private passenger business, and private passenger nonbusiness but holds no for-hire authorization or exemption.
+- **`OP_OTHER`** is the only operation classification field that is free-text rather than a boolean `TRUE` flag.
+- **VMT** can come from three sources (Census, Safety Audit, or Investigation), indicated by `VMT_SOURCE_ID`. The `RECENT_MILEAGE` fields may differ from `MCS150_MILEAGE` if a more recent source is available.
