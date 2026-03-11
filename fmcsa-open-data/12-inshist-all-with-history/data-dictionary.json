@@ -1,0 +1,163 @@
+{
+    "source_document": "FMCSA Dataset Description and Data Definitions - Select Datasets on DOT's Open Data Catalog",
+    "source_url": "https://data.transportation.gov",
+    "dataset_name": "InsHist",
+    "dataset_variants": [
+      {
+        "name": "InsHist",
+        "type": "Daily Difference",
+        "description": "Includes records that have been updated or added since the previous run of the dataset."
+      },
+      {
+        "name": "InsHist - All With History",
+        "type": "Full / Baseline",
+        "description": "Includes all records (including historical values where appropriate) as of the latest dataset update."
+      }
+    ],
+    "update_frequency": "Daily by 9:30 AM US Eastern Time",
+    "dataset_description": "Contains information on a carrier's/broker's/freight forwarder's previous insurance policy(ies). Includes the DOT number and docket number of the entity, the cancellation method (cancelled, replaced, name change, transferred), the type of policy, the policy number, and the effective and cancellation dates of the policy.",
+    "important_note": "All insurance information is related to the insurance policy either being cancelled, being replaced, or prior to a name change. It is NOT the subsequent (if applicable) policy.",
+    "fields": [
+      {
+        "field_number": 1,
+        "field_name": "Docket Number",
+        "data_format": "Text 8",
+        "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+      },
+      {
+        "field_number": 2,
+        "field_name": "USDOT Number",
+        "data_format": "Text 8",
+        "definition": "Official FMCSA registration number for all interstate motor carriers"
+      },
+      {
+        "field_number": 3,
+        "field_name": "Form Code",
+        "data_format": "Text 3",
+        "definition": "Insurance form type code",
+        "values": {
+          "34": "Cargo",
+          "82": "BI&PD",
+          "83": "Cargo",
+          "84": "Property Broker's Surety Bond",
+          "85": "Property Broker's Trust Fund Agreement",
+          "91": "BI&PD, BI&PD/Primary, BI&PD/Excess",
+          "91X": "BI&PD, BI&PD/Primary, BI&PD/Excess"
+        },
+        "note": "For Form Codes 91, 91X, and 82, the insurance amounts are contained in fields #12 and #13. For Form Codes 34, 83, 84, and 85, the amounts displayed in #12 and #13 will be 0, as they are not BI&PD policies."
+      },
+      {
+        "field_number": 4,
+        "field_name": "Cancellation Method",
+        "data_format": "Text 12",
+        "definition": "The method by which the policy ended",
+        "values": {
+          "cancelled": "Policy was cancelled",
+          "replaced": "Policy was replaced by a new policy",
+          "name change": "Insurance company name change occurred",
+          "transferred": "Policy was transferred"
+        }
+      },
+      {
+        "field_number": 5,
+        "field_name": "Cancel/Replace/Name Change/Transfer Form",
+        "data_format": "Text 6",
+        "definition": "The form that either executed the cancellation, replaced the form indicated in field #3, or executed the name change/transfer",
+        "values": {
+          "35": "BMC Cancellation Form (for 'cancelled')",
+          "36": "BMC Surety Bond Cancellation Form (for 'cancelled')",
+          "85C": "BMC Cancellation for Trust Funds (for 'cancelled')",
+          "NC": "Name Change",
+          "TR": "Transferred"
+        },
+        "note": "Codes for 'Replaced' will be one of the form codes indicated in field #3 (34, 82, 83, 84, 85, 91, 91X)"
+      },
+      {
+        "field_number": 6,
+        "field_name": "Insurance Type Indicator",
+        "data_format": "Text 1",
+        "definition": "Indicates whether the policy is BI&PD or another type",
+        "values": {
+          " ": "BIPD",
+          "*": "Not BIPD (Cargo, Surety, or Trust Fund)"
+        }
+      },
+      {
+        "field_number": 7,
+        "field_name": "Insurance Type Description",
+        "data_format": "Text 12",
+        "definition": "Description of insurance form/class (corresponds to Form Code in field #3)"
+      },
+      {
+        "field_number": 8,
+        "field_name": "Policy Number",
+        "data_format": "Text 25",
+        "definition": "Insurance policy specific identifier"
+      },
+      {
+        "field_number": 9,
+        "field_name": "Minimum Coverage Amount",
+        "data_format": "Text 5",
+        "definition": "The minimum insurance amount required for the entity (carrier, broker, etc.), in thousands"
+      },
+      {
+        "field_number": 10,
+        "field_name": "Insurance Class Code",
+        "data_format": "Text 1",
+        "definition": "For BI&PD form codes; indicates whether the insurance policy is primary or excess",
+        "values": {
+          "P": "Primary",
+          "E": "Excess"
+        }
+      },
+      {
+        "field_number": 11,
+        "field_name": "Effective Date",
+        "data_format": "Text 10",
+        "definition": "Effective date of the insurance policy"
+      },
+      {
+        "field_number": 12,
+        "field_name": "BI&PD Underlying Limit Amount",
+        "data_format": "Text 10",
+        "definition": "Amount (in thousands). When the insurance class code (#10) is 'E', the underlying limit amount is the value of the primary insurance.",
+        "note": "Only populated for Form Codes 91, 91X, and 82. Will be 0 for Form Codes 34, 83, 84, and 85."
+      },
+      {
+        "field_number": 13,
+        "field_name": "BI&PD Max Coverage Amount",
+        "data_format": "Text 10",
+        "definition": "The maximum dollar amount covered by the insurance policy (in thousands)",
+        "note": "Only populated for Form Codes 91, 91X, and 82. Will be 0 for Form Codes 34, 83, 84, and 85."
+      },
+      {
+        "field_number": 14,
+        "field_name": "Cancel Effective Date",
+        "data_format": "Text 10",
+        "definition": "Date the policy is effectively cancelled"
+      },
+      {
+        "field_number": 15,
+        "field_name": "Specific Cancellation Method",
+        "data_format": "Text 10",
+        "definition": "More granular cancellation method",
+        "values": {
+          "TERM/CANCL": "Cancellation was executed by FMCSA",
+          "Term/REPL": "Replacement was executed by a new policy submission"
+        }
+      },
+      {
+        "field_number": 17,
+        "field_name": "Insurance Company Branch",
+        "data_format": "Text 2",
+        "definition": "Insurance company branch number"
+      },
+      {
+        "field_number": 18,
+        "field_name": "Insurance Company Name",
+        "data_format": "Text 45",
+        "definition": "Insurance company name"
+      }
+    ],
+    "content_disclaimer": "Data is provided as a public service by FMCSA for informational purposes only. It is a snapshot at the time of generation, is constantly changing, and does not constitute legal advice or a legal contract."
+  }

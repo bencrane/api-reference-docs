@@ -1,0 +1,207 @@
+{
+    "name": "SMS Input - Inspection",
+    "source_file": "SMS-Input_Inspection_Readme_Data_Definition_Rev03_2025-04-17.txt",
+    "revision": "Rev03",
+    "date": "2025-04-17",
+    "description": "Publicly available inspection data used for the current month's SMS calculations. Contains identifying information for each inspection including U.S. DOT#, Report Number, Inspection Date, State, and Vehicle Information. Also includes relationship of each inspection to SMS BASIC information and violation counts by BASIC.",
+    "format": "CSV (comma delimited)",
+    "row_granularity": "One inspection per row",
+    "total_fields": 39,
+    "fields": [
+      {
+        "field": "Unique_ID",
+        "type": "string",
+        "description": "Unique identification number for each inspection"
+      },
+      {
+        "field": "Report_Number",
+        "type": "string",
+        "description": "Unique report number of the inspection"
+      },
+      {
+        "field": "Report_State",
+        "type": "string",
+        "description": "State abbreviation indicating the state the inspector is from. 'US' means federal inspectors."
+      },
+      {
+        "field": "DOT_Number",
+        "type": "string",
+        "description": "Unique number assigned to a company by the DOT"
+      },
+      {
+        "field": "Insp_Date",
+        "type": "date",
+        "description": "The date of the inspection"
+      },
+      {
+        "field": "Insp_level_ID",
+        "type": "integer",
+        "description": "ID indicating the level of inspection: 1 - Full, 2 - Walk-around, 3 - Driver-Only, 4 - Special Study, 5 - Terminal, 6 - Radioactive Materials"
+      },
+      {
+        "field": "County_code_State",
+        "type": "string",
+        "description": "State abbreviation indicating where the inspection occurred"
+      },
+      {
+        "field": "Time_Weight",
+        "type": "number",
+        "description": "Time weight of the inspection"
+      },
+      {
+        "field": "Driver_OOS_Total",
+        "type": "integer",
+        "description": "Number of Out-Of-Service violations related to Driver"
+      },
+      {
+        "field": "Vehicle_OOS_Total",
+        "type": "integer",
+        "description": "Number of Out-Of-Service violations related to vehicle"
+      },
+      {
+        "field": "Total_Hazmat_Sent",
+        "type": "integer",
+        "description": "Number of violations related to Hazardous Materials"
+      },
+      {
+        "field": "OOS_Total",
+        "type": "integer",
+        "description": "Total number of Out-Of-Service violations"
+      },
+      {
+        "field": "Hazmat_OOS_Total",
+        "type": "integer",
+        "description": "Total number of Out-Of-Service violations related to Hazardous Materials"
+      },
+      {
+        "field": "Hazmat_Placard_req",
+        "type": "boolean",
+        "description": "TRUE means the hazmat placard is required"
+      },
+      {
+        "field": "Unit_Type_Desc",
+        "type": "string",
+        "description": "Description of the type of the main unit"
+      },
+      {
+        "field": "Unit_Make",
+        "type": "string",
+        "description": "Description of the make of the main unit"
+      },
+      {
+        "field": "Unit_License",
+        "type": "string",
+        "description": "License plate of the main unit"
+      },
+      {
+        "field": "Unit_License_State",
+        "type": "string",
+        "description": "License state of the main unit"
+      },
+      {
+        "field": "VIN",
+        "type": "string",
+        "description": "Vehicle Identification Number of the main unit"
+      },
+      {
+        "field": "Unit_Decal_Number",
+        "type": "string",
+        "description": "Decal number of the main unit"
+      },
+      {
+        "field": "Unit_Type_Desc2",
+        "type": "string",
+        "description": "Description of the type of the secondary unit"
+      },
+      {
+        "field": "Unit_Make2",
+        "type": "string",
+        "description": "Description of the make of the secondary unit"
+      },
+      {
+        "field": "Unit_License2",
+        "type": "string",
+        "description": "License plate of the secondary unit"
+      },
+      {
+        "field": "Unit_License_State2",
+        "type": "string",
+        "description": "License state of the secondary unit"
+      },
+      {
+        "field": "VIN2",
+        "type": "string",
+        "description": "Vehicle Identification Number of the secondary unit"
+      },
+      {
+        "field": "Unit_Decal_Number2",
+        "type": "string",
+        "description": "Decal number of the secondary unit"
+      },
+      {
+        "field": "Unsafe_Insp",
+        "type": "boolean",
+        "description": "TRUE means the inspection is identified as relevant to the Unsafe Driving BASIC"
+      },
+      {
+        "field": "Fatigued_Insp",
+        "type": "boolean",
+        "description": "TRUE means the inspection is identified as relevant to the Hours-of-Service Compliance BASIC"
+      },
+      {
+        "field": "Dr_Fitness_Insp",
+        "type": "boolean",
+        "description": "TRUE means the inspection is identified as relevant to the Driver Fitness BASIC"
+      },
+      {
+        "field": "Subt_Alcohol_Insp",
+        "type": "boolean",
+        "description": "TRUE means the inspection is identified as relevant to the Controlled Substances/Alcohol BASIC"
+      },
+      {
+        "field": "Vh_Maint_Insp",
+        "type": "boolean",
+        "description": "TRUE means the inspection is identified as relevant to the Vehicle Maintenance BASIC"
+      },
+      {
+        "field": "HM_Insp",
+        "type": "boolean",
+        "description": "TRUE means the inspection is identified as relevant to the Hazardous Materials Compliance BASIC"
+      },
+      {
+        "field": "BASIC_Viol",
+        "type": "integer",
+        "description": "Total number of BASIC violations"
+      },
+      {
+        "field": "Unsafe_Viol",
+        "type": "integer",
+        "description": "Number of Unsafe Driving BASIC violations"
+      },
+      {
+        "field": "Fatigued_Viol",
+        "type": "integer",
+        "description": "Number of Hours-of-Service Compliance BASIC violations"
+      },
+      {
+        "field": "Dr_Fitness_Viol",
+        "type": "integer",
+        "description": "Number of Driver Fitness BASIC violations"
+      },
+      {
+        "field": "Subt_Alcohol_Viol",
+        "type": "integer",
+        "description": "Number of Controlled Substances/Alcohol BASIC violations"
+      },
+      {
+        "field": "Vh_Maint_Viol",
+        "type": "integer",
+        "description": "Number of Vehicle Maintenance BASIC violations"
+      },
+      {
+        "field": "HM_Viol",
+        "type": "integer",
+        "description": "Number of Hazardous Materials Compliance BASIC violations"
+      }
+    ]
+  }

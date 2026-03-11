@@ -1,0 +1,128 @@
+{
+    "dataset": {
+      "name": "Insur",
+      "variant": "Daily Difference",
+      "source": "FMCSA — U.S. Department of Transportation",
+      "catalog_url": "https://data.transportation.gov",
+      "description": "Records for carrier/broker/freight forwarder active or pending individual insurance policies. Linked to entities by docket number. Contains insurance company name, policy number, type of insurance, coverage amounts, and effective dates. Entities can hold multiple policies, resulting in multiple records per entity.",
+      "update_frequency": "Daily by 9:30 AM US Eastern Time",
+      "scope": "Includes insurance policy records that have been updated or added since the previous dataset run. Policy removals appear as blank records (all fields empty or '00000' except Docket Number).",
+      "naming_convention": {
+        "daily_difference": "[Dataset Name] — contains only recently changed/added records. Removals shown as blank records.",
+        "full_baseline": "[Dataset Name] – All With History — contains all active/pending insurance policy records as of the latest update."
+      },
+      "special_notes": [
+        "The Daily Difference variant represents insurance policy removals as blank records — only the Docket Number is populated; all other fields will be empty or show '00000' values.",
+        "Entities can hold multiple insurance policies, so expect multiple records per Docket Number.",
+        "For Insurance Type 1 (BI&PD), amounts are in fields #4 and #5. For Insurance Types 2, 3, and 4 (Cargo, Bond, Trust Fund), fields #4 and #5 will show 0 since they are not BI&PD policies."
+      ]
+    },
+    "fields": [
+      {
+        "position": 1,
+        "name": "Docket Number",
+        "data_format": "Text 8",
+        "description": "Unique FMCSA number identifying for-hire motor carriers",
+        "examples": ["MC000000", "FF000000", "MX000000"]
+      },
+      {
+        "position": 2,
+        "name": "Insurance Type",
+        "data_format": "Text 1",
+        "description": "Type of insurance policy on file",
+        "valid_values": [
+          { "value": "1", "description": "BI&PD (Bodily Injury & Property Damage)" },
+          { "value": "2", "description": "Cargo" },
+          { "value": "3", "description": "Bond" },
+          { "value": "4", "description": "Trust Fund" }
+        ],
+        "notes": "Only Insurance Type 1 (BI&PD) will have non-zero values in fields #4 and #5. Types 2, 3, and 4 will show 0 in those fields."
+      },
+      {
+        "position": 3,
+        "name": "BI&PD Class",
+        "data_format": "Text 1",
+        "description": "Classification of the BI&PD insurance policy",
+        "valid_values": [
+          { "value": "P", "description": "Primary" },
+          { "value": "E", "description": "Excess" },
+          { "value": "1", "description": "Full Security Limits Under Section 1043.2(b)(1)" },
+          { "value": "2", "description": "Full Security Limits Under Section 1043.2(b)(2)" }
+        ]
+      },
+      {
+        "position": 4,
+        "name": "BI&PD Maximum Dollar Limit",
+        "data_format": "Text 5",
+        "description": "Maximum dollar amount the insurance company is liable for, in thousands. Only populated for Insurance Type 1 (BI&PD).",
+        "unit": "thousands_usd"
+      },
+      {
+        "position": 5,
+        "name": "BI&PD Underlying Dollar Limit",
+        "data_format": "Text 5",
+        "description": "Underlying dollar limit for the BI&PD policy, in thousands. Only populated for Insurance Type 1 (BI&PD).",
+        "unit": "thousands_usd"
+      },
+      {
+        "position": 6,
+        "name": "Policy Number",
+        "data_format": "Text 25",
+        "description": "Insurance policy specific identifier assigned by the insurance company"
+      },
+      {
+        "position": 7,
+        "name": "Effective Date",
+        "data_format": "Text 10",
+        "description": "Effective date of the insurance policy"
+      },
+      {
+        "position": 8,
+        "name": "Form Code",
+        "data_format": "Text 3",
+        "description": "FMCSA form code identifying the type of insurance filing",
+        "valid_values": [
+          { "value": "34", "description": "Cargo" },
+          { "value": "82", "description": "BI&PD" },
+          { "value": "83", "description": "Cargo" },
+          { "value": "84", "description": "Property Broker's Surety Bond" },
+          { "value": "85", "description": "Property Broker's Trust Fund Agreement" },
+          { "value": "91", "description": "BI&PD" },
+          { "value": "91X", "description": "BI&PD/Primary or BI&PD/Excess" }
+        ]
+      },
+      {
+        "position": 9,
+        "name": "Insurance Company Name",
+        "data_format": "Text 45",
+        "description": "Name of the insurance company for the policy. Note: the policy may be administered by a company branch with a different name."
+      }
+    ],
+    "record_relationships": {
+      "join_key": "Docket Number",
+      "cardinality": "One-to-many (one entity can have multiple insurance policies)",
+      "related_datasets": [
+        {
+          "name": "Carrier",
+          "join_on": "Docket Number",
+          "relationship": "Carrier dataset has summary insurance flags (BIPD on File, Cargo on File, Bond/Surety on File) that reflect the aggregate of individual policies in this dataset."
+        },
+        {
+          "name": "ActPendInsur",
+          "join_on": "Docket Number",
+          "relationship": "Provides additional date details (posted date, cancel effective date) for active/pending policies."
+        },
+        {
+          "name": "InsHist",
+          "join_on": "Docket Number",
+          "relationship": "Contains historical/cancelled insurance policies that are no longer active."
+        },
+        {
+          "name": "Rejected",
+          "join_on": "Docket Number",
+          "relationship": "Contains insurance filings that FMCSA rejected."
+        }
+      ]
+    },
+    "disclaimer": "Data is provided as a public service by FMCSA for informational purposes only. It is a point-in-time snapshot and does not constitute legal advice or a legal contract."
+  }

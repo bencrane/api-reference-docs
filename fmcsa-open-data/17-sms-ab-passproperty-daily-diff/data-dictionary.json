@@ -1,0 +1,159 @@
+{
+    "file_metadata": {
+      "name": "SMS All Interstate and Intrastate Hazmat - PassProperty",
+      "source": "FMCSA SMS (Safety Measurement System)",
+      "description": "Calculated from monthly snapshots of input data files. Contains FMCSA summary results of SMS data for all active interstate motor carriers and intrastate hazmat motor carriers of property and/or passengers.",
+      "format": "Comma delimited (CSV). One carrier per row.",
+      "measurement_period": "24 months",
+      "revision": "Rev03",
+      "revision_date": "2025-04-17"
+    },
+    "fields": [
+      {
+        "field_name": "DOT_NUMBER",
+        "data_type": "integer",
+        "description": "US DOT Number of the Motor Carrier (Interstate and Intrastate Hazmat only)",
+        "category": "identifier"
+      },
+      {
+        "field_name": "INSP_TOTAL",
+        "data_type": "integer",
+        "description": "Total number of inspections for the measurement period (24 months)",
+        "category": "inspection_summary"
+      },
+      {
+        "field_name": "DRIVER_INSP_TOTAL",
+        "data_type": "integer",
+        "description": "Total number of driver inspections for the measurement period",
+        "category": "inspection_summary"
+      },
+      {
+        "field_name": "DRIVER_OOS_INSP_TOTAL",
+        "data_type": "integer",
+        "description": "Total number of driver inspections containing at least one Driver Out-of-Service violation",
+        "category": "inspection_summary"
+      },
+      {
+        "field_name": "VEHICLE_INSP_TOTAL",
+        "data_type": "integer",
+        "description": "Total number of vehicle inspections for the measurement period",
+        "category": "inspection_summary"
+      },
+      {
+        "field_name": "VEHICLE_OOS_INSP_TOTAL",
+        "data_type": "integer",
+        "description": "Total number of vehicle inspections containing at least one Vehicle Out-of-Service violation",
+        "category": "inspection_summary"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_INSP_W_VIOL",
+        "data_type": "integer",
+        "description": "Number of inspections with at least one Unsafe Driving BASIC violation",
+        "category": "unsafe_driving",
+        "basic": "Unsafe Driving"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_MEASURE",
+        "data_type": "float",
+        "description": "Unsafe Driving BASIC Roadside Performance Measure Value",
+        "category": "unsafe_driving",
+        "basic": "Unsafe Driving"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_AC",
+        "data_type": "string",
+        "description": "Unsafe Driving BASIC Acute/Critical Indicator. Y = Acute/Critical from investigation within previous 12 months.",
+        "category": "unsafe_driving",
+        "basic": "Unsafe Driving",
+        "possible_values": ["Y", ""]
+      },
+      {
+        "field_name": "HOS_DRIV_INSP_W_VIOL",
+        "data_type": "integer",
+        "description": "Number of inspections with at least one Hours-of-Service BASIC violation",
+        "category": "hos_compliance",
+        "basic": "Hours-of-Service (HOS) Compliance"
+      },
+      {
+        "field_name": "HOS_DRIV_MEASURE",
+        "data_type": "float",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Roadside Performance Measure Value",
+        "category": "hos_compliance",
+        "basic": "Hours-of-Service (HOS) Compliance"
+      },
+      {
+        "field_name": "HOS_DRIV_AC",
+        "data_type": "string",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Acute/Critical Indicator. Y = Acute/Critical from investigation within previous 12 months.",
+        "category": "hos_compliance",
+        "basic": "Hours-of-Service (HOS) Compliance",
+        "possible_values": ["Y", ""]
+      },
+      {
+        "field_name": "DRIV_FIT_INSP_W_VIOL",
+        "data_type": "integer",
+        "description": "Number of inspections with at least one Driver Fitness BASIC violation",
+        "category": "driver_fitness",
+        "basic": "Driver Fitness"
+      },
+      {
+        "field_name": "DRIV_FIT_MEASURE",
+        "data_type": "float",
+        "description": "Driver Fitness BASIC Roadside Performance Measure Value",
+        "category": "driver_fitness",
+        "basic": "Driver Fitness"
+      },
+      {
+        "field_name": "DRIV_FIT_AC",
+        "data_type": "string",
+        "description": "Driver Fitness BASIC Serious Violation Indicator. Y = Acute/Critical from investigation within previous 12 months.",
+        "category": "driver_fitness",
+        "basic": "Driver Fitness",
+        "possible_values": ["Y", ""]
+      },
+      {
+        "field_name": "CONTR_SUBST_INSP_W_VIOL",
+        "data_type": "integer",
+        "description": "Number of inspections with at least one Controlled Substances and Alcohol BASIC violation",
+        "category": "controlled_substances",
+        "basic": "Controlled Substances and Alcohol"
+      },
+      {
+        "field_name": "CONTR_SUBST_MEASURE",
+        "data_type": "float",
+        "description": "Controlled Substances and Alcohol BASIC Roadside Performance Measure Value",
+        "category": "controlled_substances",
+        "basic": "Controlled Substances and Alcohol"
+      },
+      {
+        "field_name": "CONTR_SUBST_AC",
+        "data_type": "string",
+        "description": "Controlled Substances and Alcohol BASIC Acute/Critical Indicator. Y = Acute/Critical from investigation within previous 12 months.",
+        "category": "controlled_substances",
+        "basic": "Controlled Substances and Alcohol",
+        "possible_values": ["Y", ""]
+      },
+      {
+        "field_name": "VEH_MAINT_INSP_W_VIOL",
+        "data_type": "integer",
+        "description": "Number of inspections with at least one Vehicle Maintenance BASIC violation",
+        "category": "vehicle_maintenance",
+        "basic": "Vehicle Maintenance"
+      },
+      {
+        "field_name": "VEH_MAINT_MEASURE",
+        "data_type": "float",
+        "description": "Vehicle Maintenance BASIC Roadside Performance Measure Value",
+        "category": "vehicle_maintenance",
+        "basic": "Vehicle Maintenance"
+      },
+      {
+        "field_name": "VEH_MAINT_AC",
+        "data_type": "string",
+        "description": "Vehicle Maintenance BASIC Acute/Critical Indicator. Y = Acute/Critical from investigation within previous 12 months.",
+        "category": "vehicle_maintenance",
+        "basic": "Vehicle Maintenance",
+        "possible_values": ["Y", ""]
+      }
+    ]
+  }

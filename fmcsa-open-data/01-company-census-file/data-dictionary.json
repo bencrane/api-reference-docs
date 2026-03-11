@@ -1,0 +1,1625 @@
+{
+    "document": {
+      "title": "MCMIS Company Census File Data Dictionary",
+      "revision": 8,
+      "date": "2026-01-23",
+      "total_pages": 89
+    },
+    "data_elements": [
+      {
+        "order": 1,
+        "field_name": "MCS150_DATE",
+        "old_field": "MCS_150_DATE",
+        "description": "MCS-150 DATE",
+        "length": 8,
+        "type": "N",
+        "format": "YYYYMMDD"
+      },
+      {
+        "order": 2,
+        "field_name": "ADD_DATE",
+        "old_field": "ADD_DATE",
+        "description": "ADD DATE",
+        "length": 8,
+        "type": "N",
+        "format": "YYYYMMDD"
+      },
+      {
+        "order": 3,
+        "field_name": "STATUS_CODE",
+        "old_field": "ACT_STAT",
+        "description": "STATUS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "A": "ACTIVE",
+          "I": "INACTIVE",
+          "P": "Pending"
+        }
+      },
+      {
+        "order": 4,
+        "field_name": "DOT_NUMBER",
+        "old_field": "CENSUS_NUM",
+        "description": "USDOT NUMBER",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 5,
+        "field_name": "DUN_BRADSTREET_NO",
+        "old_field": "DBNUM",
+        "description": "DUN & BRADSTREET NUMBER",
+        "length": 9,
+        "type": "A/N"
+      },
+      {
+        "order": 6,
+        "field_name": "PHY_OMC_REGION",
+        "old_field": "REG",
+        "description": "PHYSICAL ADDRESS / FMCSA REGION",
+        "length": 2,
+        "type": "N",
+        "values": "1, 3 THRU 10"
+      },
+      {
+        "order": 7,
+        "field_name": "SAFETY_INV_TERR",
+        "old_field": "TERR",
+        "description": "SAFETY INVESTIGATOR TERRITORY CODE",
+        "length": 2,
+        "type": "A"
+      },
+      {
+        "order": 8,
+        "field_name": "CARRIER_OPERATION",
+        "old_fields": [
+          "CRRINTER",
+          "CRRHMINTRA",
+          "CRRINTRA"
+        ],
+        "description": "OPERATION / CARRIER",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "A": "Interstate",
+          "B": "Intrastate / Hazmat",
+          "C": "Intrastate / Non-Hazmat"
+        }
+      },
+      {
+        "order": 9,
+        "field_name": "BUSINESS_ORG_ID",
+        "old_field": "ORG",
+        "description": "BUSINESS ORGANIZATION / CODE",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "1": "Individual",
+          "2": "Partnership",
+          "3": "Corporation"
+        },
+        "note": "From REVIEW ONLY"
+      },
+      {
+        "order": 10,
+        "field_name": "MCS150_MILEAGE",
+        "old_field": "MLG150",
+        "description": "MILEAGE / CALENDAR YEAR / MCS-150",
+        "length": 10,
+        "type": "N"
+      },
+      {
+        "order": 11,
+        "field_name": "MCS150_MILEAGE_YEAR",
+        "old_field": "MCS150MILEAGEYEAR",
+        "description": "MCS-150 MILEAGE YEAR",
+        "length": 4,
+        "type": "N",
+        "format": "YYYY"
+      },
+      {
+        "order": 12,
+        "field_name": "MCS151_MILEAGE",
+        "old_field": "MILETOT",
+        "description": "REVIEW MILEAGE / MCS-151",
+        "length": 10,
+        "type": "N"
+      },
+      {
+        "order": 13,
+        "field_name": "TOTAL_CARS",
+        "old_field": "TOT_CARS",
+        "description": "TOTAL CARS",
+        "length": 6,
+        "type": "N"
+      },
+      {
+        "order": 14,
+        "field_name": "MCS150_UPDATE_CODE_ID",
+        "old_field": "REC_UPDATED_FLAG",
+        "description": "RECORD UPDATED FLAG",
+        "length": 1,
+        "type": "A"
+      },
+      {
+        "order": 15,
+        "field_name": "PRIOR_REVOKE_FLAG",
+        "old_field": "USDOT_REVOKED_FLAG",
+        "description": "USDOT REVOKED FLAG",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "Y": "Revoked",
+          "N": "Not Revoked"
+        }
+      },
+      {
+        "order": 16,
+        "field_name": "PRIOR_REVOKE_DOT_NUMBER",
+        "old_field": "USDOT_REVOKED_NUMBER",
+        "description": "USDOT REVOKED NUMBER",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 17,
+        "field_name": "PHONE",
+        "old_field": "TEL_NUM",
+        "description": "OFFICE TELEPHONE NUMBER",
+        "length": 13,
+        "type": "A/N",
+        "note": "Includes area code"
+      },
+      {
+        "order": 18,
+        "field_name": "FAX",
+        "old_field": "FAX_NUM",
+        "description": "OFFICE FAX PHONE NUMBER",
+        "length": 13,
+        "type": "A/N",
+        "note": "Includes area code"
+      },
+      {
+        "order": 19,
+        "field_name": "CELL_PHONE",
+        "old_field": "CELL_NUM",
+        "description": "CELL PHONE NUMBER",
+        "length": 13,
+        "type": "A/N",
+        "note": "Includes area code"
+      },
+      {
+        "order": 20,
+        "field_name": "COMPANY_OFFICER_1",
+        "old_field": "COMPANY_REP1",
+        "description": "COMPANY REPRESENTATIVE ONE",
+        "length": 70,
+        "type": "A"
+      },
+      {
+        "order": 21,
+        "field_name": "COMPANY_OFFICER_2",
+        "old_field": "COMPANY_REP2",
+        "description": "COMPANY REPRESENTATIVE TWO",
+        "length": 70,
+        "type": "A"
+      },
+      {
+        "order": 22,
+        "field_name": "BUSINESS_ORG_DESC",
+        "old_field": null,
+        "description": "BUSINESS ORGANIZATION",
+        "length": 11,
+        "type": "A",
+        "values": [
+          "Individual",
+          "Partnership",
+          "Corporation"
+        ],
+        "note": "From REVIEW ONLY"
+      },
+      {
+        "order": 23,
+        "field_name": "TRUCK_UNITS",
+        "old_field": "TOT_TRUCKS",
+        "description": "TOTAL NUMBER OF TRUCKS",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 24,
+        "field_name": "POWER_UNITS",
+        "old_field": "TOT_PWR",
+        "description": "TOTAL NUMBER OF POWER UNITS",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 25,
+        "field_name": "BUS_UNITS",
+        "old_field": "TOT_BUSES",
+        "description": "TOTAL NUMBER OF BUSES",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 26,
+        "field_name": "FLEETSIZE",
+        "old_field": "FLEETSIZE",
+        "description": "FLEET SIZE CODE",
+        "length": 1,
+        "type": "A",
+        "note": "See fleet_size_codes"
+      },
+      {
+        "order": 27,
+        "field_name": "REVIEW_ID",
+        "old_field": "REVDOCNUM",
+        "description": "LATEST REVIEW / DOCUMENT #",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 28,
+        "field_name": "RECORDABLE_CRASH_RATE",
+        "old_field": "ACC_RATE",
+        "description": "RECORDABLE ACCIDENT RATE",
+        "length": 6,
+        "type": "N",
+        "format": "000.000",
+        "note": "IMPLIED DECIMAL"
+      },
+      {
+        "order": 29,
+        "field_name": "MAIL_NATIONALITY_INDICATOR",
+        "old_field": null,
+        "description": "MAILING ADDRESS COUNTRY",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "U": "United States & Territories",
+          "C": "Canadian Territories",
+          "M": "Mexican States"
+        }
+      },
+      {
+        "order": 30,
+        "field_name": "PHY_NATIONALITY_INDICATOR",
+        "old_field": null,
+        "description": "PHYSICAL ADDRESS COUNTRY",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "U": "United States & Territories",
+          "C": "Canadian Territories",
+          "M": "Mexican States"
+        }
+      },
+      {
+        "order": 31,
+        "field_name": "PHY_BARRIO",
+        "old_field": "PHY_BARRIO",
+        "description": "MEXICAN NEIGHBORHOOD / PHYSICAL",
+        "length": 25,
+        "type": "A"
+      },
+      {
+        "order": 32,
+        "field_name": "MAIL_BARRIO",
+        "old_field": "MAI_BARRIO",
+        "description": "MEXICAN NEIGHBORHOOD / MAILING",
+        "length": 25,
+        "type": "A"
+      },
+      {
+        "order": 33,
+        "field_name": "CARSHIP",
+        "old_field": "CARSHIP",
+        "description": "ENTITY TYPE",
+        "length": 4,
+        "type": "A",
+        "values": {
+          "C": "Carrier",
+          "S": "Shipper Only",
+          "B": "Broker",
+          "R": "Registrant",
+          "F": "Freight Forwarder",
+          "I": "Intermodal Equipment Provider",
+          "T": "Cargo Tank"
+        }
+      },
+      {
+        "order": 34,
+        "field_name": "DOCKET1PREFIX",
+        "old_field": "ICCDOCKET1",
+        "description": "ICC DOCKET NUMBER-1-PREFIX",
+        "length": 2,
+        "type": "A",
+        "values": [
+          "MC",
+          "MX",
+          "FF",
+          "NULL"
+        ]
+      },
+      {
+        "order": 35,
+        "field_name": "DOCKET1",
+        "old_field": "ICC1",
+        "description": "ICC DOCKET NUMBER / FIRST",
+        "length": 6,
+        "type": "N"
+      },
+      {
+        "order": 36,
+        "field_name": "DOCKET2PREFIX",
+        "old_field": "ICCDOCKET2",
+        "description": "ICC DOCKET-2-PREFIX",
+        "length": 2,
+        "type": "A",
+        "values": [
+          "MC",
+          "MX",
+          "FF",
+          "NULL"
+        ]
+      },
+      {
+        "order": 37,
+        "field_name": "DOCKET2",
+        "old_field": "ICC2",
+        "description": "ICC DOCKET NUMBER / SECOND",
+        "length": 6,
+        "type": "N"
+      },
+      {
+        "order": 38,
+        "field_name": "DOCKET3PREFIX",
+        "old_field": "ICCDOCKET3",
+        "description": "ICC DOCKET-3-PREFIX",
+        "length": 2,
+        "type": "A",
+        "values": [
+          "MC",
+          "MX",
+          "FF",
+          "NULL"
+        ]
+      },
+      {
+        "order": 39,
+        "field_name": "DOCKET3",
+        "old_field": "ICC3",
+        "description": "ICC DOCKET NUMBER / THIRD",
+        "length": 6,
+        "type": "N"
+      },
+      {
+        "order": 40,
+        "field_name": "POINTNUM",
+        "old_field": "POINTNUM",
+        "description": "POINT NUMBER",
+        "length": 9,
+        "type": "A/N",
+        "values": {
+          "P": "PRIMARY",
+          "S": "SECONDARY"
+        }
+      },
+      {
+        "order": 41,
+        "field_name": "TOTAL_INTRASTATE_DRIVERS",
+        "old_field": "INTRA_DRS",
+        "description": "# DRIVERS / INTRASTATE TOTAL",
+        "length": 6,
+        "type": "N"
+      },
+      {
+        "order": 42,
+        "field_name": "MCSIPSTEP",
+        "old_field": "MCSIPSTEP",
+        "description": "MCSIP STEP",
+        "length": 2,
+        "type": "N"
+      },
+      {
+        "order": 43,
+        "field_name": "MCSIPDATE",
+        "old_field": "MCSIPDATE",
+        "description": "MCSIP DATE",
+        "length": 8,
+        "type": "A/N",
+        "format": "YYYYMMDD"
+      },
+      {
+        "order": 44,
+        "field_name": "HM_Ind",
+        "old_field": "HM_IND",
+        "description": "HAZMAT INDICATOR",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "Y": "Yes",
+          "N": "No"
+        }
+      },
+      {
+        "order": 45,
+        "field_name": "INTERSTATE_BEYOND_100_MILES",
+        "old_field": "INTERGT100",
+        "description": "# DRIVERS / INTERSTATE BEYOND 100 MILES",
+        "length": 5,
+        "type": "N"
+      },
+      {
+        "order": 46,
+        "field_name": "INTERSTATE_WITHIN_100_MILES",
+        "old_field": "INTERLT100",
+        "description": "# DRIVERS / INTERSTATE WITHIN 100 MILES",
+        "length": 5,
+        "type": "N"
+      },
+      {
+        "order": 47,
+        "field_name": "INTRASTATE_BEYOND_100_MILES",
+        "old_field": "INTRAGT100",
+        "description": "# DRIVERS / INTRASTATE BEYOND 100 MILES",
+        "length": 5,
+        "type": "N"
+      },
+      {
+        "order": 48,
+        "field_name": "INTRASTATE_WITHIN_100_MILES",
+        "old_field": "INTRALT100",
+        "description": "# DRIVERS / INTRASTATE WITHIN 100 MILES",
+        "length": 5,
+        "type": "N"
+      },
+      {
+        "order": 49,
+        "field_name": "TOTAL_CDL",
+        "old_field": "CDL_DRS",
+        "description": "# DRIVERS / TOTAL WITH CDL",
+        "length": 5,
+        "type": "N"
+      },
+      {
+        "order": 50,
+        "field_name": "TOTAL_DRIVERS",
+        "old_field": "TOT_DRS",
+        "description": "# DRIVERS / GRAND TOTAL",
+        "length": 6,
+        "type": "N"
+      },
+      {
+        "order": 51,
+        "field_name": "AVG_DRIVERS_LEASED_PER_MONTH",
+        "old_field": "AVG_TLD",
+        "description": "# DRIVERS / AVG TRIP LEASED PER MONTH",
+        "length": 5,
+        "type": "N"
+      },
+      {
+        "order": 52,
+        "field_name": "CLASSDEF",
+        "old_field": "CLASSDEF",
+        "description": "CLASSIFICATION CATEGORY",
+        "length": "Variable",
+        "type": "A",
+        "note": "Semicolon-separated if multiple",
+        "values": [
+          "AUTHORIZED FOR HIRE",
+          "EXEMPT FOR HIRE",
+          "PRIVATE PROPERTY",
+          "PRIVATE PASSENGER, BUSINESS",
+          "PRIVATE PASSENGER, NONBUSINESS",
+          "MIGRANT",
+          "U. S. MAIL",
+          "FEDERAL GOVERNMENT",
+          "STATE GOVERNMENT",
+          "LOCAL GOVERNMENT",
+          "INDIAN TRIBE",
+          "OTHER (hyphen-entered, e.g. OTHER-FARMER)"
+        ]
+      },
+      {
+        "order": 53,
+        "field_name": "LEGAL_NAME",
+        "old_field": "NAME",
+        "description": "LEGAL NAME",
+        "length": 120,
+        "type": "A/N"
+      },
+      {
+        "order": 54,
+        "field_name": "DBA_NAME",
+        "old_field": "NAME_DBA",
+        "description": "DOING BUSINESS AS NAME",
+        "length": 120,
+        "type": "A/N"
+      },
+      {
+        "order": 55,
+        "field_name": "PHY_STREET",
+        "old_field": "PHY_STR",
+        "description": "PHYSICAL ADDRESS / STREET",
+        "length": 50,
+        "type": "A/N"
+      },
+      {
+        "order": 56,
+        "field_name": "PHY_CITY",
+        "old_field": "PHY_CITY",
+        "description": "PHYSICAL ADDRESS / CITY",
+        "length": 25,
+        "type": "A/N"
+      },
+      {
+        "order": 57,
+        "field_name": "PHY_COUNTRY",
+        "old_field": "PHY_NATN",
+        "description": "PHYSICAL ADDRESS / NATIONALITY",
+        "length": 2,
+        "type": "A",
+        "values": {
+          "US": "United States & Territories",
+          "CA": "Canadian Territories",
+          "MX": "Mexican States",
+          "SA": "Central and South American Nations"
+        }
+      },
+      {
+        "order": 58,
+        "field_name": "PHY_STATE",
+        "old_field": "PHY_ST",
+        "description": "PHYSICAL ADDRESS / STATE CODE",
+        "length": 2,
+        "type": "A"
+      },
+      {
+        "order": 59,
+        "field_name": "PHY_ZIP",
+        "old_field": "PHY_ZIP",
+        "description": "PHYSICAL ADDRESS / ZIP CODE",
+        "length": 10,
+        "type": "A/N"
+      },
+      {
+        "order": 60,
+        "field_name": "PHY_CNTY",
+        "old_field": "PHY_CNTY",
+        "description": "PHYSICAL ADDRESS / COUNTY CODE",
+        "length": 3,
+        "type": "N"
+      },
+      {
+        "order": 61,
+        "field_name": "CARRIER_MAILING_STREET",
+        "old_field": "MAI_STR",
+        "description": "MAILING ADDRESS / STREET",
+        "length": 50,
+        "type": "A/N"
+      },
+      {
+        "order": 62,
+        "field_name": "CARRIER_MAILING_STATE",
+        "old_field": "MAI_ST",
+        "description": "MAILING ADDRESS / STATE CODE",
+        "length": 2,
+        "type": "A"
+      },
+      {
+        "order": 63,
+        "field_name": "CARRIER_MAILING_CITY",
+        "old_field": "MAI_CITY",
+        "description": "MAILING ADDRESS / CITY",
+        "length": 25,
+        "type": "A/N"
+      },
+      {
+        "order": 64,
+        "field_name": "CARRIER_MAILING_COUNTRY",
+        "old_field": "MAI_NATN",
+        "description": "MAILING ADDRESS / NATIONALITY",
+        "length": 2,
+        "type": "A",
+        "values": {
+          "US": "United States & Territories",
+          "CA": "Canadian Territories",
+          "MX": "Mexican States",
+          "SA": "Central and South American Nations"
+        }
+      },
+      {
+        "order": 65,
+        "field_name": "CARRIER_MAILING_ZIP",
+        "old_field": "MAI_ZIP",
+        "description": "MAILING ADDRESS / ZIP CODE",
+        "length": 10,
+        "type": "A/N"
+      },
+      {
+        "order": 66,
+        "field_name": "CARRIER_MAILING_CNTY",
+        "old_field": "MAI_CNTY",
+        "description": "MAILING ADDRESS / COUNTY CODE",
+        "length": 3,
+        "type": "N"
+      },
+      {
+        "order": 67,
+        "field_name": "CARRIER_MAILING_UND_DATE",
+        "old_field": "UNDELIV_MAI",
+        "description": "DATE MAILING ADDRESS IDENTIFIED AS UNDELIVERABLE",
+        "length": 8,
+        "type": "N",
+        "format": "YYYYMMDD"
+      },
+      {
+        "order": 68,
+        "field_name": "DRIVER_INTER_TOTAL",
+        "old_field": "INTER_DRS",
+        "description": "# DRIVERS / INTERSTATE TOTAL",
+        "length": 6,
+        "type": "N"
+      },
+      {
+        "order": 69,
+        "field_name": "EMAIL_ADDRESS",
+        "old_field": "EMAIL_ADDRESS",
+        "description": "EMAIL ADDRESS",
+        "length": 80,
+        "type": "A/N"
+      },
+      {
+        "order": 70,
+        "field_name": "REVIEW_TYPE",
+        "old_field": "REVTYPE",
+        "description": "LATEST REVIEW / TYPE",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "C": "Compliance Review",
+          "H": "Shipper Review",
+          "N": "Non-Ratable Review",
+          "A": "Safety Audit",
+          "S": "Safety Review",
+          "E": "Educational Contact Review",
+          "U": "Historical Audit Record",
+          "K": "Automatic Safety Assessment Program Review",
+          "F": "CTFR Only",
+          "G": "CR and CTFR",
+          "I": "Carrier Inactivate",
+          "J": "CR and Security Contact Review",
+          "": "Null"
+        }
+      },
+      {
+        "order": 71,
+        "field_name": "REVIEW_DATE",
+        "old_field": "REVDATE",
+        "description": "LATEST REVIEW / DATE",
+        "length": 8,
+        "type": "A/N",
+        "format": "YYYYMMDD"
+      },
+      {
+        "order": 72,
+        "field_name": "SAFETY_RATING",
+        "old_field": "RATING",
+        "description": "SAFETY RATING / TYPE CODE",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "S": "Satisfactory",
+          "C": "Conditional",
+          "U": "Unsatisfactory",
+          "": "No review conducted"
+        }
+      },
+      {
+        "order": 73,
+        "field_name": "SAFETY_RATING_DATE",
+        "old_field": "RATEDATE",
+        "description": "SAFETY RATING / EFFECTIVE DATE",
+        "length": 8,
+        "type": "A/N",
+        "format": "YYYYMMDD"
+      },
+      {
+        "order": 74,
+        "field_name": "UNDELIV_PHY",
+        "old_field": "UNDELIV_PHY",
+        "description": "UNDELIVERABLE PHYSICAL ADDRESS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "U": "Undeliverable",
+          "": "Blank"
+        }
+      },
+      {
+        "order": 75,
+        "field_name": "CRGO_GENFREIGHT",
+        "old_field": "GENFREIGHT",
+        "description": "CARGO: GENERAL FREIGHT",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 76,
+        "field_name": "CRGO_HOUSEHOLD",
+        "old_field": "HOUSEHOLD",
+        "description": "CARGO: HOUSEHOLD GOODS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 77,
+        "field_name": "CRGO_METALSHEET",
+        "old_field": "METALSHEET",
+        "description": "CARGO: METAL SHEETS/COILS/ROLLS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 78,
+        "field_name": "CRGO_MOTOVEH",
+        "old_field": "MOTOVEH",
+        "description": "CARGO: MOTOR VEHICLES",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 79,
+        "field_name": "CRGO_DRIVETOW",
+        "old_field": "DRIVETOW",
+        "description": "CARGO: DRIVEAWAY/TOWAWAY",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 80,
+        "field_name": "CRGO_LOGPOLE",
+        "old_field": "LOGPOLE",
+        "description": "CARGO: LOGS/POLES/BEAMS/LUMBER",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 81,
+        "field_name": "CRGO_BLDGMAT",
+        "old_field": "BLDGMAT",
+        "description": "CARGO: BUILDING MATERIALS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 82,
+        "field_name": "CRGO_MOBILEHOME",
+        "old_field": "MOBILEHOME",
+        "description": "CARGO: MOBILE HOMES",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 83,
+        "field_name": "CRGO_MACHLRG",
+        "old_field": "MACHLRG",
+        "description": "CARGO: MACHINERY/LARGE OBJECTS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 84,
+        "field_name": "CRGO_PRODUCE",
+        "old_field": "PRODUCE",
+        "description": "CARGO: FRESH PRODUCE",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 85,
+        "field_name": "CRGO_LIQGAS",
+        "old_field": "LIQGAS",
+        "description": "CARGO: LIQUIDS/GASES",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 86,
+        "field_name": "CRGO_INTERMODAL",
+        "old_field": "INTERMODAL",
+        "description": "CARGO: INTERMODAL CONTAINERS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 87,
+        "field_name": "CRGO_PASSENGERS",
+        "old_field": "PASSENGERS",
+        "description": "CARGO: PASSENGERS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 88,
+        "field_name": "CRGO_OILFIELD",
+        "old_field": "OILFIELD",
+        "description": "CARGO: OILFIELD EQUIPMENT",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 89,
+        "field_name": "CRGO_LIVESTOCK",
+        "old_field": "LIVESTOCK",
+        "description": "CARGO: LIVESTOCK",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 90,
+        "field_name": "CRGO_GRAINFEED",
+        "old_field": "GRAINFEED",
+        "description": "CARGO: GRAIN/FEED/HAY",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 91,
+        "field_name": "CRGO_COALCOKE",
+        "old_field": "COALCOKE",
+        "description": "CARGO: COAL/COKE",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 92,
+        "field_name": "CRGO_MEAT",
+        "old_field": "MEAT",
+        "description": "CARGO: MEAT",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 93,
+        "field_name": "CRGO_GARBAGE",
+        "old_field": "GARBAGE",
+        "description": "CARGO: GARBAGE/REFUSE/TRASH",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 94,
+        "field_name": "CRGO_USMAIL",
+        "old_field": "USMAIL",
+        "description": "CARGO: U.S. MAIL",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 95,
+        "field_name": "CRGO_CHEM",
+        "old_field": "CHEM",
+        "description": "CARGO: CHEMICALS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 96,
+        "field_name": "CRGO_DRYBULK",
+        "old_field": "DRYBULK",
+        "description": "CARGO: COMMODITIES DRY BULK",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 97,
+        "field_name": "CRGO_COLDFOOD",
+        "old_field": "COLDFOOD",
+        "description": "CARGO: REFRIGERATED FOOD",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 98,
+        "field_name": "CRGO_BEVERAGES",
+        "old_field": "BEVERAGES",
+        "description": "CARGO: BEVERAGES",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 99,
+        "field_name": "CRGO_PAPERPROD",
+        "old_field": "PAPERPROD",
+        "description": "CARGO: PAPER PRODUCTS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 100,
+        "field_name": "CRGO_UTILITY",
+        "old_field": "UTILITY",
+        "description": "CARGO: UTILITY",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 101,
+        "field_name": "CRGO_FARMSUPP",
+        "old_field": "FARMSUPP",
+        "description": "CARGO: FARM SUPPLIES",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 102,
+        "field_name": "CRGO_CONSTRUCT",
+        "old_field": "CONSTRUCT",
+        "description": "CARGO: CONSTRUCTION",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 103,
+        "field_name": "CRGO_WATERWELL",
+        "old_field": "WATERWELL",
+        "description": "CARGO: WATER-WELL",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 104,
+        "field_name": "CRGO_CARGOOTHR",
+        "old_field": "CARGOOTHR",
+        "description": "CARGO: OTHER",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "X": "Yes"
+        }
+      },
+      {
+        "order": 105,
+        "field_name": "CRGO_CARGOOTHR_DESC",
+        "old_field": "OTHERCARGO",
+        "description": "CARGO TRANSPORTED OTHER DEFINED",
+        "length": 50,
+        "type": "A"
+      },
+      {
+        "order": 106,
+        "field_name": "OWNTRUCK",
+        "old_field": "OWNTRUCK",
+        "description": "# EQUIPMENT UNITS OWNED TRUCK",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 107,
+        "field_name": "OWNTRACT",
+        "old_field": "OWNTRACT",
+        "description": "# EQUIPMENT UNITS OWNED TRACTOR",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 108,
+        "field_name": "OWNTRAIL",
+        "old_field": "OWNTRAIL",
+        "description": "# EQUIPMENT UNITS OWNED TRAILER",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 109,
+        "field_name": "OWNCOACH",
+        "old_field": "OWNCOACH",
+        "description": "# EQUIPMENT UNITS OWNED MOTOR COACH",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 110,
+        "field_name": "OWNSCHOOL_1_8",
+        "old_field": "OWNSCHOOL_1_8",
+        "description": "# EQUIPMENT UNITS OWNED SCHOOL BUS 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 111,
+        "field_name": "OWNSCHOOL_9_15",
+        "old_field": "OWNSCHOOL_9_15",
+        "description": "# EQUIPMENT UNITS OWNED SCHOOL BUS 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 112,
+        "field_name": "OWNSCHOOL_16",
+        "old_field": "OWNSCHOOL_16",
+        "description": "# EQUIPMENT UNITS OWNED SCHOOL BUS 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 113,
+        "field_name": "OWNBUS_16",
+        "old_field": "OWNBUS_16",
+        "description": "# EQUIPMENT UNITS OWNED MINI BUS/VAN 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 114,
+        "field_name": "OWNVAN_1_8",
+        "old_field": "OWNVAN_1_8",
+        "description": "# EQUIPMENT UNITS OWNED MINI BUS/VAN 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 115,
+        "field_name": "OWNVAN_9_15",
+        "old_field": "OWNVAN_9_15",
+        "description": "# EQUIPMENT UNITS OWNED MINI BUS/VAN 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 116,
+        "field_name": "OWNLIMO_1_8",
+        "old_field": "OWNLIMO_1_8",
+        "description": "# EQUIPMENT UNITS OWNED LIMO 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 117,
+        "field_name": "OWNLIMO_9_15",
+        "old_field": "OWNLIMO_9_15",
+        "description": "# EQUIPMENT UNITS OWNED LIMO 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 118,
+        "field_name": "OWNLIMO_16",
+        "old_field": "OWNLIMO_16",
+        "description": "# EQUIPMENT UNITS OWNED LIMO 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 119,
+        "field_name": "TRMTRUCK",
+        "old_field": "TRMTRUCK",
+        "description": "# EQUIPMENT UNITS TERM LEASED TRUCK",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 120,
+        "field_name": "TRMTRACT",
+        "old_field": "TRMTRACT",
+        "description": "# EQUIPMENT UNITS TERM LEASED TRACTOR",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 121,
+        "field_name": "TRMTRAIL",
+        "old_field": "TRMTRAIL",
+        "description": "# EQUIPMENT UNITS TERM LEASED TRAILER",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 122,
+        "field_name": "TRMCOACH",
+        "old_field": "TRMCOACH",
+        "description": "# EQUIPMENT UNITS TERM LEASED MOTOR COACH",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 123,
+        "field_name": "TRMSCHOOL_1_8",
+        "old_field": "TRMSCHOOL_1_8",
+        "description": "# EQUIPMENT UNITS TERM LEASED SCHOOL BUS 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 124,
+        "field_name": "TRMSCHOOL_9_15",
+        "old_field": "TRMSCHOOL_9_15",
+        "description": "# EQUIPMENT UNITS TERM LEASED SCHOOL BUS 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 125,
+        "field_name": "TRMSCHOOL_16",
+        "old_field": "TRMSCHOOL_16",
+        "description": "# EQUIPMENT UNITS TERM LEASED SCHOOL BUS 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 126,
+        "field_name": "TRMBUS_16",
+        "old_field": "TRMBUS_16",
+        "description": "# EQUIPMENT UNITS TERM LEASED MINI BUS/VAN 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 127,
+        "field_name": "TRMVAN_1_8",
+        "old_field": "TRMVAN_1_8",
+        "description": "# EQUIPMENT UNITS TERM LEASED MINI BUS/VAN 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 128,
+        "field_name": "TRMVAN_9_15",
+        "old_field": "TRMVAN_9_15",
+        "description": "# EQUIPMENT UNITS TERM LEASED MINI BUS/VAN 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 129,
+        "field_name": "TRMLIMO_1_8",
+        "old_field": "TRMLIMO_1_8",
+        "description": "# EQUIPMENT UNITS TERM LEASED LIMO 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 130,
+        "field_name": "TRMLIMO_9_15",
+        "old_field": "TRMLIMO_9_15",
+        "description": "# EQUIPMENT UNITS TERM LEASED LIMO 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 131,
+        "field_name": "TRMLIMO_16",
+        "old_field": "TRMLIMO_16",
+        "description": "# EQUIPMENT UNITS TERM LEASED LIMO 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 132,
+        "field_name": "TRPTRUCK",
+        "old_field": "TRPTRUCK",
+        "description": "# EQUIPMENT UNITS TRIP LEASED TRUCK",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 133,
+        "field_name": "TRPTRACT",
+        "old_field": "TRPTRACT",
+        "description": "# EQUIPMENT UNITS TRIP LEASED TRACTOR",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 134,
+        "field_name": "TRPTRAIL",
+        "old_field": "TRPTRAIL",
+        "description": "# EQUIPMENT UNITS TRIP LEASED TRAILER",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 135,
+        "field_name": "TRPCOACH",
+        "old_field": "TRPCOACH",
+        "description": "# EQUIPMENT UNITS TRIP LEASED MOTOR COACH",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 136,
+        "field_name": "TRPSCHOOL_1_8",
+        "old_field": "TRPSCHOOL_1_8",
+        "description": "# EQUIPMENT UNITS TRIP LEASED SCHOOL BUS 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 137,
+        "field_name": "TRPSCHOOL_9_15",
+        "old_field": "TRPSCHOOL_9_15",
+        "description": "# EQUIPMENT UNITS TRIP LEASED SCHOOL BUS 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 138,
+        "field_name": "TRPSCHOOL_16",
+        "old_field": "TRPSCHOOL_16",
+        "description": "# EQUIPMENT UNITS TRIP LEASED SCHOOL BUS 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 139,
+        "field_name": "TRPBUS_16",
+        "old_field": "TRPBUS_16",
+        "description": "# EQUIPMENT UNITS TRIP LEASED MINI BUS/VAN 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 140,
+        "field_name": "TRPVAN_1_8",
+        "old_field": "TRPVAN_1_8",
+        "description": "# EQUIPMENT UNITS TRIP LEASED MINI BUS/VAN 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 141,
+        "field_name": "TRPVAN_9_15",
+        "old_field": "TRPVAN_9_15",
+        "description": "# EQUIPMENT UNITS TRIP LEASED MINI BUS/VAN 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 142,
+        "field_name": "TRPLIMO_1_8",
+        "old_field": "TRPLIMO_1_8",
+        "description": "# EQUIPMENT UNITS TRIP LEASED LIMO 1-8",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 143,
+        "field_name": "TRPLIMO_9_15",
+        "old_field": "TRPLIMO_9_15",
+        "description": "# EQUIPMENT UNITS TRIP LEASED LIMO 9-15",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 144,
+        "field_name": "TRPLIMO_16",
+        "old_field": "TRPLIMO_16",
+        "description": "# EQUIPMENT UNITS TRIP LEASED LIMO 16+",
+        "length": 8,
+        "type": "N"
+      },
+      {
+        "order": 145,
+        "field_name": "DOCKET1_STATUS_CODE",
+        "old_field": null,
+        "description": "DOCKET NUMBER STATUS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "A": "ACTIVE",
+          "I": "INACTIVE"
+        }
+      },
+      {
+        "order": 146,
+        "field_name": "DOCKET2_STATUS_CODE",
+        "old_field": null,
+        "description": "DOCKET NUMBER STATUS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "A": "ACTIVE",
+          "I": "INACTIVE"
+        }
+      },
+      {
+        "order": 147,
+        "field_name": "DOCKET3_STATUS_CODE",
+        "old_field": null,
+        "description": "DOCKET NUMBER STATUS",
+        "length": 1,
+        "type": "A",
+        "values": {
+          "A": "ACTIVE",
+          "I": "INACTIVE"
+        }
+      }
+    ],
+    "removed_fields": [
+      {
+        "old_field": "CLASS",
+        "description": "CLASSIFICATION",
+        "length": 1,
+        "type": "A",
+        "reason": "No longer in use"
+      },
+      {
+        "old_field": "SHPINTER",
+        "description": "OPERATION / SHIPPER / INTERSTATE",
+        "value": "D",
+        "reason": "No longer in use"
+      },
+      {
+        "old_field": "SHPINTRA",
+        "description": "OPERATION / SHIPPER / INTRASTATE",
+        "value": "E",
+        "reason": "No longer in use"
+      },
+      {
+        "old_field": "VEHICLE REGISTRANT",
+        "description": "OPERATION / VEHICLE REGISTRANT",
+        "value": "F",
+        "reason": "No longer in use"
+      },
+      {
+        "old_field": "REPPREVRAT",
+        "description": "PREVENTABLE RECORDABLE ACCIDENT RATE",
+        "length": 6,
+        "type": "N",
+        "format": "000.000",
+        "reason": "No longer in use"
+      }
+    ],
+    "fleet_size_codes": {
+      "A": "1",
+      "B": "2-3",
+      "C": "4-6",
+      "D": "7-8",
+      "E": "9-11",
+      "F": "12-14",
+      "G": "15-17",
+      "H": "18-19",
+      "I": "20-23",
+      "J": "24-28",
+      "K": "29-32",
+      "L": "33-38",
+      "M": "39-44",
+      "N": "45-55",
+      "O": "56-75",
+      "P": "76-100",
+      "Q": "101-200",
+      "R": "201-300",
+      "S": "301-400",
+      "T": "401-550",
+      "U": "551-999",
+      "V": "1000-2000",
+      "W": "2001-3000",
+      "X": "3001-4000",
+      "Y": "4001-5000",
+      "Z": "OVER 5000"
+    },
+    "fmcsa_regions": {
+      "01": [
+        "CT",
+        "ME",
+        "MA",
+        "NH",
+        "NY",
+        "NJ",
+        "RI",
+        "VT",
+        "PR",
+        "VI"
+      ],
+      "03": [
+        "DE",
+        "DC",
+        "MD",
+        "PA",
+        "VA",
+        "WV"
+      ],
+      "04": [
+        "AL",
+        "GA",
+        "FL",
+        "MS",
+        "NC",
+        "SC",
+        "TN",
+        "KY"
+      ],
+      "05": [
+        "IL",
+        "IN",
+        "MI",
+        "OH",
+        "MN",
+        "WI"
+      ],
+      "06": [
+        "AR",
+        "LA",
+        "NM",
+        "OK",
+        "TX"
+      ],
+      "07": [
+        "IA",
+        "KS",
+        "MO",
+        "NE"
+      ],
+      "08": [
+        "CO",
+        "MT",
+        "ND",
+        "SD",
+        "UT",
+        "WY"
+      ],
+      "09": [
+        "AZ",
+        "CA",
+        "NV",
+        "HI",
+        "GU",
+        "AS"
+      ],
+      "10": [
+        "AK",
+        "ID",
+        "OR",
+        "WA"
+      ]
+    },
+    "classification_codes": {
+      "A": "Authorized For Hire",
+      "B": "Exempt For Hire",
+      "C": "Private (Property)",
+      "D": "Private Passenger (Business)",
+      "E": "Private Passenger (Non-Business)",
+      "F": "Migrant",
+      "G": "U.S. Mail",
+      "H": "Federal Government",
+      "I": "State Government",
+      "J": "Local Government",
+      "K": "Indian Tribe",
+      "L": "Other Classification"
+    },
+    "safety_rating_codes": {
+      "S": "Satisfactory - No evidence of substantial non-compliance",
+      "C": "Conditional - Out of compliance with one or more safety requirements",
+      "U": "Unsatisfactory - Evidence of substantial non-compliance",
+      "": "No Safety/Compliance Review conducted"
+    },
+    "review_type_codes": {
+      "C": "Compliance Review",
+      "H": "Shipper Review",
+      "N": "Non-Ratable Review",
+      "A": "Safety Audit",
+      "S": "Safety Review",
+      "E": "Educational Contact Review",
+      "U": "Historical Audit Record",
+      "K": "Automatic Safety Assessment Program Review",
+      "F": "CTFR Only",
+      "G": "CR and CTFR",
+      "I": "Carrier Inactivate",
+      "J": "CR and Security Contact Review"
+    },
+    "entity_type_codes": {
+      "C": "Carrier",
+      "S": "Shipper Only",
+      "B": "Broker",
+      "R": "Registrant",
+      "F": "Freight Forwarder",
+      "I": "Intermodal Equipment Provider",
+      "T": "Cargo Tank"
+    },
+    "country_codes": {
+      "US": "United States & Territories",
+      "BZ": "Belize",
+      "CA": "Canadian Territories",
+      "CR": "Costa Rica",
+      "DO": "Dominican Republic",
+      "GB": "Great Britain",
+      "GT": "Guatemala",
+      "HN": "Honduras",
+      "KW": "Kuwait",
+      "MX": "Mexican States",
+      "NI": "Nicaragua",
+      "SV": "El Salvador",
+      "SA": "Central and South American Nations"
+    }
+  }

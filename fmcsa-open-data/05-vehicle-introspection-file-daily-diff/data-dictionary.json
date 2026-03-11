@@ -1,0 +1,373 @@
+{
+    "document": {
+      "title": "MCMIS Vehicle Inspection Data Set Dictionary",
+      "revision": 5,
+      "date": "2025-10-15",
+      "total_pages": 84
+    },
+    "tables": {
+      "vehicle_inspection_file": {
+        "description": "Main inspection record table containing header-level data for each vehicle inspection.",
+        "fields": [
+          {"order": 1, "field_name": "CHANGE_DATE", "description": "Date & time record was last updated", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 2, "field_name": "INSPECTION_ID", "description": "Unique identifying number assigned to an inspection record", "length": 8, "type": "N", "format": null},
+          {"order": 3, "field_name": "DOT_NUMBER", "description": "USDOT number assigned by MCMIS to a census record", "length": 8, "type": "N", "format": null},
+          {"order": 4, "field_name": "REPORT_STATE", "description": "State/District/Province which uploads the inspection", "length": 2, "type": "A/N", "format": "See State Abbreviations"},
+          {"order": 5, "field_name": "REPORT_NUMBER", "description": "Number identifying the inspection report", "length": 10, "type": "A/N", "format": "SS######## (SS=state code or US for Federal)"},
+          {"order": 6, "field_name": "INSP_DATE", "description": "Date the inspection was conducted", "length": 8, "type": "A/N", "format": "YYYYMMDD"},
+          {"order": 7, "field_name": "INSP_START_TIME", "description": "Time the inspection started", "length": 4, "type": "A/N", "format": "HHMM military time; 2400=midnight; 9999=unknown"},
+          {"order": 8, "field_name": "INSP_END_TIME", "description": "Time the inspection ended", "length": 4, "type": "A/N", "format": "HHMM military time; 2400=midnight; 9999=unknown"},
+          {"order": 9, "field_name": "REGISTRATION_DATE", "description": "Date the certification of correction of defects was registered", "length": 8, "type": "A/N", "format": "YYYYMMDD"},
+          {"order": 10, "field_name": "REGION", "description": "FHWA/FMCSA region in which the inspection took place", "length": 2, "type": "A/N", "format": "1, 3-10",
+            "values": {
+              "1": "CT, ME, MA, NH, NY, NJ, RI, VT, PR, VI",
+              "3": "DE, DC, MD, PA, VA, WV",
+              "4": "AL, GA, FL, MS, NC, SC, TN, KY",
+              "5": "IL, IN, MI, OH, MN, WI",
+              "6": "AR, LA, NM, OK, TX",
+              "7": "IA, KS, MO, NE",
+              "8": "CO, MT, ND, SD, UT, WY",
+              "9": "AZ, CA, NV, HI, GU, AS",
+              "10": "AK, ID, OR, WA"
+            }
+          },
+          {"order": 11, "field_name": "CI_STATUS_CODE", "description": "Status of the inspection", "length": 1, "type": "A/N",
+            "values": {
+              "U": "Unprocessed",
+              "T": "To Census Search",
+              "C": "Complete",
+              "D": "Duplicate",
+              "N": "Nonmatch",
+              "H": "FMCSA hold",
+              "I": "Intrastate",
+              "P": "Potential Resolution",
+              "X": "Non-motor carrier"
+            }
+          },
+          {"order": 12, "field_name": "LOCATION", "description": "State assigned code representing the physical location of the inspection", "length": 6, "type": "A/N", "format": "1-5, 9"},
+          {"order": 13, "field_name": "LOCATION_DESC", "description": "Physical location where the inspection took place", "length": 30, "type": "A/N", "format": null},
+          {"order": 14, "field_name": "COUNTY_CODE_STATE", "description": "State/District/Province of the county where the inspection took place", "length": 2, "type": "A/N", "format": "See State Abbreviations"},
+          {"order": 15, "field_name": "COUNTY_CODE", "description": "FIPS code identifying the county in which the inspection occurred", "length": 3, "type": "A/N", "format": "See County Codes"},
+          {"order": 16, "field_name": "INSP_LEVEL_ID", "description": "Level of the inspection", "length": 8, "type": "N",
+            "values": {
+              "1": "Full",
+              "2": "Walk-Around",
+              "3": "Driver-Only",
+              "4": "Special Study",
+              "5": "Terminal",
+              "99": "Invalid"
+            }
+          },
+          {"order": 17, "field_name": "SERVICE_CENTER", "description": "Service Center Region the inspection occurred in", "length": 2, "type": "A/N",
+            "values": {"MW": "Midwest", "EA": "East", "SH": "South", "WE": "West"}
+          },
+          {"order": 18, "field_name": "CENSUS_SOURCE_ID", "description": "USDOT NUMBER verification method", "length": 8, "type": "N",
+            "values": {
+              "1": "Matchware",
+              "2": "Manual Census Search",
+              "3": "Matching Algorithm",
+              "4": "Pen-Based (not used on Crashes)",
+              "5": "SafetyNet Uploaded and not changed",
+              "null": "Unknown"
+            }
+          },
+          {"order": 19, "field_name": "INSP_FACILITY", "description": "Type of facility where the inspection was conducted", "length": 1, "type": "A/N",
+            "values": {"F": "Fixed", "R": "Roadside", "null": "N/A"}
+          },
+          {"order": 20, "field_name": "SHIPPER_NAME", "description": "Name of the shipping company", "length": 120, "type": "A/N", "format": null},
+          {"order": 21, "field_name": "SHIPPING_PAPER_NUMBER", "description": "Unique number on the shipping papers or NONE if not present", "length": 15, "type": "A/N", "format": null},
+          {"order": 22, "field_name": "CARGO_TANK", "description": "Three-character indicator of the cargo tank type (from ASPEN)", "length": 3, "type": "A/N", "format": null},
+          {"order": 23, "field_name": "HAZMAT_PLACARD_REQ", "description": "Indicates if hazardous material placards are required", "length": 1, "type": "A/N",
+            "values": {"Y": "Yes", "N": "No", "null": "Unknown"}
+          },
+          {"order": 24, "field_name": "SNET_VERSION_NUMBER", "description": "SafetyNet version number", "length": 7, "type": "A/N", "format": "#.#.#.#"},
+          {"order": 25, "field_name": "SNET_SEARCH_DATE", "description": "SafetyNet search date and time", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 26, "field_name": "ALCOHOL_CONTROL_SUB", "description": "Whether an alcohol or controlled substance check was performed", "length": 1, "type": "A/N",
+            "values": {"Y": "Yes", "N": "No", "U": "Unknown", "null": "Unknown"}
+          },
+          {"order": 27, "field_name": "DRUG_INTRDCTN_SEARCH", "description": "Whether there was a drug interdiction search", "length": 1, "type": "A/N",
+            "values": {"Y": "Yes", "N": "No", "U": "Unknown", "null": "Unknown"}
+          },
+          {"order": 28, "field_name": "DRUG_INTRDCTN_ARRESTS", "description": "Number of drug interdiction arrests made", "length": 2, "type": "N", "format": null},
+          {"order": 29, "field_name": "SIZE_WEIGHT_ENF", "description": "Whether the inspection was conducted in conjunction with a size/weight enforcement action", "length": 1, "type": "A/N",
+            "values": {"Y": "Yes", "N": "No", "U": "Unknown", "null": "Unknown"}
+          },
+          {"order": 30, "field_name": "TRAFFIC_ENF", "description": "Whether the inspection was conducted in conjunction with a traffic enforcement action", "length": 1, "type": "A/N",
+            "values": {"Y": "Yes", "N": "No", "U": "Unknown", "null": "Unknown"}
+          },
+          {"order": 31, "field_name": "LOCAL_ENF_JURISDICTION", "description": "Whether the inspection was conducted by a local jurisdiction", "length": 1, "type": "A/N",
+            "values": {"Y": "Yes", "N": "No", "U": "Unknown", "null": "Unknown"}
+          },
+          {"order": 32, "field_name": "PEN_CEN_MATCH", "description": "Indicates use of ASPEN carrier match", "length": 1, "type": "A/N",
+            "values": {"B": "B", "I": "I", "N": "N", "P": "P", "Q": "Q", "Y": "Y", "null": "Null"}
+          },
+          {"order": 33, "field_name": "FINAL_STATUS_DATE", "description": "Date and time the Status Code was changed", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 34, "field_name": "POST_ACC_IND", "description": "Whether or not the inspection was conducted after an accident", "length": 1, "type": "A/N",
+            "values": {"Y": "Yes", "N": "No", "null": "Unknown"}
+          },
+          {"order": 35, "field_name": "GROSS_COMB_VEH_WT", "description": "Total gross weight of the combination vehicle in pounds", "length": 6, "type": "A/N", "format": null},
+          {"order": 36, "field_name": "VIOL_TOTAL", "description": "Total number of violations for the inspection", "length": 3, "type": "N", "format": null},
+          {"order": 37, "field_name": "OOS_TOTAL", "description": "Total number of out-of-service violations for the inspection", "length": 3, "type": "N", "format": null},
+          {"order": 38, "field_name": "DRIVER_VIOL_TOTAL", "description": "Total number of driver violations for the inspection", "length": 3, "type": "N", "format": null},
+          {"order": 39, "field_name": "DRIVER_OOS_TOTAL", "description": "Total number of driver out-of-service violations for the inspection", "length": 3, "type": "N", "format": null},
+          {"order": 40, "field_name": "VEHICLE_VIOL_TOTAL", "description": "Total number of vehicle violations for the inspection", "length": 3, "type": "N", "format": null},
+          {"order": 41, "field_name": "VEHICLE_OOS_TOTAL", "description": "Total number of vehicle out-of-service violations for the inspection", "length": 3, "type": "N", "format": null},
+          {"order": 42, "field_name": "HAZMAT_VIOL_TOTAL", "description": "Total number of hazardous material violations for the inspection", "length": 3, "type": "N", "format": null},
+          {"order": 43, "field_name": "HAZMAT_OOS_TOTAL", "description": "Total number of hazardous material out-of-service violations for the inspection", "length": 3, "type": "N", "format": null},
+          {"order": 44, "field_name": "SNET_SEQUENCE_ID", "description": "SafetyNet sequence ID", "length": 10, "type": "N", "format": null},
+          {"order": 45, "field_name": "TRANSACTION_CODE", "description": "Reason for upload from SafetyNet", "length": 1, "type": "A/N",
+            "values": {"A": "Add to MCMIS", "C": "Change existing record in MCMIS", "null": "Null"}
+          },
+          {"order": 46, "field_name": "TRANSACTION_DATE", "description": "Date and time that transaction code was entered", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 47, "field_name": "UPLOAD_DATE", "description": "Inspection upload date and time", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 48, "field_name": "UPLOAD_FIRST_BYTE", "description": "Upload census first byte", "length": 1, "type": "A/N", "format": null},
+          {"order": 49, "field_name": "UPLOAD_DOT_NUMBER", "description": "USDOT number uploaded in the inspection", "length": 8, "type": "A/N", "format": null},
+          {"order": 50, "field_name": "UPLOAD_SEARCH_INDICATOR", "description": "Upload search indicator", "length": 1, "type": "A/N",
+            "values": {"M": "Manual", "null": "Null"}
+          },
+          {"order": 51, "field_name": "CENSUS_SEARCH_DATE", "description": "Date and time that census number was searched", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 52, "field_name": "SNET_INPUT_DATE", "description": "Date the inspection was input into SafetyNet", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 53, "field_name": "SOURCE_OFFICE", "description": "The office that sent the inspection", "length": 7, "type": "A/N", "format": null},
+          {"order": 54, "field_name": "MCMIS_ADD_DATE", "description": "Date and time the inspection was added to MCMIS", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 55, "field_name": "INSP_CARRIER_NAME", "description": "Name of the carrier (individual, partnership, or corporation responsible for transportation)", "length": 120, "type": "A/N", "source": "Carrier Table"},
+          {"order": 56, "field_name": "INSP_CARRIER_STREET", "description": "Street address of the principal place of business of the carrier", "length": 50, "type": "A/N", "source": "Carrier Table"},
+          {"order": 57, "field_name": "INSP_CARRIER_CITY", "description": "Municipality of the principal place of business of the carrier", "length": 25, "type": "A/N", "source": "Carrier Table"},
+          {"order": 58, "field_name": "INSP_CARRIER_STATE", "description": "State/District/Province of the principal place of business of the carrier", "length": 2, "type": "A/N", "source": "Carrier Table", "format": "See State Abbreviations"},
+          {"order": 59, "field_name": "INSP_CARRIER_ZIP_CODE", "description": "ZIP code of the principal place of business of the carrier", "length": 10, "type": "A/N", "source": "Carrier Table"},
+          {"order": 60, "field_name": "INSP_COLONIA", "description": "Carrier's Mexican Colonia (for Mexican domiciled carriers)", "length": 25, "type": "A/N", "source": "Carrier Table"},
+          {"order": 61, "field_name": "DOCKET_NUMBER", "description": "Docket number (MC, MX, or FF number) assigned by FMCSA or the former ICC", "length": 8, "type": "N", "source": "Carrier Table"},
+          {"order": 62, "field_name": "INSP_INTERSTATE", "description": "Whether the carrier is involved in interstate commerce", "length": 1, "type": "A/N", "source": "Carrier Table",
+            "values": {"Y": "Yes", "N": "No", "null": "Null"}
+          },
+          {"order": 63, "field_name": "INSP_CARRIER_STATE_ID", "description": "Identification number assigned by the state to the carrier", "length": 12, "type": "A/N", "source": "Carrier Table"}
+        ],
+        "removed_fields": [
+          {"field_name": "INSP_CONFIDENCE_LEVEL", "description": "Inspector Confidence Level", "length": 1, "type": "A/N"},
+          {"field_name": "PENFIELD2", "description": "Pen Field 2", "length": 1, "type": "A/N", "values": "0 or Null"},
+          {"field_name": "PENFIELD3", "description": "Pen Field 3", "length": 1, "type": "A/N", "values": "0-9, E, N, or Null"},
+          {"field_name": "DEFECT_VER", "description": "Defect Verification (no longer used)", "length": 1, "type": "A/N"},
+          {"field_name": "OOS_DEFECT_VER", "description": "Out-of-Service Defect Verification", "length": 1, "type": "A/N"},
+          {"field_name": "VIOL_NOT_SENT", "description": "Violations Not Sent", "length": 2, "type": "N"},
+          {"field_name": "OOS_NOT_SENT", "description": "Out-of-Service Not Sent", "length": 2, "type": "N"},
+          {"field_name": "ORIG_REPORT_STATE", "description": "Original Report State", "length": 2, "type": "A/N"},
+          {"field_name": "ORIG_REPORT_NUMBER", "description": "Original Report Number", "length": 10, "type": "A/N"},
+          {"field_name": "ORIG_REPORT_DATE", "description": "Original Inspection Date", "length": 8, "type": "A/N", "format": "YYYYMMDD"},
+          {"field_name": "ORIG_REPORT_TIME", "description": "Original Start Time", "length": 4, "type": "A/N"},
+          {"field_name": "INSP_CARRIER_ID", "description": "Carrier ID (from old Carrier Table)", "length": 8, "type": "N"},
+          {"field_name": "PREFIX", "description": "Prefix (from old Carrier Table)", "length": 2, "type": "A/N"}
+        ]
+      },
+      "inspections_per_unit": {
+        "description": "Contains vehicle unit details for each inspected unit tied to an inspection record.",
+        "fields": [
+          {"order": 1, "field_name": "CHANGE_DATE", "description": "Date & time record was last updated", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 2, "field_name": "INSPECTION_ID", "description": "Unique identifying number assigned to an inspection record", "length": 8, "type": "N"},
+          {"order": 3, "field_name": "INSP_UNIT_ID", "description": "Unique identifying number assigned to an inspected unit", "length": 9, "type": "N"},
+          {"order": 4, "field_name": "INSP_UNIT_TYPE_ID", "description": "Code identifying the type of vehicle unit", "length": 8, "type": "N",
+            "values": {
+              "1": "BU - Bus",
+              "2": "DC - Dolly Converter",
+              "3": "FT - Full Trailer",
+              "4": "LM - Limousine",
+              "5": "MC - Motor Carrier",
+              "6": "OT - Other",
+              "7": "PT - Pole Trailer",
+              "8": "SB - School Bus",
+              "9": "ST - Semi Trailer",
+              "10": "TR - Straight Truck",
+              "11": "TT - Truck Tractor",
+              "12": "VN - Van",
+              "13": "ZZ - Unknown",
+              "14": "Intermodal Chassis",
+              "15": "Crib Log Trailer"
+            }
+          },
+          {"order": 5, "field_name": "INSP_UNIT_NUMBER", "description": "Sequence number of the vehicle unit (1-6)", "length": 1, "type": "N"},
+          {"order": 6, "field_name": "INSP_UNIT_MAKE", "description": "Manufacturer of the vehicle unit", "length": 10, "type": "A/N"},
+          {"order": 7, "field_name": "INSP_UNIT_COMPANY", "description": "Number assigned to the vehicle unit by the carrier", "length": 15, "type": "A/N"},
+          {"order": 8, "field_name": "INSP_UNIT_LICENSE", "description": "License tag number on the vehicle unit", "length": 12, "type": "A/N"},
+          {"order": 9, "field_name": "INSP_UNIT_LICENSE_STATE", "description": "State/district/province issuing the license tags", "length": 2, "type": "A/N", "format": "See State Abbreviations"},
+          {"order": 10, "field_name": "INSP_UNIT_VEHICLE_ID_NUMBER", "description": "Vehicle Identification Number (VIN) of the unit", "length": 17, "type": "A/N"},
+          {"order": 11, "field_name": "INSP_UNIT_DECAL", "description": "Whether a CVSA decal was issued", "length": 1, "type": "A/N",
+            "values": {"Y": "Yes", "N": "No", "U": "Unknown"}
+          },
+          {"order": 12, "field_name": "INSP_UNIT_DECAL_NUMBER", "description": "Number on the CVSA decal", "length": 8, "type": "A/N"}
+        ]
+      },
+      "vehicle_inspections_and_violations": {
+        "description": "Contains individual violation records associated with each inspection.",
+        "fields": [
+          {"order": 1, "field_name": "CHANGE_DATE", "description": "Date & time record was last updated", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 2, "field_name": "INSPECTION_ID", "description": "Unique identifying number assigned to an inspection record", "length": 8, "type": "N"},
+          {"order": 3, "field_name": "INSP_VIOLATION_ID", "description": "Unique identifying number assigned to a violation", "length": 9, "type": "N"},
+          {"order": 4, "field_name": "SEQ_NO", "description": "Sequence number of the violation", "length": 3, "type": "N"},
+          {"order": 5, "field_name": "PART_NO", "description": "Part number of the violation cited (Reference FMCSR, HMR)", "length": 3, "type": "A/N"},
+          {"order": 6, "field_name": "PART_NO_SECTION", "description": "Section number of the violation cited (Reference FMCSR, HMR)", "length": 40, "type": "A/N"},
+          {"order": 7, "field_name": "INSP_VIOL_UNIT", "description": "Driver, co-driver, or vehicle unit number which had the violation", "length": 1, "type": "A/N",
+            "values": {"D": "Driver", "C": "Co-driver", "1-6": "Vehicle unit number"}
+          },
+          {"order": 8, "field_name": "INSP_UNIT_ID", "description": "Unique identifying number assigned to an inspected unit", "length": 9, "type": "N"},
+          {"order": 9, "field_name": "INSP_VIOLATION_CATEGORY_ID", "description": "Category number assigned to the violation (1-99)", "length": 8, "type": "N", "format": "See Violation Categories"},
+          {"order": 10, "field_name": "OUT_OF_SERVICE_INDICATOR", "description": "Whether the violation resulted in an out-of-service", "length": 1, "type": "A/N",
+            "values": {"Z": "Driver Yes", "Y": "Yes", "N": "No", "null": "Null"}
+          },
+          {"order": 11, "field_name": "DEFECT_VERIFICATION_ID", "description": "Defect verification status", "length": 8, "type": "N",
+            "values": {
+              "1": "A - Repaired at scene",
+              "2": "B - Towed/Escorted to repair service",
+              "3": "N - Non-OOS/Driver Non-OOS",
+              "4": "D - Other",
+              "99": "U - Unknown/Unverified"
+            }
+          },
+          {"order": 12, "field_name": "CITATION_NUMBER", "description": "Number identifying the citation", "length": 15, "type": "A/N"}
+        ]
+      },
+      "special_studies": {
+        "description": "Contains data collected as part of special studies tied to inspections.",
+        "fields": [
+          {"order": 1, "field_name": "CHANGE_DATE", "description": "Date & time record was last updated", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 2, "field_name": "INSPECTION_ID", "description": "Unique identifying number assigned to an inspection record", "length": 8, "type": "N"},
+          {"order": 3, "field_name": "INSP_STUDY_ID", "description": "Unique identifying number assigned to a study", "length": 8, "type": "N"},
+          {"order": 4, "field_name": "STUDY", "description": "Data collected as part of a special study", "length": 40, "type": "A/N"},
+          {"order": 5, "field_name": "SEQ_NO", "description": "Sequence number of the special study (indicates data is in Study field 1, 2, 3, 4, or 5)", "length": 3, "type": "N"}
+        ]
+      },
+      "inspections_and_citations": {
+        "description": "Contains citation records associated with inspection violations.",
+        "fields": [
+          {"order": 1, "field_name": "CHANGE_DATE", "description": "Date & time record was last updated", "length": 13, "type": "N", "format": "YYYYMMDD HHMM (Military Time)"},
+          {"order": 2, "field_name": "INSPECTION_ID", "description": "Unique identifying number assigned to an inspection record", "length": 8, "type": "N", "source": "INSP_VIOL_CITATION"},
+          {"order": 3, "field_name": "VIOSEQNUM", "description": "Sequence number of a violation", "length": 8, "type": "N", "source": "INSP_VIOL_CITATION"},
+          {"order": 4, "field_name": "ADJSEQ", "description": "Adjusted sequence number of a violation", "length": 8, "type": "N", "source": "INSP_VIOL_CITATION"},
+          {"order": 5, "field_name": "CITATION_CODE", "description": "Citation code", "length": 8, "type": "N", "source": "INSP_CITATION_CODE"},
+          {"order": 6, "field_name": "CITATION_RESULT", "description": "Result of the citation", "length": 100, "type": "A/N", "source": "INSP_CITATION_CODE"}
+        ],
+        "removed_fields": [
+          {"field_name": "CHALLENGEID", "description": "Challenge ID", "length": 8, "type": "N", "source": "INSP_VIOL_CITATION"},
+          {"field_name": "CITATIONRESULT", "description": "Citation Result (old)", "length": 8, "type": "N", "source": "INSP_VIOL_CITATION"},
+          {"field_name": "RESULTDATE", "description": "Result Date", "length": 8, "type": "A/N", "format": "YYYYMMDD", "source": "INSP_VIOL_CITATION"},
+          {"field_name": "COMMENTS", "description": "Comments", "length": 512, "type": "A/N", "source": "INSP_VIOL_CITATION"},
+          {"field_name": "CHANGESOURCE", "description": "Change Source", "length": 8, "type": "N", "source": "INSP_VIOL_CITATION"},
+          {"field_name": "UPLOADDATE", "description": "Upload Date", "length": 8, "type": "A/N", "format": "YYYYMMDD", "source": "INSP_VIOL_CITATION"},
+          {"field_name": "ADDDATE", "description": "Add Date", "length": 8, "type": "A/N", "format": "YYYYMMDD", "source": "INSP_VIOL_CITATION"},
+          {"field_name": "ADDUSER", "description": "Add User", "length": 30, "type": "A/N", "source": "INSP_VIOL_CITATION"},
+          {"field_name": "CHANGE_DATE", "description": "Change Date (old)", "length": 8, "type": "A/N", "format": "YYYYMMDD", "source": "INSP_CITATION_CODE"},
+          {"field_name": "CHANGE_BY_USER", "description": "Changed By User", "length": 30, "type": "A/N", "source": "INSP_CITATION_CODE"}
+        ]
+      }
+    },
+    "violation_categories": {
+      "driver_violations": [
+        {"category_number": 1, "code": "MEDCRT", "description": "Medical Certificate"},
+        {"category_number": 2, "code": "FLSLOG", "description": "False Log Book"},
+        {"category_number": 3, "code": "LOGVIO", "description": "No Log Book, Log Not Current, General Log Violations"},
+        {"category_number": 4, "code": "10/15", "description": "10/15 Hours"},
+        {"category_number": 5, "code": "15/20", "description": "15/20 Hours"},
+        {"category_number": 6, "code": "60/70", "description": "60/70/80 Hours"},
+        {"category_number": 7, "code": "OTHHOS", "description": "All Other Hours-Of-Service"},
+        {"category_number": 8, "code": "DSQDRV", "description": "Disqualified Drivers"},
+        {"category_number": 9, "code": "DRUGS", "description": "Drugs"},
+        {"category_number": 10, "code": "ALCOHL", "description": "Alcohol"},
+        {"category_number": 11, "code": "SEATBT", "description": "Seat Belt"},
+        {"category_number": 12, "code": "TRFENF", "description": "Traffic Enforcement"},
+        {"category_number": 13, "code": "RADAR", "description": "Radar Detectors"},
+        {"category_number": 14, "code": "OTHDRV", "description": "All Other Driver Violations"},
+        {"category_number": 40, "code": "CTLDEV", "description": "Failure to Obey Traffic Control Device"},
+        {"category_number": 41, "code": "2CLOSE", "description": "Following Too Close"},
+        {"category_number": 42, "code": "LANCHG", "description": "Improper Lane Change"},
+        {"category_number": 43, "code": "IMPPAS", "description": "Improper Passing"},
+        {"category_number": 44, "code": "RECDRV", "description": "Reckless Driving"},
+        {"category_number": 45, "code": "SPEDNG", "description": "Speeding"},
+        {"category_number": 46, "code": "IMPTRN", "description": "Improper Turns"},
+        {"category_number": 47, "code": "SIZWGT", "description": "Size and Weight"},
+        {"category_number": 48, "code": "RTOWAY", "description": "Failure to yield right of way"},
+        {"category_number": 49, "code": "STAHOS", "description": "State/Local Hours of Service"}
+      ],
+      "vehicle_violations": [
+        {"category_number": 15, "code": "BRKADJ", "description": "Brakes, Out of Adjustment"},
+        {"category_number": 16, "code": "BRKOTH", "description": "Brakes, All Other Violations"},
+        {"category_number": 17, "code": "COUPLR", "description": "Coupling Devices"},
+        {"category_number": 18, "code": "FUEL", "description": "Fuel Systems"},
+        {"category_number": 19, "code": "FRAMES", "description": "Frames"},
+        {"category_number": 20, "code": "LIGHTS", "description": "Lighting"},
+        {"category_number": 21, "code": "STERNG", "description": "Steering Mechanism"},
+        {"category_number": 22, "code": "SUSPEN", "description": "Suspension"},
+        {"category_number": 23, "code": "TIRES", "description": "Tires"},
+        {"category_number": 24, "code": "WHEELS", "description": "Wheels, Studs, Clamps, Etc."},
+        {"category_number": 25, "code": "LDSECR", "description": "Load Securement"},
+        {"category_number": 26, "code": "WNDSHL", "description": "Windshield"},
+        {"category_number": 27, "code": "EXHST", "description": "Exhaust Discharge"},
+        {"category_number": 28, "code": "EMREQP", "description": "Emergency Equipment"},
+        {"category_number": 29, "code": "PERINS", "description": "Periodic Inspection"},
+        {"category_number": 30, "code": "OTHER", "description": "All Other Vehicle Defects"}
+      ],
+      "hazmat_violations": [
+        {"category_number": 31, "code": "HPAPRS", "description": "Shipping Papers"},
+        {"category_number": 32, "code": "HPLCRD", "description": "Improper Placarding"},
+        {"category_number": 33, "code": "HIMSHP", "description": "Accepting Shipment Improperly Marked"},
+        {"category_number": 34, "code": "HBRACE", "description": "Improper Blocking and Bracing"},
+        {"category_number": 35, "code": "HTEST", "description": "No Retest and Inspection (Cargo Tank)"},
+        {"category_number": 36, "code": "HSHTOF", "description": "No Remote Shutoff Control"},
+        {"category_number": 37, "code": "HSPEC", "description": "Use of Non-specification Container"},
+        {"category_number": 38, "code": "EMGRES", "description": "Emergency Response"},
+        {"category_number": 39, "code": "HOTHR", "description": "All Other HM Violations"}
+      ],
+      "invalid_violations": [
+        {"category_number": 99, "code": "UNKNOWN", "description": "Unknown"}
+      ]
+    },
+    "glossary": {
+      "BUS": "Any motor vehicle designed, constructed, and used for the commercial transportation of 15 or more passengers, including the driver.",
+      "CARRIER_TYPE": "For-hire or Private.",
+      "COMMERCIAL_VEHICLE": "A motor vehicle, usually a truck or bus, which transports freight or passengers for compensation.",
+      "CVSA": "Commercial Vehicle Safety Alliance — an organization of states and provinces in the US, Canada, and Mexico dedicated to improving uniformity of commercial motor vehicle safety enforcement.",
+      "DEFECT_GROUP": "The group to which a given violation is attributed: vehicle, driver, or hazardous materials.",
+      "DOUBLE": "A commercial motor vehicle consisting of a truck-tractor and two detachable trailers.",
+      "DRIVER_ONLY_INSPECTION": "Examines only driver-related aspects of the standard Full Inspection (Level III).",
+      "DRIVER_VIOLATION": "A violation discovered during the inspection which pertains to the driver of the commercial vehicle.",
+      "DURATION": "The amount of time required to complete a given inspection, calculated from start and finish times.",
+      "FACILITY_TYPE": "The type of facility — fixed or roadside — where the inspection was conducted.",
+      "FMCSA": "Federal Motor Carrier Safety Administration — the administration within USDOT responsible for monitoring and developing safety standards for commercial motor vehicles.",
+      "FMCSR": "Federal Motor Carrier Safety Regulations — regulations governing safe operation of commercial vehicles engaged in interstate commerce (Title 49, CFR).",
+      "FIXED_FACILITY": "A state commercial vehicle scale facility or other permanent site used to conduct inspections.",
+      "FLEET_SIZE": "Total number of power units (truck-tractors and straight trucks) owned or operated by a given motor carrier.",
+      "FOR_HIRE_CARRIER": "A commercial motor carrier whose primary business activity is the transportation of property or passengers by motor vehicle for compensation.",
+      "FOR_HIRE_CARRIER_AUTHORIZED": "A for-hire carrier subject to economic regulation by the Interstate Commerce Commission.",
+      "FOR_HIRE_CARRIER_EXEMPT": "A for-hire carrier not subject to economic regulation by the Interstate Commerce Commission.",
+      "FULL_INSPECTION": "The most comprehensive inspection type (Level I), involving extensive vehicle checks including under-vehicle brake measurement and hours-of-service log examination.",
+      "HAZARDOUS_MATERIALS": "Materials, substances, or wastes which may be toxic, harmful or fatal if accidentally exposed to humans, animals, or the environment.",
+      "HMR": "Hazardous Materials Regulations — federal regulations governing commercial transportation of hazardous materials (Title 49, CFR).",
+      "HAZARDOUS_MATERIALS_VIOLATION": "A violation discovered during the inspection which pertains to the transportation of hazardous materials.",
+      "INSPECTION": "The systematic examination of a commercial motor vehicle and its driver to determine their overall safety fitness.",
+      "INSPECTION_LEVEL": "The inspection methodology employed: Full (I), Walk-Around (II), Driver-Only (III), Special (IV), and Terminal (V).",
+      "INTERSTATE_CARRIER": "A carrier who sometimes or always operates in interstate or foreign commerce, including carriers of hazardous materials.",
+      "INTRASTATE_CARRIER": "A carrier who operates solely in intrastate commerce and never transports hazardous materials.",
+      "LOCATION": "The US State or Territory, Canadian Province, or Mexican State in which a specific inspection was conducted.",
+      "MOBILE_INSPECTION_FACILITY": "A non-permanent inspection facility that can be moved from one location to another (roadside facility).",
+      "MOTOR_CARRIER_CENSUS_DATABASE": "A database on the USDOT mainframe containing information identifying interstate and intrastate commercial carriers, each assigned a unique USDOT Number.",
+      "MCMIS": "Motor Carrier Management Information System — the computerized system operated by FMCSA containing comprehensive safety data on commercial carriers.",
+      "MCSAP": "Motor Carrier Safety Assistance Program — a Federal program providing funds to US states and territories for commercial motor vehicle safety activities.",
+      "OOS_VIOLATIONS": "Out-of-Service violations — a violation of FMCSR or HMR requiring that a vehicle or driver be taken out of service until corrected.",
+      "PRIVATE_CARRIER": "A commercial motor carrier for which private highway transportation activities are incidental to its primary business.",
+      "SAFETYNET": "A state-based information system used to store and process commercial carrier safety information in a standard format.",
+      "SINGLE": "A commercial motor vehicle consisting of a truck-tractor and a detachable trailer.",
+      "SPECIAL_STUDY": "Ad hoc examination of particular items in support of a study or verification of a trend (Level IV).",
+      "STRAIGHT_TRUCK": "A commercial motor vehicle in which the power unit and cargo box are non-detachable.",
+      "TERMINAL_INSPECTION": "Examination of vehicles at carriers' terminal facilities using Walk-Around technique (Level V).",
+      "TRIPLE": "A commercial motor vehicle consisting of a truck-tractor and three detachable trailers.",
+      "TRUCK_TRACTOR": "A self-propelled motor vehicle designed and primarily used to draw other vehicles.",
+      "USDOT_NUMBER": "An identification number assigned to all interstate commercial carriers regulated by FMCSA for tracking safety records.",
+      "VEHICLE_CONFIGURATION": "Arrangement of the individual units (truck-tractors, trailers, etc.) comprising a commercial vehicle.",
+      "VEHICLE_VIOLATION": "A violation of the FMCSR or HMR.",
+      "WALK_AROUND_INSPECTION": "Follows most procedures of the Full Inspection except those requiring climbing underneath the vehicle (Level II)."
+    },
+    "reference_data": {
+      "state_abbreviations": [
+        "AL","AK","AR","AZ","CA","CO","CT","DC","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA",
+        "MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR",
+        "PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY","OT","UK","ZZ"
+      ],
+      "county_codes_note": "FIPS county codes are provided for all US states, territories, and Puerto Rico. Codes are numeric and state-specific. See the full county code listing in the source document (pages 14-84)."
+    }
+  }

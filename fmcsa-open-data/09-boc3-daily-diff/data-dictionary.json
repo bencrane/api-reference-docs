@@ -1,0 +1,961 @@
+{
+    "document": {
+      "title": "Dataset Description and Data Definitions",
+      "subtitle": "For Select Datasets on DOT's Open Data Catalog",
+      "source": "U.S. Department of Transportation — Federal Motor Carrier Safety Administration (FMCSA)",
+      "catalog_url": "https://data.transportation.gov",
+      "update_frequency": "Daily by 9:30 AM US Eastern Time"
+    },
+    "naming_conventions": {
+      "daily_difference": {
+        "format": "[Dataset Name]",
+        "description": "Includes records that have been updated or added since the previous run. May include all other records for the carrier/broker/freight forwarder for completeness."
+      },
+      "full_baseline": {
+        "format": "[Dataset Name] – All With History",
+        "description": "Includes all records (including historical values where appropriate) as of the latest dataset update."
+      }
+    },
+    "datasets": [
+      {
+        "id": 1,
+        "name": "Carrier",
+        "variants": ["Carrier", "Carrier– All With History"],
+        "description": "Records for all carriers/brokers/freight forwarders with active, inactive, or pending authorities (common or contract). Includes DOT number, docket number, entity census, authority, and insurance data.",
+        "fields": [
+          {
+            "number": 1,
+            "name": "Docket Number",
+            "format": "Text 8",
+            "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+          },
+          {
+            "number": 2,
+            "name": "USDOT Number",
+            "format": "Text 8",
+            "definition": "Official FMCSA registration number for all interstate motor carriers"
+          },
+          {
+            "number": 3,
+            "name": "MX Type",
+            "format": "Text 1",
+            "definition": "FMCSA character distinguishing Mexican carriers",
+            "values": {
+              "X": "OP-1 (Operate throughout US)",
+              "Z": "OP-2 (Operate in Commercial Zones only)"
+            }
+          },
+          {
+            "number": 4,
+            "name": "RFC Number",
+            "format": "Text 17",
+            "definition": "Mexican Government registration code for Mexican carriers"
+          },
+          {
+            "number": 5,
+            "name": "Common Authority",
+            "format": "Text 1",
+            "definition": "Common authority status",
+            "values": {
+              "A": "Holds Active Authority",
+              "I": "Inactive Authority",
+              "N": "No Authority"
+            }
+          },
+          {
+            "number": 6,
+            "name": "Contract Authority",
+            "format": "Text 1",
+            "definition": "Contract authority status",
+            "values": {
+              "A": "Holds Active Authority",
+              "I": "Inactive Authority",
+              "N": "No Authority"
+            }
+          },
+          {
+            "number": 7,
+            "name": "Broker Authority",
+            "format": "Text 1",
+            "definition": "Broker authority status",
+            "values": {
+              "A": "Holds Active Authority",
+              "I": "Inactive Authority",
+              "N": "No Authority"
+            }
+          },
+          {
+            "number": 8,
+            "name": "Pending Common Authority",
+            "format": "Text 1",
+            "definition": "Pending common authority application status",
+            "values": {
+              "Y": "Application Pending",
+              "N": "No Application Pending"
+            }
+          },
+          {
+            "number": 9,
+            "name": "Pending Contract Authority",
+            "format": "Text 1",
+            "definition": "Pending contract authority application status",
+            "values": {
+              "Y": "Application Pending",
+              "N": "No Application Pending"
+            }
+          },
+          {
+            "number": 10,
+            "name": "Pending Broker Authority",
+            "format": "Text 1",
+            "definition": "Pending broker authority application status",
+            "values": {
+              "Y": "Application Pending",
+              "N": "No Application Pending"
+            }
+          },
+          {
+            "number": 11,
+            "name": "Common Authority Revocation",
+            "format": "Text 1",
+            "definition": "Common authority revocation status",
+            "values": {
+              "Y": "In Revocation",
+              "N": "Not in Revocation"
+            }
+          },
+          {
+            "number": 12,
+            "name": "Contract Authority Revocation",
+            "format": "Text 1",
+            "definition": "Contract authority revocation status",
+            "values": {
+              "Y": "In Revocation",
+              "N": "Not in Revocation"
+            }
+          },
+          {
+            "number": 13,
+            "name": "Broker Authority Revocation",
+            "format": "Text 1",
+            "definition": "Broker authority revocation status",
+            "values": {
+              "Y": "In Revocation",
+              "N": "Not in Revocation"
+            }
+          },
+          {
+            "number": 14,
+            "name": "Freight",
+            "format": "Text 1",
+            "definition": "Freight carrier indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 15,
+            "name": "Passenger",
+            "format": "Text 1",
+            "definition": "Passenger carrier indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 16,
+            "name": "Household Goods",
+            "format": "Text 1",
+            "definition": "Household goods carrier indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 17,
+            "name": "Private Check",
+            "format": "Text 1",
+            "definition": "Private carrier indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 18,
+            "name": "Enterprise Check",
+            "format": "Text 1",
+            "definition": "Enterprise carrier indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 19,
+            "name": "BIPD Required",
+            "format": "Text 5",
+            "definition": "Amount of BI&PD insurance required (in thousands)"
+          },
+          {
+            "number": 20,
+            "name": "Cargo Required",
+            "format": "Text 1",
+            "definition": "Cargo insurance required indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 21,
+            "name": "Bond/Surety Required",
+            "format": "Text 1",
+            "definition": "Bond/Surety required indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 22,
+            "name": "BIPD on File",
+            "format": "Text 5",
+            "definition": "Amount of BI&PD insurance on file (in thousands)"
+          },
+          {
+            "number": 23,
+            "name": "Cargo on File",
+            "format": "Text 1",
+            "definition": "Cargo insurance on file indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 24,
+            "name": "Bond/Surety on File",
+            "format": "Text 1",
+            "definition": "Bond/Surety on file indicator",
+            "values": { "Y": "Yes", "N": "No" }
+          },
+          {
+            "number": 25,
+            "name": "Address Status",
+            "format": "Text 1",
+            "definition": "Address deliverability status",
+            "values": {
+              "Y": "Deliverable",
+              "N": "Undeliverable"
+            }
+          },
+          {
+            "number": 26,
+            "name": "DBA Name",
+            "format": "Text 60",
+            "definition": "\"Doing Business As\" Name"
+          },
+          {
+            "number": 27,
+            "name": "Legal Name",
+            "format": "Text 120",
+            "definition": "Company Legal Name"
+          },
+          {
+            "number": 28,
+            "name": "PO Box/Street (Business)",
+            "format": "Text 50",
+            "definition": "Company business address street",
+            "group": "Company Business Address"
+          },
+          {
+            "number": 29,
+            "name": "Colonia (Business)",
+            "format": "Text 30",
+            "definition": "Company business address colonia",
+            "group": "Company Business Address"
+          },
+          {
+            "number": 30,
+            "name": "City (Business)",
+            "format": "Text 30",
+            "definition": "Company business address city",
+            "group": "Company Business Address"
+          },
+          {
+            "number": 31,
+            "name": "State Code (Business)",
+            "format": "Text 2",
+            "definition": "Company business address state code",
+            "group": "Company Business Address"
+          },
+          {
+            "number": 32,
+            "name": "Country Code (Business)",
+            "format": "Text 2",
+            "definition": "Company business address country code",
+            "group": "Company Business Address"
+          },
+          {
+            "number": 33,
+            "name": "Zip Code (Business)",
+            "format": "Text 10",
+            "definition": "Company business address zip code",
+            "group": "Company Business Address"
+          },
+          {
+            "number": 34,
+            "name": "Telephone Number (Business)",
+            "format": "Text 14",
+            "definition": "Company business telephone number (if on file)",
+            "group": "Company Business Address"
+          },
+          {
+            "number": 35,
+            "name": "Fax Number (Business)",
+            "format": "Text 14",
+            "definition": "Company business fax number (if on file)",
+            "group": "Company Business Address"
+          },
+          {
+            "number": 36,
+            "name": "PO Box/Street (Mailing)",
+            "format": "Text 50",
+            "definition": "Company mailing address street",
+            "group": "Company Mailing Address"
+          },
+          {
+            "number": 37,
+            "name": "Colonia (Mailing)",
+            "format": "Text 30",
+            "definition": "Company mailing address colonia",
+            "group": "Company Mailing Address"
+          },
+          {
+            "number": 38,
+            "name": "City (Mailing)",
+            "format": "Text 30",
+            "definition": "Company mailing address city",
+            "group": "Company Mailing Address"
+          },
+          {
+            "number": 39,
+            "name": "State Code (Mailing)",
+            "format": "Text 2",
+            "definition": "Company mailing address state code",
+            "group": "Company Mailing Address"
+          },
+          {
+            "number": 40,
+            "name": "Country Code (Mailing)",
+            "format": "Text 2",
+            "definition": "Company mailing address country code",
+            "group": "Company Mailing Address"
+          },
+          {
+            "number": 41,
+            "name": "Zip Code (Mailing)",
+            "format": "Text 10",
+            "definition": "Company mailing address zip code",
+            "group": "Company Mailing Address"
+          },
+          {
+            "number": 42,
+            "name": "Telephone Number (Mailing)",
+            "format": "Text 14",
+            "definition": "Company mailing telephone number (if on file)",
+            "group": "Company Mailing Address"
+          },
+          {
+            "number": 43,
+            "name": "Fax Number (Mailing)",
+            "format": "Text 14",
+            "definition": "Company mailing fax number (if on file)",
+            "group": "Company Mailing Address"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Insur",
+        "variants": ["Insur", "Insur– All With History"],
+        "description": "Records for carrier/broker/freight forwarder active or pending individual insurance policies. Linked by docket number. Entities can hold multiple policies. The daily difference variant shows removals as blank records (empty or '00000' values except docket number).",
+        "fields": [
+          {
+            "number": 1,
+            "name": "Docket Number",
+            "format": "Text 8",
+            "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+          },
+          {
+            "number": 2,
+            "name": "Insurance Type",
+            "format": "Text 1",
+            "definition": "Type of insurance policy",
+            "values": {
+              "1": "BI&PD",
+              "2": "Cargo",
+              "3": "Bond",
+              "4": "Trust Fund"
+            },
+            "note": "For Insurance Type 1, amounts are in fields #4 and #5. For types 2, 3, and 4, fields #4 and #5 will be 0."
+          },
+          {
+            "number": 3,
+            "name": "BI&PD Class",
+            "format": "Text 1",
+            "definition": "BI&PD insurance classification",
+            "values": {
+              "P": "Primary",
+              "E": "Excess",
+              "1": "Full Security Limits Under Section 1043.2(b)(1)",
+              "2": "Full Security Limits Under Section 1043.2(b)(2)"
+            }
+          },
+          {
+            "number": 4,
+            "name": "BI&PD Maximum Dollar Limit",
+            "format": "Text 5",
+            "definition": "Maximum liability amount in thousands (company shall not be liable for amounts in excess of)"
+          },
+          {
+            "number": 5,
+            "name": "BI&PD Underlying Dollar Limit",
+            "format": "Text 5",
+            "definition": "Underlying limit amount in thousands"
+          },
+          {
+            "number": 6,
+            "name": "Policy Number",
+            "format": "Text 25",
+            "definition": "Insurance policy specific identifier"
+          },
+          {
+            "number": 7,
+            "name": "Effective Date",
+            "format": "Text 10",
+            "definition": "Effective date of the policy"
+          },
+          {
+            "number": 8,
+            "name": "Form Code",
+            "format": "Text 3",
+            "definition": "Insurance form type code",
+            "values": {
+              "34": "Cargo",
+              "82": "BI&PD",
+              "83": "Cargo",
+              "84": "Property Broker's Surety Bond",
+              "85": "Property Broker's Trust Fund Agreement",
+              "91": "BI&PD",
+              "91X": "BI&PD/Primary, BI&PD/Excess"
+            }
+          },
+          {
+            "number": 9,
+            "name": "Insurance Company Name",
+            "format": "Text 45",
+            "definition": "Insurance company name for policy (note: policy may be administered by a company branch with a different name)"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "ActPendInsur",
+        "variants": ["ActPendInsur", "ActPendInsur– All With History"],
+        "description": "Implementation dates of active or pending insurance policies (posted date, effective date, cancel effective date), plus insurance company name, BI&PD limits, and DOT/docket numbers.",
+        "fields": [
+          {
+            "number": 1,
+            "name": "Docket Number",
+            "format": "Text 8",
+            "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+          },
+          {
+            "number": 2,
+            "name": "USDOT Number",
+            "format": "Text 8",
+            "definition": "Official FMCSA registration number for all interstate motor carriers"
+          },
+          {
+            "number": 3,
+            "name": "Form Code",
+            "format": "Text 3",
+            "definition": "Insurance form type code",
+            "values": {
+              "34": "Cargo",
+              "82": "BI&PD",
+              "83": "Cargo",
+              "84": "Property Broker's Surety Bond",
+              "85": "Property Broker's Trust Fund Agreement",
+              "91": "BI&PD",
+              "91X": "BI&PD/Primary, BI&PD/Excess"
+            },
+            "note": "For Form Codes 91, 91X, and 82, insurance amounts are in fields #8 and #9. For codes 34, 83, 84, and 85, fields #8 and #9 will be 0."
+          },
+          {
+            "number": 4,
+            "name": "Insurance Type Description",
+            "format": "Text 21",
+            "definition": "Description of insurance form/class (see Form Code)"
+          },
+          {
+            "number": 5,
+            "name": "Insurance Company Name",
+            "format": "Text 45",
+            "definition": "Insurance company name for policy (note: policy may be administered by a company branch with a different name)"
+          },
+          {
+            "number": 6,
+            "name": "Policy Number",
+            "format": "Text 25",
+            "definition": "Insurance policy specific identifier"
+          },
+          {
+            "number": 7,
+            "name": "Posted Date",
+            "format": "Text 10",
+            "definition": "Date FMCSA received the policy"
+          },
+          {
+            "number": 8,
+            "name": "BI&PD Underlying Limit",
+            "format": "Text 5",
+            "definition": "Underlying limit amount in thousands"
+          },
+          {
+            "number": 9,
+            "name": "BI&PD Maximum Limit",
+            "format": "Text 5",
+            "definition": "Maximum liability amount in thousands (company shall not be liable for amounts in excess of)"
+          },
+          {
+            "number": 10,
+            "name": "Effective Date",
+            "format": "Text 10",
+            "definition": "Effective date of the policy"
+          },
+          {
+            "number": 11,
+            "name": "Cancel Effective Date",
+            "format": "Text 10",
+            "definition": "Date the policy is effectively cancelled"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "AuthHist",
+        "variants": ["AuthHist", "AuthHist– All With History"],
+        "description": "History of each authority granted to a carrier/broker/freight forwarder, including dates of original and final authority actions. Multiple records per entity possible.",
+        "fields": [
+          {
+            "number": 1,
+            "name": "Docket Number",
+            "format": "Text 8",
+            "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+          },
+          {
+            "number": 2,
+            "name": "USDOT Number",
+            "format": "Text 8",
+            "definition": "Official FMCSA registration number for all interstate motor carriers"
+          },
+          {
+            "number": 3,
+            "name": "Sub Number",
+            "format": "Text 4",
+            "definition": "Action sequence number; not commonly used"
+          },
+          {
+            "number": 4,
+            "name": "Operating Authority Type",
+            "format": "VARCHAR 128",
+            "definition": "Operating Authority Type"
+          },
+          {
+            "number": 5,
+            "name": "Original Authority Action Description",
+            "format": "Text 60",
+            "definition": "Starting authority action"
+          },
+          {
+            "number": 6,
+            "name": "Original Authority Action Served Date",
+            "format": "Text 10",
+            "definition": "Date starting authority action executed"
+          },
+          {
+            "number": 7,
+            "name": "Final Authority Action Description",
+            "format": "Text 60",
+            "definition": "Final authority action"
+          },
+          {
+            "number": 8,
+            "name": "Final Authority Decision Date",
+            "format": "Text 10",
+            "definition": "Date final authority action determined"
+          },
+          {
+            "number": 9,
+            "name": "Final Authority Served Date",
+            "format": "Text 10",
+            "definition": "Date final authority action became effective"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "BOC3",
+        "variants": ["BOC3", "BOC3– All With History"],
+        "description": "Records for each BOC3 agent hired by a carrier/broker/freight forwarder. BOC3 agents represent entities in legal matters to obtain operating authority. Entities may act as their own agent.",
+        "fields": [
+          {
+            "number": 1,
+            "name": "Docket Number",
+            "format": "Text 8",
+            "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+          },
+          {
+            "number": 2,
+            "name": "USDOT Number",
+            "format": "Text 8",
+            "definition": "Official FMCSA registration number for all interstate motor carriers"
+          },
+          {
+            "number": 4,
+            "name": "Company Name",
+            "format": "Text 60",
+            "definition": "Process agent company name"
+          },
+          {
+            "number": 5,
+            "name": "Attention to or Title",
+            "format": "Text 45",
+            "definition": "Process agent company contact"
+          },
+          {
+            "number": 6,
+            "name": "Street or PO Box",
+            "format": "Text 35",
+            "definition": "Process agent company address street"
+          },
+          {
+            "number": 7,
+            "name": "City",
+            "format": "Text 30",
+            "definition": "Process agent company address city"
+          },
+          {
+            "number": 8,
+            "name": "State",
+            "format": "Text 2",
+            "definition": "Process agent company address state"
+          },
+          {
+            "number": 9,
+            "name": "Country",
+            "format": "Text 3",
+            "definition": "Process agent company address country"
+          },
+          {
+            "number": 10,
+            "name": "Zip Code",
+            "format": "Text 10",
+            "definition": "Process agent company address zip code"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "InsHist",
+        "variants": ["InsHist", "InsHist– All With History"],
+        "description": "Previous insurance policies for carriers/brokers/freight forwarders. Contains cancellation method (cancelled, replaced, name change, transferred), policy type, policy number, and effective/cancellation dates. Important: all insurance information relates to the policy being cancelled, replaced, or prior to a name change — not the subsequent policy.",
+        "fields": [
+          {
+            "number": 1,
+            "name": "Docket Number",
+            "format": "Text 8",
+            "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+          },
+          {
+            "number": 2,
+            "name": "USDOT Number",
+            "format": "Text 8",
+            "definition": "Official FMCSA registration number for all interstate motor carriers"
+          },
+          {
+            "number": 3,
+            "name": "Form Code",
+            "format": "Text 3",
+            "definition": "Insurance form type code",
+            "values": {
+              "34": "Cargo",
+              "82": "BI&PD",
+              "83": "Cargo",
+              "84": "Property Broker's Surety Bond",
+              "85": "Property Broker's Trust Fund Agreement",
+              "91": "BI&PD",
+              "91X": "BI&PD/Primary, BI&PD/Excess"
+            }
+          },
+          {
+            "number": 4,
+            "name": "Cancellation Method",
+            "format": "Text 12",
+            "definition": "Method of cancellation",
+            "values": {
+              "cancelled": "Policy was cancelled",
+              "replaced": "Policy was replaced",
+              "name change": "Insurer name changed",
+              "transferred": "Policy was transferred"
+            }
+          },
+          {
+            "number": 5,
+            "name": "Cancel/Replace/Name Change/Transfer Form",
+            "format": "Text 6",
+            "definition": "The form that executed the cancellation, replacement, name change, or transfer",
+            "values": {
+              "35": "BMC Cancellation Form (for 'Cancelled')",
+              "36": "BMC Surety Bond Cancellation Form (for 'Cancelled')",
+              "85C": "BMC Cancellation for Trust Funds (for 'Cancelled')",
+              "NC": "Name Change code",
+              "TR": "Transferred code"
+            },
+            "note": "Codes for 'Replaced' will be one of the Form Codes from field #3"
+          },
+          {
+            "number": 6,
+            "name": "Insurance Type Indicator",
+            "format": "Text 1",
+            "definition": "Indicates whether the policy is BI&PD or not",
+            "values": {
+              " ": "BIPD",
+              "*": "Not BIPD (Cargo, Surety, or Trust Fund)"
+            }
+          },
+          {
+            "number": 7,
+            "name": "Insurance Type Description",
+            "format": "Text 12",
+            "definition": "Description of insurance form/class (see Form Code)"
+          },
+          {
+            "number": 8,
+            "name": "Policy Number",
+            "format": "Text 25",
+            "definition": "Insurance policy specific identifier"
+          },
+          {
+            "number": 9,
+            "name": "Minimum Coverage Amount",
+            "format": "Text 5",
+            "definition": "Minimum insurance amount required for the entity, in thousands"
+          },
+          {
+            "number": 10,
+            "name": "Insurance Class Code",
+            "format": "Text 1",
+            "definition": "For BI&PD form codes; indicates primary or excess",
+            "values": {
+              "P": "Primary",
+              "E": "Excess"
+            }
+          },
+          {
+            "number": 11,
+            "name": "Effective Date",
+            "format": "Text 10",
+            "definition": "Effective date of the insurance policy"
+          },
+          {
+            "number": 12,
+            "name": "BI&PD Underlying Limit Amount",
+            "format": "Text 10",
+            "definition": "Underlying limit amount in thousands. When class code is 'E', this is the value of the primary insurance.",
+            "note": "For Form Codes 91, 91X, and 82, amounts are populated. For 34, 83, 84, and 85, amounts will be 0."
+          },
+          {
+            "number": 13,
+            "name": "BI&PD Max Coverage Amount",
+            "format": "Text 10",
+            "definition": "Maximum dollar amount covered by the insurance policy, in thousands"
+          },
+          {
+            "number": 14,
+            "name": "Cancel Effective Date",
+            "format": "Text 10",
+            "definition": "Date the policy is effectively cancelled"
+          },
+          {
+            "number": 15,
+            "name": "Specific Cancellation Method",
+            "format": "Text 10",
+            "definition": "Detailed cancellation method",
+            "values": {
+              "TERM/CANCL": "Cancellation was executed by FMCSA",
+              "Term/REPL": "Replacement was executed by a new policy submission"
+            }
+          },
+          {
+            "number": 17,
+            "name": "Insurance Company Branch",
+            "format": "Text 2",
+            "definition": "Insurance company branch number"
+          },
+          {
+            "number": 18,
+            "name": "Insurance Company Name",
+            "format": "Text 45",
+            "definition": "Insurance company name"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Rejected",
+        "variants": ["Rejected", "Rejected– All With History"],
+        "description": "Insurance forms rejected by FMCSA. Contains policy information, rejection date, and rejection reason (e.g., 'Policy is already cancelled').",
+        "fields": [
+          {
+            "number": 1,
+            "name": "Docket Number",
+            "format": "Text 8",
+            "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+          },
+          {
+            "number": 2,
+            "name": "USDOT Number",
+            "format": "Text 8",
+            "definition": "Official FMCSA registration number for all interstate motor carriers"
+          },
+          {
+            "number": 3,
+            "name": "Form Code (Insurance or Cancel)",
+            "format": "Text 3",
+            "definition": "Insurance or cancellation form type code",
+            "values": {
+              "34": "Cargo",
+              "35": "BMC Cancellation Form",
+              "36": "BMC Surety Bond Cancellation Form",
+              "82": "BI&PD",
+              "83": "Cargo",
+              "84": "Property Broker's Surety Bond",
+              "85": "Property Broker's Trust Fund Agreement",
+              "85C": "BMC Cancellation for Trust Funds",
+              "91": "BI&PD",
+              "91X": "BI&PD/Primary, BI&PD/Excess"
+            }
+          },
+          {
+            "number": 4,
+            "name": "Insurance Type Description",
+            "format": "Text 12",
+            "definition": "Insurance type associated with the rejected form"
+          },
+          {
+            "number": 5,
+            "name": "Policy Number",
+            "format": "Text 25",
+            "definition": "Insurance policy specific identifier"
+          },
+          {
+            "number": 6,
+            "name": "Received Date",
+            "format": "Text 10",
+            "definition": "Date FMCSA received the form"
+          },
+          {
+            "number": 7,
+            "name": "Insurance Class Code",
+            "format": "Text 1",
+            "definition": "Indicates primary ('P') or excess ('E') when available"
+          },
+          {
+            "number": 8,
+            "name": "Insurance Type Code",
+            "format": "Text 1",
+            "definition": "BI&PD indicator",
+            "values": {
+              " ": "BI&PD",
+              "*": "Not BI&PD"
+            }
+          },
+          {
+            "number": 9,
+            "name": "Underlying Limit Amount",
+            "format": "Text 10",
+            "definition": "Underlying limit amount in thousands"
+          },
+          {
+            "number": 10,
+            "name": "Maximum Coverage Amount",
+            "format": "Text 10",
+            "definition": "Maximum dollar amount covered by the insurance policy, in thousands"
+          },
+          {
+            "number": 11,
+            "name": "Rejected Date",
+            "format": "Text 10",
+            "definition": "Date the submitted form was rejected"
+          },
+          {
+            "number": 13,
+            "name": "Insurance Branch",
+            "format": "Text 2",
+            "definition": "Insurance company branch number"
+          },
+          {
+            "number": 14,
+            "name": "Company Name",
+            "format": "Text 45",
+            "definition": "Insurance company name"
+          },
+          {
+            "number": 15,
+            "name": "Rejected Reason",
+            "format": "Text 300",
+            "definition": "The reason the form was rejected"
+          },
+          {
+            "number": 16,
+            "name": "Minimum Coverage Amount",
+            "format": "Text 5",
+            "definition": "Minimum insurance amount required for the entity, in thousands"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Revocation",
+        "variants": ["Revocation", "Revocation– All With History"],
+        "description": "Authorities revoked by FMCSA. Includes DOT/docket numbers, type of authority revoked, and reason.",
+        "fields": [
+          {
+            "number": 1,
+            "name": "Docket Number",
+            "format": "Text 8",
+            "definition": "Unique FMCSA number identifying for-hire motor carriers (MC000000, FF000000 or MX000000)"
+          },
+          {
+            "number": 2,
+            "name": "USDOT Number",
+            "format": "Text 8",
+            "definition": "Official FMCSA registration number for all interstate motor carriers"
+          },
+          {
+            "number": 3,
+            "name": "Operating Authority Registration Type",
+            "format": "VARCHAR 128",
+            "definition": "Operating authority type: common, contract, or broker"
+          },
+          {
+            "number": 4,
+            "name": "Serve Date",
+            "format": "Text 10",
+            "definition": "Date the first revocation letter was sent to the entity"
+          },
+          {
+            "number": 5,
+            "name": "Revocation Type",
+            "format": "Text 60",
+            "definition": "The type of revocation action"
+          },
+          {
+            "number": 6,
+            "name": "Effective Date",
+            "format": "Text 10",
+            "definition": "Date the revocation is effective"
+          }
+        ]
+      }
+    ],
+    "disclaimer": {
+      "provider": "Federal Motor Carrier Safety Administration (FMCSA)",
+      "purpose": "Public service to enhance public access to information",
+      "nature": "Snapshot of data at time of generation; constantly changing",
+      "legal": "For informational purposes only. Does not constitute legal advice or a legal contract. FMCSA not responsible for any damage or loss from use of or reliance on this data."
+    }
+  }

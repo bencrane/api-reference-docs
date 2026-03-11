@@ -1,0 +1,146 @@
+{
+    "file_info": {
+      "title": "SMS Intrastate Non-Hazmat - Pass/Property",
+      "description": "Calculated from monthly snapshots of input data files. Contains FMCSA summary results of all active Intrastate Non-Hazmat motor carriers of property and/or passengers.",
+      "format": "Comma delimited, one carrier per row",
+      "revision": "Rev03",
+      "date": "2025-04-17"
+    },
+    "fields": [
+      {
+        "name": "DOT_NUMBER",
+        "type": "identifier",
+        "description": "US DOT Number of the Motor Carrier (Intrastate Non-Hazmat only)"
+      },
+      {
+        "name": "INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of inspections for the measurement period (24 months)"
+      },
+      {
+        "name": "DRIVER_INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of driver inspections for the measurement period"
+      },
+      {
+        "name": "DRIVER_OOS_INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of driver inspections containing at least one Driver Out-of-Service violation"
+      },
+      {
+        "name": "VEHICLE_INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of vehicle inspections for the measurement period"
+      },
+      {
+        "name": "VEHICLE_OOS_INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of vehicle inspections containing at least one Vehicle Out-of-Service violation"
+      },
+      {
+        "name": "UNSAFE_DRIV_INSP_W_VIOL",
+        "type": "integer",
+        "category": "Unsafe Driving BASIC",
+        "description": "Number of inspections with at least one Unsafe Driving BASIC violation"
+      },
+      {
+        "name": "UNSAFE_DRIV_MEASURE",
+        "type": "float",
+        "category": "Unsafe Driving BASIC",
+        "description": "Unsafe Driving BASIC Roadside Performance Measure Value"
+      },
+      {
+        "name": "UNSAFE_DRIV_AC",
+        "type": "string",
+        "category": "Unsafe Driving BASIC",
+        "description": "Unsafe Driving BASIC Acute/Critical Indicator",
+        "values": {
+          "Y": "Acute/Critical from investigation within previous 12 months"
+        }
+      },
+      {
+        "name": "HOS_DRIV_INSP_W_VIOL",
+        "type": "integer",
+        "category": "Hours-of-Service (HOS) Compliance BASIC",
+        "description": "Number of inspections with at least one Hours-of-Service BASIC violation"
+      },
+      {
+        "name": "HOS_DRIV_MEASURE",
+        "type": "float",
+        "category": "Hours-of-Service (HOS) Compliance BASIC",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Roadside Performance measure value"
+      },
+      {
+        "name": "HOS_DRIV_AC",
+        "type": "string",
+        "category": "Hours-of-Service (HOS) Compliance BASIC",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Acute/Critical Indicator",
+        "values": {
+          "Y": "Acute/Critical from investigation within previous 12 months"
+        }
+      },
+      {
+        "name": "DRIV_FIT_INSP_W_VIOL",
+        "type": "integer",
+        "category": "Driver Fitness BASIC",
+        "description": "Number of inspections with at least one Driver Fitness BASIC violation"
+      },
+      {
+        "name": "DRIV_FIT_MEASURE",
+        "type": "float",
+        "category": "Driver Fitness BASIC",
+        "description": "Driver Fitness BASIC Roadside Performance measure value"
+      },
+      {
+        "name": "DRIV_FIT_AC",
+        "type": "string",
+        "category": "Driver Fitness BASIC",
+        "description": "Driver Fitness BASIC Serious Violation Indicator",
+        "values": {
+          "Y": "Acute/Critical from investigation within previous 12 months"
+        }
+      },
+      {
+        "name": "CONTR_SUBST_INSP_W_VIOL",
+        "type": "integer",
+        "category": "Controlled Substances and Alcohol BASIC",
+        "description": "Number of inspections with at least one Controlled Substances and Alcohol BASIC violation"
+      },
+      {
+        "name": "CONTR_SUBST_MEASURE",
+        "type": "float",
+        "category": "Controlled Substances and Alcohol BASIC",
+        "description": "Controlled Substances and Alcohol BASIC Roadside Performance measure value"
+      },
+      {
+        "name": "CONTR_SUBST_AC",
+        "type": "string",
+        "category": "Controlled Substances and Alcohol BASIC",
+        "description": "Controlled Substances and Alcohol BASIC Acute/Critical Indicator",
+        "values": {
+          "Y": "Acute/Critical from investigation within previous 12 months"
+        }
+      },
+      {
+        "name": "VEH_MAINT_INSP_W_VIOL",
+        "type": "integer",
+        "category": "Vehicle Maintenance BASIC",
+        "description": "Number of inspections with at least one Vehicle Maintenance BASIC violation"
+      },
+      {
+        "name": "VEH_MAINT_MEASURE",
+        "type": "float",
+        "category": "Vehicle Maintenance BASIC",
+        "description": "Vehicle Maintenance BASIC Roadside Performance measure value"
+      },
+      {
+        "name": "VEH_MAINT_AC",
+        "type": "string",
+        "category": "Vehicle Maintenance BASIC",
+        "description": "Vehicle Maintenance BASIC Acute/Critical Indicator",
+        "values": {
+          "Y": "Acute/Critical from investigation within previous 12 months"
+        }
+      }
+    ]
+  }

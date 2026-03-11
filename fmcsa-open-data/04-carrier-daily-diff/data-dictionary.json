@@ -1,0 +1,434 @@
+{
+    "dataset": {
+      "name": "Carrier",
+      "variant": "Daily Difference",
+      "source": "FMCSA — U.S. Department of Transportation",
+      "catalog_url": "https://data.transportation.gov",
+      "description": "Master records for all carriers, brokers, and freight forwarders with active, inactive, or pending authorities (common or contract). Includes DOT and docket numbers, entity census data, authority statuses, insurance summary flags, and both business and mailing addresses.",
+      "update_frequency": "Daily by 9:30 AM US Eastern Time",
+      "scope": "Includes records updated or added since the previous dataset run. May also include related records for the same entity for completeness.",
+      "naming_convention": {
+        "daily_difference": "[Dataset Name] — contains only recently changed/added records",
+        "full_baseline": "[Dataset Name] – All With History — contains all records including historical values"
+      }
+    },
+    "fields": [
+      {
+        "position": 1,
+        "name": "Docket Number",
+        "data_format": "Text 8",
+        "description": "Unique FMCSA number identifying for-hire motor carriers",
+        "examples": ["MC000000", "FF000000", "MX000000"]
+      },
+      {
+        "position": 2,
+        "name": "USDOT Number",
+        "data_format": "Text 8",
+        "description": "Official FMCSA registration number for all interstate motor carriers"
+      },
+      {
+        "position": 3,
+        "name": "MX Type",
+        "data_format": "Text 1",
+        "description": "Character distinguishing Mexican carriers",
+        "valid_values": [
+          { "value": "X", "description": "OP-1 — Operate throughout US" },
+          { "value": "Z", "description": "OP-2 — Operate in Commercial Zones only" }
+        ],
+        "notes": "Only populated for Mexican carriers. Blank for US/Canadian entities."
+      },
+      {
+        "position": 4,
+        "name": "RFC Number",
+        "data_format": "Text 17",
+        "description": "Mexican Government registration code (Registro Federal de Contribuyentes) for Mexican carriers",
+        "notes": "Only populated for Mexican carriers."
+      },
+      {
+        "position": 5,
+        "name": "Common Authority",
+        "data_format": "Text 1",
+        "description": "Status of common carrier authority",
+        "valid_values": [
+          { "value": "A", "description": "Holds Active Authority" },
+          { "value": "I", "description": "Inactive Authority" },
+          { "value": "N", "description": "No Authority" }
+        ]
+      },
+      {
+        "position": 6,
+        "name": "Contract Authority",
+        "data_format": "Text 1",
+        "description": "Status of contract carrier authority",
+        "valid_values": [
+          { "value": "A", "description": "Holds Active Authority" },
+          { "value": "I", "description": "Inactive Authority" },
+          { "value": "N", "description": "No Authority" }
+        ]
+      },
+      {
+        "position": 7,
+        "name": "Broker Authority",
+        "data_format": "Text 1",
+        "description": "Status of broker authority",
+        "valid_values": [
+          { "value": "A", "description": "Holds Active Authority" },
+          { "value": "I", "description": "Inactive Authority" },
+          { "value": "N", "description": "No Authority" }
+        ]
+      },
+      {
+        "position": 8,
+        "name": "Pending Common Authority",
+        "data_format": "Text 1",
+        "description": "Whether a common authority application is pending",
+        "valid_values": [
+          { "value": "Y", "description": "Application Pending" },
+          { "value": "N", "description": "No Application Pending" }
+        ]
+      },
+      {
+        "position": 9,
+        "name": "Pending Contract Authority",
+        "data_format": "Text 1",
+        "description": "Whether a contract authority application is pending",
+        "valid_values": [
+          { "value": "Y", "description": "Application Pending" },
+          { "value": "N", "description": "No Application Pending" }
+        ]
+      },
+      {
+        "position": 10,
+        "name": "Pending Broker Authority",
+        "data_format": "Text 1",
+        "description": "Whether a broker authority application is pending",
+        "valid_values": [
+          { "value": "Y", "description": "Application Pending" },
+          { "value": "N", "description": "No Application Pending" }
+        ]
+      },
+      {
+        "position": 11,
+        "name": "Common Authority Revocation",
+        "data_format": "Text 1",
+        "description": "Whether common authority is currently in revocation",
+        "valid_values": [
+          { "value": "Y", "description": "In Revocation" },
+          { "value": "N", "description": "Not in Revocation" }
+        ]
+      },
+      {
+        "position": 12,
+        "name": "Contract Authority Revocation",
+        "data_format": "Text 1",
+        "description": "Whether contract authority is currently in revocation",
+        "valid_values": [
+          { "value": "Y", "description": "In Revocation" },
+          { "value": "N", "description": "Not in Revocation" }
+        ]
+      },
+      {
+        "position": 13,
+        "name": "Broker Authority Revocation",
+        "data_format": "Text 1",
+        "description": "Whether broker authority is currently in revocation",
+        "valid_values": [
+          { "value": "Y", "description": "In Revocation" },
+          { "value": "N", "description": "Not in Revocation" }
+        ]
+      },
+      {
+        "position": 14,
+        "name": "Property",
+        "data_format": "Text 1",
+        "description": "Whether the entity is authorized to transport property",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 15,
+        "name": "Passenger",
+        "data_format": "Text 1",
+        "description": "Whether the entity is authorized to transport passengers",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 16,
+        "name": "Household Goods",
+        "data_format": "Text 1",
+        "description": "Whether the entity is authorized to transport household goods",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 17,
+        "name": "Private Check",
+        "data_format": "Text 1",
+        "description": "Whether the entity is flagged as a private carrier",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 18,
+        "name": "Enterprise Check",
+        "data_format": "Text 1",
+        "description": "Whether the entity is flagged as an enterprise carrier",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 19,
+        "name": "BIPD Required",
+        "data_format": "Text 5",
+        "description": "Amount of BI&PD (Bodily Injury & Property Damage) insurance required for this entity, in thousands",
+        "unit": "thousands_usd"
+      },
+      {
+        "position": 20,
+        "name": "Cargo Required",
+        "data_format": "Text 1",
+        "description": "Whether cargo insurance is required",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 21,
+        "name": "Bond/Surety Required",
+        "data_format": "Text 1",
+        "description": "Whether a bond or surety is required",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 22,
+        "name": "BIPD on File",
+        "data_format": "Text 5",
+        "description": "Amount of BI&PD insurance currently on file for this entity, in thousands",
+        "unit": "thousands_usd"
+      },
+      {
+        "position": 23,
+        "name": "Cargo on File",
+        "data_format": "Text 1",
+        "description": "Whether cargo insurance is on file",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 24,
+        "name": "Bond/Surety on File",
+        "data_format": "Text 1",
+        "description": "Whether a bond or surety is on file",
+        "valid_values": [
+          { "value": "Y", "description": "Yes" },
+          { "value": "N", "description": "No" }
+        ]
+      },
+      {
+        "position": 25,
+        "name": "Address Status",
+        "data_format": "Text 1",
+        "description": "Whether the entity's address is verified as deliverable",
+        "valid_values": [
+          { "value": "Y", "description": "Deliverable" },
+          { "value": "N", "description": "Undeliverable" }
+        ]
+      },
+      {
+        "position": 26,
+        "name": "DBA Name",
+        "data_format": "Text 60",
+        "description": "Doing Business As name for the entity"
+      },
+      {
+        "position": 27,
+        "name": "Legal Name",
+        "data_format": "Text 120",
+        "description": "Company legal name"
+      },
+      {
+        "position": 28,
+        "name": "Business Address - PO Box/Street",
+        "data_format": "Text 50",
+        "description": "Company business address street or PO Box",
+        "address_group": "business"
+      },
+      {
+        "position": 29,
+        "name": "Business Address - Colonia",
+        "data_format": "Text 30",
+        "description": "Company business address colonia (Mexican addresses)",
+        "address_group": "business"
+      },
+      {
+        "position": 30,
+        "name": "Business Address - City",
+        "data_format": "Text 30",
+        "description": "Company business address city",
+        "address_group": "business"
+      },
+      {
+        "position": 31,
+        "name": "Business Address - State Code",
+        "data_format": "Text 2",
+        "description": "Company business address state code",
+        "address_group": "business"
+      },
+      {
+        "position": 32,
+        "name": "Business Address - Country Code",
+        "data_format": "Text 2",
+        "description": "Company business address country code",
+        "address_group": "business"
+      },
+      {
+        "position": 33,
+        "name": "Business Address - Zip Code",
+        "data_format": "Text 10",
+        "description": "Company business address zip code",
+        "address_group": "business"
+      },
+      {
+        "position": 34,
+        "name": "Business Address - Telephone Number",
+        "data_format": "Text 14",
+        "description": "Company business telephone number (if on file)",
+        "address_group": "business"
+      },
+      {
+        "position": 35,
+        "name": "Business Address - Fax Number",
+        "data_format": "Text 14",
+        "description": "Company business fax number (if on file)",
+        "address_group": "business"
+      },
+      {
+        "position": 36,
+        "name": "Mailing Address - PO Box/Street",
+        "data_format": "Text 50",
+        "description": "Company mailing address street or PO Box",
+        "address_group": "mailing"
+      },
+      {
+        "position": 37,
+        "name": "Mailing Address - Colonia",
+        "data_format": "Text 30",
+        "description": "Company mailing address colonia (Mexican addresses)",
+        "address_group": "mailing"
+      },
+      {
+        "position": 38,
+        "name": "Mailing Address - City",
+        "data_format": "Text 30",
+        "description": "Company mailing address city",
+        "address_group": "mailing"
+      },
+      {
+        "position": 39,
+        "name": "Mailing Address - State Code",
+        "data_format": "Text 2",
+        "description": "Company mailing address state code",
+        "address_group": "mailing"
+      },
+      {
+        "position": 40,
+        "name": "Mailing Address - Country Code",
+        "data_format": "Text 2",
+        "description": "Company mailing address country code",
+        "address_group": "mailing"
+      },
+      {
+        "position": 41,
+        "name": "Mailing Address - Zip Code",
+        "data_format": "Text 10",
+        "description": "Company mailing address zip code",
+        "address_group": "mailing"
+      },
+      {
+        "position": 42,
+        "name": "Mailing Address - Telephone Number",
+        "data_format": "Text 14",
+        "description": "Company mailing telephone number (if on file)",
+        "address_group": "mailing"
+      },
+      {
+        "position": 43,
+        "name": "Mailing Address - Fax Number",
+        "data_format": "Text 14",
+        "description": "Company mailing fax number (if on file)",
+        "address_group": "mailing"
+      }
+    ],
+    "field_groups": {
+      "identifiers": [1, 2, 3, 4],
+      "authority_status": [5, 6, 7],
+      "pending_authority": [8, 9, 10],
+      "revocation_flags": [11, 12, 13],
+      "operations_type": [14, 15, 16, 17, 18],
+      "insurance_required": [19, 20, 21],
+      "insurance_on_file": [22, 23, 24],
+      "entity_info": [25, 26, 27],
+      "business_address": [28, 29, 30, 31, 32, 33, 34, 35],
+      "mailing_address": [36, 37, 38, 39, 40, 41, 42, 43]
+    },
+    "record_relationships": {
+      "primary_key": "Docket Number",
+      "alternate_key": "USDOT Number",
+      "cardinality": "One record per entity (one-to-one)",
+      "related_datasets": [
+        {
+          "name": "Insur",
+          "join_on": "Docket Number",
+          "relationship": "Individual active/pending insurance policies behind the summary flags in fields #19-24"
+        },
+        {
+          "name": "ActPendInsur",
+          "join_on": "Docket Number",
+          "relationship": "Active/pending insurance policy date details (posted, effective, cancel dates)"
+        },
+        {
+          "name": "InsHist",
+          "join_on": "Docket Number",
+          "relationship": "Historical/cancelled insurance policies"
+        },
+        {
+          "name": "AuthHist",
+          "join_on": "Docket Number",
+          "relationship": "Full authority lifecycle history (grant through revocation)"
+        },
+        {
+          "name": "BOC3",
+          "join_on": "Docket Number",
+          "relationship": "Process agent (BOC-3) filings for the entity"
+        },
+        {
+          "name": "Revocation",
+          "join_on": "Docket Number",
+          "relationship": "Detailed revocation records behind the Y/N flags in fields #11-13"
+        },
+        {
+          "name": "Rejected",
+          "join_on": "Docket Number",
+          "relationship": "Insurance filings that FMCSA rejected"
+        }
+      ]
+    },
+    "disclaimer": "Data is provided as a public service by FMCSA for informational purposes only. It is a point-in-time snapshot and does not constitute legal advice or a legal contract."
+  }

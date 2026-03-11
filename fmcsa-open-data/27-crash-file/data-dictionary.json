@@ -1,0 +1,822 @@
+{
+    "metadata": {
+      "title": "MCMIS Crash File Data Dictionary",
+      "revision": 5,
+      "date": "2025-11-04",
+      "total_pages": 71,
+      "source": "FMCSA - Federal Motor Carrier Safety Administration"
+    },
+    "data_elements": [
+      {
+        "order": 1,
+        "field_name": "CHANGE_DATE",
+        "display_name": "Date & Time Record Was Last Updated",
+        "length": 13,
+        "type": "N",
+        "format": "YYYYMMDD HHMM (Military Time)",
+        "definition": "Date and time the record was last updated."
+      },
+      {
+        "order": 2,
+        "field_name": "CRASH_ID",
+        "display_name": "Crash ID",
+        "length": 8,
+        "type": "N",
+        "definition": "A unique identifying number assigned to a crash record."
+      },
+      {
+        "order": 3,
+        "field_name": "REPORT_STATE",
+        "display_name": "Report State",
+        "length": 2,
+        "type": "A",
+        "definition": "The state that reported the crash. See State Abbreviations.",
+        "reference": "state_abbreviations"
+      },
+      {
+        "order": 4,
+        "field_name": "REPORT_NUMBER",
+        "display_name": "Report Number",
+        "length": 12,
+        "type": "A/N",
+        "format": "State Abbreviation + 10 characters. No blank spaces.",
+        "definition": "The unique report number designated by the state. Starts with two-letter state code followed by 10 characters."
+      },
+      {
+        "order": 5,
+        "field_name": "REPORT_DATE",
+        "display_name": "Report Date",
+        "length": 8,
+        "type": "A/N",
+        "format": "YYYYMMDD",
+        "definition": "The date on which the crash occurred."
+      },
+      {
+        "order": 6,
+        "field_name": "REPORT_TIME",
+        "display_name": "Report Time",
+        "length": 4,
+        "type": "N",
+        "format": "HHMM (Military Time)",
+        "definition": "The military time at which the crash occurred."
+      },
+      {
+        "order": 7,
+        "field_name": "REPORT_SEQ_NO",
+        "display_name": "Report Sequence Number",
+        "length": 2,
+        "type": "N",
+        "definition": "Identifies vehicles in a multiple vehicle crash. Value is 1 for single CMV, incremented by 1 for each additional vehicle."
+      },
+      {
+        "order": 8,
+        "field_name": "DOT_NUMBER",
+        "display_name": "Census Number (USDOT Number)",
+        "length": 8,
+        "type": "A",
+        "definition": "The number assigned by MCMIS to a census record (USDOT number). Each motor carrier should have only one active census number. Numbers are issued sequentially."
+      },
+      {
+        "order": 9,
+        "field_name": "CI_STATUS_CODE",
+        "display_name": "Status Code",
+        "length": 1,
+        "type": "A",
+        "definition": "Processing status of record.",
+        "values": {
+          "C": "Complete",
+          "H": "FMCSA Hold",
+          "I": "Intrastate",
+          "N": "Non-Match",
+          "P": "Potential Resolution",
+          "T": "Sent to Census Search",
+          "U": "Initial Upload",
+          "X": "Non Motor Carrier"
+        }
+      },
+      {
+        "order": 10,
+        "field_name": "FINAL_STATUS_DATE",
+        "display_name": "Final Status Date",
+        "length": 8,
+        "type": "A/N",
+        "format": "YYYYMMDD",
+        "definition": "Date the Status Code is set to C, N, H, or I."
+      },
+      {
+        "order": 11,
+        "field_name": "LOCATION",
+        "display_name": "Location",
+        "length": 50,
+        "type": "A/N",
+        "definition": "The street address or highway number where the crash occurred."
+      },
+      {
+        "order": 12,
+        "field_name": "CITY_CODE",
+        "display_name": "City Code",
+        "length": 5,
+        "type": "A",
+        "definition": "The 5-digit code for the municipality (city or township) in which the crash occurred as implemented by FIPS PUB 55-3. Can be blank.",
+        "reference": "FIPS PUB 55-3"
+      },
+      {
+        "order": 13,
+        "field_name": "CITY",
+        "display_name": "City",
+        "length": 25,
+        "type": "A",
+        "definition": "The name of the municipality (city or township) in which the crash occurred."
+      },
+      {
+        "order": 14,
+        "field_name": "STATE",
+        "display_name": "State",
+        "length": 2,
+        "type": "A",
+        "definition": "The state/district in which the crash occurred. See State Abbreviations.",
+        "reference": "state_abbreviations"
+      },
+      {
+        "order": 15,
+        "field_name": "COUNTY_CODE",
+        "display_name": "County Code",
+        "length": 3,
+        "type": "N",
+        "definition": "The 3-digit Worldwide Geographical Code for the county in which the crash occurred.",
+        "reference": "county_codes"
+      },
+      {
+        "order": 16,
+        "field_name": "TRUCK_BUS_IND",
+        "display_name": "Truck/Bus Indicator",
+        "length": 1,
+        "type": "A",
+        "definition": "Indication of whether the vehicle involved in the crash was a truck or bus.",
+        "values": {
+          "T": "Truck",
+          "B": "Bus"
+        }
+      },
+      {
+        "order": 17,
+        "field_name": "TRAFFICWAY_ID",
+        "display_name": "Trafficway",
+        "length": 8,
+        "type": "A",
+        "definition": "The degree of trafficway division at the place of the crash.",
+        "values": {
+          "1": "Two-way, not divided",
+          "2": "Two-way, divided, unprotected median",
+          "3": "Two-way, divided, positive median barrier",
+          "4": "One-way, not divided",
+          "98": "Not reported",
+          "99": "Unknown"
+        }
+      },
+      {
+        "order": 18,
+        "field_name": "ACCESS_CONTROL_ID",
+        "display_name": "Road Access Control",
+        "length": 8,
+        "type": "A",
+        "definition": "The degree that access to abutting land is controlled by public authority.",
+        "values": {
+          "1": "Full Access Control",
+          "2": "Partial Access Control",
+          "3": "No Access Control"
+        }
+      },
+      {
+        "order": 19,
+        "field_name": "ROAD_SURFACE_CONDITION_ID",
+        "display_name": "Road Surface Condition",
+        "length": 8,
+        "type": "A",
+        "definition": "The condition that affected traction on the road surface at the time and location of the crash.",
+        "values": {
+          "1": "Dry",
+          "2": "Wet",
+          "3": "Water (standing, moving)",
+          "4": "Snow",
+          "5": "Slush",
+          "6": "Ice",
+          "7": "Sand, Mud, Dirt, Oil or Gravel",
+          "8": "Other",
+          "9": "Unknown or Blank"
+        }
+      },
+      {
+        "order": 20,
+        "field_name": "CARGO_BODY_TYPE_ID",
+        "display_name": "Cargo Body Type",
+        "length": 8,
+        "type": "A",
+        "definition": "The cargo body type of the motor vehicle.",
+        "values": {
+          "1": "Bus (seats for 9-15 people, including driver)",
+          "2": "Bus (seats more than 15 people, including driver)",
+          "3": "Van/Enclosed Box",
+          "4": "Cargo Tank",
+          "5": "Flatbed",
+          "6": "Dump",
+          "7": "Concrete Mixer",
+          "8": "Auto Transporter",
+          "9": "Garbage/Refuse",
+          "10": "Grain, chips, gravel",
+          "11": "Pole",
+          "12": "Not applicable",
+          "13": "Intermodal",
+          "14": "Logging",
+          "15": "Vehicle Towing another Vehicle",
+          "98": "Other"
+        }
+      },
+      {
+        "order": 21,
+        "field_name": "GVW_RATING_ID",
+        "display_name": "Gross Vehicle Weight Rating ID",
+        "length": 8,
+        "type": "A",
+        "definition": "Weight rating of the power unit of the vehicle.",
+        "values": {
+          "1": "Less than or equal to 10,000 pounds",
+          "2": "10,001-26,000 pounds",
+          "3": "More than 26,000 pounds"
+        }
+      },
+      {
+        "order": 22,
+        "field_name": "VEHICLE_IDENTIFICATION_NUMBER",
+        "display_name": "Vehicle Identification Number (VIN)",
+        "length": 17,
+        "type": "A",
+        "definition": "The Vehicle Identification Number (VIN) of the motor vehicle. A unique combination of alphanumeric characters formulated by the manufacturer."
+      },
+      {
+        "order": 23,
+        "field_name": "VEHICLE_LICENSE_NUMBER",
+        "display_name": "Vehicle License Number",
+        "length": 9,
+        "type": "A",
+        "definition": "The numeric, alphanumeric, or alphabetic character exactly as displayed on the plate or tag affixed to the motor vehicle."
+      },
+      {
+        "order": 24,
+        "field_name": "VEHICLE_LIC_STATE",
+        "display_name": "Vehicle License State",
+        "length": 2,
+        "type": "A",
+        "definition": "The state/district issuing the license plate of the motor vehicle. See State Abbreviations.",
+        "reference": "state_abbreviations"
+      },
+      {
+        "order": 25,
+        "field_name": "VEHICLE_HAZMAT_PLACARD",
+        "display_name": "Hazardous Materials Placards",
+        "length": 1,
+        "type": "A",
+        "definition": "Indication of whether the motor carrier had a hazardous materials placard.",
+        "values": {
+          "Y": "Yes",
+          "N": "No"
+        }
+      },
+      {
+        "order": 26,
+        "field_name": "WEATHER_CONDITION_ID",
+        "display_name": "Weather Condition",
+        "length": 8,
+        "type": "A",
+        "definition": "The predominant weather condition at the time and place of the crash.",
+        "values": {
+          "1": "No Adverse Condition",
+          "2": "Rain",
+          "3": "Sleet, Hail",
+          "4": "Snow",
+          "5": "Fog",
+          "6": "Blowing Sand, Soil, Dirt, or Snow",
+          "7": "Severe Crosswinds",
+          "8": "Other",
+          "9": "Unknown or Blank"
+        }
+      },
+      {
+        "order": 27,
+        "field_name": "VEHICLE_CONFIGURATION_ID",
+        "display_name": "Vehicle Configuration",
+        "length": 8,
+        "type": "A",
+        "definition": "The configuration of the motor vehicle.",
+        "values": {
+          "1": "Passenger Car (Only if Vehicle displays HM Placard)",
+          "2": "Light Truck (Only if Vehicle displays HM Placard)",
+          "3": "Bus (Seats for 9-15 People, Including Driver)",
+          "4": "Bus (Seats for > 15 People, Including Driver)",
+          "5": "Single-Unit Truck (2-Axle, 6-Tire)",
+          "6": "Single-Unit Truck (3 or More Axles)",
+          "7": "Truck/Trailer",
+          "8": "Truck Tractor (Bobtail)",
+          "9": "Tractor/Semitrailer",
+          "10": "Tractor/Double",
+          "11": "Tractor/Triple",
+          "99": "Unknown Heavy Truck > 10000 lbs, Cannot Classify"
+        }
+      },
+      {
+        "order": 28,
+        "field_name": "LIGHT_CONDITION_ID",
+        "display_name": "Light Condition",
+        "length": 8,
+        "type": "A",
+        "definition": "Light condition at the time and place of the crash.",
+        "values": {
+          "1": "Daylight",
+          "2": "Dark-Not Lighted",
+          "3": "Dark-Lighted",
+          "4": "Dark-Unknown Roadway Lighting",
+          "5": "Dawn",
+          "6": "Dusk",
+          "8": "Other",
+          "9": "Unknown or Blank"
+        }
+      },
+      {
+        "order": 29,
+        "field_name": "HAZMAT_RELEASED",
+        "display_name": "Hazmat Released",
+        "length": 1,
+        "type": "A",
+        "definition": "Indicates whether or not Hazardous Material was released as a result of the crash.",
+        "values": {
+          "Y": "Yes",
+          "N": "No"
+        }
+      },
+      {
+        "order": 30,
+        "field_name": "AGENCY",
+        "display_name": "Reporting Agency",
+        "length": 35,
+        "type": "A",
+        "definition": "The agency responsible for investigating and reporting the crash."
+      },
+      {
+        "order": 31,
+        "field_name": "VEHICLES_IN_ACCIDENT",
+        "display_name": "Number of Vehicles in Accident",
+        "length": 2,
+        "type": "N",
+        "definition": "Total number of vehicles or vehicle combinations involved in the crash. Includes all trucks, buses, and other vehicles (cars, pedalcycles, etc.)."
+      },
+      {
+        "order": 32,
+        "field_name": "FATALITIES",
+        "display_name": "Number of Fatalities",
+        "length": 3,
+        "type": "N",
+        "definition": "Number of persons killed inside or outside a vehicle at the scene of the crash."
+      },
+      {
+        "order": 33,
+        "field_name": "INJURIES",
+        "display_name": "Number of Injuries",
+        "length": 3,
+        "type": "N",
+        "definition": "Number of persons injured inside or outside a vehicle at the scene of the crash who were transported to a medical facility for immediate medical attention."
+      },
+      {
+        "order": 34,
+        "field_name": "TOW_AWAY",
+        "display_name": "Tow Away",
+        "length": 1,
+        "type": "A",
+        "definition": "Indication of whether one or more motor vehicles were disabled and transported away from the scene by a tow truck or another vehicle.",
+        "values": {
+          "Y": "Yes",
+          "N": "No"
+        }
+      },
+      {
+        "order": 35,
+        "field_name": "FEDERAL_RECORDABLE",
+        "display_name": "Federally Recordable",
+        "length": 1,
+        "type": "A",
+        "definition": "Indication of whether the crash was Federally Recordable. A recordable crash means at least one person dies, or at least one person requires immediate medical treatment away from scene, or a vehicle is towed away.",
+        "values": {
+          "Y": "Yes",
+          "N": "No"
+        }
+      },
+      {
+        "order": 36,
+        "field_name": "STATE_RECORDABLE",
+        "display_name": "State Recordable",
+        "length": 1,
+        "type": "A",
+        "definition": "Indication of whether the crash was State Recordable.",
+        "values": {
+          "Y": "Yes",
+          "N": "No"
+        }
+      },
+      {
+        "order": 37,
+        "field_name": "SNET_VERSION_NUMBER",
+        "display_name": "SafetyNet Version Number",
+        "length": 10,
+        "type": "A",
+        "definition": "SafetyNet version number used for the crash record."
+      },
+      {
+        "order": 38,
+        "field_name": "SNET_SEQUENCE_ID",
+        "display_name": "SafetyNet Sequence ID",
+        "length": 10,
+        "type": "A",
+        "definition": "SafetyNet sequence identifier for the crash record."
+      },
+      {
+        "order": 39,
+        "field_name": "TRANSACTION_CODE",
+        "display_name": "Transaction Code",
+        "length": 1,
+        "type": "A",
+        "definition": "Transaction code indicating whether the record was added or changed.",
+        "values": {
+          "A": "Add",
+          "C": "Change"
+        }
+      },
+      {
+        "order": 40,
+        "field_name": "TRANSACTION_DATE",
+        "display_name": "Transaction Date",
+        "length": 13,
+        "type": "A/N",
+        "format": "YYYYMMDD HHMM (Military Time)",
+        "definition": "Date and time of the transaction."
+      },
+      {
+        "order": 41,
+        "field_name": "UPLOAD_FIRST_BYTE",
+        "display_name": "Upload First Byte",
+        "length": 1,
+        "type": "A",
+        "definition": "First character of the DOT number sent by states in the Crash Upload (version 10 and before). If the DOT number is valid this will be a zero. States sometimes fill in F for federal number or S for state number if unable to assign a DOT number."
+      },
+      {
+        "order": 42,
+        "field_name": "UPLOAD_DOT_NUMBER",
+        "display_name": "Upload USDOT Number",
+        "length": 8,
+        "type": "A",
+        "definition": "The rest of the uploaded DOT number. Combined with UPLOAD_FIRST_BYTE, this field is used in the Carrier Match Process."
+      },
+      {
+        "order": 43,
+        "field_name": "UPLOAD_SEARCH_INDICATOR",
+        "display_name": "Upload Search Indicator",
+        "length": 1,
+        "type": "A",
+        "definition": "Identifies if a DOT number search was conducted. Y = Yes, or blank.",
+        "values": {
+          "Y": "Yes",
+          "": "No search conducted"
+        }
+      },
+      {
+        "order": 44,
+        "field_name": "UPLOAD_DATE",
+        "display_name": "Date Uploaded",
+        "length": 13,
+        "type": "A/N",
+        "format": "YYYYMMDD HHMM (Military Time)",
+        "definition": "Date and time the record was uploaded."
+      },
+      {
+        "order": 45,
+        "field_name": "ADD_DATE",
+        "display_name": "Add Date",
+        "length": 13,
+        "type": "A/N",
+        "format": "YYYYMMDD HHMM (Military Time)",
+        "definition": "Date and time the record was added."
+      },
+      {
+        "order": 46,
+        "field_name": "CRASH_CARRIER_ID",
+        "display_name": "Crash Carrier ID",
+        "length": 8,
+        "type": "N",
+        "source_table": "Crash Carrier Table",
+        "definition": "Unique identifier for the crash carrier record."
+      },
+      {
+        "order": 47,
+        "field_name": "CRASH_CARRIER_NAME",
+        "display_name": "Carrier Name",
+        "length": 120,
+        "type": "A",
+        "source_table": "Crash Carrier Table",
+        "definition": "Name of the carrier involved in the crash."
+      },
+      {
+        "order": 48,
+        "field_name": "CRASH_CARRIER_STREET",
+        "display_name": "Carrier Address/Street",
+        "length": 50,
+        "type": "A",
+        "source_table": "Crash Carrier Table",
+        "definition": "Street address of the carrier."
+      },
+      {
+        "order": 49,
+        "field_name": "CRASH_CARRIER_CITY",
+        "display_name": "Carrier Address/City Name",
+        "length": 25,
+        "type": "A",
+        "source_table": "Crash Carrier Table",
+        "definition": "City of the carrier address."
+      },
+      {
+        "order": 50,
+        "field_name": "CRASH_CARRIER_CITY_CODE",
+        "display_name": "Carrier Address/City Code",
+        "length": 5,
+        "type": "A",
+        "source_table": "Crash Carrier Table",
+        "definition": "City code of the carrier address. Can be blank."
+      },
+      {
+        "order": 51,
+        "field_name": "CRASH_CARRIER_STATE",
+        "display_name": "Carrier Address/State",
+        "length": 2,
+        "type": "A",
+        "source_table": "Crash Carrier Table",
+        "definition": "State of the carrier address. See State Abbreviations.",
+        "reference": "state_abbreviations"
+      },
+      {
+        "order": 52,
+        "field_name": "CRASH_CARRIER_ZIP_CODE",
+        "display_name": "Carrier Address/Zip Code",
+        "length": 10,
+        "type": "A",
+        "format": "#####-####",
+        "source_table": "Crash Carrier Table",
+        "definition": "Zip code of the carrier address."
+      },
+      {
+        "order": 53,
+        "field_name": "CRASH_COLONIA",
+        "display_name": "Carrier Address/Mexican Colonia",
+        "length": 25,
+        "type": "A/N",
+        "source_table": "Crash Carrier Table",
+        "definition": "Mexican Colonia of the carrier address."
+      },
+      {
+        "order": 54,
+        "field_name": "DOCKET_NUMBER",
+        "display_name": "Docket Number",
+        "length": 8,
+        "type": "N",
+        "source_table": "Crash Carrier Table",
+        "definition": "Docket number associated with the carrier."
+      },
+      {
+        "order": 55,
+        "field_name": "CRASH_CARRIER_INTERSTATE",
+        "display_name": "Interstate",
+        "length": 1,
+        "type": "N",
+        "source_table": "Crash Carrier Table",
+        "definition": "Indicates whether the carrier operates interstate.",
+        "values": {
+          "N": "No (Intrastate)",
+          "Y": "Yes (Interstate)",
+          "X": "Non Motor Carrier"
+        }
+      },
+      {
+        "order": 56,
+        "field_name": "NO_ID_FLAG",
+        "display_name": "No Census Number",
+        "length": 1,
+        "type": "A",
+        "source_table": "Crash Carrier Table",
+        "definition": "Flag indicating no census number available."
+      },
+      {
+        "order": 57,
+        "field_name": "STATE_NUMBER",
+        "display_name": "State Census Number",
+        "length": 12,
+        "type": "A/N",
+        "source_table": "Crash Carrier Table",
+        "definition": "State-assigned census number for the carrier."
+      },
+      {
+        "order": 58,
+        "field_name": "STATE_ISSUING_NUMBER",
+        "display_name": "State Issuing State Census Number",
+        "length": 2,
+        "type": "A",
+        "source_table": "Crash Carrier Table",
+        "definition": "State that issued the state census number. See State Abbreviations.",
+        "reference": "state_abbreviations"
+      },
+      {
+        "order": 59,
+        "field_name": "CRASH_EVENT_SEQ_ID_DESC",
+        "display_name": "Crash Event Sequence/ID/Description",
+        "length": "No Limit",
+        "type": "A/N",
+        "definition": "Contains in order the Crash Event Sequence Number, Crash Event ID, and Crash Event Description separated by colons (:). Multiple Crash Events are concatenated separated by semi colons (;).",
+        "event_values": {
+          "1": "Non collision ran off road",
+          "2": "Non collision jackknife",
+          "3": "Non collision overturn (rollover)",
+          "4": "Non collision downhill runaway",
+          "5": "Non collision cargo loss or shift",
+          "6": "Non collision explosion or fire",
+          "7": "Non collision separation of units",
+          "8": "Non collision cross median/centerline",
+          "9": "Non collision equipment failure (brake failure, blown tires, etc.)",
+          "10": "Non collision other",
+          "11": "Non collision unknown",
+          "12": "Collision involving pedestrian",
+          "13": "Collision involving motor vehicle in transport",
+          "14": "Collision involving parked motor vehicle",
+          "15": "Collision involving train",
+          "16": "Collision involving pedalcycle",
+          "17": "Collision involving animal",
+          "18": "Collision involving fixed object",
+          "19": "Collision with work zone maintenance equipment",
+          "20": "Collision with other movable object",
+          "21": "Collision with unknown movable object",
+          "98": "Other"
+        }
+      }
+    ],
+    "removed_fields": [
+      {
+        "field_name": "CENSUS_SEARCH_DATE",
+        "display_name": "Census Search Date",
+        "length": 8,
+        "type": "A/N",
+        "format": "YYYYMMDD",
+        "source": "Old Crash Master Table"
+      },
+      {
+        "field_name": "CRASH_ID (Crash Carrier Table)",
+        "display_name": "Crash ID",
+        "length": 8,
+        "type": "N",
+        "source": "Old Crash Carrier Table"
+      },
+      {
+        "field_name": "CARRIER_SOURCE_CODE",
+        "display_name": "Carrier Name Source",
+        "length": 1,
+        "type": "A",
+        "source": "Old Crash Carrier Table",
+        "values": {
+          "1": "Side of Vehicle",
+          "2": "Shipping Papers (Truck) or Trip Manifest (Bus)",
+          "3": "Driver",
+          "4": "Log Book or Blank"
+        }
+      },
+      {
+        "field_name": "PREFIX",
+        "display_name": "Prefix",
+        "length": 2,
+        "type": "A",
+        "source": "Old Crash Carrier Table",
+        "values": [
+          "MC",
+          "MX",
+          "FF",
+          "Null"
+        ]
+      },
+      {
+        "field_name": "CRASH_EVENT_ID",
+        "display_name": "Crash Event ID",
+        "length": 8,
+        "type": "N",
+        "source": "Old Crash Event Table"
+      },
+      {
+        "field_name": "CRASH_ID (Crash Event Table)",
+        "display_name": "Crash ID",
+        "length": 8,
+        "type": "N",
+        "source": "Old Crash Event Table"
+      }
+    ],
+    "state_abbreviations": {
+      "AL": "ALABAMA",
+      "AK": "ALASKA",
+      "AR": "ARKANSAS",
+      "AZ": "ARIZONA",
+      "CA": "CALIFORNIA",
+      "CO": "COLORADO",
+      "CT": "CONNECTICUT",
+      "DC": "DISTRICT OF COLUMBIA",
+      "DE": "DELAWARE",
+      "FL": "FLORIDA",
+      "GA": "GEORGIA",
+      "HI": "HAWAII",
+      "IA": "IOWA",
+      "ID": "IDAHO",
+      "IL": "ILLINOIS",
+      "IN": "INDIANA",
+      "KS": "KANSAS",
+      "KY": "KENTUCKY",
+      "LA": "LOUISIANA",
+      "MA": "MASSACHUSETTS",
+      "MD": "MARYLAND",
+      "ME": "MAINE",
+      "MI": "MICHIGAN",
+      "MN": "MINNESOTA",
+      "MO": "MISSOURI",
+      "MS": "MISSISSIPPI",
+      "MT": "MONTANA",
+      "NC": "NORTH CAROLINA",
+      "ND": "NORTH DAKOTA",
+      "NE": "NEBRASKA",
+      "NH": "NEW HAMPSHIRE",
+      "NJ": "NEW JERSEY",
+      "NM": "NEW MEXICO",
+      "NV": "NEVADA",
+      "NY": "NEW YORK",
+      "OH": "OHIO",
+      "OK": "OKLAHOMA",
+      "OR": "OREGON",
+      "PA": "PENNSYLVANIA",
+      "RI": "RHODE ISLAND",
+      "SC": "SOUTH CAROLINA",
+      "SD": "SOUTH DAKOTA",
+      "TN": "TENNESSEE",
+      "TX": "TEXAS",
+      "UT": "UTAH",
+      "VA": "VIRGINIA",
+      "VT": "VERMONT",
+      "WA": "WASHINGTON",
+      "WI": "WISCONSIN",
+      "WV": "WEST VIRGINIA",
+      "WY": "WYOMING",
+      "OT": "OTHER",
+      "UK": "UNKNOWN",
+      "ZZ": "UNKNOWN"
+    },
+    "glossary": {
+      "BUS": "Any motor vehicle designed, constructed, and used for the commercial transportation of 15 or more passengers, including the driver.",
+      "CARRIER_TYPE": "For-hire or Private.",
+      "COMMERCIAL_VEHICLE": "A motor vehicle, usually a truck or bus, which transports freight or passengers for compensation.",
+      "CVSA": "Commercial Vehicle Safety Alliance - an organization of states and provinces in the US, Canada, and Mexico dedicated to improving the uniformity of commercial motor vehicle safety enforcement.",
+      "DEFECT_GROUP": "The group to which a given violation is attributed: vehicle, driver, or hazardous materials.",
+      "DOUBLE": "A commercial motor vehicle consisting of a truck-tractor and two detachable trailers.",
+      "DRIVER_ONLY_INSPECTION": "Examines only driver-related aspects (Level III inspection).",
+      "DRIVER_VIOLATION": "A violation pertaining to the driver of the commercial vehicle.",
+      "FACILITY_TYPE": "The type of facility - fixed or roadside - where the inspection was conducted.",
+      "FMCSA": "Federal Motor Carrier Safety Administration - the administration within USDOT responsible for monitoring and developing safety standards for commercial motor vehicles.",
+      "FMCSR": "Federal Motor Carrier Safety Regulations - regulations governing safe operation of commercial vehicles in interstate commerce (Title 49 CFR, Subtitle B, Chapter III).",
+      "FIXED_FACILITY": "A state commercial vehicle scale facility or other permanent site used to conduct inspections.",
+      "FLEET_SIZE": "Total number of power units (truck-tractors and straight trucks) owned or operated by a motor carrier.",
+      "FOR_HIRE_CARRIER": "A commercial motor carrier whose primary business is transportation of property or passengers by motor vehicle for compensation.",
+      "FULL_INSPECTION": "Level I inspection - the most comprehensive, involving extensive vehicle checks including under-vehicle brake measurement and hours-of-service logs.",
+      "HAZARDOUS_MATERIALS": "Materials, substances, or wastes which may be toxic, harmful, or fatal if accidentally exposed to humans, animals, or the environment.",
+      "HMR": "Hazardous Materials Regulations - federal regulations governing commercial transportation of hazardous materials (Title 49 CFR, Subtitle B, Chapter I).",
+      "INTERSTATE_CARRIER": "A carrier who sometimes or always operates in interstate or foreign commerce, including carriers of hazardous materials.",
+      "INTRASTATE_CARRIER": "A carrier who operates solely in intrastate commerce and never transports hazardous materials.",
+      "MCMIS": "Motor Carrier Management Information System - the computerized system operated by FMCSA containing comprehensive safety data on interstate and intrastate commercial carriers.",
+      "MCSAP": "Motor Carrier Safety Assistance Program - a Federal program providing funds to US states and territories for commercial motor vehicle safety activities.",
+      "OOS_VIOLATIONS": "Out-of-Service violations requiring a commercial vehicle or driver be taken off the road until the violation is resolved.",
+      "POTENTIAL_RESOLUTION": "Crash record that does not match a regulated entity within FMCSA registration system.",
+      "PRIVATE_CARRIER": "A commercial motor carrier for which private highway transportation activities are incidental to its primary business.",
+      "SAFETYNET": "A state-based information system used to store and process commercial carrier safety information.",
+      "SINGLE": "A commercial motor vehicle consisting of a truck-tractor and a detachable trailer.",
+      "STRAIGHT_TRUCK": "A commercial motor vehicle in which the power unit and cargo box are non-detachable.",
+      "TRIPLE": "A commercial motor vehicle consisting of a truck-tractor and three detachable trailers.",
+      "TRUCK_TRACTOR": "A self-propelled motor vehicle designed and primarily used to draw other vehicles.",
+      "USDOT_NUMBER": "An identification number assigned to all interstate commercial carriers regulated by FMCSA.",
+      "VEHICLE_CONFIGURATION": "Arrangement of the individual units comprising a commercial vehicle.",
+      "WALK_AROUND_INSPECTION": "Level II inspection - follows most Full Inspection procedures except under-vehicle actions."
+    },
+    "common_vehicle_configurations": [
+      "Bus",
+      "Straight Truck",
+      "Tractor",
+      "Tractor-Trailer/Single",
+      "Tractor-Trailer/Double",
+      "Tractor-Trailer/Triple"
+    ],
+    "county_codes_note": "Full county code lookup table included below. Structure: state_abbreviation -> [{county_name, code}]",
+    "county_codes": "See the companion .md file for the complete county code reference table. The full list spans all 50 US states, DC, Puerto Rico, and US Virgin Islands with FIPS-based county codes."
+  }

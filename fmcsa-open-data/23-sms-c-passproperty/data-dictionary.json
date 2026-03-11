@@ -1,0 +1,113 @@
+{
+    "file_name": "SMS_C_PassProperty",
+    "description": "FMCSA SMS Intrastate Non-Hazmat data file. Calculated from monthly snapshots of input data files, contains summary results of all active Intrastate Non-Hazmat motor carriers of property and/or passengers. File is comma delimited with one carrier per row.",
+    "format": "CSV (comma delimited)",
+    "granularity": "One row per carrier",
+    "fields": [
+      {
+        "name": "DOT_NUMBER",
+        "type": "integer",
+        "description": "US DOT Number of the Motor Carrier (Intrastate Non-Hazmat only)"
+      },
+      {
+        "name": "INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of inspections for the measurement period (24 months)"
+      },
+      {
+        "name": "DRIVER_INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of Driver Inspections for the measurement period"
+      },
+      {
+        "name": "DRIVER_OOS_INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of Driver Inspections containing at least one Driver Out-of-Service violation"
+      },
+      {
+        "name": "VEHICLE_INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of Vehicle Inspections for the measurement period"
+      },
+      {
+        "name": "VEHICLE_OOS_INSP_TOTAL",
+        "type": "integer",
+        "description": "Total number of Vehicle Inspections containing at least one Vehicle Out-of-Service violation"
+      },
+      {
+        "name": "UNSAFE_DRIV_INSP_W_VIOL",
+        "type": "integer",
+        "description": "Number of inspections with at least one Unsafe Driving BASIC violation"
+      },
+      {
+        "name": "UNSAFE_DRIV_MEASURE",
+        "type": "float",
+        "description": "Unsafe Driving BASIC Roadside Performance Measure Value"
+      },
+      {
+        "name": "UNSAFE_DRIV_AC",
+        "type": "string",
+        "description": "Unsafe Driving BASIC Acute/Critical Indicator (Y = Acute/Critical from investigation within previous 12 months)"
+      },
+      {
+        "name": "HOS_DRIV_INSP_W_VIOL",
+        "type": "integer",
+        "description": "Number of inspections with at least one Hours-of-Service BASIC violation"
+      },
+      {
+        "name": "HOS_DRIV_MEASURE",
+        "type": "float",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Roadside Performance measure value"
+      },
+      {
+        "name": "HOS_DRIV_AC",
+        "type": "string",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Acute/Critical Indicator (Y = Acute/Critical from investigation within previous 12 months)"
+      },
+      {
+        "name": "DRIV_FIT_INSP_W_VIOL",
+        "type": "integer",
+        "description": "Number of inspections with at least one Driver Fitness BASIC violation"
+      },
+      {
+        "name": "DRIV_FIT_MEASURE",
+        "type": "float",
+        "description": "Driver Fitness BASIC Roadside Performance measure value"
+      },
+      {
+        "name": "DRIV_FIT_AC",
+        "type": "string",
+        "description": "Driver Fitness BASIC Serious Violation Indicator (Y = Acute/Critical from investigation within previous 12 months)"
+      },
+      {
+        "name": "CONTR_SUBST_INSP_W_VIOL",
+        "type": "integer",
+        "description": "Number of inspections with at least one Controlled Substances and Alcohol BASIC violation"
+      },
+      {
+        "name": "CONTR_SUBST_MEASURE",
+        "type": "float",
+        "description": "Controlled Substances and Alcohol BASIC Roadside Performance measure value"
+      },
+      {
+        "name": "CONTR_SUBST_AC",
+        "type": "string",
+        "description": "Controlled Substances and Alcohol BASIC Acute/Critical Indicator (Y = Acute/Critical from investigation within previous 12 months)"
+      },
+      {
+        "name": "VEH_MAINT_INSP_W_VIOL",
+        "type": "integer",
+        "description": "Number of inspections with at least one Vehicle Maintenance BASIC violation"
+      },
+      {
+        "name": "VEH_MAINT_MEASURE",
+        "type": "float",
+        "description": "Vehicle Maintenance BASIC Roadside Performance measure value"
+      },
+      {
+        "name": "VEH_MAINT_AC",
+        "type": "string",
+        "description": "Vehicle Maintenance BASIC Acute/Critical Indicator (Y = Acute/Critical from investigation within previous 12 months)"
+      }
+    ]
+  }

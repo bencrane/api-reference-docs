@@ -1,0 +1,190 @@
+{
+    "name": "SMS Interstate Passenger Carriers (AB Pass)",
+    "source": "FMCSA",
+    "revision": "Rev03",
+    "date": "2025-04-17",
+    "description": "Contains FMCSA SMS summary results for all active interstate and intrastate hazmat passenger (bus) motor carriers. Includes percentile and alert status not found in other downloads. File is comma delimited with one carrier per row.",
+    "measurement_period": "24 months",
+    "fields": [
+      {
+        "field_name": "DOT_NUMBER",
+        "description": "US DOT Number of the Motor Carrier (Interstate and Intrastate Hazmat only)",
+        "category": "Identifier"
+      },
+      {
+        "field_name": "INSP_TOTAL",
+        "description": "Total Number of Inspections for the measurement period (24 months)",
+        "category": "Inspection Totals"
+      },
+      {
+        "field_name": "DRIVER_INSP_TOTAL",
+        "description": "Total Number of Driver Inspections for the measurement period",
+        "category": "Inspection Totals"
+      },
+      {
+        "field_name": "DRIVER_OOS_INSP_TOTAL",
+        "description": "Total Number of Driver Inspections containing at least one Driver Out-of-Service Violation",
+        "category": "Inspection Totals"
+      },
+      {
+        "field_name": "VEHICLE_INSP_TOTAL",
+        "description": "Total Number of Vehicle Inspections for the measurement period",
+        "category": "Inspection Totals"
+      },
+      {
+        "field_name": "VEHICLE_OOS_INSP_TOTAL",
+        "description": "Total Number of Vehicle Inspections containing at least one Vehicle Out-of-Service violation",
+        "category": "Inspection Totals"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_INSP_W_VIOL",
+        "description": "Number of inspections with at least one Unsafe Driving BASIC violation",
+        "category": "Unsafe Driving BASIC"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_MEASURE",
+        "description": "Unsafe Driving BASIC Roadside Performance Measure Value",
+        "category": "Unsafe Driving BASIC"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_PCT",
+        "description": "Unsafe Driving BASIC Roadside Performance Percentile",
+        "category": "Unsafe Driving BASIC"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_RD_ALERT",
+        "description": "Unsafe Driving BASIC Roadside Performance Over Threshold Indicator (Y = Over Intervention Threshold)",
+        "category": "Unsafe Driving BASIC"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_AC",
+        "description": "Unsafe Driving BASIC Acute/Critical Indicator (Y = Active/Critical from investigation within previous 12 months)",
+        "category": "Unsafe Driving BASIC"
+      },
+      {
+        "field_name": "UNSAFE_DRIV_BASIC_ALERT",
+        "description": "Unsafe Driving Overall BASIC Indicator (Y = Roadside Performance Percentile over threshold and/or Serious Violation within previous 12 months)",
+        "category": "Unsafe Driving BASIC"
+      },
+      {
+        "field_name": "HOS_DRIV_INSP_W_VIOL",
+        "description": "Number of inspections with at least one Hours-of-Service BASIC violation",
+        "category": "Hours-of-Service (HOS) Compliance BASIC"
+      },
+      {
+        "field_name": "HOS_DRIV_MEASURE",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Roadside Performance measure value",
+        "category": "Hours-of-Service (HOS) Compliance BASIC"
+      },
+      {
+        "field_name": "HOS_DRIV_PCT",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Roadside Performance Percentile",
+        "category": "Hours-of-Service (HOS) Compliance BASIC"
+      },
+      {
+        "field_name": "HOS_DRIV_RD_ALERT",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Roadside Performance Over Threshold Indicator (Y = Over Intervention Threshold)",
+        "category": "Hours-of-Service (HOS) Compliance BASIC"
+      },
+      {
+        "field_name": "HOS_DRIV_AC",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Acute/Critical Indicator (Y = Active/Critical from investigation within previous 12 months)",
+        "category": "Hours-of-Service (HOS) Compliance BASIC"
+      },
+      {
+        "field_name": "HOS_DRIV_BASIC_ALERT",
+        "description": "Hours-of-Service (HOS) Compliance BASIC Indicator (Y = Roadside Performance Percentile over threshold and/or Serious Violation within previous 12 months)",
+        "category": "Hours-of-Service (HOS) Compliance BASIC"
+      },
+      {
+        "field_name": "DRIV_FIT_INSP_W_VIOL",
+        "description": "Number of inspections with at least one Driver Fitness BASIC violation",
+        "category": "Driver Fitness BASIC"
+      },
+      {
+        "field_name": "DRIV_FIT_MEASURE",
+        "description": "Driver Fitness BASIC Roadside Performance measure value",
+        "category": "Driver Fitness BASIC"
+      },
+      {
+        "field_name": "DRIV_FIT_PCT",
+        "description": "Driver Fitness BASIC Roadside Performance Percentile",
+        "category": "Driver Fitness BASIC"
+      },
+      {
+        "field_name": "DRIV_FIT_RD_ALERT",
+        "description": "Driver Fitness BASIC Roadside Performance Over Threshold Indicator (Y = Over Intervention Threshold)",
+        "category": "Driver Fitness BASIC"
+      },
+      {
+        "field_name": "DRIV_FIT_AC",
+        "description": "Driver Fitness BASIC Acute/Critical Indicator (Y = Active/Critical from investigation within previous 12 months)",
+        "category": "Driver Fitness BASIC"
+      },
+      {
+        "field_name": "DRIV_FIT_BASIC_ALERT",
+        "description": "Driver Fitness BASIC Indicator (Y = Roadside Performance Percentile over threshold and/or Serious Violation within previous 12 months)",
+        "category": "Driver Fitness BASIC"
+      },
+      {
+        "field_name": "CONTR_SUBST_INSP_W_VIOL",
+        "description": "Number of inspections with at least one Controlled Substances and Alcohol BASIC violation",
+        "category": "Controlled Substances and Alcohol BASIC"
+      },
+      {
+        "field_name": "CONTR_SUBST_MEASURE",
+        "description": "Controlled Substances and Alcohol BASIC Roadside Performance measure value",
+        "category": "Controlled Substances and Alcohol BASIC"
+      },
+      {
+        "field_name": "CONTR_SUBST_PCT",
+        "description": "Controlled Substances and Alcohol BASIC Roadside Performance Percentile",
+        "category": "Controlled Substances and Alcohol BASIC"
+      },
+      {
+        "field_name": "CONTR_SUBST_RD_ALERT",
+        "description": "Controlled Substances and Alcohol BASIC Roadside Performance Over Threshold Indicator (Y = Over Intervention Threshold)",
+        "category": "Controlled Substances and Alcohol BASIC"
+      },
+      {
+        "field_name": "CONTR_SUBST_AC",
+        "description": "Controlled Substances and Alcohol BASIC Acute/Critical Indicator (Y = Active/Critical from investigation within previous 12 months)",
+        "category": "Controlled Substances and Alcohol BASIC"
+      },
+      {
+        "field_name": "CONTR_SUBST_BASIC_ALERT",
+        "description": "Controlled Substances and Alcohol BASIC Indicator (Y = Roadside Performance Percentile over threshold and/or Serious Violation within previous 12 months)",
+        "category": "Controlled Substances and Alcohol BASIC"
+      },
+      {
+        "field_name": "VEH_MAINT_INSP_W_VIOL",
+        "description": "Number of inspections with at least one Vehicle Maintenance BASIC violation",
+        "category": "Vehicle Maintenance BASIC"
+      },
+      {
+        "field_name": "VEH_MAINT_MEASURE",
+        "description": "Vehicle Maintenance BASIC Roadside Performance measure value",
+        "category": "Vehicle Maintenance BASIC"
+      },
+      {
+        "field_name": "VEH_MAINT_PCT",
+        "description": "Vehicle Maintenance BASIC Roadside Performance Percentile",
+        "category": "Vehicle Maintenance BASIC"
+      },
+      {
+        "field_name": "VEH_MAINT_RD_ALERT",
+        "description": "Vehicle Maintenance BASIC Roadside Performance Over Threshold Indicator (Y = Over Intervention Threshold)",
+        "category": "Vehicle Maintenance BASIC"
+      },
+      {
+        "field_name": "VEH_MAINT_AC",
+        "description": "Vehicle Maintenance BASIC Acute/Critical Indicator (Y = Active/Critical from investigation within previous 12 months)",
+        "category": "Vehicle Maintenance BASIC"
+      },
+      {
+        "field_name": "VEH_MAINT_BASIC_ALERT",
+        "description": "Vehicle Maintenance BASIC Indicator (Y = Roadside Performance Percentile over threshold and/or Serious Violation within previous 12 months)",
+        "category": "Vehicle Maintenance BASIC"
+      }
+    ]
+  }

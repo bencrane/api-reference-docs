@@ -1,0 +1,59 @@
+{
+    "document": {
+      "title": "OOS Data Dictionary",
+      "subtitle": "Order Data",
+      "revision": 3,
+      "revision_date": "2025-01-24",
+      "page_count": 1
+    },
+    "file_info": {
+      "file_name": "out_of_service_orders.csv",
+      "file_format": "comma delimited",
+      "description": "The FMCSA New Entrant Safety Assurance Program out of service (OOS) data, consists of all entities that have received an OOS order from FMCSA. One OOS order per row.",
+      "source": "FMCSA"
+    },
+    "data_elements": [
+      {
+        "element_number": 1,
+        "field_name": "DOT_NUMBER",
+        "definition": "US DOT Number of the entity.",
+        "data_type": "Long Integer"
+      },
+      {
+        "element_number": 2,
+        "field_name": "LEGAL_NAME",
+        "definition": "Legal name of the entity assigned a USDOT number.",
+        "data_type": "Short Text"
+      },
+      {
+        "element_number": 3,
+        "field_name": "DBA_NAME",
+        "definition": "This may be a trade name under which the entity does business. Any name identifying the entity other than the legal name.",
+        "data_type": "Short Text"
+      },
+      {
+        "element_number": 4,
+        "field_name": "OOS_DATE",
+        "definition": "Date (YYYY-MM-DD) when the OOS order was issued to the entity.",
+        "data_type": "Short Text"
+      },
+      {
+        "element_number": 5,
+        "field_name": "OOS_REASON",
+        "definition": "Reason the OOS order was issued to the entity.",
+        "data_type": "Short Text"
+      },
+      {
+        "element_number": 6,
+        "field_name": "STATUS",
+        "definition": "Status of the USDOT number of the entity. (ACTIVE/INACTIVE) Note: An Active USDOT number does not indicate an entity has the authority to operate. In other words, an entity could be placed OOS and still have an active USDOT number.",
+        "data_type": "Short Text"
+      },
+      {
+        "element_number": 7,
+        "field_name": "OOS_RESCIND_DATE",
+        "definition": "Date (YYYY-MM-DD) when the OOS order was rescinded.",
+        "data_type": "Short Text"
+      }
+    ]
+  }

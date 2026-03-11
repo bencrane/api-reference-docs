@@ -1,0 +1,64 @@
+{
+    "dataset": {
+      "name": "Revocation",
+      "variant": "Daily Difference",
+      "source": "FMCSA — U.S. Department of Transportation",
+      "catalog_url": "https://data.transportation.gov",
+      "description": "Records of carrier/broker/freight forwarder operating authorities that have been revoked by FMCSA. The Daily Difference variant includes only records that have been updated or added since the previous dataset run.",
+      "update_frequency": "Daily by 9:30 AM US Eastern Time",
+      "scope": "Includes records updated or added since the previous run. May also include related records for the same entity for completeness.",
+      "naming_convention": {
+        "daily_difference": "[Dataset Name] — contains only recently changed/added records",
+        "full_baseline": "[Dataset Name] – All With History — contains all records including historical values"
+      }
+    },
+    "fields": [
+      {
+        "position": 1,
+        "name": "Docket Number",
+        "data_format": "Text 8",
+        "description": "Unique FMCSA number identifying for-hire motor carriers",
+        "examples": ["MC000000", "FF000000", "MX000000"]
+      },
+      {
+        "position": 2,
+        "name": "USDOT Number",
+        "data_format": "Text 8",
+        "description": "Official FMCSA registration number for all interstate motor carriers"
+      },
+      {
+        "position": 3,
+        "name": "Operating Authority Registration Type",
+        "data_format": "VARCHAR 128",
+        "description": "The type of operating authority that was revoked",
+        "valid_values": [
+          { "value": "common", "description": "Common carrier authority" },
+          { "value": "contract", "description": "Contract carrier authority" },
+          { "value": "broker", "description": "Broker authority" }
+        ]
+      },
+      {
+        "position": 4,
+        "name": "Serve Date",
+        "data_format": "Text 10",
+        "description": "Date the first revocation letter was sent to the entity"
+      },
+      {
+        "position": 5,
+        "name": "Revocation Type",
+        "data_format": "Text 60",
+        "description": "The type of revocation action taken against the entity"
+      },
+      {
+        "position": 6,
+        "name": "Effective Date",
+        "data_format": "Text 10",
+        "description": "Date the revocation becomes effective"
+      }
+    ],
+    "record_relationships": {
+      "primary_key": "Docket Number + USDOT Number + Operating Authority Registration Type",
+      "notes": "A single entity may have multiple revocation records if multiple authority types were revoked."
+    },
+    "disclaimer": "Data is provided as a public service by FMCSA for informational purposes only. It is a point-in-time snapshot and does not constitute legal advice or a legal contract."
+  }

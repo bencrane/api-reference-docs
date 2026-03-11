@@ -1,0 +1,95 @@
+{
+    "file_name": "SMS-Input_Violation_Readme_Data_Definition_Rev03_2025-04-17",
+    "revision": "Rev03",
+    "revision_date": "2025-04-17",
+    "description": "Publicly available violation data used for the current month's SMS (Safety Measurement System) calculations. Contains details on each violation used in SMS calculations, including an identifier linking the violation to the inspection in which it was cited, the violation code, violation description, and information related to the SMS methodology.",
+    "file_format": {
+      "delimiter": "comma",
+      "row_structure": "one violation per row"
+    },
+    "fields": [
+      {
+        "field_name": "Unique_ID",
+        "data_type": "identifier",
+        "description": "Unique identification number for each inspection"
+      },
+      {
+        "field_name": "Insp_Date",
+        "data_type": "date",
+        "description": "The date of the inspection"
+      },
+      {
+        "field_name": "DOT_Number",
+        "data_type": "identifier",
+        "description": "Unique number assigned to a company by the DOT"
+      },
+      {
+        "field_name": "Viol_Code",
+        "data_type": "string",
+        "description": "Code of the violation"
+      },
+      {
+        "field_name": "BASIC_Desc",
+        "data_type": "string",
+        "description": "Name of the BASIC (Behavior Analysis and Safety Improvement Category)"
+      },
+      {
+        "field_name": "OOS_Indicator",
+        "data_type": "boolean",
+        "description": "Indicates whether the violation is identified as an Out-Of-Service violation. 'TRUE' means the violation is OOS."
+      },
+      {
+        "field_name": "OOS_Weight",
+        "data_type": "numeric",
+        "description": "The weight assigned to a violation if it is identified as an Out-Of-Service violation"
+      },
+      {
+        "field_name": "Severity_Weight",
+        "data_type": "numeric",
+        "description": "The severity weight assigned to a violation"
+      },
+      {
+        "field_name": "Time_Weight",
+        "data_type": "numeric",
+        "description": "The time weight assigned to a violation"
+      },
+      {
+        "field_name": "Total_Severity_Wght",
+        "data_type": "numeric",
+        "description": "Total severity weight of a violation"
+      },
+      {
+        "field_name": "Section_Desc",
+        "data_type": "string",
+        "description": "The description of a violation"
+      },
+      {
+        "field_name": "Group_Desc",
+        "data_type": "string",
+        "description": "The description of the violation group"
+      },
+      {
+        "field_name": "Viol_Unit",
+        "data_type": "string",
+        "description": "The unit a violation is cited against",
+        "valid_values": [
+          {
+            "value": "1",
+            "meaning": "Vehicle main unit"
+          },
+          {
+            "value": "2",
+            "meaning": "Vehicle secondary unit"
+          },
+          {
+            "value": "D",
+            "meaning": "Driver"
+          },
+          {
+            "value": "C",
+            "meaning": "Co-driver"
+          }
+        ]
+      }
+    ]
+  }
