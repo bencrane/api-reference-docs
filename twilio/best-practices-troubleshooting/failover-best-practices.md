@@ -1,2 +1,0 @@
-# Failover Best Practices
-

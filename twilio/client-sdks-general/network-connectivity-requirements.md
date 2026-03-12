@@ -1,2 +1,0 @@
-# Network Connectivity Requirements
-

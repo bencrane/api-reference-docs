@@ -1,2 +1,0 @@
-# Encrypt Your Voice Recordings
-

@@ -1,2 +1,0 @@
-# SIP IP Address Resource
-

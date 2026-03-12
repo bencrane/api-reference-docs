@@ -1,2 +1,0 @@
-# IPRecord Resource
-

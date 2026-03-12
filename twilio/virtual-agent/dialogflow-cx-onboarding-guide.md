@@ -1,2 +1,0 @@
-# Dialogflow CX Onboarding Guide
-

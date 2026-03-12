@@ -1,2 +1,0 @@
-# Programmable Voice SIP
-

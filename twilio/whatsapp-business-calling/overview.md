@@ -1,2 +1,0 @@
-# WhatsApp Business Calling
-

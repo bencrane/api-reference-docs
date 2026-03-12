@@ -1,361 +1,409 @@
-Retrieve Call Logs with Python
+# Getting Started with the Voice iOS SDK
+
+Getting Started with the Voice iOS SDK
 
 
 
 
-In this guide we'll cover how to retrieve information about in progress and completed calls from your Twilio account.
+Want to add VoIP calling to your iOS application?
 
-We'll use Twilio's Python module in these examples to interact with the Twilio REST APIs Calls endpoint.
+Start by downloading the Voice Quickstart for Swift
 
-First, we'll need to get our Twilio account credentials.
+ application source code. Prefer working with Objective-C? Follow the quickstart on the Voice Quickstart for Objective-C
 
-Retrieve your Twilio account credentials
+ source code instead.
+
+Next, follow the step-by-step instructions below (for Swift) to get you up and running quickly using Twilio's Programmable Voice SDK.
+
+Twilio Voice Quickstart for iOS
 
 
 
 
 
-First, you'll need to get your Twilio account credentials. They consist of your AccountSid and your Auth Token. They can be found on the home page of the console
+Please see our iOS 13 Migration Guide
+
+ for the latest information on iOS 13.
+Get started with Voice on iOS
+
+
+
+
+
+Quickstart - Run the swift quickstart app
+Examples - Sample applications
+References
+
+
+
+
+
+Access Tokens
+
+ - Using access tokens
+Managing Audio Interruptions
+
+ - Managing audio interruptions
+Managing Push Credentials
+
+ - Managing push credentials
+Managing Regional Push Credentials using Conversations Credential Resource API
+
+ - Create or update push credentials for regional usage
+Twilio Voice iOS SDK docs
+
+ - SDK reference documentation
+Issues and Support - Filing issues and general support
+Voice iOS SDK Versions
+
+
+
+
+
+Migration Guide from 5.x to 6.x
+
+ - Migrating from 5.x to 6.x
+Migration Guide from 4.x to 5.x
+
+ - Migrating from 4.x to 5.x
+4.0 New Features
+
+ - New features in 4.0
+Migration Guide from 3.x to 4.x
+
+ - Migrating from 3.x to 4.x
+3.0 New Features
+
+ - New features in 3.0
+Migration Guide from 2.x to 3.x
+
+ - Migrating from 2.x to 3.x
+Quickstart
+
+
+
+
+
+To get started with the quickstart application follow these steps. Steps 1-5 will enable the application to make a call. The remaining steps 6-9 will enable the application to receive incoming calls in the form of push notifications using Apple's VoIP Service.
+
+1. Install the TwilioVoice framework
+
+
+
+
+
+Swift Package Manager
+
+Twilio Voice is now distributed via Swift Package Manager. To consume Twilio Voice using Swift Package Manager, add the https://github.com/twilio/twilio-voice-ios repository as a Swift Pacakge.
+
+2. Use Twilio CLI to deploy access token and TwiML application to Twilio Serverless
+
+
+
+
+
+You must have the following installed:
+
+Node.js v10+
+
+NPM v6+ (comes installed with newer Node versions)
+Run npm install to install all dependencies from NPM.
+
+Install twilio-cli with:
+
+
+
+Copy code block
+npm install -g twilio-cli
+Login to the Twilio CLI. You will be prompted for your Account SID and Auth Token, both of which you can find on the dashboard of your Twilio console
 
 .
 
-Twilio Console Dashboard showing account SID and auth token.
+
+
+Copy code block
+twilio login
+Once successfully logged in, an API Key, a secret get created and stored in your keychain as the twilio-cli password in SKxxxx\|secret format. Please make a note of these values to use them in the Server/.env file.
+
+Twilio CLI application password settings showing fields for name, kind, account, and where, with an option to show password.
 
 Expand image
-With our account credentials, we can then use the Twilio Python module to retrieve our call logs.
+This app requires the Serverless plug-in
 
-Retrieving call logs
+. Install the CLI plugin with:
 
-
-
-
-
-You can use Twilio's REST API to retrieve logs about the phone calls to and from your Twilio account. If you just want to check a couple logs, however, you should try looking at the voice logs in your Twilio console first.
-
-To list all phone calls for your Twilio account, just call client.calls.list().
-
-
-(information)
-Info
-The list method automatically handles paging for you, eagerly fetching all records and paging under the hood. For more information, visit the Python SDK page.
-List All Calls Example
-
-
-
-
-
-Report code block
 
 
 Copy code block
-# Download the helper library from https://www.twilio.com/docs/python/install
-import os
-from twilio.rest import Client
-
-# Find your Account SID and Auth Token at twilio.com/console
-# and set the environment variables. See http://twil.io/secure
-account_sid = os.environ["TWILIO_ACCOUNT_SID"]
-auth_token = os.environ["TWILIO_AUTH_TOKEN"]
-client = Client(account_sid, auth_token)
-
-calls = client.calls.list(limit=20)
-
-for record in calls:
-    print(record.sid)
-Response
+twilio plugins:install @twilio-labs/plugin-serverless
+Before deploying, create a Server/.env by copying from Server/.env.example
 
 
 
-Copy response
-{
-  "calls": [
-    {
-      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "answered_by": "machine_start",
-      "api_version": "2010-04-01",
-      "caller_name": "callerid1",
-      "date_created": "Fri, 18 Oct 2019 17:00:00 +0000",
-      "date_updated": "Fri, 18 Oct 2019 17:01:00 +0000",
-      "direction": "outbound-api",
-      "duration": "4",
-      "end_time": "Fri, 18 Oct 2019 17:03:00 +0000",
-      "forwarded_from": "calledvia1",
-      "from": "+13051416799",
-      "from_formatted": "(305) 141-6799",
-      "group_sid": "GPdeadbeefdeadbeefdeadbeefdeadbeef",
-      "parent_call_sid": "CAdeadbeefdeadbeefdeadbeefdeadbeef",
-      "phone_number_sid": "PNdeadbeefdeadbeefdeadbeefdeadbeef",
-      "price": "-0.200",
-      "price_unit": "USD",
-      "sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "start_time": "Fri, 18 Oct 2019 17:02:00 +0000",
-      "status": "completed",
-      "subresource_uris": {
-        "notifications": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json",
-        "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json",
-        "payments": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payments.json",
-        "events": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Events.json",
-        "siprec": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Siprec.json",
-        "streams": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams.json",
-        "transcriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Transcriptions.json",
-        "user_defined_message_subscriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UserDefinedMessageSubscriptions.json",
-        "user_defined_messages": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UserDefinedMessages.json"
-      },
-      "to": "+13051913581",
-      "to_formatted": "(305) 191-3581",
-      "trunk_sid": "TKdeadbeefdeadbeefdeadbeefdeadbeef",
-      "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
-      "queue_time": "1000"
-    },
-    {
-      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "answered_by": "human",
-      "api_version": "2010-04-01",
-      "caller_name": "callerid2",
-      "date_created": "Fri, 18 Oct 2019 16:00:00 +0000",
-      "date_updated": "Fri, 18 Oct 2019 16:01:00 +0000",
-      "direction": "inbound",
-      "duration": "3",
-      "end_time": "Fri, 18 Oct 2019 16:03:00 +0000",
-      "forwarded_from": "calledvia2",
-      "from": "+13051416798",
-      "from_formatted": "(305) 141-6798",
-      "group_sid": "GPdeadbeefdeadbeefdeadbeefdeadbeee",
-      "parent_call_sid": "CAdeadbeefdeadbeefdeadbeefdeadbeee",
-      "phone_number_sid": "PNdeadbeefdeadbeefdeadbeefdeadbeee",
-      "price": "-0.100",
-      "price_unit": "JPY",
-      "sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0",
-      "start_time": "Fri, 18 Oct 2019 16:02:00 +0000",
-      "status": "completed",
-      "subresource_uris": {
-        "notifications": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Notifications.json",
-        "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Recordings.json",
-        "payments": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Payments.json",
-        "events": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Events.json",
-        "siprec": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Siprec.json",
-        "streams": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Streams.json",
-        "transcriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Transcriptions.json",
-        "user_defined_message_subscriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/UserDefinedMessageSubscriptions.json",
-        "user_defined_messages": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/UserDefinedMessages.json"
-      },
-      "to": "+13051913580",
-      "to_formatted": "(305) 191-3580",
-      "trunk_sid": "TKdeadbeefdeadbeefdeadbeefdeadbeef",
-      "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0.json",
-      "queue_time": "1000"
+Copy code block
+cp Server/.env.example Server/.env
+Update Server/.env with your Account SID, auth token, API Key and secret
+
+
+
+Copy code block
+ACCOUNT_SID=ACxxxx
+AUTH_TOKEN=xxxxxx
+API_KEY_SID=SKxxxx
+API_SECRET=xxxxxx
+APP_SID=APxxxx (available in step 3)
+PUSH_CREDENTIAL_SID=CRxxxx (available in step 6)
+The Server folder contains a basic server component which can be used to vend access tokens or generate TwiML response for making call to a number or another client. The app is deployed to Twilio Serverless with the serverless plug-in:
+
+
+
+Copy code block
+cd Server
+twilio serverless:deploy
+The server component that's baked into this quickstart is in Node.js. If you'd like to roll your own or better understand the Twilio Voice server side implementations, please see the list of starter projects in the following supported languages below:
+
+voice-quickstart-server-java
+
+voice-quickstart-server-node
+
+voice-quickstart-server-php
+
+voice-quickstart-server-python
+
+Follow the instructions in the project's README to get the application server up and running locally and accessible via the public Internet.
+
+3. Create a TwiML application for the Access Token
+
+
+
+
+
+Next, we need to create a TwiML application. A TwiML application identifies a public URL for retrieving TwiML call control instructions. When your iOS app makes a call to the Twilio cloud, Twilio will make a webhook request to this URL, your application server will respond with generated TwiML, and Twilio will execute the instructions you've provided.
+
+Use Twilio CLI to create a TwiML app with the make-call endpoint you have just deployed (Note: replace the value of --voice-url parameter with your make-call endpoint you just deployed to Twilio Serverless)
+
+
+
+Copy code block
+$ twilio api:core:applications:create \
+    --friendly-name=my-twiml-app \
+    --voice-method=POST \
+    --voice-url="https://my-quickstart-dev.twil.io/make-call"
+You should receive an Application SID that looks like this
+
+
+
+Copy code block
+APxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+4. Generate an access token for the quickstart
+
+
+
+
+
+Install the token plug-in
+
+
+
+Copy code block
+twilio plugins:install @twilio-labs/plugin-token
+Use the TwiML App SID you just created to generate an access token
+
+
+
+Copy code block
+twilio token:voice --identity=alice --voice-app-sid=APxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Copy the access token string. Your iOS app will use this token to connect to Twilio.
+
+5. Run the Swift Quickstart app
+
+
+
+
+
+Now let's go back to the VoiceQuickstart.xcworkspace. Update the placeholder of accessToken with access token string you just copied
+
+
+
+Copy code block
+import UIKit
+import AVFoundation
+import PushKit
+import CallKit
+import TwilioVoice
+
+let accessToken = "PASTE_YOUR_ACCESS_TOKEN_HERE"
+let twimlParamTo = "to"
+
+let kCachedDeviceToken = "CachedDeviceToken"
+
+class ViewController: UIViewController {
+    ...
+}
+Build and run the app. Leave the text field empty and press the call button to start a call. You will hear the congratulatory message. Support for dialing another client or number is described in steps 8 and 9. Tap "Hang Up" to disconnect.
+
+``
+
+Twilio logo above a phone interface with options to dial, hang up, mute, or enable speaker.
+
+Expand image
+6. Create a Push Credential with your VoIP Service Certificate
+
+
+
+
+
+The Programmable Voice SDK uses Apple's VoIP Services to let your application know when it is receiving an incoming call. If you want your users to receive incoming calls, you'll need to enable VoIP Services in your application and generate a VoIP Services Certificate.
+
+Go to Apple Developer portal
+
+ and generate a VoIP Service Certificate.
+
+Once you have generated the VoIP Services Certificate, you will need to provide the certificate and key to Twilio so that Twilio can send push notifications to your app on your behalf.
+
+Export your VoIP Service Certificate as a .p12 file from Keychain Access and extract the certificate and private key from the .p12 file using the openssl command.
+
+
+
+Copy code block
+openssl pkcs12 -in PATH_TO_YOUR_P12 -nokeys -out cert.pem -nodes
+openssl x509 -in cert.pem -out cert.pem
+openssl pkcs12 -in PATH_TO_YOUR_P12 -nocerts -out key.pem -nodes
+openssl rsa -in key.pem -out key.pem
+Use Twilio CLI to create a Push Credential using the cert and key.
+
+
+
+Copy code block
+$ twilio api:chat:v2:credentials:create \
+    --type=apn \
+    --sandbox \
+    --friendly-name="voice-push-credential (sandbox)" \
+    --certificate="$(cat PATH_TO_CERT_PEM)" \
+    --private-key="$(cat PATH_TO_KEY_PEM)"
+This will return a Push Credential SID that looks like this
+
+
+
+Copy code block
+CRxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+The --sandbox option tells Twilio to send the notification requests to the sandbox endpoint of Apple's APNS service. Once the app is ready for distribution or store submission, create a separate Push Credential with a new VoIP Service certificate without the --sandbox option.
+
+Note: we strongly recommend using different Twilio accounts (or subaccounts) to separate VoIP push notification requests for development and production apps.
+
+Now let's generate another access token and add the Push Credential to the Voice Grant.
+
+
+
+Copy code block
+$ twilio token:voice \
+    --identity=alice \
+    --voice-app-sid=APxxxx \
+    --push-credential-sid=CRxxxxs
+7. Receive an incoming call
+
+
+
+
+
+You are now ready to receive incoming calls. Update your app with the access token generated from step 6 and rebuild your app. The TwilioVoiceSDK.register() method will register your mobile client with the PushKit device token as well as the access token. Once registered, hit your application server's /place-call endpoint: https://my-quickstart-dev.twil.io/place-call?to=alice. This will trigger a Twilio REST API request that will make an inbound call to the identity registered on your mobile app. Once your app accepts the call, you should hear a congratulatory message.
+
+Register your mobile client with the PushKit device token:
+
+
+
+Copy code block
+    TwilioVoiceSDK.register(accessToken: accessToken, deviceToken: cachedDeviceToken) { error in
+        if let error = error {
+            NSLog("An error occurred while registering: \(error.localizedDescription)")
+        } else {
+            NSLog("Successfully registered for VoIP push notifications.")
+        }
     }
-  ],
-  "end": 1,
-  "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?Status=completed&To=%2B123456789&From=%2B987654321&StartTime=2008-01-02&ParentCallSid=CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&EndTime=2009-01-02&PageSize=2&Page=0",
-  "next_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?Status=completed&To=%2B123456789&From=%2B987654321&StartTime=2008-01-02&ParentCallSid=CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&EndTime=2009-01-02&PageSize=2&Page=1&PageToken=PACAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0",
-  "page": 0,
-  "page_size": 2,
-  "previous_page_uri": null,
-  "start": 0,
-  "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?Status=completed&To=%2B123456789&From=%2B987654321&StartTime=2008-01-02&ParentCallSid=CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&EndTime=2009-01-02&PageSize=2&Page=0"
-}
-You can also filter the results. This example only returns phone calls to the phone number "+15558675309" which had a call status of "busy" but you can filter on other call properties as well.
+Note: Your application must have voip enabled in the UIBackgroundModes of your app's plist in order to be able to receive push notifications.
 
-Retrieve Busy Calls To Specific Number Example
+``
+
+Incoming call screen with options to decline or accept, caller labeled as bob through Quickstart Audio.
+
+Expand image
+8. Make client to client call
 
 
 
 
 
-Report code block
+To make client to client calls, you need the application running on two devices. To run the application on an additional device, make sure you use a different identity in your access token when registering the new device.
 
+Use the text field to specify the identity of the call receiver, then tap the "Call" button to make a call. The TwiML parameters used in TwilioVoice.connect() method should match the name used in the server.
 
-Copy code block
-# Download the helper library from https://www.twilio.com/docs/python/install
-import os
-from twilio.rest import Client
+``
 
-# Find your Account SID and Auth Token at twilio.com/console
-# and set the environment variables. See http://twil.io/secure
-account_sid = os.environ["TWILIO_ACCOUNT_SID"]
-auth_token = os.environ["TWILIO_AUTH_TOKEN"]
-client = Client(account_sid, auth_token)
+Twilio app interface with a red logo, a text input for a client's name, a Hang Up button, and Mute and Speaker toggle switches.
 
-calls = client.calls.list(to="+15558675310", status="busy", limit=20)
-
-for record in calls:
-    print(record.sid)
-Response
-
-
-
-Copy response
-{
-  "calls": [
-    {
-      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "answered_by": "machine_start",
-      "api_version": "2010-04-01",
-      "caller_name": "callerid1",
-      "date_created": "Fri, 18 Oct 2019 17:00:00 +0000",
-      "date_updated": "Fri, 18 Oct 2019 17:01:00 +0000",
-      "direction": "outbound-api",
-      "duration": "4",
-      "end_time": "Fri, 18 Oct 2019 17:03:00 +0000",
-      "forwarded_from": "calledvia1",
-      "from": "+13051416799",
-      "from_formatted": "(305) 141-6799",
-      "group_sid": "GPdeadbeefdeadbeefdeadbeefdeadbeef",
-      "parent_call_sid": "CAdeadbeefdeadbeefdeadbeefdeadbeef",
-      "phone_number_sid": "PNdeadbeefdeadbeefdeadbeefdeadbeef",
-      "price": "-0.200",
-      "price_unit": "USD",
-      "sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "start_time": "Fri, 18 Oct 2019 17:02:00 +0000",
-      "status": "completed",
-      "subresource_uris": {
-        "notifications": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json",
-        "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json",
-        "payments": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payments.json",
-        "events": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Events.json",
-        "siprec": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Siprec.json",
-        "streams": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams.json",
-        "transcriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Transcriptions.json",
-        "user_defined_message_subscriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UserDefinedMessageSubscriptions.json",
-        "user_defined_messages": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UserDefinedMessages.json"
-      },
-      "to": "+13051913581",
-      "to_formatted": "(305) 191-3581",
-      "trunk_sid": "TKdeadbeefdeadbeefdeadbeefdeadbeef",
-      "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
-      "queue_time": "1000"
-    },
-    {
-      "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "answered_by": "human",
-      "api_version": "2010-04-01",
-      "caller_name": "callerid2",
-      "date_created": "Fri, 18 Oct 2019 16:00:00 +0000",
-      "date_updated": "Fri, 18 Oct 2019 16:01:00 +0000",
-      "direction": "inbound",
-      "duration": "3",
-      "end_time": "Fri, 18 Oct 2019 16:03:00 +0000",
-      "forwarded_from": "calledvia2",
-      "from": "+13051416798",
-      "from_formatted": "(305) 141-6798",
-      "group_sid": "GPdeadbeefdeadbeefdeadbeefdeadbeee",
-      "parent_call_sid": "CAdeadbeefdeadbeefdeadbeefdeadbeee",
-      "phone_number_sid": "PNdeadbeefdeadbeefdeadbeefdeadbeee",
-      "price": "-0.100",
-      "price_unit": "JPY",
-      "sid": "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0",
-      "start_time": "Fri, 18 Oct 2019 16:02:00 +0000",
-      "status": "completed",
-      "subresource_uris": {
-        "notifications": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Notifications.json",
-        "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Recordings.json",
-        "payments": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Payments.json",
-        "events": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Events.json",
-        "siprec": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Siprec.json",
-        "streams": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Streams.json",
-        "transcriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/Transcriptions.json",
-        "user_defined_message_subscriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/UserDefinedMessageSubscriptions.json",
-        "user_defined_messages": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0/UserDefinedMessages.json"
-      },
-      "to": "+13051913580",
-      "to_formatted": "(305) 191-3580",
-      "trunk_sid": "TKdeadbeefdeadbeefdeadbeefdeadbeef",
-      "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0.json",
-      "queue_time": "1000"
-    }
-  ],
-  "end": 1,
-  "first_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?Status=completed&To=%2B123456789&From=%2B987654321&StartTime=2008-01-02&ParentCallSid=CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&EndTime=2009-01-02&PageSize=2&Page=0",
-  "next_page_uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?Status=completed&To=%2B123456789&From=%2B987654321&StartTime=2008-01-02&ParentCallSid=CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&EndTime=2009-01-02&PageSize=2&Page=1&PageToken=PACAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0",
-  "page": 0,
-  "page_size": 2,
-  "previous_page_uri": null,
-  "start": 0,
-  "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls.json?Status=completed&To=%2B123456789&From=%2B987654321&StartTime=2008-01-02&ParentCallSid=CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&EndTime=2009-01-02&PageSize=2&Page=0"
-}
-Finally, if you just want to retrieve information about a specific call you can get that CallSid directly.
-
-Retrieve Call By Id Example
+Expand image
+9. Make client to PSTN call
 
 
 
 
 
-Report code block
+To make client to number calls, first get a verified Twilio number to your account via https://www.twilio.com/console/phone-numbers/verified
 
+. Update your server code and replace the callerNumber variable with the verified number. Restart the server so it uses the new value.
 
-Copy code block
-# Download the helper library from https://www.twilio.com/docs/python/install
-import os
-from twilio.rest import Client
+``
 
-# Find your Account SID and Auth Token at twilio.com/console
-# and set the environment variables. See http://twil.io/secure
-account_sid = os.environ["TWILIO_ACCOUNT_SID"]
-auth_token = os.environ["TWILIO_AUTH_TOKEN"]
-client = Client(account_sid, auth_token)
+Twilio logo with call interface displaying number 14151234567, options to hang up, mute, and speaker.
 
-call = client.calls("CA42ed11f93dc08b952027ffbc406d0868").fetch()
-
-print(call.to)
-Response
-
-
-
-Copy response
-{
-  "account_sid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-  "answered_by": "machine_start",
-  "api_version": "2010-04-01",
-  "caller_name": "callerid",
-  "date_created": "Fri, 18 Oct 2019 17:00:00 +0000",
-  "date_updated": "Fri, 18 Oct 2019 17:01:00 +0000",
-  "direction": "outbound-api",
-  "duration": "4",
-  "end_time": "Fri, 18 Oct 2019 17:03:00 +0000",
-  "forwarded_from": "calledvia",
-  "from": "+13051416799",
-  "from_formatted": "(305) 141-6799",
-  "group_sid": "GPdeadbeefdeadbeefdeadbeefdeadbeef",
-  "parent_call_sid": "CAdeadbeefdeadbeefdeadbeefdeadbeef",
-  "phone_number_sid": "PNdeadbeefdeadbeefdeadbeefdeadbeef",
-  "price": "-0.200",
-  "price_unit": "USD",
-  "sid": "CA42ed11f93dc08b952027ffbc406d0868",
-  "start_time": "Fri, 18 Oct 2019 17:02:00 +0000",
-  "status": "completed",
-  "subresource_uris": {
-    "notifications": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Notifications.json",
-    "recordings": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings.json",
-    "payments": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payments.json",
-    "events": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Events.json",
-    "siprec": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Siprec.json",
-    "streams": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams.json",
-    "transcriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Transcriptions.json",
-    "user_defined_message_subscriptions": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UserDefinedMessageSubscriptions.json",
-    "user_defined_messages": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/UserDefinedMessages.json"
-  },
-  "to": "+13051913581",
-  "to_formatted": "(305) 191-3581",
-  "trunk_sid": "TKdeadbeefdeadbeefdeadbeefdeadbeef",
-  "uri": "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
-  "queue_time": "1000"
-}
-Where to next?
+Expand image
+Examples
 
 
 
 
 
-We learned how to retrieve Twilio call logs using Python. Check out our tutorials to see full implementations of Twilio Voice in Python with Flask and Django.
+You will also find additional examples that provide more advanced use cases of the Voice SDK:
 
-Need some help?
-We all do sometimes; code is hard. Get help now from our support team
+AudioDevice
 
-, or lean on the wisdom of the crowd by browsing the Twilio tag
+ - Provide your own means to playback and record audio using a custom TVOAudioDevice and CoreAudio
 
- on Stack Overflow.
-Terms of service
-Privacy Policy
-Copyright © 2026 Twilio Inc.
+.
+Making calls from history
+
+ - Use the INStartAudioCallIntent in the user activity delegate method to start a call from the history.
+Twilio server-side SDKs
+
+
+
+
+
+To learn more about how to use TwiML and the Programmable Voice Calls API, check out our TwiML quickstarts:
+
+TwiML Quickstart for Python
+TwiML Quickstart for Ruby
+TwiML Quickstart for PHP
+TwiML Quickstart for Java
+TwiML Quickstart for C#
+Issues and Support
+
+
+
+
+
+Please file any issues you find here on Github: Voice Swift Quickstart
+
+. Please ensure that you are not sharing any Personally Identifiable Information(PII) or sensitive account information (API keys, credentials, etc.) when reporting an issue.
+
+For general inquiries related to the Voice SDK you can file a support ticket
+
+.
+
+License
+
+
+
+
+
+MIT

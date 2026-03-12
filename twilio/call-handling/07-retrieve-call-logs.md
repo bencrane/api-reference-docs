@@ -1,2 +1,0 @@
-# Retrieve Call Logs
-

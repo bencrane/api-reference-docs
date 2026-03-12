@@ -1,2 +1,0 @@
-# Connection Policy Target Resource
-

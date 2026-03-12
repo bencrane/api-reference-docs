@@ -1,2 +1,0 @@
-# TwiML Voice SIP
-

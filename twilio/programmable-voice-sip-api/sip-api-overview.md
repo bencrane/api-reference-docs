@@ -1,2 +1,0 @@
-# SIP API Overview
-

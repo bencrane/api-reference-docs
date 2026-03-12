@@ -1,2 +1,0 @@
-# Voice Android SDK FAQ
-

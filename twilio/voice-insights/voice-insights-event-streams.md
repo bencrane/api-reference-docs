@@ -1,2 +1,0 @@
-# Voice Insights Event Streams
-

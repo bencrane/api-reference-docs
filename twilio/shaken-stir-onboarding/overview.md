@@ -1,2 +1,0 @@
-# SHAKEN/STIR Onboarding Overview
-
