@@ -30,14 +30,19 @@ pod 'TwilioVoice-static', '~> 6.13'
 | File | Description |
 |------|-------------|
 | `00-index.md` | This overview file |
-| `01-twiliovoicesdk-class.md` | TwilioVoiceSDK - main entry point |
-| `02-tvocall-class.md` | TVOCall - call management |
-| `03-tvocallinvite-class.md` | TVOCallInvite - incoming calls |
-| `04-options-classes.md` | TVOConnectOptions, TVOAcceptOptions, TVOIceOptions |
-| `05-audio-classes.md` | TVODefaultAudioDevice, TVOAudioDevice protocol |
-| `06-stats-classes.md` | TVOStatsReport, TVOPreflightTest, TVOPreflightReport |
-| `07-protocols.md` | TVOCallDelegate, TVONotificationDelegate |
-| `08-enums-constants.md` | TVOCallState, TVOLogLevel, etc. |
+| `01-twiliovoicesdk-class.md` | TwilioVoiceSDK - main entry point class reference |
+| `02-readme.md` | Main README from GitHub quickstart repo |
+| `03-access-tokens.md` | Access token generation and usage |
+| `04-call-from-history.md` | Making calls from call history |
+| `05-managing-audio-interruptions.md` | Handling audio interruptions on iOS |
+| `06-managing-push-credentials.md` | Push notification credential management |
+| `07-migration-guide-2.x-3.x.md` | Migration guide from v2.x to v3.x |
+| `08-migration-guide-3.x-4.x.md` | Migration guide from v3.x to v4.x |
+| `09-migration-guide-5.x-6.x.md` | Migration guide from v5.x to v6.x |
+| `10-new-features-3.0.md` | New features in SDK v3.0 |
+| `11-new-features-4.0.md` | New features in SDK v4.0 |
+| `12-push-credentials-via-notify-api.md` | Push credentials via Twilio Notify API |
+| `13-verified-caller-number.md` | SHAKEN/STIR verified caller number |
 
 ---
 
