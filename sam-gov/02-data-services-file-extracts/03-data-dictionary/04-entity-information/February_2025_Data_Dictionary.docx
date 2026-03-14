@@ -1,0 +1,1688 @@
+# SAM Functional Data Dictionary
+
+**February 2025**
+
+---
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+   1. [Change Log](#change-log)
+   2. [Identification](#identification)
+   3. [System Overview](#system-overview)
+   4. [Document Organization](#document-organization)
+2. [SAM Field Definitions](#sam-field-definitions)
+3. [Appendix A – Acronym List](#appendix-a--acronym-list)
+4. [Appendix B – Country Code List](#appendix-b--country-code-list)
+
+---
+
+## Introduction
+
+### Change Log
+
+| Date | Version | Description |
+|------|---------|-------------|
+| 11/25/2022 | V1.0 | Updated SAM Functional Data Dictionary – Removed DUNS/D&B References. |
+| 01/17/2023 | V1.1 | Uploaded a revised Data Dictionary with data fields arranged in Alphabetical order. |
+| 01/30/2023 | V1.2 | Uploaded a revised Data Dictionary with data fields added for Proceedings and Responsibility/Qualification. |
+| 02/28/2023 | V1.3 | Removed MPIN occurrences from the Data Dictionary and the "Overview" > "Sensitive (CUI) Data" section. Indicated that MPIN has been deprecated in the "Response Schema" > "coreData" > "entityInformation Sub Section". |
+| 06/27/2023 | V1.4 | Uploaded a revised Data Dictionary with updated Socio Economic Self Selections. |
+| 08/22/2023 | V1.5 | Uploaded a revised Data Dictionary with updated Business Types. |
+| 09/29/2023 | V1.6 | Updated "Additional Help References" documentation to link to SAM.gov Data Services page. |
+| 10/05/2023 | V1.7 | Uploaded a revised Data Dictionary with two new SBA Certifications and updated Business Types. |
+| 11/15/2023 | V1.8 | Uploaded a revised Data Dictionary with a new Exclusion related field. |
+| 10/01/2023 | V1.9 | Updated SAM Functional Data Dictionary to reflect regulatory changes and text updates. |
+| 10/10/2024 | V2.0 | Updated SAM Functional Data Dictionary to reflect regulatory changes, updates and alignment to the Master Extract Mapping Document. |
+| 02/13/2025 | V2.1 | Updated SAM Functional Data Dictionary and Master Extract Mapping Document to reflect changes in Account Type and Length. Items highlighted in Green reflect the latest change/update. |
+
+### Identification
+
+This document contains a high-level view of the System for Award Management (SAM) Data Dictionary and directs the reader to various other documents for a more detailed picture of the data elements found within SAM.
+
+### System Overview
+
+The System for Award Management (SAM) integrated the Contract Opportunities, Assistance Listings, Entity Information, Contract Data, Wage Determination, Entity Reporting, Responsibilities and Qualifications, and Federal Hierarchy. Combining these legacy systems streamlined business processes, eliminated data redundancies, and improved regulatory compliance.
+
+SAM.gov unifies the government-wide award management systems. If you have the proper roles in SAM, you can register to do business with the U.S. government, update or renew your entity registration, check the status of an entity registration, manage exclusion records, manage user roles, search for entity registrations and exclusion records, and use entity registration and exclusion data.
+
+This data dictionary addresses the data elements associated with the business processes required to manage an entity's Core Data, Assertions, Representations and Certifications, Points of Contact, and the management of Exclusion records.
+
+### Document Organization
+
+This Data Dictionary provides overall listing and descriptions of SAM Entity Management and Exclusion data fields at a high level. Using this document allows you to view the characteristics of data elements and what each is used for. This document includes field definitions and characteristics. The field lengths are the application-limited input lengths. The corresponding extract output lengths may be larger to accommodate migrated data.
+
+---
+
+## SAM Field Definitions
+
+### 820s Request Flag
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The flag that indicates whether the entity wants to receive Remittance Advice Notices (820s) through the Value-Added Network (VAN) provider. The user selects "Yes" or "No".
+
+### ABA Routing Number
+- **Type:** Numeric
+- **Length:** 50
+- **Definition:** The routing transit number assigned by the American Banker's Association (ABA) for a U.S. financial institution. In SAM, this number must be the Electronic Funds Transfer (EFT) ABA Routing Number, not the Wire Transfer ABA number.
+
+### Account Number
+- **Type:** Alphanumeric with Special Characters
+- **Length:** 20
+- **Definition:** The U.S. financial institution account number at which the entity receives EFT payments.
+
+### Account Type
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The entity's financial account type. The user selects "Checking" or "Savings".
+
+### Accounting Station
+- **Type:** Alphanumeric
+- **Length:** 6
+- **Definition:** For U.S. government entities, the Accounting Station (Fiscal Station Number) is a six-digit number that identifies the activity which is responsible for performing the official accounting and reporting for the funds.
+
+### ACH Email
+- **Type:** Alphanumeric
+- **Length:** 80
+- **Definition:** A contact email address for the Automated Clearing House (ACH) Coordinator at the entity's U.S. financial institution.
+
+### ACH Fax
+- **Type:** Numeric
+- **Length:** 30
+- **Definition:** The fax number for the ACH Coordinator or Department at the entity's financial institution.
+
+### ACH Non-U.S. Phone
+- **Type:** Numeric
+- **Length:** 30
+- **Definition:** The phone number for the ACH Coordinator or Department at the entity's financial institution if it is located outside of the U.S.
+
+### ACH U.S. Phone
+- **Type:** Numeric
+- **Length:** 30
+- **Definition:** The phone number for the ACH Coordinator or Department at the entity's financial institution if it is located in the U.S.
+
+### Active Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date the exclusion record became active. This may be different than the date the exclusion record was created.
+
+### Additional Comments
+- **Type:** Alphanumeric
+- **Length:** 1,000
+- **Definition:** Free-text field where the U.S. government official managing the exclusion record can add additional notes or a description regarding the exclusion. This field can be used for specific agency legislation citations.
+
+### Address Line 1
+- **Type:** Alphanumeric
+- **Length:** 150
+- **Definition:** The first line of an address. The following characters are not accepted: `;`, `[`, `]`, `"`, `{`, `}`, `!`, `@`, `$`, `^`, `*`, `=`. Consecutive instances of the following characters are also not accepted: `..`, `++`, `--`, `''`.
+
+### Address Line 2
+- **Type:** Alphanumeric
+- **Length:** 150
+- **Definition:** The second line of an address. The following characters are not accepted: `;`, `[`, `]`, `"`, `{`, `}`, `!`, `@`, `$`, `^`, `*`, `=`. Consecutive instances of the following characters are also not accepted: `..`, `++`, `--`, `''`.
+
+### Address Type
+- **Type:** Alpha
+- **Length:** 20
+- **Definition:** Indicates which address type is captured. Address Type codes include:
+
+| Code | Name |
+|------|------|
+| X5 | Alternate Exclusion Address |
+| X6 | EVS Address |
+| X7 | DoDAAC Address |
+| DM | Domestic Parent Address (Intermediate Parent) |
+| GL | Ultimate Parent Address |
+| HQ | Headquarters Parent Address (Intermediate Parent) |
+| IR | Taxpayer Address |
+| FE | Mailing Address |
+| OA | Other Address |
+| PA | Physical Address |
+| X8 | POC Address |
+| B3 | Previous Business Address |
+| X9 | Primary Exclusion Address |
+| RI | Remittance Address |
+
+### Agency Code
+- **Type:** Numeric
+- **Length:** 4
+- **Definition:** The U.S. Government Agency identifier aligned to the federal hierarchy. The agency codes were originally sourced from the Federal Procurement Data System (FPDS) and the NIST 800-87 listing.
+
+### Agency Location Code
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The Agency Location Code is used to identify accounting reports and documents prepared by or for agency accounting stations and disbursing offices, e.g. eight-digit agency accounting station code, four-digit disbursing office symbol, and three-digit Treasury disbursing center symbol. This eight-digit code corresponds to the registering office. The Agency Location Code is provided by the Treasury IPAC system. The user selects from a list of ALCs populated based on the Department Code selected.
+
+### Agency Parent
+- **Type:** Alpha
+- **Length:** 10
+- **Definition:** The name of the immediate parent of the excluding agency. This may be used to determine the Department under which the exclusion record falls.
+
+### Architect-Engineer Responses
+- **Type:** N/A
+- **Length:** N/A
+- **Definition:** The Architect and Engineering Responses provided during the Representations & Certifications part of an entity registration are used to complete the Standard Form (SF) 330 Part II for architect-engineer contracts. A-E Responses only apply to entities who selected one or more of the relevant NAICS Codes (541310, 541320, 541330, 541360, 541370, 541410, and 541620). The elements associated with these responses are detailed in the Full User Guides found within SAM Help (Federal User Guide Section 4.5.3 and Non-Federal User Guide Section 4.4.3).
+
+### Attachment
+- **Type:** Alphanumeric
+- **Length:** 50
+- **Definition:** The pre-signed URL to access the attachment in R/Q page under Other Responsibility and Integrity Information.
+
+### Authorization Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The effective date of an entity's EFT account authorization. The Authorization Date will be pre-filled by the system as the date a registration was created/updated. The Authorization Date must be present if an ABA Routing Number/financial institute was entered.
+
+### Average Annual Receipts
+- **Type:** Numeric
+- **Length:** 15
+- **Definition:** The average yearly receipts for the past five years for the location being registered rounded to the nearest dollar. This number must be less than or equal to the Total Receipts number.
+
+### Average Number of Employees
+- **Type:** Numeric
+- **Length:** 25
+- **Definition:** The number of worldwide employees for all affiliate, branches, etc. for an entity. Its value must be equal to or greater than the Location Number of Employees. Users must enter a value of 0 or greater.
+
+### Barrels Capacity
+- **Type:** Numeric
+- **Length:** 15
+- **Definition:** The number of Barrels per Day of Petroleum Refining if the entity selected NAICS Code 324110 as one of its NAICS offerings. This number will be compared against the SBA's small business size standard table to determine whether the company meets the small business concern threshold for this NAICS.
+
+### Bonding Level Type
+- **Type:** Multi-Select
+- **Length:** N/A
+- **Definition:** The type of bonding level selected by an entity including their registration on the Disaster Response Registry. Possible values:
+
+| Code | Name |
+|------|------|
+| BL1 | Construction Bonding Level, Per Contract (dollars) |
+| BL2 | Construction Bonding Level, Aggregate (dollars) |
+| BL3 | Service Bonding Level, Per Contract (dollars) |
+| BL4 | Service Bonding Level, Aggregate (dollars) |
+
+### Bonding Level Value
+- **Type:** Numeric
+- **Length:** 22
+- **Definition:** The dollar value (per contract or aggregate) of a Service or Construction Bond. This is used in the Disaster Response Registry.
+
+### Bonding to Bid Flag
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The flag that determines whether the entity requires bonding to bid on contracts. User selects "Yes" or "No". This is used in the Disaster Response Registry.
+
+### Entity Start Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date the entity was started or acquired. The format is MM/DD/YYYY (example: 01/01/1995) and must be today's date or earlier.
+
+### Business Types
+- **Type:** Alphanumeric
+- **Length:** 2
+- **Definition:** The different business types that can classify an entity. Some are set by external parties. Most are self-selected by the registrant.
+
+**Determined by SBA (cannot be selected by the registrant directly):**
+
+| Code | Name |
+|------|------|
+| A6 | SBA Certified 8(a) Program Participant |
+| JT | SBA Certified 8(a) Joint Venture |
+| XX | SBA Certified HUBZone Firm |
+| A4 | SBA Certified Small Disadvantaged Business (No longer Active) |
+| A9 | SBA-Certified Women-Owned Small Business |
+| A0 | SBA-Certified Economically Disadvantaged Women-Owned Small Business |
+
+**Set or reset by the AbilityOne Program:**
+
+| Code | Name |
+|------|------|
+| A7 | AbilityOne Non-Profit Agency |
+
+**Government agency types (one must be selected if applicable):**
+
+| Code | Name |
+|------|------|
+| 2R | U.S Federal Government |
+| 2F | U.S. State Government |
+| 12 | U.S. Local Government |
+| 3I | Tribal Government |
+| CY | Foreign Government |
+
+**Self-selected business types:**
+
+| Code | Name |
+|------|------|
+| 20 | Foreign Owned |
+| 1D | Small Agricultural Cooperative |
+| LJ | Limited Liability Company |
+| XS | Subchapter S Corporation |
+| MF | Manufacturer of Goods |
+| 2X | For Profit Organization |
+| A8 | Non-Profit Organization |
+| 2U | Other Not For Profit Organization |
+| HK | Community Development Corporation Owned Firm |
+| A3 | Labor Surplus Area Firm |
+| A5 | Veteran-Owned Business |
+| QF | Service-Disabled Veteran-Owned Business |
+| JV | Service-Disabled Veteran-Owned Business Joint Venture |
+| A2 | Woman-Owned Business |
+| 23 | Minority-Owned Business |
+| FR | Asian-Pacific American Owned |
+| QZ | Subcontinent Asian (Asian-Indian) American Owned |
+| OY | Black American Owned |
+| PI | Hispanic American Owned |
+| NB | Native American Owned |
+| 1E | Indian Economic Enterprise |
+| 1S | Indian Small Business Economic Enterprise |
+| 27 | Self Certified Small Disadvantaged Business |
+| JX | Self-Certified HUBZone Joint Venture |
+| NG | Federal Agency |
+| 8C | Women-Owned Small Business (WOSB) Joint Venture eligible under the WOSB Program |
+| 8D | Economically Disadvantaged Women-Owned Small Business (EDWOSB) Joint Venture |
+| QW | Federally Funded Research and Development Center |
+| C8 | City |
+| C7 | County |
+| ZR | Inter-municipal |
+| MG | Local Government Owned |
+| C6 | Municipality |
+| H6 | School District |
+| TW | Transit Authority |
+| UD | Council of Governments |
+| 8B | Housing Authorities Public/Tribal |
+| 86 | Interstate Entity |
+| KM | Planning Commission |
+| T4 | Port Authority |
+| H2 | Community Development Corporation |
+| 6D | Domestic Shelter |
+| M8 | Educational Institution |
+| G6 | 1862 Land Grant College |
+| G7 | 1890 Land Grant College |
+| G8 | 1994 Land Grant College |
+| HB | Historically Black College or University |
+| 1A | Minority Institution |
+| 1R | Private University or College |
+| ZW | School of Forestry |
+| GW | Hispanic Servicing Institution |
+| OH | State Controlled Institution of Higher Learning |
+| HS | Tribal College |
+| QU | Veterinary College |
+| G3 | Alaskan Native Servicing Institution |
+| G5 | Native Hawaiian Servicing Institution |
+| BZ | Foundation |
+| 80 | Hospital |
+| FY | Veterinary Hospital |
+| HQ | DOT Certified DBE |
+| 05 | Alaskan Native Corporation Owned Firm |
+| OW | American Indian Owned |
+| XY | Indian Tribe (Federally Recognized) |
+| 8U | Native Hawaiian Organization Owned Firm |
+| 1B | Tribally Owned Firm |
+| FO | Township |
+| TR | Airport Authority |
+| G9 | Individual or concern, other than one of the proceeding |
+| JS | Small Business Joint Venture |
+| 8W | Women-Owned Small Business |
+
+### CAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** The Commercial and Government Entity (CAGE) Code is a five-character alpha-numeric identifier assigned to entities located in the United States and its outlying areas by the Defense Logistics Agency (DLA) Commercial and Government Entity (CAGE) Program to identify a given facility or location of a commercial or government entity. Some registrations in SAM go through the CAGE Code assignment/validation process after submission, dependent on Purpose of Registration and other factors.
+
+### City
+- **Type:** Alpha
+- **Length:** 40
+- **Definition:** The name of the city in a given address type. The following characters are not accepted: `;`, `[`, `]`, `"`, `{`, `}`, `!`, `@`, `$`, `^`, `*`, `=`. Consecutive instances of the following characters are also not accepted: `..`, `++`, `--`, `''`.
+
+### Classification Type
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** Identifies the type of party that has been excluded. *Individual* is a person without a valid UEI. *Firm* is a company or organization with a valid UEI (includes sole proprietors who have obtained a UEI). *Special Entity Designation* is an organization or thing capable of bearing legal rights and responsibilities which does not have a UEI and is not an individual, firm, or vessel. *Vessel* is a mode of transportation capable of transport by water.
+
+| Code | Name |
+|------|------|
+| X1 | Individual |
+| X2 | Firm |
+| X3 | Special Entity Designation |
+| X4 | Vessel |
+
+### Entity Division Name
+- **Type:** Alpha
+- **Length:** 60
+- **Definition:** The Division Name, if the entity registering does business as a division or is part of a larger company, as provided by the entity in Core Data.
+
+### Entity Division Number
+- **Type:** Numeric
+- **Length:** 10
+- **Definition:** The Division Number, if the entity registering is identified by a number within their organization, as provided by the entity in Core Data.
+
+### Company Security Level
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The facility security level for the entity registering as provided in Core Data. Possible values:
+
+| Code | Name |
+|------|------|
+| 90 | Government Non-Classified |
+| 92 | Government Confidential |
+| 93 | Government Secret |
+| 94 | Government Top Secret |
+
+### Completion Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date the contract was signed for which a BioPreferred Report is being submitted. This value is pre-populated from the Federal Procurement Data System (FPDS).
+
+### Congressional District
+- **Type:** Numeric
+- **Length:** 10
+- **Definition:** The Congressional District of an entity located in the U.S. or its outlying areas as calculated by the system based on the entity's physical address. While the Entity Congressional District is usually displayed as 2 characters, there may be instances where this can be updated to have STATE + 2-digit Entity Congressional District, for a total of 10 characters.
+
+### Contracting Agency
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** The specified federal agency for which the entity submitting a BioPreferred Report is providing services/products. This value is pre-populated from FPDS.
+
+### Contracting Department
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** The specified federal department for which the entity submitting a BioPreferred Report is providing services/products. This value is pre-populated from FPDS.
+
+### Contract Sign Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date the BioPreferred Report Contract was signed. This value is pre-populated from FPDS.
+
+### Entity URL
+- **Type:** Alphanumeric
+- **Length:** 200
+- **Definition:** The entity's website Universal Resource Locator (URL) as provided by the entity in Core Data.
+
+### Correspondence Flag
+- **Type:** Alpha
+- **Length:** 1
+- **Definition:** A field used by the predecessor system to SAM, this data is not collected in SAM and would only appear in records migrated from the Central Contractor Registration (CCR) database. This field was used to identify an entity's preferred correspondence type. Possible values:
+
+| Code | Name |
+|------|------|
+| M | US Mail |
+| F | Fax |
+| E | Email |
+
+### Country Code
+- **Type:** Alpha
+- **Length:** 3
+- **Definition:** The country code representing where the entity is located. Codes adhere to the U.S. Government's Geographic Entity Name and Code (GENC) Profile of the ISO 3166 International Standard for country codes. SAM can also accommodate two-character country codes.
+
+### Country of Incorporation
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The country code representing where the entity was incorporated. Codes adhere to the U.S. Government's Geographic Entity Name and Code (GENC) Profile of the ISO 3166 International Standard for country codes. SAM can also accommodate two-character country codes. Users select from a pre-defined list of countries.
+
+### Credit Card Usage
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The field which indicates whether an entity is willing to be paid by Government credit card. User selects "Yes" to indicate that they will and "No" to indicate they will not.
+
+### Cross Reference
+- **Type:** Alpha
+- **Length:** 15
+- **Definition:** Method for identifying linkage among exclusion records. Types of cross references include:
+
+| Code | Name |
+|------|------|
+| XR | Cross Reference |
+| AK | AKA – Also Known As |
+| DB | DBA – Doing Business As |
+| NK | NKA – Now Known As |
+| FK | FKA – Formerly Known As |
+| PK | PKA – Previously Known As |
+
+### DBA Name
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** The 'Doing Business As' name of the entity. This name must be different from the Legal Business Name. This field cannot be changed in SAM. It is part of the entity's record as validated through SAM's Entity Validation Service provider.
+
+### Debt Subject to Offset Flag
+- **Type:** Alpha
+- **Length:** 1
+- **Definition:** The indicator which shows whether the United States Treasury's Debt Management Services notified SAM that the entity represented by this UEI has a delinquent debt subject to collection under the Treasury Offset Program. Contracting officers may not use the governmentwide commercial purchase card to pay this entity for contracts/orders above the micro-purchase threshold as outlined in FAR 32.1108(b)(2). This flag set to Yes (Y) indicates that the registrant has been determined to have a delinquent obligation owed to the U.S. Federal Government as shown by records at the Department of the Treasury. No (N) means the Treasury Department found no delinquent obligation. A non-entry [-] indicates that this registrant has not yet been verified with Treasury. Foreign registrations are not verified.
+
+### Department Codes
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The two-character Department or Independent Agency code currently derived from the Treasury Index. The user selects from a pre-defined list.
+
+### Description of Requirement
+- **Type:** Alphanumeric
+- **Length:** 4000
+- **Definition:** The description of services and construction contract actions as entered in FPDS for contracts subject to BioPreferred reporting.
+
+### DFARS Response
+- **Type:** N/A
+- **Length:** N/A
+- **Definition:** The entity's responses to DFARS related questions provided during the Representations & Certifications part of the registration.
+
+### Disaster Response Flag
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The indicator which shows the entity provided Disaster Response Information to be part of the Disaster Response Registry. Contractors on the Disaster Response Registry are willing to provide debris removal, distribution of supplies, reconstruction, and other disaster or emergency relief supplies and/or services. Users select either "Yes" or "No".
+
+### Disbursing Office Symbol
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The unique symbol assigned by the Treasury Intra-governmental Payment and Collection (IPAC) system for the office disbursing funds. The disbursing office has a relationship to the agency location code. Users select from a pre-defined list of values.
+
+### Disposition
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The short description of the proceeding disposition selected from a drop-down list entered by the entity if they report Proceeding Details in Core Data. The possible values for this field are either Conviction/Finding of Fault or Other acknowledgment of fault.
+
+### DoDAAC
+- **Type:** Alphanumeric
+- **Length:** 9
+- **Definition:** The Department of Defense Activity Address Code (DoDAAC) for non-civilian government entities (DoD). This is filled with the letters "DOD" followed by the entity's six-digit assigned DoDAAC.
+
+### DoDAAC Legal Business Name
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** The legal business name of the DoD entity associated with the DoDAAC record.
+
+### Dollar Amount Spent
+- **Type:** Numeric
+- **Length:** 20
+- **Definition:** The entity-reported Dollar Amount expended in any given BioPreferred product category during the Federal Government fiscal year (October 1 – September 30).
+
+### Entity EFT Indicator
+- **Type:** Alphanumeric
+- **Length:** 4
+- **Definition:** The Entity EFT Indicator is an entity-selected Electronic Funds Transfer (EFT) Identifier used to distinguish more than one remittance location for payment. An entity can only provide an Entity EFT Indicator if they provide an additional set of EFT information. If the entity does not need to provide additional EFT information, the registration will show a value of null. CAGE Codes are assigned at the Entity EFT Indicator level.
+
+### EDI (Y/N)
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** This is the flag that determines whether the entity wants to enter Electronic Data Interchange (EDI) Information in the Assertions section of the entity registration. Users select either "Yes" or "No".
+
+### EDI VAN Provider
+- **Type:** Alphanumeric
+- **Length:** 20
+- **Definition:** The Value-Added Network (VAN) Provider supporting the entity's EDI exchange.
+
+### EFT Waiver
+- **Type:** Alpha
+- **Length:** 1
+- **Definition:** The EFT Waiver Flag indicates whether EFT information for a U.S. financial institution is required for the entity. Values are Y for Yes and N for No.
+
+### Email
+- **Type:** Alphanumeric
+- **Length:** 80
+- **Definition:** The email address for the entity-provided point of contact.
+
+### Entity Structure
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The structure of the entity as defined by the IRS. Users select from a pre-defined list. Possible values:
+
+| Code | Name |
+|------|------|
+| 2J | Sole Proprietorship |
+| 2K | Partnership or Limited Liability Partnership |
+| 2L | Corporate Entity (Not Tax Exempt) |
+| 8H | Corporate Entity (Tax Exempt) |
+| 2A | U.S. Government Entity |
+| CY | Country - Foreign Government |
+| X6 | International Organization |
+| ZZ | Other |
+
+### EVS Monitoring Address Line 1
+- **Type:** Alphanumeric
+- **Length:** 150
+- **Definition:** The first line of the address as provided by the EVS monitoring service.
+
+### EVS Monitoring Address Line 2
+- **Type:** Alphanumeric
+- **Length:** 150
+- **Definition:** The second line of the address as provided by the EVS monitoring service.
+
+### EVS Monitoring City
+- **Type:** Alpha
+- **Length:** 35
+- **Definition:** The name of the city in which the entity is located as provided by the EVS monitoring service.
+
+### EVS Monitoring Legal Business Name
+- **Type:** Alphanumeric
+- **Length:** 130
+- **Definition:** The legal business name provided for the entity by the EVS monitoring service.
+
+### EVS Monitoring Country Code
+- **Type:** Numeric
+- **Length:** 3
+- **Definition:** The country code in which the entity is located as provided by the EVS monitoring service.
+
+### EVS Monitoring DBA
+- **Type:** Alpha
+- **Length:** 120
+- **Definition:** The Doing Business As (DBA) name of the entity provided by the EVS monitoring service.
+
+### EVS Monitoring Last Updated
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date the EVS monitoring service was last updated for the entity.
+
+### EVS Monitoring State or Province
+- **Type:** Alphanumeric
+- **Length:** 50
+- **Definition:** The state or province code in which the entity is located as provided by the EVS monitoring service.
+
+### EVS Monitoring Status
+- **Type:** Numeric
+- **Length:** 1
+- **Definition:** The indicator which shows whether EVS monitoring is turned on for the entity. Values are 0 for No and 1 for Yes.
+
+### EVS Monitoring Zip Code / Postal Code
+- **Type:** Numeric
+- **Length:** 10
+- **Definition:** The U.S. ZIP Code, or international Postal Code, associated with the address as provided by the EVS monitoring service.
+
+### EVS Out of Business Indicator
+- **Type:** Numeric
+- **Length:** 1
+- **Definition:** The status code which indicates EVS has information the entity is either out of business or has had a period of inactivity uncharacteristic to the industry. Values are 0 for No and 1 for Yes.
+
+### Excluding Agency
+- **Type:** Alpha
+- **Length:** 120
+- **Definition:** The name of the federal agency which created and manages the exclusion record.
+
+### Exclusion Program
+- **Type:** Alpha
+- **Length:** 15
+- **Definition:** The program in which an exclusion record is classified. New records will automatically default to Reciprocal.
+
+| Code | Name |
+|------|------|
+| RE | Reciprocal |
+| NP | Non-Procurement |
+| PR | Procurement |
+
+### Exclusion Status Flag
+- **Type:** Alpha
+- **Length:** 1
+- **Definition:** This flag indicates whether an entity, as identified by the UEI registered, has an exclusion record. If this flag is set to Yes, the registrant has an exclusion record. A value of No indicates this registrant's UEI does not have an exclusion record in SAM. Values are N for No and Y for Yes.
+
+### Exclusion Type
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** One of four categories under which an exclusion is created. Each Exclusion Type has standard language for the Nature (Cause) and Effect.
+
+| Code | Name |
+|------|------|
+| IP | Ineligible (Proceedings Pending) |
+| IC | Ineligible (Proceedings Completed) |
+| PR | Prohibition/Restriction |
+| VE | Voluntary Exclusion |
+
+### Executive Compensation Question 1
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** This field will store a "yes" or "no" response to the first Executive Compensation screening question which reads, "In your business or organization's preceding completed fiscal year, did your business or organization (the legal entity to which this specific SAM record, represented by a UEI, belongs) receive both of the following: 1. 80 percent or more of your annual gross revenue in U.S. federal contracts, subcontracts, loans, grants, subgrants, and/or cooperative agreements, and 2. $25,000,000 or more in annual gross revenues from U.S. federal contracts, subcontracts, loans, grants, subgrants, and/or cooperative agreements?" Users select "Yes" or "No".
+
+### Executive Compensation Question 2
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** This field will store a "yes" or "no" response to the second Executive Compensation screening question which is conditional based upon the entity's response to the first question. The second question reads "Does the public have access to information about the compensation of the senior executives in your business or organization (the legal entity to which this specific SAM record, represented by a UEI, belongs) through periodic reports filed under section 13(a) or 15(d) of the Securities Exchange Act of 1934 (15 U.S.C. 78m(a), 780(d)) or section 6104 of the Internal Revenue Code of 1986?" Users select "Yes" or "No".
+
+### Executive First Name
+- **Type:** Alphanumeric
+- **Length:** 65
+- **Definition:** The first name of one of the five most highly compensated executives in a registered entity including parent organizations, all branches, and all affiliates worldwide. Executives are considered officers, managing partners, or any other employees in management positions.
+
+### Executive Middle Initial
+- **Type:** Alphanumeric
+- **Length:** 3
+- **Definition:** The middle initial of one of the five most highly compensated executives in a registered entity including parent organizations, all branches, and all affiliates worldwide.
+
+### Executive Last Name
+- **Type:** Alphanumeric
+- **Length:** 65
+- **Definition:** The last name of one of the five most highly compensated executives in a registered entity including parent organizations, all branches, and all affiliates worldwide.
+
+### Executive Title
+- **Type:** Alphanumeric
+- **Length:** 50
+- **Definition:** The position title of one of the five most highly compensated executives in a registered entity including parent organizations, all branches, and all affiliates worldwide.
+
+### Registration Expiration Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** A system-generated date representing when an entity's registration expires. The expiration date will automatically update when the registration, or changes made to the registration, become active. The expiration date is set 365 days from when the user submits an update to their entity's information, except for updates only made to points of contact (POC Only) which do not reset the expiration date. If the registrant has not updated their Entity Management information at least once in the past 365 days, the registration becomes inactive.
+
+### Extension
+- **Type:** Numeric
+- **Length:** 16
+- **Definition:** The phone number extension of the Point of Contact (POC) within an entity management registration if they are located in the U.S.
+
+### FASCSA Order Flag
+- **Type:** Alphanumeric
+- **Length:** 1
+- **Definition:** Identifies an Exclusion as a FASCSA Order.
+
+### FAR Response
+- **Type:** N/A
+- **Length:** N/A
+- **Definition:** The entity's responses to FAR-related questions provided during the Representations & Certifications part of the registration.
+
+### Fax
+- **Type:** Numeric
+- **Length:** 30
+- **Definition:** The fax number for the Point of Contact (POC) within an entity management registration.
+
+### Financial Assistance Certifications
+- **Type:** Radio Button
+- **Length:** N/A
+- **Definition:** The indicator which shows if the entity wishes to apply for a Federal financial assistance project or program, or if the entity is currently the recipient of funding under any Federal financial assistance project or program. Users select either "Yes" or "No".
+
+### Financial Institute
+- **Type:** Alphanumeric
+- **Length:** 50
+- **Definition:** The name of an entity's bank or other financial institution. This name is tied to the ABA routing number and will be pre-populated after the ABA routing number is entered.
+
+### First Name
+- **Type:** Alphanumeric
+- **Length:** 65
+- **Definition:** The first name for the Point of Contact (POC) within an entity management registration.
+
+### Fiscal Year End Close Date
+- **Type:** Date
+- **Length:** 4
+- **Definition:** The date the entity's accounting period closes. When entering the information on the web site, you must enter as MM/DD.
+
+### Foreign Province
+- **Type:** Alpha
+- **Length:** 55
+- **Description:** The foreign province in which the POC is located. This field is mandatory only for Canadian addresses.
+
+### Functional Group Identifier
+- **Type:** Alphanumeric
+- **Length:** 15
+- **Definition:** The Functional Group (GS02) Identifier for those entities providing EDI information in the Assertions section of the registration.
+
+### Geographic Area Served: County
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The code for the county within a state used to designate an area served in the Disaster Response Registry. Users select from a pre-defined list based on the State selected.
+
+### Geographic Area Served: Metropolitan Statistical Area
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The name of the Metropolitan Statistical Area that may span county or state borders and is used in the Disaster Response Registry to designate an area served. Users select from a pre-defined list based on the State and County selected.
+
+### Geographic Area Served: State
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The state selected by an entity when designating an area served in the Disaster Response Registry.
+
+### Geographic Area Served: Type
+- **Type:** Alpha
+- **Length:** 3
+- **Definition:** The name of the type of geographic area served for the Disaster Response Registry. Possible values:
+
+| Code | Name |
+|------|------|
+| MSA | Metropolitan Statistical Area |
+| CTY | County |
+| STA | State |
+| ANY | Any |
+
+### Highest Employee Security Level
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The top level of security clearance for employees in an entity. Possible values:
+
+| Code | Name |
+|------|------|
+| 90 | Government Non-Classified |
+| 92 | Government Confidential |
+| 93 | Government Secret |
+| 94 | Government Top Secret |
+
+### Highest Level Owner Status
+- **Type:** Radio Button
+- **Length:** N/A
+- **Definition:** The indicator which shows if the entity stated it has an Immediate Owner which is owned or controlled by another entity in accordance with the FAR Subpart 4.18 definitions. Users select either "Yes" or "No".
+
+### Highest Level Owner Location
+- **Type:** Radio Button
+- **Length:** N/A
+- **Definition:** The indicator showing if the Highest-Level Owner is not located in the U.S. and its outlying areas. Users select either "Yes" or "No".
+
+### Highest Level Owner CAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** The CAGE Code selected by the entity which represents their Highest-Level Owner located in the U.S. and its outlying areas.
+
+### Highest Level Owner NCAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** The NCAGE Code selected by the entity which represents their Highest-Level Owner located outside U.S. and its outlying areas.
+
+### Highest Owner Legal Business Name
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** Legal Business Name of Highest Owner.
+
+### Immediate Owner Status
+- **Type:** Radio Button
+- **Length:** N/A
+- **Definition:** The indicator which shows if the entity stated it has an Owner in accordance with the FAR Subpart 4.18 definitions. Users select either "Yes" or "No".
+
+### Immediate Owner Location
+- **Type:** Radio Button
+- **Length:** N/A
+- **Definition:** The indicator showing if the Immediate Owner is in the U.S. and its outlying areas. Users select either "Yes" or "No".
+
+### Immediate Owner CAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** The CAGE Code selected by the entity which represents their Immediate Owner located in the U.S. and its outlying areas.
+
+### Immediate Owner NCAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** The NCAGE Code selected by the entity which represents their Immediate Owner not located in the U.S. and its outlying areas.
+
+### Indefinite Indicator
+- **Type:** Radio Button
+- **Length:** N/A
+- **Definition:** This field will store a Yes or No response to indicate if an exclusion record is marked as Indefinite, i.e. no termination date is set.
+
+### Individual First Name
+- **Type:** Alpha
+- **Length:** 65
+- **Definition:** The first name of an individual with an exclusion record.
+
+### Individual Last Name
+- **Type:** Alpha
+- **Length:** 65
+- **Definition:** The last name of an individual with an exclusion record.
+
+### Individual Middle Name
+- **Type:** Alpha
+- **Length:** 50
+- **Definition:** The middle name of an individual with an exclusion record.
+
+### Individual Prefix
+- **Type:** Alpha
+- **Length:** 25
+- **Definition:** The prefix of an individual with an exclusion record.
+
+### Individual Suffix
+- **Type:** Alpha
+- **Length:** 25
+- **Definition:** The suffix of an individual with an exclusion record.
+
+### Initial Registration Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date the entity initially registered to do business with the U.S. government entity registration was submitted. This date can precede the SAM go-live date of July 2012 if the entity was registered in the prior Central Contractor Registration system. This date will not change.
+
+### Instrument
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The type of proceedings instrument entered by the entity in the proceeding details. The values are U.S. Federal issued contract, U.S. Federal issued grant / assistance instrument, State issued contract, and State issued grant.
+
+### Instrument Number
+- **Type:** Numeric
+- **Length:** 50
+- **Definition:** The official number of the proceeding as assigned by proceedings instrument.
+
+### ISA Identifier
+- **Type:** Alphanumeric
+- **Length:** 15
+- **Definition:** The Interchange Sender (ISA) Identifier specific to Electronic Data Interchange (EDI) information. It cannot be longer than fifteen characters. It is an alphanumeric value that does not include dashes, spaces, or special characters.
+
+### ISA Qualifier
+- **Type:** Alphanumeric
+- **Length:** 2
+- **Definition:** The Interchange Sender (ISA) Qualifier specific to Electronic Data Interchange (EDI) information.
+
+### Last Name
+- **Type:** Alpha
+- **Length:** 65
+- **Definition:** The last name of the Point of Contact within an entity management registration.
+
+### Legal Business Name
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** The Legal Business Name of the entity as validated by EVS. Note: It cannot contain the following special characters: `""`, `å`, `ø`, `Å`. This field cannot be changed in SAM.
+
+### Location Employees
+- **Type:** Numeric
+- **Length:** 15
+- **Definition:** The one-year average number of employees at the location being registered. This is an optional field, but if completed, must be less than or equal to the Worldwide Number of Employees provided in Goods and Services.
+
+### Lockbox Number
+- **Type:** Numeric
+- **Length:** 20
+- **Definition:** The lockbox number assigned by the entity's financial institution if one is used by the entity to receive payment.
+
+### Megawatt Hours
+- **Type:** Numeric
+- **Length:** 15
+- **Definition:** The number showing total Megawatt Hours (MWH) for the preceding fiscal year of all affiliates of an entity registrant using one of the following NAICS codes: 221111, 221112, 221113, 221121, 221122. This value is used to calculate the Small Business size status by industry.
+
+### Merchant ID 1
+- **Type:** Numeric
+- **Length:** 130
+- **Definition:** The number assigned to an entity by the bank that processes their credit card receipts. The Merchant ID Number is similar to a routing number. This field is for Government Use Only.
+
+### Merchant ID 2
+- **Type:** Numeric
+- **Length:** 130
+- **Definition:** This is an alternate ID to Merchant ID 1 and is used if the registering entity has two routing numbers (uses both banks). This field is for Government Use Only.
+
+### Middle Initial
+- **Type:** Alpha
+- **Length:** 3
+- **Definition:** The middle initial of the Point of Contact within an entity management registration.
+
+### Modification Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date received from FPDS representing the last date the contract was modified for the Total Contract Value.
+
+### Modification Number
+- **Type:** Alphanumeric
+- **Length:** 25
+- **Definition:** The placeholder number received from FPDS to signify the amount of times the contract was modified.
+
+### NAICS Code
+- **Type:** Numeric
+- **Length:** 6
+- **Definition:** The North American Industrial Classification System (NAICS) Code(s). Effective January 1, 2022, SAM uses the 2022 revision of the NAICS.
+
+### NAICS Exception
+- **Type:** Alphanumeric
+- **Length:** 4
+- **Definition:** The associated NAICS size standard exception data from the Small Business Administration (SBA). This includes the NAICS exception number and description.
+
+### Name of Individual Executing Consent
+- **Type:** Alpha
+- **Length:** 60
+- **Definition:** The name of the individual providing the authorization for the entity Taxpayer Name and Taxpayer Identification Number (TIN) to be sent to the IRS for validation. This person must have legal authority to execute this consent in accordance with 26 CFR section 301.6103(c)-1(e)(4).
+
+### NCAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** CAGE Codes for foreign entities used internationally as part of the NATO Codification System (NCS) are called NCAGE Codes. NCAGE Codes are assigned by a member of the North Atlantic Treaty Organization (NATO) or by the NATO Support and Procurement Agency (NSPA). DLA's CAGE Program records and maintains NCAGE Codes in the CAGE master file. All entities not located in the U.S. and its outlying areas must provide an NCAGE Code when they register.
+
+### Non-US Phone
+- **Type:** Numeric
+- **Length:** 30
+- **Definition:** The phone number of the Point of Contact for an entity management registration if they are located outside of the U.S.
+
+### No Public Display Flag
+- **Type:** Checkbox
+- **Length:** N/A
+- **Definition:** The field indicates whether an entity has chosen to opt-out of their registration being displayed in SAM public search results. Opting out may result in a reduction in Federal Government business opportunities, and subcontractors who choose this option will not be visible to prime contractors. Entities that have opted out will be removed only from the SAM public search but will still be visible to users with For Official Use Only (FOUO) data access and will be provided in accordance with Freedom of Information Act (FOIA) requests.
+
+### NPI
+- **Type:** Numeric
+- **Length:** 10
+- **Definition:** The NPI (National Provider Identifier) is a unique identification number for covered health care providers. It is an optional field for exclusion records.
+
+### Organization Name
+- **Type:** Alphanumeric
+- **Length:** 200
+- **Definition:** The name of an excluded entity that falls under one of the following Classification Types: Special Entity Designation or Vessel.
+
+### PIID
+- **Type:** Alphanumeric
+- **Length:** 50
+- **Definition:** The Procurement Instrument Identifier (PIID) is used to identify solicitation and contract actions in designated support and reporting systems (e.g., Federal Procurement Data System), in accordance with regulations, applicable authorities, and agency policies and procedures.
+
+### Place of Performance City
+- **Type:** Alphanumeric
+- **Length:** 100
+- **Definition:** City where the BioPreferred report is detailing USDA information.
+
+### Place of Performance Country
+- **Type:** Alphanumeric
+- **Length:** 100
+- **Definition:** Country where the BioPreferred report is detailing USDA information.
+
+### Place of Performance County
+- **Type:** Alphanumeric
+- **Length:** 100
+- **Definition:** County where the BioPreferred report is detailing USDA information.
+
+### Place of Performance State/Province
+- **Type:** Alphanumeric
+- **Length:** 2
+- **Definition:** State or Province where the BioPreferred report is detailing USDA information.
+
+### Place of Performance ZIP
+- **Type:** Alphanumeric
+- **Length:** 10
+- **Definition:** U.S. ZIP Code, or international Postal Code, associated with the Place of Performance address pre-populated by the system in a BioPreferred Report.
+
+### POC Notes
+- **Type:** Alpha
+- **Length:** 1000
+- **Definition:** Additional notes or comments of a Point of Contact for an entity management registration.
+
+### POC Title
+- **Type:** Alpha
+- **Length:** 50
+- **Definition:** The title of the Point of Contact for an entity management registration.
+
+### POC Type
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The type of Point of Contact identified for an entity management registration. Users select from a pre-defined list of values based on the entity type. Possible values:
+
+| Code | Name |
+|------|------|
+| EP | Eliminations POC |
+| AP | Accounts Payable POC |
+| SL | Sales POC |
+| AR | Accounts Receivable POC |
+| EA | EDI POC |
+| EB | Electronic Business POC |
+| E2 | Electronic Business Alternate POC |
+| GB | Government Business POC |
+| GA | Government Business Alternate POC |
+| PC | Party Performing Certification POC |
+| PP | Past Performance POC |
+| P2 | Past Performance Alternate POC |
+| PR | Proceedings POC |
+| PA | Proceedings Alternate POC |
+| SP | Sole Proprietorship POC |
+
+### Predecessor Details Status
+- **Type:** Radio Button
+- **Length:** N/A
+- **Definition:** The indicator which shows if the entity stated it is a successor to a predecessor that held a Federal contract or grant within the last three years. Users select either "Yes" or "No".
+
+### Predecessor 1 CAGE Code or NCAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** The CAGE Code or NCAGE Code for the most recent predecessor reported by the entity.
+
+### Predecessor 2 CAGE Code or NCAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** The CAGE Code or NCAGE Code for the second most recent predecessor reported by the entity.
+
+### Predecessor 3 CAGE Code or NCAGE Code
+- **Type:** Alphanumeric
+- **Length:** 5
+- **Definition:** The CAGE Code or NCAGE Code for the third most recent predecessor reported by the entity.
+
+### Predecessor Legal Business Name
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** Legal Business Name Prior to Entity.
+
+### Previous Business Name
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** The previous legal business name of the entity as supplied by EVS.
+
+### Primary NAICS
+- **Type:** Alphanumeric
+- **Length:** 1
+- **Definition:** The indicator showing the NAICS Code selected by the entity as their primary NAICS. For many programs, SBA requires a firm be "small" in its primary industry in accordance with SBA's size standards for that industry.
+
+### Prior UEI
+- **Type:** Alphanumeric
+- **Length:** 12
+- **Definition:** Any prior UEI (Unique Entity Identifier) for an entity.
+
+### Proceeding Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date of the entity's proceeding.
+
+### Proceeding Description
+- **Type:** Alpha
+- **Length:** 4000
+- **Definition:** A description of the proceeding entered by the user.
+
+### Proceeding Question 1
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** This field will store a "yes" or "no" response to the first Proceedings Screening question which reads, "Is there a Federal solicitation on which your business or organization, as represented by the UEI on this specific SAM record, is bidding that contains the FAR provision 52.209-7, or has your business or organization, as represented by the UEI on this specific SAM record, been awarded a Federal contract or assistance award that contains the award term and condition described in 2 C.F.R. 200 Appendix XII?" Users select "Yes" or "No".
+
+### Proceeding Question 2
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** This field will store a "yes" or "no" response to the second Proceedings Screening question which reads, "Does your business or organization, as represented by the UEI on this specific SAM record, have current active Federal contracts and/or grants with total value (including any exercised/unexercised options) greater than $10,000,000?" Users select "Yes" or "No".
+
+### Proceeding Question 3
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** This field will store a "yes" or "no" response to the third Proceedings Screening question which reads, "Within the last five years, has the business or organization, as represented by the UEI on this specific SAM record, and/or any of its principles, in connection with the award to or performance by the business or organization of a Federal contract or grant, been the subject of a Federal or State: 1. Criminal proceeding resulting in a conviction or other acknowledgement of fault; 2. Civil proceeding resulting in a find of fault with a monetary fine, penalty, reimbursement, restitution, and/or damages greater than $5,000, or other acknowledgement of fault; and/or 3. Administrative proceeding resulting in a finding of fault with either a monetary fine or penalty greater than $5,000 or reimbursement, restitution, or damages greater than $100,000, or another acknowledgement of fault?" Users select "Yes" or "No".
+
+### Proceeding State
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The state where the entity's reported proceeding occurred.
+
+### Proceeding Type
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** This is the type of proceeding. Users select from a pre-defined list of values. Possible values:
+
+| Code | Name |
+|------|------|
+| CR | Criminal |
+| CV | Civil |
+| AD | Administrative |
+
+### Procurement or Federal Assistance ID
+- **Type:** Alphanumeric
+- **Length:** 50
+- **Definition:** This field describes whether the records have Contract Data ID or a Grant ID.
+
+### Product
+- **Type:** Alphanumeric
+- **Length:** 4000
+- **Definition:** A description of the specific product used under the USDA category for BioPreferred reporting.
+
+### Province
+- **Type:** Alpha
+- **Length:** 50
+- **Definition:** The province in which a non-U.S. entity is located.
+
+### PSC
+- **Type:** Alphanumeric
+- **Length:** 50
+- **Definition:** The descriptive short name for the selected Product Service Code (PSC).
+
+### PSC Code
+- **Type:** Alphanumeric
+- **Length:** 4
+- **Definition:** The four-position code used to describe products, services, and research and development (R&D) the entity is offering to the federal government. Products have a digit in the first position. Services and R&D have a character in the first position. An entity can select up to 500 PSCs to include in their entity registration.
+
+### PSC Description
+- **Type:** Alphanumeric
+- **Length:** 4000
+- **Definition:** The long description of the type of products or services being used.
+
+### Reason for Modification
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** A summary of why the modification of the BioPreferred report was made which results in changes in Total Contract Value or funding information.
+
+### Record Date
+- **Type:** Text
+- **Length:** 55
+- **Definition:** The effective date of termination.
+
+### Record Type
+- **Type:** Text
+- **Length:** 1
+- **Definition:** The one-character code that references the record type for Termination (e.g., 'A').
+
+**Contract-Based FAPIIS Records:**
+
+| Code | Name |
+|------|------|
+| A | Administrative Agreement |
+| P | Defective Pricing |
+| F | DOD Determination of Contractor Fault |
+| T | Information on Trafficking in Persons |
+| R | Non-Responsibility Determination |
+| S | Subcontractor Payment Issues |
+| C | Termination for Cause |
+| D | Termination for Default |
+
+**Grant-Based FAPIIS Records:**
+
+| Code | Name |
+|------|------|
+| M | Termination for Material Failure to Comply |
+| W | Material Failure to Comply with Closeout Requirements |
+| Q | Recipient Not-Qualified Determination |
+| A | Administrative Agreement |
+
+### RecordTypeDesc
+- **Type:** Text
+- **Length:** 55
+- **Definition:** The descriptive text that matches the recordType code (e.g., Administrative Agreement).
+
+### Reference PIID
+- **Type:** Alphanumeric
+- **Length:** 50
+- **Definition:** When reporting orders under Indefinite Delivery Vehicles (IDV) such as a GWAC, IDC, FSS, BOA, or BPA, report the Procurement Instrument Identifier (Contract Number or Agreement Number) of the IDV.
+
+### Purpose of Registration
+- **Type:** Radio Button
+- **Length:** N/A
+- **Definition:** The purpose of an entity's registration in SAM as determined by the user's response to the following question: "Why are you registering this entity to do business with the U.S. government?" Possible values:
+
+| Code | Name |
+|------|------|
+| Z1 | Federal Assistance Awards |
+| Z2 | All Awards |
+| Z3 | IGT Only |
+| Z4 | Assistance Awards & IGT |
+| Z5 | All Awards and IGT |
+
+### Registration Status
+- **Type:** Alpha
+- **Length:** 1
+- **Definition:** This field tracks the registration status of the entity. Possible values:
+
+| Code | Name |
+|------|------|
+| R | Draft |
+| W | Work In Progress |
+| S | Submitted |
+| A | Active |
+| I | Inactive |
+| D | Deleted |
+| E | Expired |
+
+### Remittance Name
+- **Type:** Alpha
+- **Length:** 120
+- **Definition:** The name of the party to whom the check should be made payable if the government is unable to pay using EFT.
+
+### Renewal Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date that the entity renewed their registration.
+
+### SBA Certification Entry Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date an entity received its SBA certification as provided by SBA.
+
+### SBA Certification Exit Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date an entity exited the SBA certification program as provided by SBA.
+
+### Search More Locations Question
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** Federal users indicate whether they want to search for more locations related to the Firm exclusion they are creating. Users select either "Yes" or "No".
+
+### State / Province
+- **Type:** Alpha
+- **Length:** 2
+- **Definition:** The state/province code in which the U.S. entity is located.
+
+### State of Incorporation
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The state where the entity was incorporated. Only required for U.S. incorporated entities.
+
+### Tax Year
+- **Type:** Numeric
+- **Length:** 4
+- **Definition:** The most recent Tax Year in which the entity reported taxes as provided by the entity on the IRS Consent page. It must be no later than the current calendar year.
+
+### Taxpayer Name
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** The Taxpayer Name the IRS has on file for the entity's TIN according to its most recent tax return. The Taxpayer Name may be slightly different than the Legal Business Name of the entity being registered. The Taxpayer Name can only contain letters, numbers, spaces, hyphens (-), and ampersands (&).
+
+### Termination Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date the exclusion record will be removed from the active list of exclusions and become inactive. A user may indicate a date that occurred in the past to immediately make an exclusion inactive.
+
+### Tax Identification Number
+- **Type:** Numeric
+- **Length:** 9
+- **Definition:** The Taxpayer Identification Number (TIN) for an entity, which can be either the Employer Identification Number (EIN) or the Social Security Number (SSN) if the entity is a Sole Proprietor or a Single-Member Limited Liability Company (LLC).
+
+### TIN Consent Date
+- **Type:** Date
+- **Length:** 8
+- **Definition:** The date that an individual provided authorization for the entity Taxpayer Name and TIN to be sent to the IRS for validation.
+
+### TIN Consent Signature
+- **Type:** Alphanumeric
+- **Length:** 9
+- **Definition:** The signature of the individual who authorized the entity information to be sent to the IRS for validation.
+
+### Title of Individual Executing Consent
+- **Type:** Alphanumeric
+- **Length:** 60
+- **Definition:** The title of the individual providing the authorization for the entity Taxpayer Name and TIN to be sent to the IRS for validation. This person must have legal authority to execute this consent in accordance with 26 CFR section 301.6103(c)-1(e)(4).
+
+### Total Assets
+- **Type:** Numeric
+- **Length:** 15
+- **Definition:** An entity's total assets. This number is used in the small business size status calculation for NAICS Codes 522110, 522120, 522130, 522190, 522210, and 522293 in accordance with the SBA Table of Small Business Size Standards.
+
+### Total Compensation Amount
+- **Type:** Numeric
+- **Length:** 38
+- **Definition:** The dollar value for the total compensation of the executive named in the Executive Name field.
+
+### Total Contract Value
+- **Type:** Numeric
+- **Length:** 20
+- **Definition:** The total amount of procurement that was obligated to be spent on products or services for the place of performance.
+
+### Total Receipts
+- **Type:** Numeric
+- **Length:** 15
+- **Definition:** The average yearly receipts for an entity over the past five years for all worldwide affiliates, branches, etc. rounded to the nearest dollar. This number must be equal to or greater than the Location Annual Receipts number.
+
+### Type of Contract
+- **Type:** Alphanumeric
+- **Length:** 120
+- **Definition:** The type of contract determines the service contract reporting thresholds in accordance with FAR Subpart 4.17 Service Contract Inventory.
+
+### Type of Tax
+- **Type:** Alpha
+- **Length:** 22
+- **Definition:** The type of tax paid to IRS. This will be prefilled by the system to say: Applicable Federal Tax.
+
+### Ultimate Parent UEI
+- **Type:** Alphanumeric
+- **Length:** 12
+- **Definition:** The UEI of the ultimate parent entity of the registrant, i.e. the very highest level of the organizational structure. Value provided by EVS.
+
+### Ultimate Parent Legal Business Name
+- **Type:** Alphanumeric
+- **Length:** 150
+- **Definition:** The legal business name of the ultimate parent entity of the registrant. Value provided by EVS.
+
+### Unique Entity Identifier (UEI)
+- **Type:** Alphanumeric
+- **Length:** 12
+- **Definition:** The unique, twelve-character entity identifier in SAM.
+
+### USDA Category
+- **Type:** Drop-Down
+- **Length:** N/A
+- **Definition:** The USDA biobased product categories for the Federal Procurement Preference:
+
+| Code | Name |
+|------|------|
+| 1 | Construction |
+| 2 | Groundskeeping |
+| 3 | Miscellaneous |
+| 4 | Janitorial |
+| 5 | Personal Care |
+| 6 | Industrial Lubricants and Fluids |
+| 7 | Food Service |
+
+### US Phone
+- **Type:** Numeric
+- **Length:** 13
+- **Definition:** The phone number of the Point of Contact for an entity registration if they are in the U.S.
+
+### Vessel Call Sign
+- **Type:** Alphanumeric
+- **Length:** 8
+- **Definition:** A vessel's unique identification code as used in radio communication. Included in exclusion records of the Vessel classification type, if known.
+
+### Vessel Flag
+- **Type:** Alphanumeric
+- **Length:** 40
+- **Definition:** The flag representing the country in which the vessel is registered. Included in exclusion records of the Vessel classification type, if known.
+
+### Vessel GRT
+- **Type:** Numeric
+- **Length:** 8
+- **Definition:** A vessel's gross registered tonnage or total interval volume. Included in exclusion records of the Vessel classification type, if known.
+
+### Vessel Owner
+- **Table:** Org_Data
+- **Length:** 150
+- **Definition:** The persons to whom the vessel belongs. Included in exclusion records of the Vessel classification type, if known.
+
+### Vessel Tonnage
+- **Type:** Numeric
+- **Length:** 14
+- **Definition:** A measure of the vessel's carrying capacity. Included in exclusion records of the Vessel classification type, if known.
+
+### Vessel Type
+- **Type:** Alphanumeric
+- **Length:** 25
+- **Definition:** An indication of a vessel's type. Included in exclusion records of the Vessel classification type, if known.
+
+### ZIP Code / Postal Code
+- **Type:** Alphanumeric
+- **Length:** 10
+- **Definition:** U.S. ZIP Code, or international Postal Code, associated with the address. Mandatory for U.S. and Canadian addresses. Optional for other international addresses.
+
+### ZIP Code +4
+- **Type:** Numeric
+- **Length:** 4
+- **Definition:** The four-digit extension assigned by the U.S. Postal Service to a given ZIP Code for a U.S. address. Populated, when available, for the entity's physical address.
+
+---
+
+## Appendix A – Acronym List
+
+This section contains an alphabetical listing of all acronyms, abbreviations, and their meanings as used in SAM.
+
+| Acronym/Abbreviation | Meaning |
+|----------------------|---------|
+| 820s | Remittance Advice Notices |
+| ACH | Automated Clearing House |
+| AKA | Also Known As |
+| CAGE | Commercial and Government Entity |
+| EVS | Entity Validation Service |
+| DBA | Doing Business As |
+| DFARS | Defense Federal Acquisition Regulation Supplement |
+| DLIS | Defense Logistics Information Service |
+| DoD | Department of Defense |
+| DoDAAC | Department of Defense Activity Address Code |
+| UEI | Unique Entity Identifier |
+| EDI | Electronic Data Interchange |
+| EFT | Electronic Funds Transfer |
+| EIN | Employee Identification Number |
+| FAR | Federal Acquisition Regulation |
+| FKA | Formerly Known As |
+| FSC | Federal Supply Code |
+| FSN | Fiscal Station Number |
+| IRS | Internal Revenue Service |
+| ISA | Interchange ID |
+| NAICS | North American Industrial Classification System |
+| NATO | North Atlantic Treaty Organization |
+| NCAGE | NATO Commercial and Government Entity |
+| NCS | NATO Codification System |
+| NKA | Now Known As |
+| NPI | National Provider Identifier |
+| POC | Point of Contact |
+| PSC | Product Service Code |
+| SAM | System for Award Management |
+| SBA | Small Business Administration |
+| TIN | Tax Identification Number |
+| URL | Universal Resource Locator |
+| VAN | Value Added Network |
+
+---
+
+## Appendix B – Country Code List
+
+This section contains an alphabetical listing of Country Names, 2 Digit Country Codes and 3 Digit Country Codes.
+
+| Country Name | 2 Digit Code | 3 Digit Code |
+|-------------|-------------|-------------|
+| ÅLAND ISLANDS | AX | ALA |
+| AFGHANISTAN | AF | AFG |
+| AKROTIRI | QZ | XQZ |
+| ALBANIA | AL | ALB |
+| ALGERIA | DZ | DZA |
+| AMERICAN SAMOA | AS | ASM |
+| ANDORRA | AD | AND |
+| ANGOLA | AO | AGO |
+| ANGUILLA | AI | AIA |
+| ANTARCTICA | AQ | ATA |
+| ANTIGUA AND BARBUDA | AG | ATG |
+| ARGENTINA | AR | ARG |
+| ARMENIA | AM | ARM |
+| ARUBA | AW | ABW |
+| ASHMORE AND CARTIER ISLANDS | XA | XAC |
+| AUSTRALIA | AU | AUS |
+| AUSTRIA | AT | AUT |
+| AZERBAIJAN | AZ | AZE |
+| BAHAMAS, THE | BS | BHS |
+| BAHRAIN | BH | BHR |
+| BANGLADESH | BD | BGD |
+| BARBADOS | BB | BRB |
+| BASSAS DA INDIA | QS | XBI |
+| BELARUS | BY | BLR |
+| BELGIUM | BE | BEL |
+| BELIZE | BZ | BLZ |
+| BENIN | BJ | BEN |
+| BERMUDA | BM | BMU |
+| BHUTAN | BT | BTN |
+| BOLIVIA | BO | BOL |
+| BONAIRE, SINT EUSTATIUS, AND SABA | BQ | BES |
+| BOSNIA AND HERZEGOVINA | BA | BIH |
+| BOTSWANA | BW | BWA |
+| BOUVET ISLAND | BV | BVT |
+| BRAZIL | BR | BRA |
+| BRITISH INDIAN OCEAN TERRITORY | IO | IOT |
+| BRUNEI | BN | BRN |
+| BULGARIA | BG | BGR |
+| BURKINA FASO | BF | BFA |
+| BURMA | MM | MMR |
+| BURUNDI | BI | BDI |
+| COTE D'IVOIRE | CI | CIV |
+| CABO VERDE | CV | CPV |
+| CAMBODIA | KH | KHM |
+| CAMEROON | CM | CMR |
+| CANADA | CA | CAN |
+| CAYMAN ISLANDS | KY | CYM |
+| CENTRAL AFRICAN REPUBLIC | CF | CAF |
+| CHAD | TD | TCD |
+| CHILE | CL | CHL |
+| CHINA | CN | CHN |
+| CHRISTMAS ISLAND | CX | CXR |
+| CLIPPERTON ISLAND | CP | CPT |
+| COCOS (KEELING) ISLANDS | CC | CCK |
+| COLOMBIA | CO | COL |
+| COMOROS | KM | COM |
+| CONGO (BRAZZAVILLE) | CG | COG |
+| CONGO (KINSHASA) | CD | COD |
+| COOK ISLANDS | CK | COK |
+| CORAL SEA ISLANDS | XC | XCS |
+| COSTA RICA | CR | CRI |
+| CROATIA | HR | HRV |
+| CUBA | CU | CUB |
+| CURACAO | CW | CUW |
+| CYPRUS | CY | CYP |
+| CZECH REPUBLIC | CZ | CZE |
+| CZECHIA | CZ | CZE |
+| DENMARK | DK | DNK |
+| DHEKELIA | XD | XXD |
+| DIEGO GARCIA | DG | DGA |
+| DJIBOUTI | DJ | DJI |
+| DOMINICA | DM | DMA |
+| DOMINICAN REPUBLIC | DO | DOM |
+| EAST TIMOR | NULL | TMP |
+| ECUADOR | EC | ECU |
+| EGYPT | EG | EGY |
+| EL SALVADOR | SV | SLV |
+| EQUATORIAL GUINEA | GQ | GNQ |
+| ERITREA | ER | ERI |
+| ESTONIA | EE | EST |
+| ESWATINI | SZ | SWZ |
+| ETHIOPIA | ET | ETH |
+| EUROPA ISLAND | XE | XEU |
+| FALKLAND ISLANDS (ISLAS MALVINAS) | FK | FLK |
+| FAROE ISLANDS | FO | FRO |
+| FIJI | FJ | FJI |
+| FINLAND | FI | FIN |
+| FRANCE | FR | FRA |
+| FRANCE, METROPOLITAN | NULL | FXX |
+| FRENCH GUIANA | GF | GUF |
+| FRENCH POLYNESIA | PF | PYF |
+| FRENCH SOUTHERN AND ANTARCTIC LANDS | TF | ATF |
+| GABON | GA | GAB |
+| GAMBIA, THE | GM | GMB |
+| GAZA STRIP | XG | XGZ |
+| GEORGIA | GE | GEO |
+| GERMANY | DE | DEU |
+| GHANA | GH | GHA |
+| GIBRALTAR | GI | GIB |
+| GLORIOSO ISLANDS | QX | XGL |
+| GREECE | GR | GRC |
+| GREENLAND | GL | GRL |
+| GRENADA | GD | GRD |
+| GUADELOUPE | GP | GLP |
+| GUAM | GU | GUM |
+| GUATEMALA | GT | GTM |
+| GUERNSEY | GG | GGY |
+| GUINEA | GN | GIN |
+| GUINEA-BISSAU | GW | GNB |
+| GUYANA | GY | GUY |
+| HAITI | HT | HTI |
+| HEARD ISLAND AND MCDONALD ISLANDS | HM | HMD |
+| HONDURAS | HN | HND |
+| HONG KONG | HK | HKG |
+| HUNGARY | HU | HUN |
+| ICELAND | IS | ISL |
+| INDIA | IN | IND |
+| INDONESIA | ID | IDN |
+| IRAN | IR | IRN |
+| IRAQ | IQ | IRQ |
+| IRELAND | IE | IRL |
+| ISLE OF MAN | IM | IMN |
+| ISRAEL | IL | ISR |
+| ITALY | IT | ITA |
+| JAMAICA | JM | JAM |
+| JAN MAYEN | XJ | XJM |
+| JAPAN | JP | JPN |
+| JERSEY | JE | JEY |
+| JORDAN | JO | JOR |
+| JUAN DE NOVA ISLAND | QU | XJN |
+| KAZAKHSTAN | KZ | KAZ |
+| KENYA | KE | KEN |
+| KIRIBATI | KI | KIR |
+| KOREA, NORTH | KP | PRK |
+| KOREA, SOUTH | KR | KOR |
+| KOSOVO | XK | XKS |
+| KUWAIT | KW | KWT |
+| KYRGYZSTAN | KG | KGZ |
+| LAOS | LA | LAO |
+| LATVIA | LV | LVA |
+| LEBANON | LB | LBN |
+| LESOTHO | LS | LSO |
+| LIBERIA | LR | LBR |
+| LIBYA | LY | LBY |
+| LIECHTENSTEIN | LI | LIE |
+| LITHUANIA | LT | LTU |
+| LUXEMBOURG | LU | LUX |
+| MACAU | MO | MAC |
+| MACEDONIA | MK | MKD |
+| MADAGASCAR | MG | MDG |
+| MALAWI | MW | MWI |
+| MALAYSIA | MY | MYS |
+| MALDIVES | MV | MDV |
+| MALI | ML | MLI |
+| MALTA | MT | MLT |
+| MARSHALL ISLANDS | MH | MHL |
+| MARTINIQUE | MQ | MTQ |
+| MAURITANIA | MR | MRT |
+| MAURITIUS | MU | MUS |
+| MAYOTTE | YT | MYT |
+| MEXICO | MX | MEX |
+| MICRONESIA, FEDERATED STATES OF | FM | FSM |
+| MOLDOVA | MD | MDA |
+| MONACO | MC | MCO |
+| MONGOLIA | MN | MNG |
+| MONTENEGRO | ME | MNE |
+| MONTSERRAT | MS | MSR |
+| MOROCCO | MA | MAR |
+| MOZAMBIQUE | MZ | MOZ |
+| NAMIBIA | NA | NAM |
+| NAURU | NR | NRU |
+| NEPAL | NP | NPL |
+| NETHERLANDS | NL | NLD |
+| NETHERLANDS ANTILLES | NULL | ANT |
+| NEW CALEDONIA | NC | NCL |
+| NEW ZEALAND | NZ | NZL |
+| NICARAGUA | NI | NIC |
+| NIGER | NE | NER |
+| NIGERIA | NG | NGA |
+| NIUE | NU | NIU |
+| NO MAN'S LAND | NULL | XXX |
+| NORFOLK ISLAND | NF | NFK |
+| NORTH MACEDONIA | MK | MKD |
+| NORTHERN MARIANA ISLANDS | MP | MNP |
+| NORWAY | NO | NOR |
+| OMAN | OM | OMN |
+| PAKISTAN | PK | PAK |
+| PALAU | PW | PLW |
+| PANAMA | PA | PAN |
+| PAPUA NEW GUINEA | PG | PNG |
+| PARACEL ISLANDS | XP | XPR |
+| PARAGUAY | PY | PRY |
+| PERU | PE | PER |
+| PHILIPPINES | PH | PHL |
+| PITCAIRN ISLANDS | PN | PCN |
+| POLAND | PL | POL |
+| PORTUGAL | PT | PRT |
+| PUERTO RICO | PR | PRI |
+| QATAR | QA | QAT |
+| REUNION | RE | REU |
+| ROMANIA | RO | ROU |
+| RUSSIA | RU | RUS |
+| RWANDA | RW | RWA |
+| SABA | NULL | NULL |
+| SAINT BARTHELEMY | BL | BLM |
+| SAINT HELENA, ASCENSION, AND TRISTAN DA CUNHA | SH | SHN |
+| SAINT KITTS AND NEVIS | KN | KNA |
+| SAINT LUCIA | LC | LCA |
+| SAINT MARTIN | MF | MAF |
+| SAINT PIERRE AND MIQUELON | PM | SPM |
+| SAINT VINCENT AND THE GRENADINES | VC | VCT |
+| SAMOA | WS | WSM |
+| SAN MARINO | SM | SMR |
+| SAO TOME AND PRINCIPE | ST | STP |
+| SAUDI ARABIA | SA | SAU |
+| SENEGAL | SN | SEN |
+| SERBIA | RS | SRB |
+| SERBIA AND MONTENEGRO | NULL | SCG |
+| SEYCHELLES | SC | SYC |
+| SIERRA LEONE | SL | SLE |
+| SINGAPORE | SG | SGP |
+| SINT MAARTEN | SX | SXM |
+| SLOVAKIA | SK | SVK |
+| SLOVENIA | SI | SVN |
+| SOLOMON ISLANDS | SB | SLB |
+| SOMALIA | SO | SOM |
+| SOUTH AFRICA | ZA | ZAF |
+| SOUTH GEORGIA AND SOUTH SANDWICH ISLANDS | GS | SGS |
+| SOUTH SUDAN | SS | SSD |
+| SPAIN | ES | ESP |
+| SPRATLY ISLANDS | XS | XSP |
+| SRI LANKA | LK | LKA |
+| SUDAN | SD | SDN |
+| SURINAME | SR | SUR |
+| SVALBARD | XR | XSV |
+| SVALBARD AND JAN MAYEN | SJ | SJM |
+| SWAZILAND | SZ | SWZ |
+| SWEDEN | SE | SWE |
+| SWITZERLAND | CH | CHE |
+| SYRIA | SY | SYR |
+| TAIWAN | TW | TWN |
+| TAJIKISTAN | TJ | TJK |
+| TANZANIA | TZ | TZA |
+| THAILAND | TH | THA |
+| THE STATE OF PALESTINE | PS | PSE |
+| TIMOR-LESTE | TL | TLS |
+| TOGO | TG | TGO |
+| TOKELAU | TK | TKL |
+| TONGA | TO | TON |
+| TRINIDAD AND TOBAGO | TT | TTO |
+| TROMELIN ISLAND | XT | XTR |
+| TUNISIA | TN | TUN |
+| TURKEY | TR | TUR |
+| TURKMENISTAN | TM | TKM |
+| TURKS AND CAICOS ISLANDS | TC | TCA |
+| TUVALU | TV | TUV |
+| UGANDA | UG | UGA |
+| UKRAINE | UA | UKR |
+| UNITED ARAB EMIRATES | AE | ARE |
+| UNITED KINGDOM | GB | GBR |
+| UNITED STATES | US | USA |
+| UNITED STATES MINOR OUTLYING ISLANDS | UM | UMI |
+| URUGUAY | UY | URY |
+| UZBEKISTAN | UZ | UZB |
+| VANUATU | VU | VUT |
+| VATICAN CITY | VA | VAT |
+| VENEZUELA | VE | VEN |
+| VIETNAM | VN | VNM |
+| VIRGIN ISLANDS, BRITISH | VG | VGB |
+| VIRGIN ISLANDS, U.S. | VI | VIR |
+| WALLIS AND FUTUNA | WF | WLF |
+| WEST BANK | XW | XWB |
+| WESTERN SAHARA | EH | ESH |
+| YEMEN | YE | YEM |
+| YUGOSLAVIA | NULL | YUG |
+| ZAIRE | NULL | ZAR |
+| ZAMBIA | ZM | ZMB |
+| ZIMBABWE | ZW | ZWE |

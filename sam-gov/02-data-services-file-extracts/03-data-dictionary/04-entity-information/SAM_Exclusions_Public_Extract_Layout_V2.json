@@ -1,0 +1,195 @@
+{
+    "dataset": "SAM_Exclusions_Public_V2_Extract",
+    "file_format": "CSV",
+    "file_extension": ".ZIP",
+    "file_naming": "SAM_Exclusions_Public_V2_Extract_YYDDD.ZIP",
+    "file_naming_notes": "YYDDD = 2-digit year + 3-digit Julian date. Example: SAM_Exclusions_Public_V2_Extract_24226.ZIP = Aug 30, 2024.",
+    "columns": [
+      {
+        "order": 1,
+        "header": "Classification",
+        "description": "Identifies the exclusion Classification Type as either a Firm, Individual, Special Entity Designation, or Vessel.",
+        "max_length": 50
+      },
+      {
+        "order": 2,
+        "header": "Name",
+        "description": "The name of the entity being excluded (not applicable for Individual exclusions).",
+        "max_length": 200
+      },
+      {
+        "order": 3,
+        "header": "Prefix",
+        "description": "The prefix for the actual name of a person being excluded (applicable for Individual exclusions only).",
+        "max_length": 25
+      },
+      {
+        "order": 4,
+        "header": "First",
+        "description": "The first name for the actual name of a person being excluded (applicable for Individual exclusions only).",
+        "max_length": 50
+      },
+      {
+        "order": 5,
+        "header": "Middle",
+        "description": "The middle name for the actual name of a person being excluded (applicable for Individual exclusions only).",
+        "max_length": 50
+      },
+      {
+        "order": 6,
+        "header": "Last",
+        "description": "The last name for the actual name of a person being excluded (applicable for Individual exclusions only).",
+        "max_length": 50
+      },
+      {
+        "order": 7,
+        "header": "Suffix",
+        "description": "The suffix for the actual name of a person being excluded (applicable for Individual exclusions only).",
+        "max_length": 25
+      },
+      {
+        "order": 8,
+        "header": "Address 1",
+        "description": "The first line of the excluded entity's primary address.",
+        "max_length": 150
+      },
+      {
+        "order": 9,
+        "header": "Address 2",
+        "description": "The second line of the excluded entity's primary address.",
+        "max_length": 150
+      },
+      {
+        "order": 10,
+        "header": "Address 3",
+        "description": "Address line 3 of the exclusion's primary address.",
+        "max_length": 150
+      },
+      {
+        "order": 11,
+        "header": "Address 4",
+        "description": "Address line 4 of the exclusion's primary address.",
+        "max_length": 150
+      },
+      {
+        "order": 12,
+        "header": "City",
+        "description": "The City name of the excluded entity's primary address.",
+        "max_length": 150
+      },
+      {
+        "order": 13,
+        "header": "State / Province",
+        "description": "The State or Province two-character abbreviation of the excluded entity's primary address.",
+        "max_length": 150
+      },
+      {
+        "order": 14,
+        "header": "Country",
+        "description": "The Country for the excluded entity's primary address.",
+        "max_length": 3
+      },
+      {
+        "order": 15,
+        "header": "Zip Code",
+        "description": "The ZIP or Postal Code for the excluded entity's primary address.",
+        "max_length": 10
+      },
+      {
+        "order": 16,
+        "header": "Open Data Flag",
+        "description": "This flag indicates whether the Business Name and Physical Address sourced from EVS or Prior provider.",
+        "max_length": 1
+      },
+      {
+        "order": 17,
+        "header": "Blank (Deprecated)",
+        "description": "Empty column which held the prior 9-digit identifier for exclusions with a classification of Firm. This has been replaced by the Unique Entity ID.",
+        "max_length": 0
+      },
+      {
+        "order": 18,
+        "header": "Unique Entity ID",
+        "description": "Unique identifier of a specific excluded entity. It is 12-character alpha-numeric. Example: F847A1795DE4",
+        "max_length": 12
+      },
+      {
+        "order": 19,
+        "header": "Exclusion Program",
+        "description": "Identifies if the exclusion is Reciprocal, Nonreciprocal or Procurement. For any exclusion record created on or after August 25, 1995, the value will always be Reciprocal.",
+        "max_length": 50
+      },
+      {
+        "order": 20,
+        "header": "Excluding Agency",
+        "description": "Identifies the Agency which created the exclusion.",
+        "max_length": 25
+      },
+      {
+        "order": 21,
+        "header": "CT Code",
+        "description": "Identifies the legacy Excluded Parties List System (EPLS) Cause & Treatment (CT) Code associated with the exclusion. CT Codes were replaced by the Exclusion Type in SAM. Exclusions created after August 2012 will not have CT Codes. They will only have Exclusion Types.",
+        "max_length": 16
+      },
+      {
+        "order": 22,
+        "header": "Exclusion Type",
+        "description": "Identifies the Exclusion Type for the record replacing the CT Code. Exclusion Type is a simplified, easier to understand way to identify why the entity is being excluded.",
+        "max_length": 50
+      },
+      {
+        "order": 23,
+        "header": "Additional Comments",
+        "description": "This field provides the Agency creating the exclusion space to enter additional information as necessary.",
+        "max_length": 4000
+      },
+      {
+        "order": 24,
+        "header": "Active Date",
+        "description": "Identifies the date the exclusion went active. Format: MM/DD/YYYY",
+        "max_length": 10
+      },
+      {
+        "order": 25,
+        "header": "Termination Date",
+        "description": "Identifies the date the exclusion will be terminated. If 'Indefinite' is in this field, there is no set date that the exclusion will terminate. Format: MM/DD/YYYY or Indefinite",
+        "max_length": 10
+      },
+      {
+        "order": 26,
+        "header": "Record Status",
+        "description": "Identifies the record as being Active or Inactive. This extract only displays Active exclusion records, therefore this column is always blank. All records in the extract are Active.",
+        "max_length": 50
+      },
+      {
+        "order": 27,
+        "header": "Cross-Reference",
+        "description": "Identifies other names/aliases with which the entity being excluded has been identified.",
+        "max_length": 200
+      },
+      {
+        "order": 28,
+        "header": "SAM Number",
+        "description": "The internal number used by SAM to identify exclusion records. Since only Firm and SED exclusion records are required to have a Unique Entity ID, SAM needed a way to uniquely track exclusion records of other Classification Types.",
+        "max_length": 9
+      },
+      {
+        "order": 29,
+        "header": "CAGE",
+        "description": "The CAGE Code associated with the excluded entity. Mostly found on Firm exclusion records, but could be in other types if the Individual, Special Entity, or Vessel has a CAGE Code.",
+        "max_length": 5
+      },
+      {
+        "order": 30,
+        "header": "NPI",
+        "description": "The National Provider Identifier (NPI) associated with the exclusion. Healthcare providers acquire their unique 10-digit NPIs from the Centers for Medicare & Medicaid Services (CMS) at the Department of Health & Human Services (HHS) to identify themselves in a standard way throughout their industry.",
+        "max_length": 100
+      },
+      {
+        "order": 31,
+        "header": "Creation Date",
+        "description": "Identifies the date the exclusion was created in SAM. Format: MM/DD/YYYY",
+        "max_length": 10
+      }
+    ]
+  }

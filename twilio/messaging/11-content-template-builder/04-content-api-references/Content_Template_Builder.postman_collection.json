@@ -1,0 +1,542 @@
+{
+	"info": {
+		"_postman_id": "be88fd71-cd15-48b6-979e-f1e2024e2fb5",
+		"name": "Content Template Builder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22279886",
+		"_collection_link": "https://twilio.postman.co/workspace/Channels-X~e64f6df3-69c4-461c-b1df-4ca831a314b1/collection/22279886-be88fd71-cd15-48b6-979e-f1e2024e2fb5?action=share&source=collection_link&creator=22279886"
+	},
+	"item": [
+		{
+			"name": "Create twilio/text",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "",
+						"username": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"boarding_notification\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"1\":\"name\",\n        \"2\":\"11\"\n    },\n    \"types\": {\n        \"twilio/text\": {\n            \"body\": \"Hi {{1}}, \\n Your flight will depart from gate {{2}}.\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content"
+			},
+			"response": []
+		},
+		{
+			"name": "Create twilio/media",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"variable_media\",\n    \"language\": \"en\",\n    \"variables\": {\"1\":\"library-logo-resource2x.width-1000.png\"},\n    \"types\": {\n        \"twilio/media\": {\n        \"body\": \"A new image was shared with your account\",\n        \"media\": [\"https://www.example.com/images/{{1}}\"]\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content"
+			},
+			"response": []
+		},
+		{
+			"name": "Create twilio/location",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"delivery_confirmation\",\n    \"language\": \"en\",\n    \"types\": {\n        \"twilio/text\": {\n            \"body\": \"Your items are ready for pickup at 101 Spear, San Francisco, CA 94105.\"\n        },\n        \"twilio/location\": {\n            \"latitude\": 37.793160017538895, \n            \"longitude\": -122.39292865432677,\n            \"label\": \"Your items are ready for pickup.\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content"
+			},
+			"response": []
+		},
+		{
+			"name": "Create twilio/list-picker",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"owl_sale_list\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"1\": \"end_date\"\n    },\n    \"types\": {\n        \"twilio/list-picker\": {\n            \"body\": \"Owl Air Flash Sale! Hurry! Sale ends on {{1}}!\",\n            \"button\": \"Select a destination\",\n            \"items\": [\n                {\n                    \"item\": \"SFO to NYC for $299\",\n                    \"description\": \"Owl Air Flight 1337 to LGA\",\n                    \"id\": \"SFO1337_postbackpayload1\"\n                },\n                {\n                    \"item\": \"OAK to Denver for $149\",\n                    \"description\": \"Owl Air Flight 5280 to DEN\",\n                    \"id\": \"OAK5280_postbackpayload2\"\n                },\n                {\n                    \"item\": \"LAX to Chicago for $199\",\n                    \"description\": \"Owl Air Flight 96 to ORD\",\n                    \"id\": \"LAX96_postbackpayload3\"\n                }\n            ]\n        }\n    }\n}\n"
+				},
+				"url": "https://content.twilio.com/v1/Content",
+				"description": "List picker"
+			},
+			"response": []
+		},
+		{
+			"name": "Create twilio/quick-reply",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"quickreply_help\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"1\":\"Name\"\n    },\n    \"types\": {\n        \"twilio/text\": {\n            \"body\": \"Hi {{1}}, \\n Thanks for contacting Owl Air Support. How can I help?.\"\n        },\n        \"twilio/quick-reply\": {\n            \"body\": \"Hi {{1}}, \\n Thanks for contacting Owl Air Support. How can I help?\",\n            \"actions\": [\n                {\n                    \"id\": \"postbackpayload1\",\n                    \"title\": \"Check flight status\"\n                },\n                {\n                    \"id\": \"postbackpayload2\",\n                    \"title\": \"Check gate number\"\n                },\n                {\n                    \"id\": \"postbackpayload3\",\n                    \"title\": \"Speak with an agent\"\n                }\n            ]\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content"
+			},
+			"response": []
+		},
+		{
+			"name": "Create twilio/call-to-action",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"quickreply_help\",\n    \"language\": \"en\",\n    \"variables\": {\"1\": \"flight_number\", \n                \"2\": \"arrival_city\",\n                \"3\": \"departure_time\",\n                \"4\": \"gate_number\",\n                \"5\": \"url_suffix\"},\n    \"types\": {\n    \"twilio/call-to-action\": {\n      \"body\": \"Owl Air: We will see you soon! Flight {{1}} to {{2}} departs at {{3}} from Gate {{4}}.\",\n      \"actions\": [{\n          \"type\": \"URL\",\n          \"title\": \"Check Flight Status\",\n          \"url\": \"https://owlair.com/{{5}}\"\n        },\n        {\n          \"type\": \"PHONE_NUMBER\",\n          \"title\": \"Call Support\",\n          \"phone\": \"+18005551234\"\n      }]\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content"
+			},
+			"response": []
+		},
+		{
+			"name": "Create twilio/card",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"card_elite_status\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"1\": \"coupon_code\"\n    },\n    \"types\": {\n        \"twilio/card\": {\n                    \"title\": \"Congratulations, you've reached Elite status! Add code {{1}} for 10% off.\",\n                    \"subtitle\": \"To unsubscribe, reply Stop\",\n                    \"actions\": [\n                        {\n                            \"url\": \"https://twilio.com/\",\n                            \"title\": \"Order Online\",\n                            \"type\": \"URL\"\n                        },\n                        {\n                            \"phone\": \"+15551234567\",\n                            \"title\": \"Call Us\",\n                            \"type\": \"PHONE_NUMBER\"\n                        }\n                    ]\n                }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content"
+			},
+			"response": []
+		},
+		{
+			"name": "Create whatsapp/card",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"owl_coupon_card\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"1\": \"coupon_code\"\n    },\n    \"types\": {\n        \"whatsapp/card\": {\n                    \"body\": \"Congratulations, you have reached Elite status! Add code {{1}} for 10% off.\",\n                    \"header_text\": \"This is a {{1}} card\",\n                    \"footer\": \"To unsubscribe, reply Stop\",\n                    \"actions\": [\n                        {\n                            \"url\": \"https://twilio.com/\",\n                            \"title\": \"Order Online\",\n                            \"type\": \"URL\"\n                        },\n                        {\n                            \"phone\": \"+15551234567\",\n                            \"title\": \"Call Us\",\n                            \"type\": \"PHONE_NUMBER\"\n                        }\n                    ]\n                }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content"
+			},
+			"response": []
+		},
+		{
+			"name": "Create whatsapp/authentication",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"friendly_name\": \"whatsapp_otp\",\n    \"language\": \"en\",\n    \"types\": {\n      \"whatsapp/authentication\":{\n        \"add_security_recommendation\": true,\n        \"code_expiration_minutes\": \"30\",\n        \"actions\": [{\n            \"type\": \"COPY_CODE\",\n            \"copy_code_text\": \"Button Text Here\"\n        }]\n      }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content"
+			},
+			"response": []
+		},
+		{
+			"name": "Send content template",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "To",
+							"value": "whatsapp:+YOUR_SENDER",
+							"type": "text"
+						},
+						{
+							"key": "From",
+							"value": "YOUR_MESSAGING_SERVICE",
+							"type": "text"
+						},
+						{
+							"key": "ContentSid",
+							"value": "YOUR_CONTENT_SID",
+							"type": "text"
+						},
+						{
+							"key": "ContentVariables",
+							"value": "{\"1\":\"YOUR_VARIABLE1\",\"2\":\"YOUR_VARIABLE2\"}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.twilio.com/2010-04-01/Accounts/YOUR_ASID/Messages.json",
+					"protocol": "https",
+					"host": [
+						"api",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"2010-04-01",
+						"Accounts",
+						"YOUR_ASID",
+						"Messages.json"
+					],
+					"query": [
+						{
+							"key": "To",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "From",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "Body",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit to Whatsapp for Approval V2",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"submission_name\",\n  \"category\": \"MARKETING\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://content.twilio.com/v1/Content/YOUR_CONTENT_SID/ApprovalRequests/whatsapp",
+				"description": "Create content"
+			},
+			"response": []
+		},
+		{
+			"name": "Get WhatsApp Approval Status V2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://content.twilio.com/v1/Content/YOUR_CONTENT_SID/ApprovalRequests"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Content V2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://content.twilio.com/v1/Content/YOUR_CONTENT_SID"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Content and Approvals V2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://content.twilio.com/v1/ContentAndApprovals/YOUR_CONTENT_SID"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Content V2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://content.twilio.com/v1/Content?PageSize=500",
+					"protocol": "https",
+					"host": [
+						"content",
+						"twilio",
+						"com"
+					],
+					"path": [
+						"v1",
+						"Content"
+					],
+					"query": [
+						{
+							"key": "PageSize",
+							"value": "500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Content V2",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "",
+						"password": "",
+						"showPassword": false
+					}
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://content.twilio.com/v1/Content/YOUR_CONTENT_SID"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "",
+			"username": ""
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

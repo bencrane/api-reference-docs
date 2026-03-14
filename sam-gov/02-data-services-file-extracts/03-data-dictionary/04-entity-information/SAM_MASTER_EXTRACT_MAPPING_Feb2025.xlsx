@@ -1,0 +1,599 @@
+# SAM Master Extract Mapping (February 2025)
+
+Last Updated: 2025-02-13
+
+## Data Element Mapping
+
+| # | Element | Datatype | Format | Max Len | Definition | Mandatory | Sensitivity |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | UNIQUE ENTITY ID | STRING | ALPHANUMERIC | 12 | The UNIQUE ENTITY ID for the entity. It is 12-character alpha-numeric. Example: F847A1795DE4 | If Available (All Awards/Federal Assistance) | Public |
+| 2 | BLANK (DEPRECATED) | STRING | STRING |  | Blank Spaces, formerly occupied by the prior Entity identifier |  | Public |
+| 3 | ENTITY EFT INDICATOR | STRING | STRING | 4 | See SAM Functional Data Dictionary | Optional | Public |
+| 4 | CAGE CODE | STRING | STRING | 5 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 5 | DODAAC | STRING | STRING | 9 | See SAM Functional Data Dictionary | Optional (IGT Only) | Public |
+| 6 | SAM EXTRACT CODE | STRING | STRING | 1 | Single character code that defines the status of the record being sent in the extract. The monthly file contains the com... | Mandatory | Public |
+| 7 | PURPOSE OF REGISTRATION | STRING | STRING | 2 | See SAM Functional Data Dictionary | Mandatory | Public |
+| 8 | INITIAL REGISTRATION DATE | STRING | YYYYMMDD | 8 | The date the initial entity registration was activated either in SAM or its predecessor, CCR. This date does not change. | Mandatory | Public |
+| 9 | REGISTRATION EXPIRATION DATE | STRING | YYYYMMDD | 8 | The date this current registration will expire or has already expired. This date is 365 days after the user submitted th... | Mandatory | Public |
+| 10 | LAST UPDATE DATE | STRING | YYYYMMDD | 8 | The date this registration was last updated.  This can change while the Activation Date remains the same for many reason... | Mandatory | Public |
+| 11 | ACTIVATION DATE | STRING | YYYYMMDD | 8 | The date this registration record was made active.  This can differ from the date that the registration was submitted du... | Mandatory | Public |
+| 12 | LEGAL BUSINESS NAME | STRING | STRING | 120 | See SAM Functional Data Dictionary | Mandatory | Public |
+| 13 | DBA NAME | STRING | STRING | 120 | See SAM Functional Data Dictionary | Optional | Public |
+| 14 | ENTITY DIVISION NAME | STRING | STRING | 60 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 15 | ENTITY DIVISION NUMBER | STRING | STRING | 10 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 16 | PHYSICAL ADDRESS LINE 1 | STRING | STRING | 150 | This is part of the entity's Physical Address.  See SAM Functional Data Dictionary for more information. | Mandatory | Public |
+| 17 | PHYSICAL ADDRESS LINE 2 | STRING | STRING | 150 | This is part of the entity's Physical Address.  See SAM Functional Data Dictionary for more information. | Optional | Public |
+| 18 | PHYSICAL ADDRESS CITY | STRING | STRING | 40 | This is part of the entity's Physical Address.  See SAM Functional Data Dictionary for more information. | Mandatory | Public |
+| 19 | PHYSICAL ADDRESS PROVINCE OR STATE | STRING | STRING | 55 | This is part of the entity's Physical Address.  See SAM Functional Data Dictionary for more information. | Optional | Public |
+| 20 | PHYSICAL ADDRESS ZIP/POSTAL CODE | STRING | STRING | 50 | This is part of the entity's Physical Address.  See SAM Functional Data Dictionary for more information. | Optional | Public |
+| 21 | PHYSICAL ADDRESS ZIP CODE +4 | STRING | Numeric | 4 | This is part of the entity's Physical Address.  See SAM Functional Data Dictionary for more information. | Optional | Public |
+| 22 | PHYSICAL ADDRESS COUNTRY CODE | STRING | STRING | 3 | This is part of the entity's Physical Address.  See SAM Functional Data Dictionary for more information. | Mandatory | Public |
+| 23 | PHYSICAL ADDRESS CONGRESSIONAL DISTRICT | STRING | Numeric | 10 | This is part of the entity's Physical Address.  See SAM Functional Data Dictionary for more information. | Optional | Public |
+| 24 | D&B OPEN DATA FLAG | STRING | Y or N | 1 | This flag indicates whether the Business Name and Physical Address sourced from D&B. | Mandatory | Public |
+| 25 | ENTITY START DATE | STRING | YYYYMMDD | 8 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 26 | FISCAL YEAR END CLOSE DATE | STRING | MMDD | 4 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 27 | COMPANY SECURITY LEVEL | STRING | STRING | 2 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 28 | HIGHEST EMPLOYEE SECURITY LEVEL | STRING | STRING | 2 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 29 | ENTITY URL | STRING | STRING | 200 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 30 | ENTITY STRUCTURE | STRING | STRING | 2 | See SAM Functional Data Dictionary | Mandatory | Public |
+| 31 | STATE OF INCORPORATION | STRING | STRING | 2 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 32 | COUNTRY OF INCORPORATION | STRING | STRING | 3 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 33 | BUSINESS TYPE COUNTER | STRING | Numeric | 4 | Four digit identifier that provides the number of business types to be provided in the business type String. | Mandatory | Public |
+| 34 | BUS TYPE STRING | STRING | ~ Separated | 220 | Tilde (~) delimited string that includes all of the entity's business type information.  For more information on the bus... | Mandatory | Public |
+| 35 | AGENCY BUSINESS PURPOSE | STRING | STRING | 1 | This data element identifies what business purpose that the IGT registration (Purpose of Registration Z3, Z4, Z5) has re... | Mandatory (IGT Only) | FOUO (CUI) |
+| 36 | PRIMARY NAICS | STRING | STRING | 6 | See SAM Functional Data Dictionary | Mandatory (All Awards) | Public |
+| 37 | NAICS CODE COUNTER | STRING | Numeric | 4 | Four digit identifier that provides the number of NAICS Codes to be provided in the NAICS Code String. | Mandatory | Public |
+| 38 | NAICS CODE STRING | STRING | ~ Separated | 12000 | Tilde (~) delimited string that includes all of the entity's NAICS information.  For more information on the NAICS Code ... | Mandatory (All Awards) | Public |
+| 39 | PSC CODE COUNTER | STRING | Numeric | 4 | Four digit identifier that provides the number of PSC Codes to be provided in the PSC Code String. | Mandatory | Public |
+| 40 | PSC CODE STRING | STRING | ~ Separated | 2500 | Tilde (~) delimited string that includes all of the entity's PSC information.  For more information on the PSC Code Stri... | Optional (All Awards) | Public |
+| 41 | CREDIT CARD USAGE | STRING | Y or N | 1 | See SAM Functional Data Dictionary | Optional | Public |
+| 42 | CORRESPONDENCE FLAG | STRING | M, F, or E | 1 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 43 | MAILING ADDRESS LINE 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 44 | MAILING ADDRESS LINE 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 45 | MAILING ADDRESS CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 46 | MAILING ADDRESS ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 47 | MAILING ADDRESS ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 48 | MAILING ADDRESS COUNTRY | STRING | STRING | 3 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 49 | MAILING ADDRESS STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 50 | GOVT BUS POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 51 | GOVT BUS POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 52 | GOVT BUS POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 53 | GOVT BUS POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 54 | GOVT BUS POC ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 55 | GOVT BUS POC ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 56 | GOVT BUS POC CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 57 | GOVT BUS POC ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 58 | GOVT BUS POC ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 59 | GOVT BUS POC COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 60 | GOVT BUS POC STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 61 | GOVT BUS POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 62 | GOVT BUS POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 63 | GOVT BUS POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 64 | GOVT BUS POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 65 | GOVT BUS POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | FOUO (CUI) |
+| 66 | ALT GOVT BUS POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 67 | ALT GOVT BUS POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 68 | ALT GOVT BUS POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 69 | ALT GOVT BUS POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 70 | ALT GOVT BUS POC ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 71 | ALT GOVT BUS POC ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 72 | ALT GOVT BUS POC CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 73 | ALT GOVT BUS POC ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 74 | ALT GOVT BUS POC ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 75 | ALT GOVT BUS POC COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 76 | ALT GOVT BUS POC STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 77 | ALT GOVT BUS POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 78 | ALT GOVT BUS POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 79 | ALT GOVT BUS POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 80 | ALT GOVT BUS POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 81 | ALT GOVT BUS POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 82 | PAST PERF POC POC  FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 83 | PAST PERF POC POC  MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 84 | PAST PERF POC POC  LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 85 | PAST PERF POC POC  TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 86 | PAST PERF POC ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 87 | PAST PERF POC ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 88 | PAST PERF POC CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 89 | PAST PERF POC ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 90 | PAST PERF POC ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 91 | PAST PERF POC COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 92 | PAST PERF POC STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 93 | PAST PERF POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 94 | PAST PERF POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 95 | PAST PERF POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 96 | PAST PERF POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 97 | PAST PERF POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 98 | ALT PAST PERF POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 99 | ALT PAST PERF POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 100 | ALT PAST PERF POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 101 | ALT PAST PERF POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 102 | ALT PAST PERF POC ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 103 | ALT PAST PERF POC ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 104 | ALT PAST PERF POC CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 105 | ALT PAST PERF POC ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 106 | ALT PAST PERF POC ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 107 | ALT PAST PERF POC COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 108 | ALT PAST PERF POC STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 109 | ALT PAST PERF POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 110 | ALT PAST PERF POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 111 | ALT PAST PERF POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 112 | ALT PAST PERF POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 113 | ALT PAST PERF POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 114 | ELEC BUS POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 115 | ELEC BUS POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 116 | ELEC BUS POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 117 | ELEC BUS POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 118 | ELEC BUS POC ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 119 | ELEC BUS POC ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 120 | ELEC BUS POC CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 121 | ELEC BUS POC ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 122 | ELEC BUS POC ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 123 | ELEC BUS POC COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | Public |
+| 124 | ELEC BUS POC STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 125 | ELEC BUS POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 126 | ELEC BUS POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 127 | ELEC BUS POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 128 | ELEC BUS POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 129 | ELEC BUS POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Mandatory (All Awards/Federal Assistance) | FOUO (CUI) |
+| 130 | ALT ELEC POC BUS POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 131 | ALT ELEC POC BUS POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 132 | ALT ELEC POC BUS POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 133 | ALT ELEC POC BUS POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 134 | ALT ELEC POC BUS ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 135 | ALT ELEC POC BUS ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 136 | ALT ELEC POC BUS CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 137 | ALT ELEC POC BUS ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 138 | ALT ELEC POC BUS ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 139 | ALT ELEC POC BUS COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 140 | ALT ELEC POC BUS STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 141 | ALT ELEC POC BUS U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 142 | ALT ELEC POC BUS U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 143 | ALT ELEC POC BUS NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 144 | ALT ELEC POC BUS FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 145 | ALT ELEC POC BUS EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 146 | PARTY PERFORMING CERTIFICATION POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 147 | PARTY PERFORMING CERTIFICATION POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 148 | PARTY PERFORMING CERTIFICATION POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 149 | PARTY PERFORMING CERTIFICATION POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 150 | PARTY PERFORMING CERTIFICATION POC BUS ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 151 | PARTY PERFORMING CERTIFICATION POC BUS ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 152 | PARTY PERFORMING CERTIFICATION POC BUS CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 153 | PARTY PERFORMING CERTIFICATION POC BUS ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 154 | PARTY PERFORMING CERTIFICATION POC BUS ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 155 | PARTY PERFORMING CERTIFICATION POC BUS COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 156 | PARTY PERFORMING CERTIFICATION POC BUS STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 157 | PARTY PERFORMING CERTIFICATION POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 158 | PARTY PERFORMING CERTIFICATION POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 159 | PARTY PERFORMING CERTIFICATION POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 160 | PARTY PERFORMING CERTIFICATION POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 161 | PARTY PERFORMING CERTIFICATION POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 162 | SOLE PROPRIETORSHIP POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 163 | SOLE PROPRIETORSHIP POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 164 | SOLE PROPRIETORSHIP POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 165 | SOLE PROPRIETORSHIP POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 166 | SOLE PROPRIETORSHIP POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 167 | SOLE PROPRIETORSHIP POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 168 | SOLE PROPRIETORSHIP POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 169 | SOLE PROPRIETORSHIP POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 170 | SOLE PROPRIETORSHIP POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 171 | IMMEDIATE PARENT LEGAL BUSINESS NAME | STRING | ALPHANUMERIC | 150 | This is the Legal Business Name of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 172 | IMMEDIATE PARENT UNIQUE ENTITY ID | STRING | ALPHANUMERIC | 12 | This is the UEI number of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 173 | IMMEDIATE PARENT ST ADD 1 | STRING | ALPHANUMERIC | 150 | This is the Street Address 1 of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 174 | IMMEDIATE PARENT ST ADD 2 | STRING | ALPHANUMERIC | 150 | This is the Street Address 2 of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 175 | IMMEDIATE PARENT CITY | STRING | ALPHANUMERIC | 40 | This is the City of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 176 | IMMEDIATE PARENT POSTAL CODE | STRING | ALPHANUMERIC | 50 | This is the Postal Code of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 177 | IMMEDIATE PARENT COUNTRY CODE | STRING | ALPHANUMERIC | 3 | This is the Country Code of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 178 | IMMEDIATE PARENT STATE OR PROVINCE | STRING | ALPHANUMERIC | 55 | This is the State or Province of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 179 | IMMEDIATE PARENT PHONE | STRING | ALPHANUMERIC | 30 | This is the Phone Number of the immediate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 180 | HQ PARENT LEGAL BUSINESS NAME | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 181 | HQ PARENT UNIQUE ENTITY ID | STRING | ALPHANUMERIC | 12 | This is the UEI number of the hq parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 182 | BLANK (DEPRECATED) | STRING | STRING |  | Blank Spaces, formerly occupied by the prior HQ Parent Identifier |  | FOUO (CUI) |
+| 183 | HQ PARENT ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 184 | HQ PARENT ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 185 | HQ PARENT CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 186 | HQ PARENT POSTAL CODE | STRING | Numeric | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 187 | HQ PARENT COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 188 | HQ PARENT STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 189 | HQ PARENT PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 190 | DOMESTIC PARENT LEGAL BUSINESS NAME | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 191 | DOMESTIC PARENT UNIQUE ENTITY ID | STRING | ALPHANUMERIC | 12 | This is the UEI number of the domestic parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 192 | BLANK (DEPRECATED) | STRING | STRING |  | Blank Spaces, formerly occupied by the prior Domestic Parent Identifier |  | FOUO (CUI) |
+| 193 | DOMESTIC PARENT ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 194 | DOMESTIC PARENT ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 195 | DOMESTIC PARENT CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 196 | DOMESTIC PARENT POSTAL CODE | STRING | Numeric | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 197 | DOMESTIC PARENT COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 198 | DOMESTIC PARENT STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 199 | DOMESTIC PARENT PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 200 | ULTIMATE PARENT LEGAL BUSINESS NAME | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 201 | ULTIMATE PARENT UNIQUE ENTITY ID | STRING | ALPHANUMERIC | 12 | This is the UEI number of the ultimate parent entity of the registrant | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 202 | BLANK (DEPRECATED) | STRING | STRING |  | Blank Spaces, formerly occupied by the prior Domestic Parent Identifier |  | FOUO (CUI) |
+| 203 | ULTIMATE PARENT ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 204 | ULTIMATE PARENT ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 205 | ULTIMATE PARENT CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 206 | ULTIMATE PARENT POSTAL CODE | STRING | Numeric | 50 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 207 | ULTIMATE PARENT COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 208 | ULTIMATE PARENT STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 209 | ULTIMATE PARENT PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 210 | EVS OUT OF BUSINESS INDICATOR | STRING | Y or Null | 1 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 211 | EVS MONITORING LAST UPDATED | STRING | YYYYMMDD | 10 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 212 | EVS MONITORING STATUS | STRING | 0 or 1 | 1 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 213 | EVS MONITORING LEGAL BUSINESS NAME | STRING | STRING | 120 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 214 | EVS MONITORING DBA | STRING | STRING | 120 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 215 | EVS MONITORING ADDRESS 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 216 | EVS MONITORING ADDRESS 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 217 | EVS MONITORING CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 218 | EVS MONITORING POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 219 | EVS MONITORING COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 220 | EVS MONITORING STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 221 | EDI (Y/N) | STRING | Y or N | 1 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 222 | EDI VAN PROVIDER | STRING | STRING | 20 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 223 | ISA QUALIFIER | STRING | STRING | 2 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 224 | ISA IDENTIFIER | STRING | STRING | 15 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 225 | FUNCTIONAL GROUP IDENTIFIER | STRING | STRING | 15 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 226 | 820S REQUEST FLAG | STRING | Yes/No | 1 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 227 | EDI POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 228 | EDI POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 229 | EDI POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 230 | EDI POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 231 | EDI POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 232 | EDI POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 233 | EDI POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 234 | EDI POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 235 | EDI POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 236 | TAX IDENTIFIER TYPE | STRING | 1  (SSN) or 2 (TIN) | 1 | Tax Identifier Type  - This data element identifies whether the Tax Identifier provided in the "Tax Identifier Number" c... | Mandatory for US Entities.  Optional for Foreign and IGT-only Entities | Sensitive (CUI) |
+| 237 | TAX IDENTIFIER NUMBER | STRING | Numeric | 9 | See SAM Functional Data Dictionary | Mandatory for US Entities.  Optional for Foreign and IGT-only Entities | Sensitive (CUI) |
+| 238 | AVERAGE NUMBER OF EMPLOYEES | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 239 | AVERAGE ANNUAL REVENUE | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 240 | FINANCIAL INSTITUTE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 241 | ACCOUNT NUMBER | STRING | STRING | 20 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 242 | ABA ROUTING ID | STRING | Numeric | 50 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 243 | ACCOUNT TYPE | STRING | C or S | 1 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 244 | LOCKBOX NUMBER | STRING | STRING | 20 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 245 | AUTHORIZATION DATE | STRING | YYYYMMDD | 8 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 246 | EFT WAIVER | STRING | Y or N | 1 | The EFT Waiver Flag indicates whether banking information is required for the entity. “Y” indicates Yes, “N” indicates N... | Mandatory | Sensitive (CUI) |
+| 247 | ACH U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Sensitive (CUI) |
+| 248 | ACH NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Sensitive (CUI) |
+| 249 | ACH FAX | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Sensitive (CUI) |
+| 250 | ACH EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Sensitive (CUI) |
+| 251 | REMITTANCE NAME | STRING | STRING | 120 | See SAM Functional Data Dictionary | Mandatory | Sensitive (CUI) |
+| 252 | REMITTANCE ADDRESS LINE 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Mandatory | Sensitive (CUI) |
+| 253 | REMITTANCE ADDRESS LINE 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Mandatory | Sensitive (CUI) |
+| 254 | REMITTANCE CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Mandatory | Sensitive (CUI) |
+| 255 | REMITTANCE STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 256 | REMITTANCE ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 257 | REMITTANCE ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional | Sensitive (CUI) |
+| 258 | REMITTANCE COUNTRY | STRING | STRING | 3 | See SAM Functional Data Dictionary | Mandatory | Sensitive (CUI) |
+| 259 | ACCOUNTS RECEIVABLE POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Mandatory | FOUO (CUI) |
+| 260 | ACCOUNTS RECEIVABLE POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 261 | ACCOUNTS RECEIVABLE POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Mandatory | FOUO (CUI) |
+| 262 | ACCOUNTS RECEIVABLE POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 263 | ACCOUNTS RECEIVABLE POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 264 | ACCOUNTS RECEIVABLE POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 265 | ACCOUNTS RECEIVABLE POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 266 | ACCOUNTS RECEIVABLE POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional | FOUO (CUI) |
+| 267 | ACCOUNTS RECEIVABLE POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Mandatory | FOUO (CUI) |
+| 268 | ACCOUNTS PAYABLE POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 269 | ACCOUNTS PAYABLE POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 270 | ACCOUNTS PAYABLE POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 271 | ACCOUNTS PAYABLE POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 272 | ACCOUNTS PAYABLE POC ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 273 | ACCOUNTS PAYABLE POC ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 274 | ACCOUNTS PAYABLE POC CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 275 | ACCOUNTS PAYABLE POC ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 276 | ACCOUNTS PAYABLE POC ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 277 | ACCOUNTS PAYABLE POC COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 278 | ACCOUNTS PAYABLE POC STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 279 | ACCOUNTS PAYABLE POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 280 | ACCOUNTS PAYABLE POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 281 | ACCOUNTS PAYABLE POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 282 | ACCOUNTS PAYABLE POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 283 | ACCOUNTS PAYABLE POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 284 | MPIN | STRING | STRING | N/A | No longer required | Optional | Sensitive (CUI) |
+| 285 | NAICS EXCEPTION COUNTER | STRING | Numeric | 4 | Four digit identifier that provides the number of NAICS Exceptions to be provided in the NAICS Exception String. | Mandatory | Public |
+| 286 | NAICS EXCEPTION STRING | STRING | ~ Separated | 1100 | Tilde (~) delimited string that includes exception information for any NAICS Codes that the user has selected that has e... | Optional (All Awards) | Public |
+| 287 | DEBT SUBJECT TO OFFSET FLAG | STRING | Y, N, Null | 1 | See SAM Functional Data Dictionary | Optional | Public |
+| 288 | EXCLUSION STATUS FLAG | STRING | D or Null | 1 | This flag indicates whether the entity has an active exclusion record. If this flag is set to “D”, this will indicate th... | Optional | Public |
+| 289 | SBA BUSINESS TYPES COUNTER | STRING | Numeric | 4 | Four digit identifier that provides the number of SBA Business Types to be provided in the SBA Business Types String. | Mandatory | Public |
+| 290 | SBA BUSINESS TYPES STRING | STRING | ~ Separated | 125 | Tilde (~) delimited string that includes SBA business type  and expiration information as provided to SAM by SBA.  For m... | Optional (All Awards/Federal Assistance) | Public |
+| 291 | SAM NUMERICS COUNTER | STRING | Numeric | 4 | Four digit identifier that provides the number of Numeric Types to be provided in the SAM Numerics Code String. | Mandatory | FOUO (CUI) |
+| 292 | SAM NUMERICS CODE STRING | STRING | ~ Separated | 1600 | Tilde (~) and caret (^) delimited string that includes Numerics data as collected in the assertions page of the SAM Regi... | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 293 | NO PUBLIC DISPLAY FLAG | STRING | NPDY or null | 4 | See SAM Functional Data Dictionary | Optional (All Awards/Federal Assistance) | Public |
+| 294 | DISASTER RESPONSE COUNTER | STRING | Numeric | 4 | Four digit identifier that provides the number of Disaster Response Types to be provided in the Disaster Response String... | Mandatory | Public |
+| 295 | DISASTER RESPONSE STRING | STRING | ~ Separated | 75 | Tilde (~) and caret (^) delimited string that includes Disaster Response data as collected in the assertions page of the... | Optional (All Awards) | Public |
+| 296 | ANNUAL IGT REVENUE | STRING | STRING | 25 | Annual IGT Revenue - This data element details the amount of revenue the Intra-Governmental Transfer (IGT) entity receiv... | Optional (IGT Only) | FOUO (CUI) |
+| 297 | AGENCY LOCATION CODE | STRING | STRING | 8 | See SAM Functional Data Dictionary | Mandatory (IGT Only) | Sensitive (CUI) |
+| 298 | DISBURSING OFFICE SYMBOL | STRING | STRING | 5 | See SAM Functional Data Dictionary | Optional (IGT Only) | Sensitive (CUI) |
+| 299 | MERCHANT ID 1 | STRING | STRING | 130 | See SAM Functional Data Dictionary | Optional (IGT Only) | Sensitive (CUI) |
+| 300 | MERCHANT ID 2 | STRING | STRING | 130 | See SAM Functional Data Dictionary | Optional (IGT Only) | Sensitive (CUI) |
+| 301 | ACCOUNTING STATION | STRING | STRING | 6 | See SAM Functional Data Dictionary | Optional (IGT Only) | Sensitive (CUI) |
+| 302 | SOURCE | STRING | STRING | 7 | This data element identifies a Federal Government Entity as  either a 'DoD' entity or a 'Federal' Entity | Optional | FOUO (CUI) |
+| 303 | DEPARTMENT CODE | STRING | STRING | 2 | The two-digit Agency/Department code derived from the Treasury Index. | Mandatory (IGT Only) | FOUO (CUI) |
+| 304 | HIERARCHY DEPARTMENT CODE | STRING | STRING | 4 | The four digit code that identifies the Department ID for the Federal Government Entity.  The Department codes were orig... | Optional | FOUO (CUI) |
+| 305 | HIERARCHY DEPARTMENT NAME | STRING | STRING | 150 | The functional name that corresponds with the Department Code. | Optional | FOUO (CUI) |
+| 306 | HIERARCHY AGENCY CODE | STRING | STRING | 4 | The four digit code that identifies the Agency ID for the Federal Government Entity.  The Agency codes were originally s... | Optional | FOUO (CUI) |
+| 307 | HIERARCHY AGENCY NAME | STRING | STRING | 150 | The functional name that corresponds with the Agency Code. | Optional | FOUO (CUI) |
+| 308 | HIERARCHY OFFICE CODE | STRING | STRING | 6 | The office code is an up-to six character identifier representing a U.S. government office in the SAM Federal hierarchy.... | Optional | FOUO (CUI) |
+| 309 | ELIMINATIONS POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 310 | ELIMINATIONS POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 311 | ELIMINATIONS POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 312 | ELIMINATIONS POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 313 | ELIMINATIONS POC ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 314 | ELIMINATIONS POC ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 315 | ELIMINATIONS POC CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 316 | ELIMINATIONS POC ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 317 | ELIMINATIONS POC ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 318 | ELIMINATIONS POC COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 319 | ELIMINATIONS POC STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 320 | ELIMINATIONS POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 321 | ELIMINATIONS POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 322 | ELIMINATIONS POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 323 | ELIMINATIONS POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 324 | ELIMINATIONS POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 325 | SALES POC FIRST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 326 | SALES POC MIDDLE INITIAL | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 327 | SALES POC LAST NAME | STRING | STRING | 65 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 328 | SALES POC TITLE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 329 | SALES POC ST ADD 1 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 330 | SALES POC ST ADD 2 | STRING | STRING | 150 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 331 | SALES POC CITY | STRING | STRING | 40 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 332 | SALES POC ZIP/POSTAL CODE | STRING | STRING | 50 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 333 | SALES POC ZIP CODE +4 | STRING | Numeric | 4 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 334 | SALES POC COUNTRY CODE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 335 | SALES POC STATE OR PROVINCE | STRING | STRING | 55 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 336 | SALES POC U.S. PHONE | STRING | Numeric | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 337 | SALES POC U.S. PHONE EXT | STRING | STRING | 25 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 338 | SALES POC NON-U.S. PHONE | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 339 | SALES POC FAX U.S. ONLY | STRING | STRING | 30 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 340 | SALES POC EMAIL | STRING | STRING | 80 | See SAM Functional Data Dictionary | Optional (IGT Only) | FOUO (CUI) |
+| 341 | TAXPAYER NAME | STRING | STRING | 120 | See SAM Functional Data Dictionary | Mandatory for US Entities.  Optional for Foreign and IGT-only Entities | Sensitive (CUI) |
+| 342 | ENTITY EVS SOURCE | STRING | STRING | 10 | EVS Source of the SAM and non-SAM registrants | Mandatory | Public |
+| 343 | HQ PARENT EVS SOURCE | STRING | STRING | 10 | EVS Source of the SAM registrant hierarchy | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 344 | DOMESTIC PARENT EVS SOURCE | STRING | STRING | 10 | EVS Source of the SAM registrant hierarchy | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 345 | ULTIMATE PARENT EVS SOURCE | STRING | STRING | 10 | EVS Source of the SAM registrant hierarchy | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+| 346 | IMMEDIATE PARENT EVS SOURCE | STRING | STRING | 10 | EVS Source of the SAM registrant hierarchy | Optional (All Awards/Federal Assistance) | FOUO (CUI) |
+|  | TIN TYPE | STRING | STRING | 3 | See SAM Functional Data Dictionary | Mandatory | Sensitive (CUI) |
+|  | TIN NUMBER | STRING | Numeric | 9 | See SAM Functional Data Dictionary | Mandatory | Sensitive (CUI) |
+| 347 | FLEX FIELD 6 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 348 | FLEX FIELD 7 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 349 | FLEX FIELD 8 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 350 | FLEX FIELD 9 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 351 | FLEX FIELD 10 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 352 | FLEX FIELD 11 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 353 | FLEX FIELD 12 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 354 | FLEX FIELD 13 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 355 | FLEX FIELD 14 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 356 | FLEX FIELD 15 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 357 | FLEX FIELD 16 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 358 | FLEX FIELD 17 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 359 | FLEX FIELD 18 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 360 | FLEX FIELD 19 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+| 361 | FLEX FIELD 20 | STRING | STRING |  | Flexible field set aside future SAM Data elements | Optional | Public |
+|  | FLEX FIELD 21 | STRING | STRING | 1 | Flexible field set aside future SAM Data elements | Optional | Public |
+|  | FLEX FIELD 22 | STRING | STRING | 2 | Flexible field set aside future SAM Data elements | Optional | Public |
+|  | FLEX FIELD 23 | STRING | STRING | 3 | Flexible field set aside future SAM Data elements | Optional | Public |
+|  | FLEX FIELD 24 | STRING | STRING | 4 | Flexible field set aside future SAM Data elements | Optional | Public |
+| 362 | END OF RECORD INDICATOR | STRING | STRING | 4 | Identifier that serves to demarcate the end of each individual record in the extract file. | Mandatory | Public |
+
+## STRING Clarification
+
+### SAM Numerics Code String
+
+SAM Numerics are various SAM values with a 2-position numeric identification code, followed by up to 4 sequence values.
+
+Format: `~CODE_TYPE^SEQ1_VALUE^SEQ2_VALUE^SEQ3_VALUE^SEQ4_VALUE~`
+
+Example: `~BL^30000000^15000000^30000000^15000000~LS^42^5000000^0^0~PG^1^0^0^0~`
+
+**LS — Local Size**
+
+- Sequence 1: Local Avg. Number of Employees (max 999,999,999,999,999)
+- Sequence 2: Local Avg. Annual Revenue (max 999,999,999,999,999)
+
+**BK — SBA NAICS Banking Size**
+
+- Sequence 1: Total Assets from 4th qtr, preceding year
+
+**PG — SBA NAICS Power Generation**
+
+- Sequence 1: Total MWH, preceding fiscal year, all affiliates
+
+**PT — SBA NAICS Petroleum**
+
+- Sequence 1: Bbl/day, Oper. Atmos. Crude Oil Distil. capacity
+
+**BL — Bonding Levels (Disaster Relief)**
+
+- Sequence 1: Construction Bonding Level, Per Contract (dollars)
+- Sequence 2: Construction Bonding Level, Aggregate (dollars)
+- Sequence 3: Service Bonding Level, Per Contract (dollars)
+- Sequence 4: Service Bonding Level, Aggregate (dollars)
+
+### SAM Disaster Response String
+
+Format: `~TYPE_CODE + AREA_CODE~` (tilde-delimited, repeating)
+
+Example: `CTYFL051~CTYFL085~MSA2700~STAFL`
+
+| Type Code | Description |
+| --- | --- |
+| ANY | Any area |
+| STA | State (2-position area code) |
+| CTY | County (5-position area code) |
+| MSA | Metropolitan Service Area (4-position area code) |
+
+### Business Type Codes
+
+Format: `~CODE1~CODE2~CODE3~` (tilde-delimited)
+
+Example: `~8W~A7~A8~`
+
+| Code | Business Type |
+| --- | --- |
+| 2R | U.S Federal Government |
+| 2F | U.S. State Government |
+| 12 | U.S. Local Government |
+| 3I | Tribal Government |
+| CY | Foreign Government |
+| A7 | AbilityOne Non Profit Agency |
+| 20 | Foreign Owned |
+| JS | Small Business Joint Venture |
+| 1D | Small Agricultural Cooperative |
+| LJ | Limited Liability Company |
+| XS | Subchapter S Corporation |
+| MF | Manufacturer of Goods |
+| 2X | For Profit Organization |
+| A8 | Non-Profit Organization |
+| 2U | Other Not For Profit Organization |
+| HK | Community Development Corporation Owned Firm |
+| A3 | Labor Surplus Area Firm |
+| A5 | Veteran-Owned Business |
+| QF | Service-Disabled Veteran-Owned Business |
+| JV | Service-Disabled Veteran-Owned Business Joint Venture |
+| A2 | Women-Owned Business |
+| 23 | Minority-Owned Business |
+| FR | Asian-Pacific American Owned |
+| QZ | Subcontinent Asian (Asian-Indian) American Owned |
+| OY | Black American Owned |
+| PI | Hispanic American Owned |
+| NB | Native American Owned |
+| 8W | Women-Owned Small Business |
+| 27 | Self Certified Small Disadvantaged Business |
+| 8C | Women-Owned Small Business (WOSB) Joint Venture Eligible under the WOSB Program |
+| 8D | Economically Disadvantaged Women-Owned Small Business (EDWOSB) Joint Venture |
+| NG | Federal Agency |
+| QW | Federally Funded Research and Development Center |
+| C8 | City |
+| C7 | County |
+| ZR | Inter-municipal |
+| MG | Local Government Owned |
+| C6 | Municipality |
+| H6 | School District |
+| TW | Transit Authority |
+| UD | Council of Governments |
+| 8B | Housing Authorities Public/Tribal |
+| 86 | Interstate Entity |
+| KM | Planning Commission |
+| T4 | Port Authority |
+| H2 | Community Development Corporation |
+| 6D | Domestic Shelter |
+| M8 | Educational Institution |
+| G6 | 1862 Land Grant College |
+| G7 | 1890 Land Grant College |
+| G8 | 1994 Land Grant College |
+| HB | Historically Black College or University |
+| 1A | Minority Institution |
+| 1R | Private University or College |
+| ZW | School of Forestry |
+| GW | Hispanic Servicing Institution |
+| OH | State Controlled Institution of Higher Learning |
+| HS | Tribal College |
+| QU | Veterinary College |
+| G3 | Alaskan Native Servicing Institution |
+| G5 | Native Hawaiian Servicing Institution |
+| BZ | Foundation |
+| 80 | Hospital |
+| FY | Veterinary Hospital |
+| HQ | DOT Certified DBE |
+| 05 | Alaskan Native Corporation Owned Firm |
+| OW | American Indian Owned |
+| XY | Indian Tribe (Federally Recognized) |
+| 8U | Native Hawaiian Organization Owned Firm |
+| 1B | Tribally Owned Firm |
+| FO | Township |
+| TR | Airport Authority |
+| G9 | Individual or concern, other than one of the proceeding |
+| JX | Self-Certified HUBZone Joint Venture |
+| 1E | Indian Economic Enterprise |
+| 1S | Indian Small Business Economic Enterprise |
+| V2 ** | Grants |
+| VW ** | Contracts and Grants |
+
+### NAICS Code String
+
+Format: `~NAICS_CODE + SMALL_BIZ_INDICATOR~` (repeating)
+
+Example: `~237990N~541340N~`
+
+- Position 1: NAICS Code (6 digits)
+- Position 2: Small Business Indication (Y/N)
+
+### PSC Code String
+
+Format: `~PSC_CODE~` (repeating)
+
+Example: `~Y159~Y161~Y162~Z200~Z300~`
+
+### NAICS Exceptions (Effective February 2023)
+
+| NAICS Code | Exception # | Description | Size Std ($) | Size Std (Employees) |
+| --- | --- | --- | --- | --- |
+| 115310 | 1 | Support Activities for Forestry | 11500000 |  |
+| 115310 | 2 | Forest Fire Suppression | 34000000 |  |
+| 115310 | 3 | Fuels Management Services | 34000000 |  |
+| 237990 | 1 | Other Heavy and Civil Engineering Construction | 45000000 |  |
+| 237990 | 2 | Dredging and Surface Cleanup Activities | 37500000 |  |
+| 238990 | 1 | All Other Specialty Trade Contractors | 19000000 |  |
+| 238990 | 2 | Building and Property Specialty Trade Services | 19000000 |  |
+| 488510 | 1 | Freight Transportation Arrangement | 20000000 |  |
+| 488510 | 2 | Non-Vessel Owning Common Carriers and Household Goods Forwarders | 34000000 |  |
+| 531110 | 1 | Lessors of Residential Buildings and Dwellings | 34000000 |  |
+| 531110 | 2 | Leasing of Residential Buildings and Dwellings to the Federal Government by Owners | 47000000 |  |
+| 531120 | 1 | Lessors of Nonresidential Buildings (except Miniwarehouses) | 34000000 |  |
+| 531120 | 2 | Leasing of Nonresidential Buildings (except Miniwarehouses) to the Federal Government by Owners | 47000000 |  |
+| 531130 | 1 | Lessors of Miniwarehouses and Self-Storage Units | 34000000 |  |
+| 531130 | 2 | Leasing of Miniwarehouses and Self Storage Units to the Federal Government by Owners | 47000000 |  |
+| 531190 | 1 | Lessors of Other Real Estate Property | 34000000 |  |
+| 531190 | 2 | Leasing of Other Real Estate Property to the Federal Government by Owners | 47000000 |  |
+| 541330 | 1 | Engineering Services | 25500000 |  |
+| 541330 | 2 | Military and Aerospace Equipment and Military Weapons | 47000000 |  |
+| 541330 | 3 | Contracts and Subcontracts for Engineering Services Awarded Under the National Energy Policy Act of 1992 | 47000000 |  |
+| 541330 | 4 | Marine Engineering and Naval Architecture | 47000000 |  |
+| 541519 | 1 | Other Computer Related Services | 34000000 |  |
+| 541519 | 2 | Information Technology Value Added Resellers |  | 150 |
+| 541715 | 1 | Research and Development in the Physical, Engineering, and Life Sciences (except Nanotechnology and Biotechnology) |  | 1000 |
+| 541715 | 2 | Aircraft, Aircraft Engine and Engine Parts |  | 1500 |
+| 541715 | 3 | Other Aircraft Parts and Auxiliary Equipment |  | 1250 |
+| 541715 | 4 | Guided Missiles and Space Vehicles, Their Propulsion Units and Propulsion Parts |  | 1250 |
+| 562910 | 1 | Remediation Services | 25000000 |  |
+| 562910 | 2 | Environmental Remediation Services |  | 750 |
+| 611519 | 1 | Other Technical and Trade Schools | 21000000 |  |
+| 611519 | 2 | Job Corps Centers | 47000000 |  |
+
+### SBA Business Type Codes
+
+Format: `~CODE + EXPIRATION_DATE(YYYYMMDD)~` (repeating)
+
+Example: `~A620110101~XX20110102~`
+
+| Code | Business Type |
+| --- | --- |
+| A6 | SBA Certified 8A Program Participant |
+| JT | SBA Certified 8A Joint Venture |
+| XX | SBA Certified Hub Zone Firm |
+| A4* | SBA Certified Small Disadvantaged Business (No Longer Active) |
+| A9 | SBA-Certified Women-Owned Small Business |
+| A0 | SBA-Certified Economically Disadvantaged Women-Owned Small Business |
+
+## Drop Down Lists
+
+### Mandatory Field Values
+
+- Mandatory
+- Mandatory (All Awards/Federal Assistance)
+- Mandatory (IGT Only)
+- Optional
+- Optional (All Awards/Federal Assistance)
+- Optional (IGT Only)
+- Mandatory for US Entities.  Optional for Foreign and IGT-only Entities
+- Mandatory (All Awards)
+- Optional (All Awards)
+- If Available (All Awards/Federal Assistance)
+
+### API Response Sections
+
+- 1 - <entityIdentification>
+- 2 - <coreData>
+- 3 - <assertions>
+- 4 - <repsAndCerts>
+- 5 - <pointsOfContact>

@@ -1,0 +1,476 @@
+# SAM Representations and Certifications Mapping
+
+Field mapping for SAM.gov Entity Management API — Reps & Certs responses.
+
+## FAR
+
+| FAR Provision | Answer Id Number / Other | FAR/DFAR Question or Comment | Sample Entity Management API Response | Mandatory / Optional | Required Condition | Enumeration (if any) |
+| --- | --- | --- | --- | --- | --- | --- |
+| FAR 52.203-2.b.2.i | 1 | Who are the person(s) within ENTITY_NAME responsible for determining prices offered in bids/proposals? | "section": "52.203-2.b.2.i",                   "questionText": "Who are the person(s) within <ENTITY NAME> responsible for determining prices offered in bids/proposals?",                   "answerId":... | Mandatory |  | First Name Last Name Title |
+| FAR 52.204-3.d | TIN Holder Status | Identifies the entity's TIN holder status | {                   "section": "52.204-3.d",                   "questionText": ,                   "answerId": ,                   "answerText": "<TIN ON FILE>",                   "country": ,        ... | Mandatory |  | TIN ON FILE |
+| FAR 52.204-3.e | Organization Type | Identifies the entity's organization type | {                   "section": "52.204-3.e",                   "questionText": "Our records indicate that <ENTITY NAME> Org Type is \"<VALUE1>\" please enter more information here.",                  ... | Mandatory |  | 2J  - Sole Proprietorship  2K  - Partnership or Limited Liability Partnership 2L  - Corporate Entity (Not Tax Exempt)  8H  - Corporate Entity (Tax Exempt)  2A  - U.S. Government Entity  CY  - Country ... |
+| FAR 52.204-3.f | 10 | Is ENTITY_NAME owned or controlled by a common parent, that files its Federal Income Tax returns on a consolidated basis? | {                   "section": "52.204-3.f",                   "questionText": "Is <ENTITY NAME> owned or controlled by a common parent, that files its Federal Income Tax returns on a consolidated bas... | Mandatory |  | Yes No |
+| FAR 52.204-3.f.3 | 11 | If yes, please provide the company name and TIN for the common parent. | {                   "section": "52.204-3.f.3",                   "questionText": "If yes, please provide the company name and TIN for the common parent.",                   "answerId": "11",          ... | Mandatory | Answer ID 10 must be Yes | ID Name TIN = TIN ON FILE |
+| FAR 52.204.5.b | Women-Owned Business (Other Than Small Business) | Identifies if the entity is a Women-Owned Business (Other Than Small Business) | "section": "52.204.5.b",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company": ... | Mandatory |  | Yes No |
+| FAR 52.204-17.b | Entity Ownership | Federal Acquisition Regulation (FAR) Subpart 4.18 requires that you provide information about your entity's ownership and control as part of your SAM registration.  Does another entity own or control ... | "section": "52.204-17.b",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company":... | Mandatory |  | Yes No |
+| FAR 52.204-17.c | Entity Immediate Owner | Enter your Immediate Owner's CAGE/NCAGE Code.*  Does another entity own or control your Immediate Owner?* | {                   "section": "52.204-17.c",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "co... | Optional | 52.204-17.b must be Yes | CAGE Code NCAGE Code Legal Business Name Has Owner ID |
+| FAR 52.204-17.d | Entity Highest Level Owner | Enter your Highest-Level Owner's CAGE Code. | {                   "section": "52.204-17.d",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "co... | Optional | 52.204-17.c must be Yes | CAGE Code NCAGE Code Legal Business Name Has Owner ID |
+| FAR 52.204-20.b | Successor to an Offeror | Federal Acquisition Regulation (FAR) Subpart 4.1804 (d) requires that you provide information about your entity's predecessors as part of your SAM registration. Predecessor refers to an entity that is... | "section": "FAR 52.204-20.b",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "compa... | Mandatory |  | Yes No |
+| FAR 52.204-20.c.i | Predecessor Details | Please provide the data for your three most recent predecessors in reverse chronological order (newest to oldest). You must enter at least your most recent predecessor. You can enter up to three prede... | "section": "FAR 52.204-20.c.i",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,     ... | Optional | 52.204-20.b must be Yes. There may be 1, 2, or 3 predecessors. | CAGE Code NCAGE Code Legal Business Name Id 1 = Most recent Predecessor Id 2 = Second most recent Predecessor Id 3 = Third most recent Predecessor |
+| FAR 52.204-20.c.ii | Predecessor Details | Please provide the data for your three most recent predecessors in reverse chronological order (newest to oldest). You must enter at least your most recent predecessor. You can enter up to three prede... | "section": "FAR 52.204-20.c.ii",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,    ... | Optional | 52.204-20.b must be Yes. There may be 1, 2, or 3 predecessors. | CAGE Code NCAGE Code Legal Business Name Id 1 = Most recent Predecessor Id 2 = Second most recent Predecessor Id 3 = Third most recent Predecessor |
+| FAR 52.204-20.c.iii | Predecessor Details | Please provide the data for your three most recent predecessors in reverse chronological order (newest to oldest). You must enter at least your most recent predecessor. You can enter up to three prede... | "section": "FAR 52.204-20.c.iii",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,   ... | Optional | 52.204-20.b must be Yes. There may be 1, 2, or 3 predecessors. | CAGE Code NCAGE Code Legal Business Name Id 1 = Most recent Predecessor Id 2 = Second most recent Predecessor Id 3 = Third most recent Predecessor |
+| FAR 52.204-26.c.1 | 83 | Does ENTITY_NAME provide covered telecommunications equipment or services as a part of its offered products or services to the Government in the performance of any contract, subcontract, or other cont... | "section": "52.204-26.c.1",                   "questionText": "Does <ENTIY NANE> provide covered telecommunications equipment or services as a part of its offered products or services to the Governmen... | Mandatory |  | Yes No |
+| FAR 52.204-26.c.2 | 84 | Does ENTITY_NAME use covered telecommunications equipment or services, or any equipment, system, or service that uses covered telecommunications equipment or services? | "section": "52.204-26.c.2",                   "questionText": "Does <ENTITY NAME> use covered telecommunications equipment or services, or any equipment, system, or service that uses covered telecommu... | Optional | 52.204-26.c must be Yes | Yes No |
+| FAR 52.209-2.c.1 | 72 | Is ENTITY_NAME an inverted domestic corporation? | {                   "section": "52.209-2.c.1",                   "questionText": "Is <Entity Name> an inverted domestic corporation?",                   "answerId": "72",                   "answerText... | Mandatory |  | Yes No |
+| FAR 52.209-2.c.2 | 73 | Is ENTITY_NAME a subsidiary of an inverted domestic corporation? | {                   "section": "52.209-2.c.2",                   "questionText": "Is <Entity Name> a subsidiary of an inverted domestic corporation?",                   "answerId": "73",              ... | Mandatory |  | Yes No |
+| FAR 52.209-5.a.1.i.A | 12 | Our records indicate there EXCLUSIONS_EXIST an active exclusion for ENTITY_NAME. Are any of ENTITY_NAME, or any of its principals, currently debarred, suspended, proposed for debarment, or declared in... | {                   "section": "52.209-5.a.1.i.A",                   "questionText": "Our records indicate there is not an active exclusion for <Entity Name>. Are any of <Entity Name>, or any of its p... | Mandatory |  | Yes No |
+| FAR 52.209-5.a.1.i.B | 13 | In the past three-year period, has ENTITY_NAME, or any of its principals, been convicted or had a civil judgment rendered against it for: commission of fraud or a criminal offense in connection with o... | "section": "52.209-5.a.1.i.B",                   "questionText": "In the past three-year period, has <Entity Name>, or any of its principals, been convicted or had a civil judgment rendered against it... | Mandatory |  | Yes No |
+| FAR 52.209-5.a.1.i.D | 14 | In the past three years, has ENTITY_NAME been notified of any delinquent Federal Taxes in an amount that exceeds $3,500 for which liability remains unsatisfied? | "section": "52.209-5.a.1.i.D",                   "questionText": "In the past three years, has <Entity Name> been notified of any delinquent Federal Taxes in an amount that exceeds $3,500 for which li... | Mandatory |  | Yes No |
+| FAR 52.209-5.a.1.i.C | 15 | Is ENTITY_NAME, or any of its principals, presently indicted for, or otherwise criminally or civilly charged by a governmental entity with, commission of any of the offenses enumerated in Question 8? | "section": "52.209-5.a.1.i.C",                   "questionText": "Is <ENTITY NAME>, or any of its principals, presently indicted for, or otherwise criminally or civilly charged by a governmental entit... | Mandatory |  | Yes No |
+| FAR 52.209-5.a.1.ii | 16 | Within the past three years, has ENTITY_NAME been terminated for cause (default)? | {                   "section": "52.209-5.a.1.ii",                   "questionText": "Within the past three years, has <ENTITY NAME> been terminated for cause (default)?",                   "answerId":... | Mandatory |  | Yes No |
+| FAR 52.209-11.b.1 | 76 | Does your entity have any unpaid Federal tax liability that has been assessed, for which all judicial and administrative remedies have been exhausted or have lapsed, and that is not being paid in a ti... | "provisionId": "FAR 52.209-11",               "listOfAnswers": [                 {                   "section": "52.209-11.b.1",                   "questionText": "Does your entity have any unpaid Fed... | Mandatory |  | Yes No |
+| FAR 52.209-11.b.2 | 77 | Has your entity been convicted of a felony criminal violation under a Federal law within the preceding 24 months? | "section": "52.209-11.b.2",                   "questionText": "Has your entity been convicted of a felony criminal violation under a Federal law within the preceding 24 months?",                   "an... | Mandatory |  | Yes No |
+| FAR 52.212-3.c | List of NAICS | List of entity's NAICS codes plus for each NAICS - NAICS Code - Primary NAICS for Entity (Yes / Null) - Small Business (Yes / No / Exception) - NAICS Exception | "provisionId": "FAR 52.212-3",               "listOfAnswers": [                 {                   "section": "52.212-3.c",                   "questionText": ,                   "answerId": ,        ... | Mandatory |  | NAICS Code - Refer to List of NAICS codes NAICS Description Primary NAICS - true/false SBA SmallBusiness - Y/N/E Exception Counter Has SBA Protest Has Size Changed |
+| FAR 52.212-3.c.1 | Small Business Concern | Identifies if the entity is a small business | "section": "52.212-3.c.1",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.2 | Veteran-Owned Small Business | Identifies if the entity is a Veteran-Owned Small Business | "section": "52.212-3.c.2",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.3 | Service Disabled Veteran-Owned Small Business | Identifies if the entity is a Service Disabled Veteran-Owned Small Business | "section": "52.212-3.c.3",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.4 | 30 | Are you a Small Disadvantaged Business? | "section": "52.212-3.c.4",                   "questionText": "Are you a Small Disadvantaged Business? <p/>\n\t\t\tThe answers below regarding your small business status (\"Small\" or \"Other than Smal... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.5 | Women-Owned Small Business Concern | Identifies if the entity is a Women-Owned Small Business Concern | "section": "52.212-3.c.5",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.6.i | Women-Owned Small Business (WOSB) | Identifies if the entity is a Women-Owned Small Business (WOSB) | "section": "52.212-3.c.6.i",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "compan... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.6.ii | Women-Owned Small Business Concern | Identifies if the entity is a Women-Owned Small Business Concern | "section": "52.212-3.c.6.ii",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "compa... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.7.i | Economically Disadvantaged Women-Owned Small Business (EDWOSB) | Identifies if the entity is a Economically Disadvantaged Women-Owned Small Business (EDWOSB) | "section": "52.212-3.c.7.i",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "compan... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.7.ii | 24 | Please list the name of any Economically Disadvantaged Woman Owned Small Businesses participating in a Joint Venture with ENTITY_NAME. | "section": "52.212-3.c.7.ii",                   "questionText": "Please list the name of any Economically Disadvantaged Woman Owned Small Businesses participating in a Joint Venture with <ENTITY NAME>... | Optional | 52.212-3.c.7.i must be answered Yes | ID Name TIN Unique Entity ID Year Established |
+| FAR 52.212-3.c.8 | Women-Owned Business (WOB) | Identifies if the entity is a Women-Owned Business Concern | "section": "52.212-3.c.8",                   "questionText": null,                   "answerId": null,                   "answerText": "<Yes or No>",                   "country": null,                ... | Optional |  | Yes No |
+| FAR 52.212-3.c.10.i.A | SBA Certified Small Disadvantaged Business (SBASDB) | Identifies if the entity is a SBA Certified Small Disadvantaged Business (SBASDB) | "section": "52.212-3.c.10.i.A",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "com... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.10.i.B | SBA Certified Small Disadvantaged not submitted (SBASDB Only) | Identifies if the entity is a SBA Certified Small Disadvantaged not submitted (SBASDB Only) | "section": "52.212-3.c.10.i.B",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "com... | Mandatory |  | Yes No |
+| FAR 52.212-3.c.11.ii | 17 | Our records indicate that ENTITY_NAME is not participating in a HUBZone Joint Venture.  Please list the name of any HUBZone businesses participating in a HUBZone Joint Venture with ENTITY_NAME. | "section": "52.212-3.c.11.ii",                   "questionText": "Please list the name of any HUBZone businesses participating in a HUBZone Joint Venture with <ENTITY NAME>",                   "answer... | Optional |  | Yes No |
+| FAR 52.212-3.c.11.ii.3 | 18 | Please indicate the list of entities that your entity has a joint venture relationship with. | "section": "52.212-3.c.11.ii.3",                   "questionText": ,                   "answerId": "18",                   "answerText": ,                   "country": ,                   "company": ,... | Optional | Answer ID 17 must be Yes | ID Name TIN Unique Entity ID Year Established |
+| FAR 52.212-3.d.1.i | 34 | Has ENTITY_NAME held previous contracts/subcontracts subject to Federal Acquisition Regulation (FAR) 52.222-26 (Equal Opportunity)? | "section": "52.212-3.d.1.i",                   "questionText": "Has <ENTITY NAME>. held previous contracts/subcontracts subject to Federal Acquisition Regulation (FAR) 52.222-26 (Equal Opportunity)?",... | Mandatory |  | Yes No |
+| FAR 52.212-3.d.1.ii | 37 | Has ENTITY_NAME filed all required Equal Employment Opportunity compliance reports? | "section": "52.212-3.d.1.ii",                   "questionText": "Has <ENTITY NAME> filed all required Equal Employment Opportunity compliance reports?",                   "answerId": "37",            ... | Mandatory |  | Yes No |
+| FAR 52.212-3.d.2.i | 38 | Please choose one of the following statements that applies to ENTITY_NAME | "section": "52.212-3.d.2.i",                   "questionText": "Please choose one of the following statements that applies to <ENTITY NAME>",                   "answerId": "38",                   "ans... | Mandatory |  | ENTITY_NAME has developed and has on file affirmative action programs required by Secretary of Labor regulations. ENTITY_NAME does not have developed and does not have on file affirmative action progr... |
+| FAR 52.212-3.f | 35 | Are any end products delivered to the Government by ENTITY_NAME foreign (nondomestic) end products? | "section": "52.212-3.f",                   "questionText": "Are any end products delivered to the Government by <ENTITY NAME> foreign (nondomestic) end products?",                   "answerId": "35", ... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.212-3.f.2 | 36 | Foreign End Products | {                   "section": "52.212-3.f.2",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",   ... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.212-3.g.1.ii | 36 | Foreign End Products | "section": "52.212-3.g.1.ii",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.212-3.g.1.iii | 36 | Foreign End Products | "section": "52.212-3.g.1.iii",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   ... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.212-3.g.2 | 36 | Foreign End Products | "section": "52.212-3.g.2",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "ans... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.212-3.g.3 | 36 | Foreign End Products | "section": "52.212-3.g.3",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "ans... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.212-3.g.4.ii | 36 | Foreign End Products | "section": "52.212-3.g.4.ii",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.212-3.g.5.ii | 36 | Trade Agreements Certificate  The offeror shall list as other end products those end products that are not U.S.-made or designated country end products. | {                   "section": "52.212-3.g.5.ii",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.212-3.h.1 | 12 | Our records indicate there EXCLUSIONS_EXIST an active exclusion for ENTITY_NAME. Are any of ENTITY_NAME, or any of its principals, currently debarred, suspended, proposed for debarment, or declared in... | "section": "52.212-3.h.1",                   "questionText": "Our records indicate there is not an active exclusion for <ENTITY NAME>. Are any of <ENTITY NAME>, or any of its principals, currently deb... | Mandatory |  | Yes No |
+| FAR 52.212-3.h.2 | 13 | In the past three-year period, has ENTITY_NAME, or any of its principals, been convicted or had a civil judgment rendered against it for: commission of fraud or a criminal offense in connection with o... | "section": "52.212-3.h.2",                   "questionText": "In the past three-year period, has <ENTITY NAME>, or any of its principals, been convicted or had a civil judgment rendered against it for... | Mandatory |  | Yes No |
+| FAR 52.212-3.h.4 | 14 | In the past three years, has ENTITY_NAME been notified of any delinquent Federal Taxes in an amount that exceeds $3,500 for which liability remains unsatisfied? | "section": "52.212-3.h.4",                   "questionText": "In the past three years, has <ENTIY NAME> been notified of any delinquent Federal Taxes in an amount that exceeds $3,500 for which liabili... | Mandatory |  | Yes No |
+| FAR 52.212-3.h.3 | 15 | Is ENTITY_NAME, or any of its principals, presently indicted for, or otherwise criminally or civilly charged by a governmental entity with, commission of any of the offenses enumerated in Question 8? | "section": "52.212-3.h.3",                   "questionText": "Is <ENTITY NAME>, or any of its principals, presently indicted for, or otherwise criminally or civilly charged by a governmental entity wi... | Mandatory |  | Yes No |
+| FAR 52.212-3.h.5 | 16 | Within the past three years, has ENTITY_NAME been terminated for cause (default)? | "section": "52.212-3.h.5",                   "questionText": "Within the past three years, has <ENTITY NAME> been terminated for cause (default)?",                   "answerId": "16",                 ... | Mandatory |  | Yes No |
+| FAR 52.212-3-AltII.iii | 31 | Is ENTITY_NAME located in a Small Disadvantaged Business Procurement Mechanism authorized region (see SIC code 15, 16 and 17 for authorized regions)? | "section": "52.212-3-AltII.iii",                   "questionText": "Is <ENTITY NAME> located in a Small Disadvantaged Business Procurement Mechanism authorized region (see SIC code 15, 16 and 17 for a... | Optional |  | Yes No |
+| FAR 52.212-3.i.2.i | 32 | Does ENTITY_NAME deliver any end products (from the corresponding country of origin) that are listed on the List of Products Requiring Federal Contractor Certification as to Forced or Indentured Child... | "section": "52.212-3.i.2.i",                   "questionText": "Does <ENTITY NAME> deliver any end products (from the corresponding country of origin) that are listed on the List of Products Requiring... | Mandatory |  | Yes No |
+| FAR52.212-3.i.2.ii | 33 | If Yes, has ENTITY_NAME based on a good faith effort to determine whether forced or indentured child labor was used to mine, produce, or manufacture any such end product, determined that it is not awa... | "section": "52.212-3.i.2.ii",                   "questionText": "If Yes, has <ENTITY NAME> based on a good faith effort to determine whether forced or indentured child labor was used to mine, produce,... | Optional | Answer ID 32 must be Yes | Yes No |
+| FAR 52.212-3.j | 49 | Our record indicates that it has registered the following FSC codes. Please provide whether the place of manufacture for each FSC code below is in the US or outside the US. To edit your FSC list pleas... | "section": "52.212-3.j",                   "questionText": "Our record indicates that <ENTITY NAME> has registered the following FSC codes. Please provide whether the place of manufacture for each FSC... | Optional | Entity must have PSC Codes | ID Place of Manufacture FSC Code Description |
+| FAR 52.212-3.k.1.2.i | 39 | Does ENTITY_NAME provide maintenance, calibration, and/or repair of information technology, scientific and medical and/or office and business equipment? | "section": "52.212-3.k.1.2.i",                   "questionText": "Does <ENTITY NAME> provide maintenance, calibration, and/or repair of information technology, scientific and medical and/or office and... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.212-3.k.1.2.ii | 40 | Please answer the following questions: Are the items of equipment serviced by ENTITY_NAME commercial items which are used regularly for other than Government purposes, and are sold or traded by ENTITY... | "section": "52.212-3.k.1.2.ii",                                     "questionText": "If yes, please answer the following questions: Are the items of equipment serviced by <ENTITY NAME> commercial item... | Optional | Answer ID 39 must be Yes | Yes No |
+| FAR 52.212-3.k.1.2.iii | 41 | Are the services furnished at prices which are, or are based on, established catalog or market prices? | "section": "52.212-3.k.1.2.iii",                                     "questionText": "Are the services furnished at prices which are, or are based on, established catalog or market prices?",          ... | Optional | Answer ID 39 must be Yes | Yes No |
+| FAR 52.212-3.k.1.2.iv | 42 | Does ENTITY_NAME utilize the same compensation (wage and fringe benefits) plan for all service employees performing work under Government contracts as ENTITY_NAME uses for equivalent employees servici... | "section": "52.212-3.k.1.2.iv",                                     "questionText": "Does <ENTITY NAME> utilize the same compensation (wage and fringe benefits) plan for all service employees performi... | Optional | Answer ID 39 must be Yes | Yes No |
+| FAR 52.212-3.k.2.2 | 43 | Does ENTITY_NAME provide services as described in FAR 22.1003-4(d)(1)? | "section": "52.212-3.k.2.2",                   "questionText": "Does <ENTITY NAME> provide services as described in <a href=\"https://www.acquisition.gov/sites/default/files/current/far/html/Subpart%2... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.212-3.k.2.2.1 | 44 | Are the services described in FAR 22.1003-4(d)(1) by ENTITY_NAME offered and sold regularly to non-Governmental customers, and are provided by the offeror (or subcontractor in the case of an exempt su... | "section": "52.212-3.k.2.2.1",                   "questionText": "If yes, please answer the following questions: Are the services described in <a href=\"https://www.acquisition.gov/sites/default/files... | Optional | Answer ID 43 must be Yes | Yes No |
+| FAR 52.212-3.k.2.2.2 | 45 | Are the services furnished at prices which are, or are based on, established catalog or market prices? | "section": "52.212-3.k.2.2.2",                   "questionText": "Are the services furnished at prices which are, or are based on, established catalog or market prices?",                   "answerId":... | Optional | Answer ID 43 must be Yes | Yes No |
+| FAR 52.212-3.k.2.2.3 | 46 | Does ENTITY_NAME ensure that each service employee who will perform the services described in FAR 22.1003-4(d)(1) spend only a small portion of his/her time (a monthly average of less than 20% of the ... | "section": "52.212-3.k.2.2.3",                   "questionText": "Does <ENTITY NAME> ensure that each service employee who will perform the services described in <a href=\"https://www.acquisition.gov/... | Optional | Answer ID 43 must be Yes | Yes No |
+| FAR 52.212-3.k.2.2.4 | 47 | Does ENTITY_NAME have the same compensation (wage and fringe benefits) plan for all service employees performing work for Government and commercial customers? | "section": "52.212-3.k.2.2.4",                   "questionText": "Does <ENTITY NAME> have the same compensation (wage and fringe benefits) plan for all service employees performing work for Government... | Optional | Answer ID 43 must be Yes | Yes No |
+| FAR 52.212-3.l.4 | Organization Type | Identifies the entity's organization type | section": "52.212-3.l.4",                   "questionText": ,                   "answerId": ,                   "answerText": "<VALUE>",                   "country": ,                   "company": ,  ... | Mandatory |  | 2J  - Sole Proprietorship  2K  - Partnership or Limited Liability Partnership 2L  - Corporate Entity (Not Tax Exempt)  8H  - Corporate Entity (Tax Exempt)  2A  - U.S. Government Entity  CY  - Country ... |
+| FAR 52.212-3.l.5 | 10 | Is ENTITY_NAME owned or controlled by a common parent, that files its Federal Income Tax returns on a consolidated basis? | "section": "52.212-3.l.5",                   "questionText": "Is <ENTITY NAME> owned or controlled by a common parent, that files its Federal Income Tax returns on a consolidated basis?",             ... | Mandatory |  | Yes No |
+| FAR 52.212-3.l.5.3 | 11 | Please provide the company name and TIN for the common parent. | "section": "52.212-3.l.5.3",                   "questionText": "If yes, please provide the company name and TIN for the common parent.",                   "answerId": "11",                   "answerTe... | Optional | Answer ID 10 must be Yes | ID Name TIN = TIN ON FILE Unique Entity ID Year Established |
+| FAR 52.212-3.n.2.i | 72 | Is ENTITY_NAME an inverted domestic corporation? | "section": "52.212-3.n.2.i",                   "questionText": "Is <ENTITY NAME> an inverted domestic corporation?",                   "answerId": "72",                   "answerText": "<Yes or No>", ... | Mandatory |  | Yes No |
+| FAR 52.212-3.n.2.ii | 73 | Is ENTITY_NAME a subsidiary of an inverted domestic corporation? | "section": "52.212-3.n.2.ii",                   "questionText": "Is <ENTITY NAME> a subsidiary of an inverted domestic corporation?",                   "answerId": "73",                   "answerText"... | Mandatory |  | Yes No |
+| FAR 52.212-3.p.1 | Entity Ownership | Federal Acquisition Regulation (FAR) Subpart 4.18 requires that you provide information about your entity's ownership and control as part of your SAM registration.  Does another entity own or control ... | "section": "52.212-3.p.1",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.212-3.p.2 | Entity Immediate Owner | Enter your Immediate Owner's CAGE/NCAGE Code.* | "section": "52.212-3.p.2",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,          ... | Optional | 52.212-3.p.1 must be Yes | CAGE Code NCAGE Code Legal Business Name Has Owner ID |
+| FAR 52.212-3.p.3 | Entity Highest Level Owner | Enter your Highest-Level Owner's CAGE Code. | "section": "52.212-3.p.3",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,          ... | Optional | 52.212-3.p.2.ii must be Yes | CAGE Code NCAGE Code Legal Business Name Has Owner ID |
+| FAR 52.212-3.q.2.i | 76 | Does your entity have any unpaid Federal tax liability that has been assessed, for which all judicial and administrative remedies have been exhausted or have lapsed, and that is not being paid in a ti... | "section": "52.212-3.q.2.i",                   "questionText": "Does your entity have any unpaid Federal tax liability that has been assessed, for which all judicial and administrative remedies have b... | Mandatory |  | Yes No |
+| FAR 52.212-3.q.2.ii | 77 | Has your entity been convicted of a felony criminal violation under a Federal law within the preceding 24 months? | "section": "52.212-3.q.2.ii",                   "questionText": "Has your entity been convicted of a felony criminal violation under a Federal law within the preceding 24 months?",                   "... | Mandatory |  | Yes No |
+| FAR 52.212-3.r.1 | Successor to an Offeror | Federal Acquisition Regulation (FAR) Subpart 4.1804 (d) requires that you provide information about your entity's predecessors as part of your SAM registration. Predecessor refers to an entity that is... | "section": "52.212-3.r.1",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.212-3.r.2.i | Predecessor Details | Please provide the data for your three most recent predecessors in reverse chronological order (newest to oldest). You must enter at least your most recent predecessor. You can enter up to three prede... | "section": "52.212-3.r.2.i",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,        ... | Optional | 52.213-3.r.2 must be Yes. There may be 1, 2, or 3 predecessors. | CAGE Code NCAGE Code Legal Business Name Id 1 = Most recent Predecessor Id 2 = Second most recent Predecessor Id 3 = Third most recent Predecessor |
+| FAR 52.212-3.r.2.ii | Predecessor Details | Please provide the data for your three most recent predecessors in reverse chronological order (newest to oldest). You must enter at least your most recent predecessor. You can enter up to three prede... | "section": "52.212-3.r.2.ii",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,       ... | Optional | 52.213-3.r.2 must be Yes. There may be 1, 2, or 3 predecessors. | CAGE Code NCAGE Code Legal Business Name Id 1 = Most recent Predecessor Id 2 = Second most recent Predecessor Id 3 = Third most recent Predecessor |
+| FAR 52.212-3.r.2.iii | Predecessor Details | Please provide the data for your three most recent predecessors in reverse chronological order (newest to oldest). You must enter at least your most recent predecessor. You can enter up to three prede... | "section": "52.212-3.r.2.iii",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,      ... | Optional | 52.213-3.r.2 must be Yes. There may be 1, 2, or 3 predecessors. | CAGE Code NCAGE Code Legal Business Name Id 1 = Most recent Predecessor Id 2 = Second most recent Predecessor Id 3 = Third most recent Predecessor |
+| FAR 52.212-3.t.2.i | 79 | Does ENTITY_NAME, itself or through its immediate owner or highest-level owner, publicly disclose greenhouse gas emissions? | "section": "52.212-3.t.2.i",                   "questionText": "Does <ENTITY NAME>, itself or through its immediate owner or highest-level owner, publicly disclose greenhouse gas emissions?",         ... | Optional | Answer ID 78 must be Yes | Yes No |
+| FAR 52.212-3.t.3.i | 80 | If yes, select Add New URL to list the publicly accessible web site where the results of a greenhouse gas inventory, performed in accordance with an accounting standard with publicly available and con... | "section": "52.212-3.t.3.i",                   "questionText": "If yes, select Add New URL to list the publicly accessible web site where the results of a greenhouse gas inventory, performed in accord... | Optional | Answer ID 79 must be Yes |  |
+| FAR 52.212-3.t.2.ii | 81 | Does ENTITY_NAME, itself or through its immediate owner or highest-level owner, publicly disclose a quantitative greenhouse gas emissions reduction goal? | "section": "52.212-3.t.2.ii",                   "questionText": "Does <ENTITY NAME>, itself or through its immediate owner or highest-level owner, publicly disclose a quantitative greenhouse gas emiss... | Optional | Answer ID 78 must be Yes | Yes No |
+| FAR 52.212-3.t.3.ii | 82 | If yes, select Add New URL to list the publicly accessible web site a target to reduce absolute emissions or emissions intensity by a specific quantity or percentage is available. | "section": "52.212-3.t.3.ii",                   "questionText": "If yes, select Add New URL to list the publicly accessible web site where a target to reduce absolute emissions or emissions intensity ... | Optional | Answer ID 81 must be Yes |  |
+| FAR 52.212-3.v.2.i | 83 | Does ENTITY_NAME provide covered telecommunications equipment or services as a part of its offered products or services to the Government in the performance of any contract, subcontract, or other cont... | "section": "52.212-3.v.2.i",                   "questionText": "Does <ENTITY NAME> provide covered telecommunications equipment or services as a part of its offered products or services to the Governm... | Mandatory |  | Yes No |
+| FAR 52.212-3.v.2.ii | 84 | Does ENTITY_NAME use covered telecommunications equipment or services, or any equipment, system, or service that uses covered telecommunications equipment or services? | "section": "52.212-3.v.2.ii",                   "questionText": "Does <ENTITY NAME> use covered telecommunications equipment or services, or any equipment, system, or service that uses covered telecom... | Optional | 52.212-3.v.2.i must be Yes | Yes No |
+| FAR 52.214-14.a | 2 | Does ENTITY_NAME have other plants/facilities at different addresses routinely used to perform on contracts? | "provisionId": "FAR 52.214-14",               "listOfAnswers": [                 {                   "section": "52.214-14.a",                   "questionText": "Does <ENTITY NAME> have other plants/f... | Mandatory |  | Yes No |
+| FAR 52.214-14.b | 3 | If yes, please provide the following: Place of Performance (Address) of the Other Plants/Facilities, Name(s) of Owner and Operator of Plant/Facilities, Address(es) of Owner and Operator of Plant/Facil... | "section": "52.214-14.b",                   "questionText": "If yes, please provide the following: Place of Performance (Address) of the Other Plants/Facilities, Name(s) of Owner and Operator of Plant... | Optional | Answer ID 2 must be Yes | Address Line1 Address Line2 City State or Province Code Zip Code Country Name Entity Name |
+| FAR 52.215-6.a | 2 | Does ENTITY_NAME have other plants/facilities at different addresses routinely used to perform on contracts? | "provisionId": "FAR 52.215-6",               "listOfAnswers": [                 {                   "section": "52.215-6.a",                   "questionText": "Does <ENTITY NAME> have other plants/fac... | Mandatory |  | Yes No |
+| FAR 52.215-6.b | 3 | If yes, please provide the following: Place of Performance (Address) of the Other Plants/Facilities, Name(s) of Owner and Operator of Plant/Facilities, Address(es) of Owner and Operator of Plant/Facil... | "section": "52.215-6.b",                   "questionText": "If yes, please provide the following: Place of Performance (Address) of the Other Plants/Facilities, Name(s) of Owner and Operator of Plant/... | Optional | Answer ID 2 must be Yes | Address Line1 Address Line2 City State or Province Code Zip Code Country Name Entity Name |
+| FAR 52.219-1.b | Small Business Concern | Identifies if the entity is a small business | "section": "52.219-1.b",                   "questionText": ,                   "answerId": ,                   "answerText": ,                   "country": ,                   "company": ,            ... | Mandatory |  | NAICS Code - Refer to List of NAICS codes NAICS Description Primary NAICS - true/false SBA SmallBusiness - Y/N/E Exception Counter Has SBA Protest Has Size Changed |
+| FAR 52.219-1.b.1 | Is not a Small Business Concern | Identifies if the entity is not a small business | "section": "52.219-1.b.1",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.219-1.b.3.1 | Women-owned small business (WOSB) concern | Identifies if the entity is a Women-Owned Small Business (WOSB). | "section": "52.219-1.b.3.1",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "compan... | Mandatory |  | Yes No |
+| FAR 52.219-1.b.4.i | Women-owned small business (WOSB) concern eligible under the WOSB Program | Identifies if the entity is a Women-Owned Small Business (WOSB) eligible under the WOSB Program. | "section": "52.219-1.b.4.i",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "compan... | Mandatory |  | Yes No |
+| FAR 52.219-1.b.4.ii | 22 | List the name of any Woman Owned Small Businesses participating in a Joint Venture with ENTITY_NAME | "section": "52.219-1.b.4.ii",                   "questionText": "<Please list the name of any Woman Owned Small Businesses participating in a Joint Venture with <ENTITY NAME or null>",                ... | Optional | 52.219-1.b.4.i must be Yes | ID Name |
+| FAR 52.219-1.b.5.i | Economically Disadvantaged Women-Owned Small Business (EDWOSB) | Identifies if the entity is a Economically Disadvantaged Women-Owned Small Business (EDWOSB) | "section": "52.219-1.b.5.i",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "compan... | Mandatory |  | Yes No |
+| FAR 52.219-1.b.5.ii | 24 | Please list the name of any Economically Disadvantaged Woman Owned Small Businesses participating in a Joint Venture with ENTITY_NAME. | "section": "52.219-1.b.5.ii",                   "questionText": "Please list the name of any Economically Disadvantaged Woman Owned Small Businesses participating in a Joint Venture with <ENTITY NAME>... | Optional | 52.219-1.b.5.i must be answered Yes | ID Name |
+| FAR 52.219-1.b.6 | Veteran-Owned Small Business | Identifies if the entity is a Veteran-Owned Small Business | "section": "52.219-1.b.6",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.219-1.b.7 | Service Disabled Veteran-Owned Small Business | Identifies if the entity is a Service Disabled Veteran-Owned Small Business | "section": "52.219-1.b.7",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.219-1.b.8.i | SBA Certified HUB Zone Firm | Identifies if the entity is an SBA Certified Hub Zone Firm | "section": "52.219-1.b.8.i",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "compan... | Mandatory |  | Yes No |
+| FAR 52.219-1.b.8.ii | 17 | Our records indicate that ENTITY_NAME is not participating in a HUBZone Joint Venture.  Please list the name of any HUBZone businesses participating in a HUBZone Joint Venture with ENTITY_NAME. | "section": "52.219-1.b.8.ii",                   "questionText": "Please list the name of any HUBZone businesses participating in a HUBZone Joint Venture with <ENTITY NAME>.",                   "answer... | Optional |  | Yes No |
+| FAR 52.219-1.b.8.ii.3 | 18 | Please provide the Joint Venture entities list. | "section": "52.219-1.b.8.ii.3",                   "questionText": ,                   "answerId": "18",                   "answerText": ,                   "country": ,                   "company": , ... | Optional | Answer ID 17 must be Yes | ID Name |
+| FAR 52.219-2.a | 8 | Is ENTITY_NAME a small business concern that wishes to be considered for status as a labor surplus area (LSA) concern? | "section": "52.219-2.a",                   "questionText": "Is <ENTITY NAME> a small business concern that wishes to be considered for status as a labor surplus area (LSA) concern?",                  ... | Mandatory |  | Yes No |
+| FAR 52.219-2.b | 9 | Indicate the LSA in which the manufacturing or production costs amount to more than 50% of contract price. | "section": "52.219-2.b",                   "questionText": "If yes, indicate the LSA in which the manufacturing or production costs amount to more than 50% of contract price:",                   "answ... | Optional | Answer ID 8 must be Yes | City Name County Name State Name |
+| FAR 52.222-18.c.1 | 32 | Does ENTITY_NAME deliver any end products (from the corresponding country of origin) that are listed on the List of Products Requiring Federal Contractor Certification as to Forced or Indentured Child... | "section": "52.222-18.c.1",                   "questionText": "Does <ENTITY NAME> deliver any end products (from the corresponding country of origin) that are listed on the List of Products Requiring ... | Mandatory |  | Yes No |
+| FAR 52.222-18.c.2 | 33 | If Yes, has ENTITY_NAME based on a good faith effort to determine whether forced or indentured child labor was used to mine, produce, or manufacture any such end product, determined that it is not awa... | "section": "52.222-18.c.2",                   "questionText": "If Yes, has Hewlett-Packard Company  based on a good faith effort to determine whether forced or indentured child labor was used to mine,... | Mandatory | Answer ID 32 must be Yes | Yes No |
+| FAR 52.222-22.a | 34 | Has ENTITY_NAME held previous contracts/subcontracts subject to Federal Acquisition Regulation (FAR) 52.222-26 (Equal Opportunity)? | "section": "52.222-22.a",                   "questionText": "Has <ENTITY NAME> held previous contracts/subcontracts subject to Federal Acquisition Regulation (FAR) 52.222-26 (Equal Opportunity)?",    ... | Mandatory |  | Yes No |
+| FAR 52.222-22.b | 37 | Has ENTITY_NAME filed all required Equal Employment Opportunity compliance reports? | "section": "52.222-22.b",                   "questionText": "Has <ENTITY NAME> filed all required Equal Employment Opportunity compliance reports?",                   "answerId": "37",                ... | Mandatory |  | Yes No |
+| FAR 52.222-25 | 38 | Please choose one of the following statements that applies to ENTITY_NAME | "section": "52.222-25",                   "questionText": "Please choose one of the following statements that applies to <ENTITY NAME>.",                   "answerId": "38",                   "answerT... | Mandatory |  | ENTITY_NAME has developed and has on file affirmative action programs required by Secretary of Labor regulations. ENTITY_NAME does not have developed and does not have on file affirmative action progr... |
+| FAR 52.222-48.a.1 | 39 | Does ENTITY_NAME provide maintenance, calibration, and/or repair of information technology, scientific and medical and/or office and business equipment? | "section": "52.222-48.a.1",                   "questionText": "Does <ENTITY NAME> provide maintenance, calibration, and/or repair of information technology, scientific and medical and/or office and bu... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.222-52.a.1.1 | 43 | Does ENTITY_NAME provide services as described in FAR 22.1003-4(d)(1)? | "section": "52.222-52.a.1.1",                   "questionText": "Does <ENTITY NAME> provide services as described in <a href=\"https://www.acquisition.gov/sites/default/files/current/far/html/Subpart%... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.222-52.a.1.2 | 44 | Are the services described in FAR 22.1003-4(d)(1) by ENTITY_NAME offered and sold regularly to non-Governmental customers, and are provided by the offeror (or subcontractor in the case of an exempt su... | "section": "52.222-52.a.1.2",                   "questionText": "If yes, please answer the following questions: Are the services described in <a href=\"https://www.acquisition.gov/sites/default/files/... | Optional | Answer ID 43 must be Yes | Yes No |
+| FAR 52.222-52.a.1.3 | 45 | Are the services furnished at prices which are, or are based on, established catalog or market prices? | "section": "52.222-52.a.1.3",                   "questionText": "Are the services furnished at prices which are, or are based on, established catalog or market prices?",                   "answerId": ... | Optional | Answer ID 43 must be Yes | Yes No |
+| FAR 52.222-52.a.1.4 | 46 | Does ENTITY_NAME ensure that each service employee who will perform the services described in FAR 22.1003-4(d)(1) spend only a small portion of his/her time (a monthly average of less than 20% of the ... | "section": "52.222-52.a.1.4",                   "questionText": "Does <ENTITY NAME> ensure that each service employee who will perform the services described in <a href=\"https://www.acquisition.gov/s... | Optional | Answer ID 43 must be Yes | Yes No |
+| FAR 52.222-52.a.1.5 | 47 | Does ENTITY_NAME have the same compensation (wage and fringe benefits) plan for all service employees performing work for Government and commercial customers? | "section": "52.222-52.a.1.5",                   "questionText": "Does <ENTITY NAME> have the same compensation (wage and fringe benefits) plan for all service employees performing work for Government ... | Optional | Answer ID 43 must be Yes | Yes No |
+| FAR 52.223-4 | 7 | For products designated by the Environmental Protection Agency and provided by ENTITY_NAME, does the percentage of recovered material content meet the applicable EPA guidelines? | "section": "52.223-4",                   "questionText": "For products designated by the Environmental Protection Agency and provided by <ENTITY NAME>, does the percentage of recovered material conten... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.223-9 | 7 | For products designated by the Environmental Protection Agency and provided by ENTITY_NAME, does the percentage of recovered material content meet the applicable EPA guidelines? | "section": "52.223-9",                   "questionText": "For products designated by the Environmental Protection Agency and provided by <ENTITY NAME>, does the percentage of recovered material conten... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.223-22.a | 78 | Did ENTITY_NAME either receive $7.5 million or more in Federal contracts during the previous Federal fiscal year requiring it to publicly disclose greenhouse gas emissions and reduction goals or recei... | "section": "52.223-22.a",                   "questionText": "Did <ENTITY NAME> either receive $7.5 million or more in Federal contracts during the previous Federal fiscal year requiring it to publicly... | Mandatory |  | Yes No |
+| FAR 52.223-22.b.1 | 79 | Does ENTITY_NAME, itself or through its immediate owner or highest-level owner, publicly disclose greenhouse gas emissions? | "section": "52.223-22.b.1",                   "questionText": "Does <ENTITY NAME>, itself or through its immediate owner or highest-level owner, publicly disclose greenhouse gas emissions?",          ... | Optional | Answer ID 78 must be Yes | Yes No |
+| FAR 52.223-22.c.1 | 80 | If yes, select Add New URL to list the publicly accessible web site where the results of a greenhouse gas inventory, performed in accordance with an accounting standard with publicly available and con... | "section": "52.223-22.c.1",                   "questionText": "If yes, select Add New URL to list the publicly accessible web site where the results of a greenhouse gas inventory, performed in accorda... | Optional | Answer ID 79 must be Yes | LIST OF URLs |
+| FAR 52.223-22.b.2 | 81 | Does ENTITY_NAME, itself or through its immediate owner or highest-level owner, publicly disclose a quantitative greenhouse gas emissions reduction goal? | "section": "52.223-22.b.2",                   "questionText": "Does <ENTITY NAME>, itself or through its immediate owner or highest-level owner, publicly disclose a quantitative greenhouse gas emissio... | Optional | Answer ID 78 must be Yes | Yes No |
+| FAR 52.223-22.c.2 | 82 | If yes, select Add New URL to list the publicly accessible web site a target to reduce absolute emissions or emissions intensity by a specific quantity or percentage is available. | "section": "52.223-22.c.2",                   "questionText": "If yes, select Add New URL to list the publicly accessible web site where a target to reduce absolute emissions or emissions intensity by... | Optional | Answer ID 81 must be Yes |  |
+| FAR 52.225-2.a | 35 | Are any end products delivered to the Government by ENTITY_NAME foreign (nondomestic) end products? | "section": "52.225-2.a",                   "questionText": "Are any end products delivered to the Government by <ENTITY NAME> foreign (nondomestic) end products?",                   "answerId": "35", ... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.225-2.b | 36 | Foreign End Products | "section": "52.225-2.b",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "answe... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.225-4.a | 35 | Are any end products delivered to the Government by ENTITY_NAME foreign (nondomestic) end products? | "section": "52.225-4.a",                   "questionText": "Are any end products delivered to the Government by <ENTITY NAME> foreign (nondomestic) end products?",                   "answerId": "35", ... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.225-4.c | 36 | Foreign End Products | "section": "52.225-4.c",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "answe... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.225-4.AltII | 36 | If yes, please list these products and their corresponding country of origin. | "section": "52.225-4.AltII",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "a... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.225-4.AltIII | 36 | If yes, please list these products and their corresponding country of origin. | "section": "52.225-4.AltIII",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "... | Optional | Answer ID 35 must be Yes | ID Name Country  Product Type |
+| FAR 52.225-6.a | 35 | Are any end products delivered to the Government by ENTITY_NAME foreign (nondomestic) end products? | "section": "52.225-6.a",                   "questionText": "Are any end products delivered to the Government by <ENTITY NAME> foreign (nondomestic) end products?",                   "answerId": "35", ... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.225-6.b | 36 | Foreign End Products | "section": "52.225-6.b",                   "questionText": "If yes, please list these products and their corresponding country of origin.",                   "answerId": "36",                   "answe... | Optional | Answer ID 35 must be Yes | ID Name Country Product Type |
+| FAR 52.226-2.b.1 | Historically Black College or University Representation | "Historically black college or university" means an institution determined by the Secretary of Education to meet the requirements of 34 CFR 608.2" | "section": "52.226-2.b.1",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.226-2.b.2 | Minority Institution Representation | "Minority institution" means an institution of higher education meeting the requirements of Section 365(3) of the Higher Education Act of 1965 (20 U.S.C. 1067k), including a Hispanic-serving instituti... | "section": "52.226-2.b.2",                   "questionText": ,                   "answerId": ,                   "answerText": "<Yes or No>",                   "country": ,                   "company"... | Mandatory |  | Yes No |
+| FAR 52.227-15.b.2 | 25 | Does ENTITY_NAME provide any data to the Government that qualifies as limited rights data or restricted computer software? | "section": "52.227-15.b.2",                   "questionText": "Does <ENTITY NAME> provide any data to the Government that qualifies as limited rights data or restricted computer software?",           ... | Mandatory |  | Yes No Vendor will provide information with specific offers to the Government |
+| FAR 52.227-15.b.2.1 | 26 | Limited Rights Data or Restricted Computer Software  If yes, please list limited rights data or restricted computer software below: | "section": "52.227-15.b.2.1",                   "questionText": "If yes, please list limited rights data or restricted computer software below:",                   "answerId": "26",                   ... | Optional | Answer ID 25 must be Yes | ID Name Country Product Type |
+
+## DFARS
+
+| FAR/DFAR Provision(s) | Answer Id Number / Other | FAR/DFAR Question or Comment | Sample Entity Management API Response - REVISED | Mandatory / Optional | Required Condition | Enumeration (if any) |
+| --- | --- | --- | --- | --- | --- | --- |
+| DFARS 252.204-7016 | 83 | Does COMPANY_NAME provide covered telecommunications equipment or services as a part of its offered products or services to the Government in the performance of any contract, subcontract, or other con... | "provisionId": "DFAR 252.204-7016",               "listOfAnswers": [                 {                   "section": "252.204-7016.c",                   "questionText": "Does <ENTITY NAME> provide cove... | Mandatory | Entity must hold or wish to bid on DoD contracts | Yes No |
+| DFARS 252.209-7002 | 65 | Is COMPANY_NAME effectively owned or controlled by a foreign government? | "provisionId": "DFAR 252.209-7002",               "listOfAnswers": [                 {                   "section": "DFAR 252.209-7002.1",                   "questionText": "Is <ENTITY NAME> effective... | Optional | Entity must hold or wish to bid on DoD contracts Entity must not be Non-Federal | Yes No |
+| DFARS 252.209-7002 | 66 | Foreign Government Ownership  If yes, please provide a disclosure point of contact and information about the entity(ies) controlled by a foreign government. | "provisionId": "DFAR 252.209-7002",               "listOfAnswers": [                 {                   "section": "DFAR 252.209-7002.2",                   "questionText": "If yes, please provide a d... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 65 must be Yes |  |
+| DFARS 252.209-7002 | 67 | Entity(ies) controlled by Foreign Government | "provisionId": "DFAR 252.209-7002",               "listOfAnswers": [                 {                   "section": "DFAR 252.209-7002",                   "questionText": "Entity(ies) controlled by Fo... |  |  |  |
+| DFARS 252.216-7008 | 63 | Does COMPANY_NAME represent that the prices set forth in this contract are based on the wage rate(s) or material price(s) established and controlled by a foreign government and do not include continge... | "provisionId": "DFAR 252.216-7008",               "listOfAnswers": [                 {                   "section": "DFAR 252.216-7008.a",                   "questionText": "Does <ENTITY NAME> represe... | Optional | Entity must hold or wish to bid on DoD contracts Entity must not be Non-Federal | Yes No |
+| DFARS 252.216-7008 | 64 | Foreign Government control  If yes, please select the name of the host Country: | "provisionId": "DFAR 252.216-7008",               "listOfAnswers": [                 {                   "section": "DFAR 252.216-7008.a.1",                   "questionText": "If yes, please select th... | Optional | Entity must hold or wish to bid on DoD contracts` Answer ID 63 must be Yes |  |
+| DFARS 252.225-7000 | 35 | Are any end products delivered to the Government by COMPANY_NAME foreign (nondomestic) end products? | "provisionId": "DFAR 252.225-7000",               "listOfAnswers": [                 {                   "section": "252.225-7000.c.1",                   "questionText": "Are any end products delivere... | Optional | Entity must hold or wish to bid on DoD contracts | Yes No Vendor will provide information with specific offers to the Government |
+| DFARS 252.225-7000.c.3 | 36 | Foreign End Products | "provisionId": "DFAR 252.225-7000",               "listOfAnswers": [                 {                  "section": "252.225-7000.c.3",                   "questionText": "If yes, please list these prod... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 35 must be Yes |  |
+| DFARS 252.225-7020 | 35 | Are any end products delivered to the Government by COMPANY_NAME foreign (nondomestic) end products? | "provisionId": "DFAR 252.225-7020",               "listOfAnswers": [                 {                   "section": "252.225-7020.c.1",                   "questionText": "Are any end products delivere... | Optional | Entity must hold or wish to bid on DoD contracts | Yes No Vendor will provide information with specific offers to the Government |
+| DFARS 252.225-7020.c.2 | 36 | Foreign End Products | "provisionId": "DFAR 252.225-7020",               "listOfAnswers": [                                 {                   "section": "252.225-7020.c.2",                   "questionText": "If yes, pleas... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 35 must be Yes |  |
+| DFARS 252.225-7035 | 35 | Are any end products delivered to the Government by COMPANY_NAME foreign (nondomestic) end products? | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.c.1",                   "questionText": "Are any end products delivere... | Optional | Entity must hold or wish to bid on DoD contracts | Yes No Vendor will provide information with specific offers to the Government |
+| 252.225-7035.c.2.i | 36 |  | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.c.2.iii",                   "questionText": "If yes, please list these... |  |  |  |
+| 252.225-7035.c.2.ii | 36 |  | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.c.2.ii",                   "questionText": "If yes, please list these ... |  |  |  |
+| DFARS 252.225-7035.c.2.iii | 36 | Foreign End Products | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.c.2.iii",                   "questionText": "If yes, please list these... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 35 must be Yes |  |
+| 252.225-7035.AltII.c.2.i | 36 | Foreign End Products | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.AltII.c.2.i",                   "questionText": "If yes, please list t... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 35 must be Yes |  |
+| 252.225-7035.AltIII.c.2.i | 36 | Foreign End Products | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.AltIII.c.2.i",                   "questionText": "If yes, please list ... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 35 must be Yes |  |
+| 252.225-7035.AltIII.c.2.i.i | 36 | Foreign End Products | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.AltIII.c.2.i.i",                   "questionText": "If yes, please lis... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 35 must be Yes |  |
+| 252.225-7035.AltV.c.2.i | 36 | Foreign End Products | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.AltV.c.2.i",                   "questionText": "If yes, please list th... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 35 must be Yes |  |
+| 252.225-7035.AltV.c.2.ii | 36 | Foreign End Products | "provisionId": "DFAR 252.225-7035",               "listOfAnswers": [                 {                   "section": "252.225-7035.AltV.c.2.ii",                   "questionText": "If yes, please list t... | Optional | Entity must hold or wish to bid on DoD contracts Answer ID 35 must be Yes |  |
+| DFARS 252.225-7049 | 68 | Is COMPANY_NAME a foreign entity in which the government of a covered foreign country has an ownership interest that enables the government to affect satellite operations? | "provisionId": "DFAR 252.225-7049",                             "listOfAnswers": [                                 {                                     "section": "252.225-7049.c.1",                 ... | Optional | Entity must hold or wish to bid on DoD contracts | Yes No |
+| DFARS 252.225-7049 | 69 | Is COMPANY_NAME a foreign entity that plans to provide or use launch or other satellite services under the contract from a covered foreign country? | "provisionId": "DFAR 252.225-7049",                             "listOfAnswers": [                                 {                                     "section": "252.225-7049.c.2",                 ... | Optional | Entity must hold or wish to bid on DoD contracts | Yes No |
+| DFARS 252.225-7049 | 70 | Is COMPANY_NAME offering commercial satellite services provided by a foreign entity in which the government of a covered foreign country has an ownership interest that enables the government to affect... | "provisionId": "DFAR 252.225-7049",                             "listOfAnswers": [                                 {                                     "section": "252.225-7049.c.3",                 ... | Optional | Entity must hold or wish to bid on DoD contracts | Yes No |
+| DFARS 252.225-7049 | 71 | Is COMPANY_NAME offering commercial satellite services provided by a foreign entity that plans to or is expected to provide or use launch or other satellite services under the contract from a covered ... | "provisionId": "DFAR 252.225-7049",                             "listOfAnswers": [                                 {                                     "section": "252.225-7049.c.4",                 ... | Optional | Entity must hold or wish to bid on DoD contracts | Yes No |
+| DFARS 252.247-7022 | 62 | Does COMPANY_NAME anticipate that supplies will be transported by sea in the performance of any contract or subcontract resulting from this solicitation? | "provisionId": "DFAR 252.247-7022",               "listOfAnswers": [                 {                   "section": "252.247-7022.b",                   "questionText": "Does <ENTITY NAME> anticipate t... | Optional | Entity must hold or wish to bid on DoD contracts | Yes No |
+
+## SF330
+
+| FAR/DFAR Provision(s) | Answer Id Number / Other | FAR/DFAR Question or Comment | Sample Entity Management API Response | Mandatory / Optional | Required Condition | Enumeration (if any) |
+| --- | --- | --- | --- | --- | --- | --- |
+| SF 330 | 51 | SF 330 part II information submitted to SAM is available to government personnel and to anyone with access to the Internet, that knows your DUNS number. Completing this question does not satisfy the r... | "section": "SF330.1",                 "questionText": "SF 330 part II information submitted to SAM is available to government personnel and to anyone with access to the Internet, that knows your Uniqu... | Optional | Entity must have Architect/Engineer NAICS code | Yes No Vendor will provide information with specific offers to the Government |
+| SF 330 | 52 | View the full instructions on filling out the SF330 Part II information. List any former firm names used by the office associated with the Unique Entity ID during the last 6 years including the year t... | "section": "SF330.2",                 "questionText": "View the full instructions on filling out the SF330 Part II information. List any former firm names used by the office associated with the Unique... | Optional | Entity must have Architect/Engineer NAICS code | true false |
+| SF 330 | 53 | List any former firm names used by the office associated with the Unique Entity ID during the last 6 years including the year the name changed was effective and the associated Unique Entity ID (corres... | "section": "SF330.a", "questionText": null, "answerId": "53", "answerText": null, "country": null, "company": null, "highestLevelOwnerCage": null, "immediateOwnerCage": null, "personDetails": null, "p... | Optional | Entity must have Architect/Engineer NAICS code and have former firm name |  |
+| SF 330 | 54 | List number of employees by function code and discipline (corresponds to block 9a,b,c). List no more than 20 disciplines. | "section": "SF330.b",                 "questionText": "List number of employees by function code and discipline (corresponds to block 9a,b,c). List no more than 20 disciplines.",                 "answ... | Optional | Entity must have Architect/Engineer NAICS code and Answer ID 51 must be Yes | Refer to SF330 ARCHITECT-ENG REFERENCES tab for Discipline ID |
+| SF 330 | 56 | List the profile codes, experience, and annual average revenue for the last 5 years for the office associated with this DUNS number (corresponds to block 10a,b,c). | "section": "SF330.c",                 "questionText": "List the profile codes, experience, and annual average revenue for the last 5 years for the office associated with this Unique Entity ID (corresp... | Optional | Entity must have Architect/Engineer NAICS code and Answer ID 51 must be Yes | Refer to SF330 ARCHITECT-ENG REFERENCES tab for Experience Code and Revenue Code |
+| SF 330 | 58 | Provide A-E professional services revenues for the office associated with this DUNS number for the last 3 years (corresponds to block 11a,b,c). | "section": "SF330.d",                 "questionText": "Provide A-E professional services revenues for the office associated with this Unique Entity ID for the last 3 years (corresponds to block 11a,b,... | Optional | Entity must have Architect/Engineer NAICS code and Answer ID 51 must be Yes | Refer to SF330 ARCHITECT-ENG REFERENCES tab for Revenue Code |
+| SF 330 | 59 | Please enter the name and title of the person certifying the SF330 Part II information: | "section": "SF330",                 "questionText": "Please enter the name and title of the person certifying the SF330 Part II information:",                 "answerId": "59",                 "answer... | Optional | Entity must have Architect/Engineer NAICS code and Answer ID 51 must be Yes |  |
+
+## FINANCIAL ASSISTANCE
+
+| FAR/DFAR Provision(s) | Answer Id Number / Other | FAR/DFAR Question or Comment | Sample Entity Management API Response | Mandatory / Optional | Required Condition | Enumeration (if any) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Financial Assistance | 1 | Does [ ] wish to apply for a Federal financial assistance project or program, or is [ ] currently the recipient of funding under any Federal financial assistance project or program? | "financialAssistanceCertifications": {           "grantsCertificationStatus": "Y",           "grantsCertifyingResponse": "Y",           "certifierFirstName": "[ ]",           "certifierLastName": "[ ]... | Optional |  | Yes No |
+| Financial Assistance | 2 | As the duly authorized representative of the [ ]., I certify that [ ]: (1) Has the legal authority to apply for Federal assistance and the institutional, managerial and financial capability to ensure ... | "financialAssistanceCertifications": {           "grantsCertificationStatus": "Y",           "grantsCertifyingResponse": "Y",           "certifierFirstName": "[ ]",           "certifierLastName": "[ ]... | Mandatory | If Financial Assistance Status is answered Yes |  |
+
+## READ-ONLY
+
+| FAR Provision | Answer Id Number / Other | FAR/DFAR Question or Comment | Sample Entity Management API Response | Mandatory / Optional | Required Condition | Enumeration (if any) |
+| --- | --- | --- | --- | --- | --- | --- |
+| FAR 52.203-11 | READ ONLY PROVISION | Certification and Disclosure Regarding Payments to Influence Certain Federal Transactions (Sep 2007) | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.209-10 | READ ONLY PROVISION | Prohibition on Contracting with Inverted Domestic Corporations. | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.212-3.e | READ ONLY PROVISION | Certification Regarding Payments to Influence Federal Transactions (31 U.S.C. 1352) | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.212-3.f.1 | READ ONLY PROVISION | Buy American Certificate. (Applies only if the clause at Federal Acquisition Regulation (FAR) 52.225-1, Buy American -Supplies, is included in this solicitation.) | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.212-3.g.1.i | READ ONLY PROVISION | Buy American-Free Trade Agreements-Israeli Trade Act Certificate. (Applies only if the clause at FAR 52.225-3, Buy American-Free Trade Agreements-Israeli Trade Act, is included in this solicitation.) | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.212-3.u | READ ONLY PROVISION | In accordance with section 743 of Division E, Title VII, of the Consolidated and Further Continuing Appropriations Act, 2015 (Pub. L. 113-235) and its successor provisions in subsequent appropriations... | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.222-38 | READ ONLY PROVISION | Compliance with Veterans' Employment Reporting Requirements | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.222-50 | READ ONLY PROVISION | Combating Trafficking in Persons | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.222-56 | READ ONLY PROVISION | Certification Regarding Trafficking in Persons Compliance Plan. | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.223-1 | READ ONLY PROVISION | Biobased Product Certification | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.225-20 | READ ONLY PROVISION | Prohibition on Conducting Restricted Business Operations in Sudan-Certification | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.227-6 | READ ONLY PROVISION | Royalty Information (Alternate I) | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| FAR 52.225-25 | READ ONLY PROVISION | Prohibition on Contracting with Entities Engaging in Certain Activities or Transactions Relating to Iran - Representation and Certifications | The Read Only Provisions are not captured by the Entity Management API | Mandatory |  | Yes |
+| DFARS 252.209-7003 | READ ONLY PROVISION | Reserve Officer Training Corps and Military Recruiting on Campus-Representation | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.209-7005 | READ ONLY PROVISION | Reserve Officer Training Corps and Military Recruiting on Campus. | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.222-7007 | READ ONLY PROVISION | Representation Regarding Combating Trafficking in Persons. | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes No |
+| DFARS 252.225-7003 | READ ONLY PROVISION | Report of Intended Performance Outside the United States and Canada-Submission with Offer | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.225-7031 | READ ONLY PROVISION | Secondary Arab Boycott of Israel | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.225-7042 | READ ONLY PROVISION | Authorization to Perform | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.225-7050 | READ ONLY PROVISION | Disclosure of Ownership or Control by the Government of a Country that is a State Sponsor of Terrorism. | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.229-7012 | READ ONLY PROVISION | Tax Exemptions (Italy)-Representation. | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.229-7013 | READ ONLY PROVISION | Tax Exemptions (Spain)-Representation. | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.239-7011 | READ ONLY PROVISION | Special Construction and Equipment Charges | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+| DFARS 252.247-7023 | READ ONLY PROVISION | Transportation of Supplies by Sea (Alternate I, II) | The Read Only Provisions are not captured by the Entity Management API | Optional | Entity must hold or wish to bid on DoD contracts | Yes |
+
+## DOWNLOAD URLs
+
+| Element Name | Sample Entity Management API Response | Mandatory / Optional | Required Condition | Enumeration (if any) |
+| --- | --- | --- | --- | --- |
+| "pdfLinks": {           "farPDF": "",         } | "https://api.sam.gov/SAM/file-download?api_key=REPLACE_WITH_API_KEY&pdfType=1&ueiSAM=<UEI>" | Optional | For the PDF download URL to be returned, the FAR Provisions must be answered. | https://api.sam.gov/SAM/file-download?api_key=REPLACE_WITH_API_KEY&pdfType=<NUMERIC VALUE>&ueiSAM=<UEI>  null |
+| "pdfLinks": {           "farAndDfarsPDF": "",         } | "https://api.sam.gov/SAM/file-download?api_key=REPLACE_WITH_API_KEY&pdfType=2&ueiSAM=<UEI>" | Optional | For the PDF download URL to be returned, the DFARS Provisions must be answered. |  |
+| "pdfLinks": {           "architectEngineeringPDF": "",         } | "https://api.sam.gov/SAM/file-download?api_key=REPLACE_WITH_API_KEY&pdfType=3&ueiSAM=<UEI>" | Optional | For the PDF download URL to be returned, the SF330 Provisions must be answered. |  |
+| "pdfLinks": {           "financialAssistanceCertificationsPDF": ""         } | "https://api.sam.gov/SAM/file-download?api_key=REPLACE_WITH_API_KEY&pdfType=4&ueiSAM=<UEI>" | Optional | For the PDF download URL to be returned, the Financial Assistance Provisions must be answered. |  |
+
+## SF330 Architect-Engineering References
+
+### Discipline Codes (Question ID 54)
+
+| Code | Description |
+| --- | --- |
+| 1 | Acoustical Engineer |
+| 2 | Administrative |
+| 3 | Aerial Photographer |
+| 4 | Aeronautical Engineer |
+| 5 | Archeologist |
+| 6 | Architect |
+| 7 | Biologist |
+| 8 | CADD Technician |
+| 9 | Cartographer |
+| 10 | Chemical Engineer |
+| 11 | Chemist |
+| 12 | Civil Engineer |
+| 13 | Communications Engineer |
+| 14 | Computer Programmer |
+| 15 | Construction Inspector |
+| 16 | Construction Manager |
+| 17 | Corrosion Engineer |
+| 18 | Cost Engineer/Estimator |
+| 19 | Ecologist |
+| 20 | Economist |
+| 21 | Electrical Engineer |
+| 22 | Electronics Engineer |
+| 23 | Environmental Engineer |
+| 24 | Environmental Scientist |
+| 25 | Fire Protection Engineer |
+| 26 | Forensic Engineer |
+| 27 | Foundation/Geotechnical Engineer |
+| 28 | Geodetic Surveyor |
+| 29 | Geographic Information System Specialist |
+| 30 | Geologist |
+| 31 | Health Facility Planner |
+| 32 | Hydraulic Engineer |
+| 33 | Hydrographic Surveyor |
+| 34 | Hydrologist |
+| 35 | Industrial Engineer |
+| 36 | Industrial Hygienist |
+| 37 | Interior Designer |
+| 38 | Land Surveyor |
+| 39 | Landscape Architect |
+| 40 | Materials Engineer |
+| 41 | Materials Handling Engineer |
+| 42 | Mechanical Engineer |
+| 43 | Mining Engineer |
+| 44 | Oceanographer |
+| 45 | Photo Interpreter |
+| 46 | Photogrammetrist |
+| 47 | Planner: Urban/Regional |
+| 48 | Project Manager |
+| 49 | Remote Sensing Specialist |
+| 50 | Risk Assessor |
+| 51 | Safety/Occupational Health Engineer |
+| 52 | Sanitary Engineer |
+| 53 | Scheduler |
+| 54 | Security Specialist |
+| 55 | Soils Engineer |
+| 56 | Specifications Writer |
+| 57 | Structural Engineer |
+| 58 | Technician/Analyst |
+| 59 | Toxicologist |
+| 60 | Transportation Engineer |
+
+### Experience Codes (Question ID 56)
+
+| Code | Description |
+| --- | --- |
+| A01 | Acoustics, Noise Abatement |
+| A02 | Aerial Photography; Airborne Data and Imagery Collection and Analysis |
+| A03 | Agricultural Development; Grain Storage; Farm Mechanization |
+| A04 | Air Pollution Control |
+| A05 | Airports; Navaids; Airport Lighting; Aircraft Fueling |
+| A06 | Airports; Terminals and Hangars; Freight Handling |
+| A07 | Arctic Facilities |
+| A08 | Animal Facilities |
+| A09 | Anti-Terrorism/Force Protection |
+| A10 | Asbestos Abatement |
+| A11 | Auditoriums & Theaters |
+| A12 | Automation; Controls; Instrumentation |
+| B01 | Barracks; Dormitories |
+| B02 | Bridges |
+| C01 | Cartography |
+| C02 | Cemeteries (Planning & Relocation) |
+| C03 | Charting: Nautical and Aeronautical |
+| C04 | Chemical Processing & Storage |
+| C05 | Child Care/Development Facilities |
+| C06 | Churches; Chapels |
+| C07 | Coastal Engineering |
+| C08 | Codes; Standards; Ordinances |
+| C09 | Cold Storage; Refrigeration and Fast Freeze |
+| C10 | Commercial Building (low rise); Shopping Centers |
+| C11 | Community Facilities |
+| C12 | Communications Systems; TV; Microwave |
+| C13 | Computer Facilities; Computer Service |
+| C14 | Conservation and Resource Management |
+| C15 | Construction Management |
+| C16 | Construction Surveying |
+| C17 | Corrosion Control; Cathodic Protection; Electrolysis |
+| C18 | Cost Estimating; Cost Engineering and Analysis; Parametric Costing; Forecasting |
+| C19 | Cryogenic Facilities |
+| D01 | Dams (Concrete; Arch) |
+| D02 | Dams (Earth; Rock); Dikes; Levees |
+| D03 | Desalinization (Process & Facilities) |
+| D04 | Design-Build - Preparation of Requests for Proposals |
+| D05 | Digital Elevation and Terrain Model Development |
+| D06 | Digital Orthophotography |
+| D07 | Dining Halls; Clubs; Restaurants |
+| D08 | Dredging Studies and Design |
+| E01 | Ecological & Archeological Investigations |
+| E02 | Educational Facilities; Classrooms |
+| E03 | Electrical Studies and Design |
+| E04 | Electronics |
+| E05 | Elevators; Escalators; People-Movers |
+| E06 | Embassies and Chanceries |
+| E07 | Energy Conservation; New Energy Sources |
+| E08 | Engineering Economics |
+| E09 | Environmental Impact Studies, Assessments or Statements |
+| E10 | Environmental and Natural Resource Mapping |
+| E11 | Environmental Planning |
+| E12 | Environmental Remediation |
+| E13 | Environmental Testing and Analysis |
+| F01 | Fallout Shelters; Blast-Resistant Design |
+| F02 | Field Houses; Gyms; Stadiums |
+| F03 | Fire Protection |
+| F04 | Fisheries; Fish ladders |
+| F05 | Forensic Engineering |
+| F06 | Forestry & Forest products |
+| G01 | Garages; Vehicle Maintenance Facilities; Parking Decks |
+| G02 | Gas Systems (Propane; Natural, Etc.) |
+| G03 | Geodetic Surveying: Ground and Airborne |
+| G04 | Geographic Information System Services: Development, Analysis, and Data Collection |
+| G05 | Geospatial Data Conversion: Scan, Digitize, Compile, Attribute, Scribe, Draft |
+| G06 | Graphic Design |
+| H01 | Harbors; Jetties; Piers, Ship Terminal Facilities |
+| H02 | Hazardous Materials Handling and Storage |
+| H03 | Hazardous, Toxic, Radioactive Waste Remediation |
+| H04 | Heating; Ventilating; Air Conditioning |
+| H05 | Health Systems Planning |
+| H06 | Highrise; Air-Rights-Type Buildings |
+| H07 | Highways; Streets; Airfield Paving; Parking Lots |
+| H08 | Historical Preservation |
+| H09 | Hospital & Medical Facilities |
+| H10 | Hotels; Motels |
+| H11 | Housing (Residential, Multi-Family; Apartments; Condominiums) |
+| H12 | Hydraulics & Pneumatics |
+| H13 | Hydrographic Surveying |
+| I01 | Industrial Buildings; Manufacturing Plants |
+| I02 | Industrial Processes; Quality Control |
+| I03 | Industrial Waste Treatment |
+| I04 | Intelligent Transportation Systems |
+| I05 | Interior Design; Space Planning |
+| I06 | Irrigation; Drainage |
+| J01 | Judicial and Courtroom Facilities |
+| L01 | Laboratories; Medical Research Facilities |
+| L02 | Land Surveying |
+| L03 | Landscape Architecture |
+| L04 | Libraries; Museums; Galleries |
+| L05 | Lighting (Interior; Display; Theater, Etc.) |
+| L06 | Lighting (Exteriors; Streets; Memorials; Athletic Fields, Etc.) |
+| M01 | Mapping Location/Addressing Systems |
+| M02 | Materials Handling Systems; Conveyors; Sorters |
+| M03 | Metallurgy |
+| M04 | Microclimatology; Tropical Engineering |
+| M05 | Military Design Standards |
+| M06 | Mining & Mineralogy |
+| M07 | Missile Facilities (Silos; Fuels; Transport) |
+| M08 | Modular Systems Design; Pre-Fabricated Structures or Components |
+| N01 | Naval Architecture; Off-Shore Platforms |
+| N02 | Navigation Structures; Locks |
+| N03 | Nuclear Facilities; Nuclear Shielding |
+| O01 | Office Buildings; Industrial Parks |
+| O02 | Oceanographic Engineering |
+| O03 | Ordnance; Munitions; Special Weapons |
+| P01 | Petroleum Exploration; Refining |
+| P02 | Petroleum and Fuel (Storage and Distribution) |
+| P03 | Photogrammetry |
+| P04 | Pipelines (Cross-Country - Liquid & Gas) |
+| P05 | Planning (Community, Regional, Areawide and State) |
+| P06 | Planning (Site, Installation, and Project) |
+| P07 | Plumbing & Piping Design |
+| P08 | Prisons & Correctional Facilities |
+| P09 | Product, Machine Equipment Design |
+| P10 | Pneumatic Structures, Air-Support Buildings |
+| P11 | Postal Facilities |
+| P12 | Power Generation, Transmission, Distribution |
+| P13 | Public Safety Facilities |
+| R01 | Radar; Sonar; Radio & Radar Telescopes |
+| R02 | Radio Frequency Systems & Shieldings |
+| R03 | Railroad; Rapid Transit |
+| R04 | Recreation Facilities (Parks, Marinas, Etc.) |
+| R05 | Refrigeration Plants/Systems |
+| R06 | Rehabilitation (Buildings; Structures; Facilities) |
+| R07 | Remote Sensing |
+| R08 | Research Facilities |
+| R09 | Resources Recovery; Recycling |
+| R10 | Risk Analysis |
+| R11 | Rivers; Canals; Waterways; Flood Control |
+| R12 | Roofing |
+| S01 | Safety Engineering; Accident Studies; OSHA Studies |
+| S02 | Security Systems; Intruder & Smoke Detection |
+| S03 | Seismic Designs & Studies |
+| S04 | Sewage Collection, Treatment and Disposal |
+| S05 | Soils & Geologic Studies; Foundations |
+| S06 | Solar Energy Utilization |
+| S07 | Solid Wastes; Incineration; Landfill |
+| S08 | Special Environments; Clean Rooms, Etc. |
+| S09 | Structural Design; Special Structures |
+| S10 | Surveying; Platting; Mapping; Flood Plain Studies |
+| S11 | Sustainable Design |
+| S12 | Swimming Pools |
+| S13 | Storm Water Handling & Facilities |
+| T01 | Telephone Systems (Rural; Mobile; Intercom, Etc.) |
+| T02 | Testing & Inspection Services |
+| T03 | Traffic & Transportation Engineering |
+| T04 | Topographic Surveying and Mapping |
+| T05 | Towers (Self-Supporting & Guyed Systems) |
+| T06 | Tunnels & Subways |
+| U01 | Unexploded Ordnance Remediation |
+| U02 | Urban Renewals; Community Development |
+| U03 | Utilities (Gas and Steam) |
+| V01 | Value Analysis; Life-Cycle Costing |
+| W01 | Warehouses & Depots |
+| W02 | Water Resources; Hydrology; Ground Water |
+| W03 | Water Supply; Treatment and Distribution |
+| W04 | Wind Tunnels; Research/Testing Facilities Design |
+| Z01 | Zoning; Land Use Studies |
+
+### Revenue Codes (Question ID 58)
+
+| Code | Description |
+| --- | --- |
+| 1 | Less than $100,000 |
+| 2 | $100,000 to less than $250,000 |
+| 3 | $250,000 to less than $500,000 |
+| 4 | $500,000 to less than $1 million |
+| 5 | $1 million to less than $2 million |
+| 6 | $2 million to less than $5 million |
+| 7 | $5 million to less than $10 million |
+| 8 | $10 million to less than $25 million |
+| 9 | $25 million to less than $50 million |
+| 10 | $50 million or greater |

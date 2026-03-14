@@ -1,0 +1,51 @@
+# SAM Exclusions Public Extract V2
+
+**Daily File Name:** SAM_Exclusions_Public_V2_Extract_YYDDD.ZIP
+
+The Exclusions extract is a plain-text, comma-separated values (CSV) file.
+
+## Column Layout
+
+| Column Order | Column Header | Data Element Description | Max Length |
+|---|---|---|---|
+| 1 | Classification | Identifies the exclusion Classification Type as either a Firm, Individual, Special Entity Designation, or Vessel. | 50 |
+| 2 | Name | The name of the entity being excluded (not applicable for Individual exclusions). | 200 |
+| 3 | Prefix | The prefix for the actual name of a person being excluded (applicable for Individual exclusions only). | 25 |
+| 4 | First | The first name for the actual name of a person being excluded (applicable for Individual exclusions only). | 50 |
+| 5 | Middle | The middle name for the actual name of a person being excluded (applicable for Individual exclusions only). | 50 |
+| 6 | Last | The last name for the actual name of a person being excluded (applicable for Individual exclusions only). | 50 |
+| 7 | Suffix | The suffix for the actual name of a person being excluded (applicable for Individual exclusions only). | 25 |
+| 8 | Address 1 | The first line of the excluded entity's primary address. | 150 |
+| 9 | Address 2 | The second line of the excluded entity's primary address. | 150 |
+| 10 | Address 3 | Address line 3 of the exclusion's primary address. | 150 |
+| 11 | Address 4 | Address line 4 of the exclusion's primary address. | 150 |
+| 12 | City | The City name of the excluded entity's primary address. | 150 |
+| 13 | State / Province | The State or Province two-character abbreviation of the excluded entity's primary address. | 150 |
+| 14 | Country | The Country for the excluded entity's primary address. | 3 |
+| 15 | Zip Code | The ZIP or Postal Code for the excluded entity's primary address. | 10 |
+| 16 | Open Data Flag | This flag indicates whether the Business Name and Physical Address sourced from EVS or Prior provider. | 1 |
+| 17 | Blank (Deprecated) | Empty column which held the prior 9-digit identifier for exclusions with a classification of Firm. This has been replaced by the Unique Entity ID. | 0 |
+| 18 | Unique Entity ID | Unique identifier of a specific excluded entity. It is 12-character alpha-numeric. Example: F847A1795DE4 | 12 |
+| 19 | Exclusion Program | Identifies if the exclusion is Reciprocal, Nonreciprocal or Procurement. For any exclusion record created on or after August 25, 1995, the value will always be Reciprocal. | 50 |
+| 20 | Excluding Agency | Identifies the Agency which created the exclusion. | 25 |
+| 21 | CT Code | Identifies the legacy Excluded Parties List System (EPLS) Cause & Treatment (CT) Code associated with the exclusion. CT Codes were replaced by the Exclusion Type in SAM. Exclusions created after August 2012 will not have CT Codes. They will only have Exclusion Types. | 16 |
+| 22 | Exclusion Type | Identifies the Exclusion Type for the record replacing the CT Code. Exclusion Type is a simplified, easier to understand way to identify why the entity is being excluded. | 50 |
+| 23 | Additional Comments | This field provides the Agency creating the exclusion space to enter additional information as necessary. | 4000 |
+| 24 | Active Date | Identifies the date the exclusion went active. Format: MM/DD/YYYY | 10 |
+| 25 | Termination Date | Identifies the date the exclusion will be terminated. If "Indefinite" is in this field, there is no set date that the exclusion will terminate. Format: MM/DD/YYYY or Indefinite | 10 |
+| 26 | Record Status | Identifies the record as being Active or Inactive. This extract only displays Active exclusion records, therefore this column is always blank. All records in the extract are Active. | 50 |
+| 27 | Cross-Reference | Identifies other names/aliases with which the entity being excluded has been identified. | 200 |
+| 28 | SAM Number | The internal number used by SAM to identify exclusion records. Since only Firm and SED exclusion records are required to have a Unique Entity ID, SAM needed a way to uniquely track exclusion records of other Classification Types. | 9 |
+| 29 | CAGE | The CAGE Code associated with the excluded entity. Mostly found on Firm exclusion records, but could be in other types if the Individual, Special Entity, or Vessel has a CAGE Code. | 5 |
+| 30 | NPI | The National Provider Identifier (NPI) associated with the exclusion. Healthcare providers acquire their unique 10-digit NPIs from the Centers for Medicare & Medicaid Services (CMS) at the Department of Health & Human Services (HHS) to identify themselves in a standard way throughout their industry. | 100 |
+| 31 | Creation Date | Identifies the date the exclusion was created in SAM. Format: MM/DD/YYYY | 10 |
+
+## File Naming Convention
+
+The SAM Exclusions extract has the following naming convention:
+
+- **File Description:** SAM_Exclusions_Public_V2_Extract_
+- **File Creation Date:** YYDDD (2-digit year plus 3-digit Julian date)
+- **File Extension:** .ZIP
+
+**Example:** SAM_Exclusions_Public_V2_Extract_24226.ZIP is the daily file for Aug 30, 2024.
